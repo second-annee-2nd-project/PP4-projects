@@ -8,7 +8,6 @@ public class CoinsLoot : MonoBehaviour
     public void LootCoins(Vector3 pos)
     {
         Instantiate(coinsPrefab,pos, Quaternion.identity);
-        
     }
     
 }

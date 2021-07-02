@@ -2,26 +2,107 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
+
+
+// TODO
+// Wave manager qui supériorise enemies manager
+// Pour chaque wave
+//    Pour chaque spawner
+//       Pour chaque type d'ennemis
+//          Pouvoir décider du nombre d'ennemi à spawn
+
+public class WaveManager : MonoBehaviour
+{
+   [Header("Wave Infos")]
+   private int numberOfWaves;
+   public int NumberOfWaves
+   {
+      get => numberOfWaves;
+      set => numberOfWaves = value;
+   }
+   
+   [SerializeField] private List<WaveData> waveDatas;
+   public List<WaveData> WaveDatas => waveDatas;
+   
+   private int actualWaveNumber;
+   public int ActualWaveNumber => actualWaveNumber;
+   [Header("UI")]
+   [SerializeField] private Text waveCount_Text;
+   private Coroutine cor;
+
+   private EnemiesManager enemiesManager;
+
+   public void StartWaveSequence()
+   {
+      enemiesManager = GameManager.Instance.P_EnemiesManager;
+      actualWaveNumber = 1;
+      numberOfWaves = waveDatas.Count;
+      if(cor == null)
+         cor = StartCoroutine(StartWave());
+   }
+
+   public void UpdateWaveText()
+   {
+      waveCount_Text.text = "wave " + actualWaveNumber + "/" + numberOfWaves;
+   }
+
+   // Commence une vague et spawn des ennemis
+   IEnumerator StartWave()
+   {
+      while (actualWaveNumber <= numberOfWaves)
+      {
+         UpdateWaveText();
+         GameManager.Instance.P_EnemiesManager.GetTargets();
+         GameManager.Instance.P_TurretManager.GetTargets();
+
+         WaveData actualWave = waveDatas[actualWaveNumber - 1];
+         foreach (SpawnerData spawnerData in actualWave.SpawnerDatas)
+         {
+            spawnerData.SpawnerTr.GetComponent<Spawner>().StartSpawningSequence(spawnerData.EnemyGroups);
+            foreach (EnemyGroup enemyGroup in spawnerData.EnemyGroups)
+            {
+               enemiesManager.ItemsLeftToSpawn += enemyGroup.EnemyNumberToSpawn;
+            }
+         }
+
+         while (!enemiesManager.isWaveFinished())
+         {
+            yield return null;
+            actualWaveNumber++;
+         }
+      }
+
+
+      cor = null;
+      GameManager.Instance.ChangePhase(eGameState.Shop);
+   }
+}
 
 [System.Serializable]
-public class WaveManager
-{ 
-   [SerializeField] private int enemyNumberToSpawn;
-   public int EnemyNumberToSpawn => enemyNumberToSpawn;
+public struct SpawnerData
+{
+   private Spawner spawnerScript;
 
-   [SerializeField] private Transform spawnerPos;
-   public Transform SpawnerPos => spawnerPos;
-
-   [SerializeField] private GameObject typeOfEnemyToSpawn; 
-   public GameObject TypeOfEnemyToSpawn => typeOfEnemyToSpawn;
-   
-   // private int totalWaveNumber;
-   // public int TotalWaveNumber => totalWaveNumber;
-   //
-   // private int waveNumber;
-   // public int WaveNumber
-   // {
-   //    get => waveNumber;
-   //    set => waveNumber = value;
-   // }
+   public Spawner SpawnerScript
+   {
+      get => spawnerScript;
+      set => spawnerScript = value;
+   }
+    
+   [SerializeField] private Transform spawnerTr;
+   public Transform SpawnerTr => spawnerTr;
+    
+   [SerializeField] private List<EnemyGroup> enemyGroups;
+   public List<EnemyGroup> EnemyGroups => enemyGroups;
 }
+
+
+[System.Serializable]
+public struct WaveData
+{
+   [SerializeField] private List<SpawnerData> spawnerDatas;
+   public List<SpawnerData> SpawnerDatas => spawnerDatas;
+}
+
+

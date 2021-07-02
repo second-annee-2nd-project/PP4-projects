@@ -2,20 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum eWeaponType
+{
+    Pistol,
+    Rifle,
+    Shotgun,
+    Launcher,
+    Bonus
+}
+
 public class Weapon : MonoBehaviour
 {
-    public enum WeaponType
-    {
-        Pistol,
-        Rifle,
-        Shotgun,
-        Launcher,
-        Bonus
-    }
-
     [Header("Name")]
     private string name;
-    private WeaponType weaponType;
+    private eWeaponType weaponType;
 
     [Header("Base Stats")]
     [SerializeField] private int bAmmo;
@@ -27,6 +27,8 @@ public class Weapon : MonoBehaviour
 
     [SerializeField] private float bDamage;
     [SerializeField] private float bRange;
+
+    public float P_BRange => bRange;
     // [SerializeField] private float bDiffusionAngle;
 
     [Header("Actual Stats")]
@@ -42,6 +44,8 @@ public class Weapon : MonoBehaviour
 
     [Header("Bullet")]
     [SerializeField]  private Transform firePosition;
+
+    public Transform P_FirePosition => firePosition;
     [SerializeField]  private GameObject bulletPrefab;
     [SerializeField] private BulletsPool bulletsPool;
     private eTeam team;
@@ -61,7 +65,13 @@ public class Weapon : MonoBehaviour
     void Awake()
     {
         _tr = transform;
-        _sr = GetComponent<SpriteRenderer>();
+       // _sr = GetComponent<SpriteRenderer>();
+    }
+    
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, bRange);
     }
 
     void Start()
@@ -115,30 +125,17 @@ public class Weapon : MonoBehaviour
             return;
         }
         
-
         for (int i = 0; i < numberOfBullets; i++)
         {
-            /*
-            Angle de diffusion 
-            float halfDiffusionAngle = diffusionAngle / 2f;
-            float addAngle = diffusionAngle / numberOfBullets;
-            float nextAngle = halfDiffusionAngle - diffusionAngle + i * addAngle;
-            float nextAngleInRadians = nextAngle * Mathf.PI / 180f;
-            
-            Vector3 playerPlus1 = 
-            
-            */
-            
            GameObject newBullet = bulletsPool.GetNextBulletInstance(bulletPrefabScript.BulletType);
            newBullet.SetActive(true);
            Bullet newBulletScript = newBullet.GetComponent<Bullet>();
            newBullet.transform.position = firePosition.position;
+           newBulletScript.Team = Team;
            newBulletScript.MaxRange = bRange;
            newBulletScript.Damage = bDamage;
            newBulletScript.Shoot(direction);
-           
-           
-
+           ammo--;
         }
         nextFire = fireRate;
     }
@@ -153,34 +150,25 @@ public class Weapon : MonoBehaviour
         
         for (int i = 0; i < numberOfBullets; i++)
         {
-            /*
-            Angle de diffusion 
-            float halfDiffusionAngle = diffusionAngle / 2f;
-            float addAngle = diffusionAngle / numberOfBullets;
-            float nextAngle = halfDiffusionAngle - diffusionAngle + i * addAngle;
-            float nextAngleInRadians = nextAngle * Mathf.PI / 180f;
-            
-            Vector3 playerPlus1 = 
-            
-            */
-            
             GameObject newBullet = bulletsPool.GetNextBulletInstance(bulletPrefabScript.BulletType);
             newBullet.SetActive(true);
             Bullet newBulletScript = newBullet.GetComponent<Bullet>();
             newBullet.transform.position = firePosition.position;
+            newBulletScript.Team = Team;
             newBulletScript.MaxRange = bRange;
             newBulletScript.Damage = bDamage;
             newBulletScript.Target = target;
             newBulletScript.Shoot(direction);
+            ammo--;
         }
 
         nextFire = fireRate;
     }
 
-    public void Reload()
+    private void Reload()
     {
         reloading = true;
-        _sr.color = Color.red;
+        //_sr.color = Color.red;
     }
 
     public bool CanShoot()

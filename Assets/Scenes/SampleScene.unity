@@ -161,7 +161,7 @@ MonoBehaviour:
   gridSizeWidth: 1
   gridSizeLength: 1
   gridSizeHeight: 1
-  positionOffset: {x: -4.5, y: 0, z: -4.5}
+  centerPosition: {x: 0, y: 0, z: 0}
   unwalkableMask:
     serializedVersion: 2
     m_Bits: 256
@@ -271,7 +271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c1f0578d75a8d348a8d0af8734fb998, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  txt: {fileID: 1793439078}
 --- !u!4 &89381315
 Transform:
   m_ObjectHideFlags: 0
@@ -694,7 +693,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7553e3de797eb3048b2a0993b978fdb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transparentMat: {fileID: 0}
+  uiShopSequence: {fileID: 0}
+  baseShopTimer: 0
+  waveCount_Text: {fileID: 0}
+  coins_Text: {fileID: 0}
+  headerShopSequence_Text: {fileID: 0}
+  numberOfWaves: 0
+  actualWaveNumber: 0
+  bCoins: 0
   turretPrefab: {fileID: 1295636510652094675, guid: 1bbac1d7fe881384a83ca1570c102262, type: 3}
 --- !u!1 &1161907314
 GameObject:

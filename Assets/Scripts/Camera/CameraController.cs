@@ -5,19 +5,19 @@ using UnityEngine.SocialPlatforms.GameCenter;
 
 public class CameraController : MonoBehaviour
 {
-    private Camera cam;
+    [SerializeField] private Camera playerCamera;
+    [SerializeField] private Camera shopCamera;
     
-    private float camHalfWidth;
-    private float camHalfHeight;
 
     private Vector3 baseOffset;
-
-    [SerializeField] private float cameraOffset;
     private float cameraSpeed;
     [SerializeField] private float topOffset;
     [SerializeField] private float rightOffset;
     [SerializeField] private float botOffset;
     [SerializeField] private float leftOffset;
+
+    private Camera currentCamera;
+    public Camera CurrentCamera => currentCamera;
     
     
     [SerializeField] private bool debugEnabled = true;
@@ -33,12 +33,15 @@ public class CameraController : MonoBehaviour
     public void Init()
     {
         GetWallsData();
-        cam = Camera.main;
-        camHalfHeight = cam.orthographicSize;
-        camHalfWidth = camHalfHeight * cam.aspect;
+        if (GameManager.Instance.EGameState == eGameState.Shop)
+        {
+            playerCamera.enabled = false;
+            currentCamera = shopCamera;
+        }
+
         playerTr = GameObject.FindGameObjectWithTag("Player").transform;
         cameraSpeed = playerTr.GetComponent<PlayerBehaviour>().Speed;
-        baseOffset = cam.transform.position - playerTr.position;
+        baseOffset =  playerCamera.transform.position - playerTr.position;
     }
 
     private void GetWallsData()
@@ -111,55 +114,86 @@ public class CameraController : MonoBehaviour
         
         
     }
+
+    public void ChangeState(eGameState newState)
+    {
+        if (GameManager.Instance.EGameState == eGameState.Shop)
+        {
+            playerCamera.enabled = false;
+            shopCamera.enabled = true;
+            currentCamera = shopCamera;
+        }
+        else
+        {
+            playerCamera.enabled = true;
+            shopCamera.enabled = false;
+            currentCamera = playerCamera;
+        }
+    }
     
     void LateUpdate()
     {
-        
         // calcul la taille de la base basse du tronc en fonction des paramètres de caméra et de la hauteur entre la caméra et la grid
         /*float height = Mathf.Abs(GameManager.Instance.ActualGrid.CenterPosition.y - camPos.y);
         float frustrumHalfHeight = height * Mathf.Tan(cam.fieldOfView * 0.5f * Mathf.Deg2Rad);
         float frustrumHalfWidth = frustrumHalfHeight * cam.aspect;*/
         
+        float frustrumHeight = GameManager.Instance.ActualGrid.P_GridWidth;
+        //float frustrumHalfWidth = );
+        float height = frustrumHeight * 0.5f / Mathf.Tan(shopCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);
+        float cameraview = GameManager.Instance.ActualGrid.P_GridWidth * Mathf.Tan(shopCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);
+        
         float newPosX = 0f;
         float newPosZ = 0f;
-        
+        //GameManager.Instance.ActualGrid.P_GridWidth
         Vector3 posClamped;
-        Vector3 posModified = playerTr.position;
+        Vector3 posModified;
         
-        if (playerTr.position.z >= maxZ.position.z - topOffset)
+        if (GameManager.Instance.EGameState == eGameState.Shop)
         {
-            newPosZ = maxZ.position.z - topOffset;
-            posModified = new Vector3(posModified.x, posModified.y, newPosZ);
-            
-            if(debugEnabled)
-                Debug.Log("Touché en haut");
+            posModified = new Vector3(GameManager.Instance.ActualGrid.CenterPosition.x, GameManager.Instance.ActualGrid.P_GridWidth/2f + Mathf.PI,
+                GameManager.Instance.ActualGrid.CenterPosition.z - GameManager.Instance.ActualGrid.P_GridLength/2f);
+            shopCamera.transform.position = Vector3.MoveTowards(shopCamera.transform.position, posModified, 200f * Time.deltaTime);
         }
-        if (playerTr.position.x >= maxX.position.x - rightOffset)
+        else
         {
-            newPosX = maxX.position.x - rightOffset;
-            posModified = new Vector3(newPosX, posModified.y, posModified.z);
+            posModified = playerTr.position ;
+            if (playerTr.position.z >= maxZ.position.z - topOffset)
+            {
+                newPosZ = maxZ.position.z - topOffset;
+                posModified = new Vector3(posModified.x, posModified.y, newPosZ);
+                
+                if(debugEnabled)
+                    Debug.Log("Touché en haut");
+            }
+            if (playerTr.position.x >= maxX.position.x - rightOffset)
+            {
+                newPosX = maxX.position.x - rightOffset;
+                posModified = new Vector3(newPosX, posModified.y, posModified.z);
+
+                if(debugEnabled)
+                    Debug.Log("Touché à droite");
+            }
+            if (playerTr.position.z  <= minZ.position.z + botOffset)
+            {
+                newPosZ = minZ.position.z + botOffset;
+                posModified = new Vector3(posModified.x, posModified.y, newPosZ);
+                
+                if(debugEnabled)
+                    Debug.Log("Touché en bas");
+            }
+            if (playerTr.position.x <= minX.position.x + leftOffset)
+            {
+                newPosX = minX.position.x + leftOffset;
+                posModified = new Vector3(newPosX, posModified.y, posModified.z);
+                
+                if(debugEnabled)
+                    Debug.Log("Touché à gauche");
+            }
             
-            if(debugEnabled)
-                Debug.Log("Touché à droite");
-        }
-        if (playerTr.position.z  <= minZ.position.z + botOffset)
-        {
-            newPosZ = minZ.position.z + botOffset;
-            posModified = new Vector3(posModified.x, posModified.y, newPosZ);
+            posModified += baseOffset;
             
-            if(debugEnabled)
-                Debug.Log("Touché en bas");
+            playerCamera.transform.position = Vector3.MoveTowards(playerCamera.transform.position, posModified, 200f * Time.deltaTime);
         }
-        if (playerTr.position.x <= minX.position.x + leftOffset)
-        {
-            newPosX = minX.position.x + leftOffset;
-            posModified = new Vector3(newPosX, posModified.y, posModified.z);
-            
-            if(debugEnabled)
-                Debug.Log("Touché à gauche");
-        }
-        
-        posModified += baseOffset;
-        cam.transform.position = Vector3.MoveTowards(cam.transform.position, posModified, 200f * Time.deltaTime);
     }
 }

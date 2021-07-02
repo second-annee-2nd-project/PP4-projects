@@ -9,7 +9,10 @@ public class DestroyableUnit : TeamUnit
     
     protected float healthPoints;
 
-
+    protected virtual void Start()
+    {
+        healthPoints = bHealthPoints;
+    }
     public void GetDamaged(float damage)
     {
         healthPoints -= damage;

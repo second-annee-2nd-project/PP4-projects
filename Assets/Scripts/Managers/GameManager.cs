@@ -4,11 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum GameStateEnum
+public enum eGameState
 {
     Wave,
     Shop
 }
+
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
@@ -18,18 +19,36 @@ public class GameManager : MonoBehaviour
         get => instance;
     }
 
-    private GameStateEnum gameState;
+    private eGameState _eGameState;
 
-    public GameStateEnum GameState => gameState;
+    public eGameState EGameState => _eGameState;
 
     private Grid actualGrid;
 
     public Grid ActualGrid => actualGrid;
+    
+    #region Managers
+    
+        private WaveManager waveManager;
+        public WaveManager P_WaveManager => waveManager;
 
-    private ShopManager shopManager;
-    public ShopManager P_ShopManager => shopManager;
-    private EnemiesManager enemiesManager;
-    public EnemiesManager P_EnemiesManager => enemiesManager;
+        private ShopManager shopManager;
+        public ShopManager P_ShopManager => shopManager;
+        
+        private EnemiesManager enemiesManager;
+        public EnemiesManager P_EnemiesManager => enemiesManager;
+        
+        private TurretManager turretManager;
+        public TurretManager P_TurretManager => turretManager;
+
+        private TeamManager teamManager;
+        public TeamManager P_TeamManager => teamManager;
+        #endregion
+
+        public CameraController CC => cc;
+    
+    
+    
     private CameraController cc;
 
     private void Awake()
@@ -39,13 +58,20 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this);
         }
+        
+        actualGrid = FindObjectOfType<Grid>();
+        teamManager = FindObjectOfType<TeamManager>();
+        teamManager.Init();
+        shopManager = FindObjectOfType<ShopManager>();
+        enemiesManager = FindObjectOfType<EnemiesManager>();
+        turretManager = FindObjectOfType<TurretManager>();
+        waveManager = FindObjectOfType<WaveManager>();
     }
 
     private void Start()
     {
-        actualGrid = FindObjectOfType<Grid>();
-        shopManager = FindObjectOfType<ShopManager>();
-        enemiesManager = FindObjectOfType<EnemiesManager>();
+        
+        
         cc = FindObjectOfType<CameraController>();
 
         StartGame();
@@ -60,7 +86,8 @@ public class GameManager : MonoBehaviour
     private void StartGame()
     {
         cc.Init();
-        ChangePhase(GameStateEnum.Shop);
+        waveManager.UpdateWaveText();
+        ChangePhase(eGameState.Shop);
 
         //
 
@@ -68,42 +95,36 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void ChangePhase(GameStateEnum newGameState)
+    public void ChangePhase(eGameState newEGameState)
     {
-        switch (newGameState)
+        switch (newEGameState)
         {
-            case GameStateEnum.Shop:
-                    gameState = GameStateEnum.Shop;
+            case eGameState.Shop:
+                    _eGameState = eGameState.Shop;
                     shopManager.StartShopSequence();
                 break;
             
-            case GameStateEnum.Wave:
-                    gameState = GameStateEnum.Wave;
+            case eGameState.Wave:
+                    _eGameState = eGameState.Wave;
                     //TODO
                     //Gérer l'UI
-                    enemiesManager.StartWaveSequence();
+                    waveManager.StartWaveSequence();
                     break;
         }
-        // 
-        //
-        // Check si la vague est la dernière, si c'est la dernière changer de map
-        // Sinon commencer le shop
-        // actualiser le numéro de la vague
-        // 
-        
-        // EnemiesManager.StartSpawning
-        
+
+        cc.ChangeState(newEGameState);
+
     }
 
     private IEnumerator Game()
     {
-        gameState = GameStateEnum.Wave;
+        _eGameState = eGameState.Wave;
         while (!enemiesManager.isWaveFinished())
         {
             
             yield return null;
         }
-        gameState = GameStateEnum.Shop;
+        _eGameState = eGameState.Shop;
         
     }
 }

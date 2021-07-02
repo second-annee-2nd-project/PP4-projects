@@ -7,6 +7,8 @@ public class Bullet : TeamUnit
 {
     private BulletsPool bulletsPool;
     private Rigidbody rb;
+
+    private Vector3 dir;
     
     private float damage;
     public float Damage
@@ -21,7 +23,7 @@ public class Bullet : TeamUnit
         set => maxRange = value;
     }
 
-    private float range;
+    private float distance;
 
     [SerializeField] private eBulletType bulletType;
     public eBulletType BulletType
@@ -34,7 +36,7 @@ public class Bullet : TeamUnit
     
     [SerializeField] private float speed;
     [SerializeField] private bool isSeekingBullet;
-    [SerializeField] private Transform target;
+    private Transform target;
 
     public Transform Target
     {
@@ -74,7 +76,7 @@ public class Bullet : TeamUnit
 
         }
 
-        if (nearestEnemy != null && shortsDistance <= range)
+        if (nearestEnemy != null && shortsDistance <= distance)
         {
             target = nearestEnemy.transform;
         }
@@ -91,45 +93,53 @@ public class Bullet : TeamUnit
     }
     public void Shoot(Vector3 direction)
     {
+        dir = direction;
         if (cor != null)
         {
             StopAllCoroutines();
             cor = null;
         }
+        
+        if(!isSeekingBullet)
+            rb.velocity = dir.normalized * speed;
 
         if (cor == null)
             cor = StartCoroutine(DestroyOnMaxRange());
-        
-        rb.velocity = direction.normalized * speed * Time.fixedDeltaTime;
     }
 
     private IEnumerator DestroyOnMaxRange()
     {
-        range = maxRange;
+        distance = maxRange;
         Vector3 lastPos = Vector3.zero;
         if (isSeekingBullet)
         {
-            while (range > 0f)
+            while (distance > 0f)
             {
                 if(target != null)
                     lastPos = target.transform.position;
+
                 
-                range -= speed * Time.deltaTime;
-                Vector3 dir = lastPos - transform.position;
-                float distanceThisFrame = speed * Time.deltaTime;
+                dir = lastPos - transform.position;
+                
+                rb.velocity = dir.normalized * speed;
+                
+                float distanceThisFrame = speed * Time.fixedDeltaTime;
+                distance -= distanceThisFrame;
+                
 
-                transform.Translate(dir.normalized * distanceThisFrame, Space.World);
-
-                yield return null;
+                yield return new WaitForFixedUpdate();
             }
         }
         else
         {
-            while (range > 0f)
+            while (distance > 0f)
             {
-                range -= speed * Time.deltaTime;
+                float distanceThisFrame = speed * Time.fixedDeltaTime;
+                
+                
+                distance -= distanceThisFrame;
 
-                yield return null;
+                yield return new WaitForFixedUpdate();
             }
         }
         
@@ -149,11 +159,10 @@ public class Bullet : TeamUnit
             if (du.Team != this.Team)
             {
                 du.GetDamaged(damage);
-                DestroyBullet();
             }
         }
         
-        
+        DestroyBullet();
     }
     
 }

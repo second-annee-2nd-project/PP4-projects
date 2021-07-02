@@ -2,110 +2,82 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class EnemiesManager : MonoBehaviour
+[System.Serializable]
+public enum eEnemyType
 {
-    [SerializeField] private float delayBeforeFirstSpawn;
-    [SerializeField] private float delayBetweenSpawns;
-    [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private GameObject container;
-    [SerializeField] private List<Spawner> spawners;
+    classic,
+    assault
+}
 
-    private List<GameObject> targets;
-    public List<GameObject> Targets => targets;
+public class EnemiesManager : UnitManager
+{
+    [SerializeField] private EnemyDictionary enemyPrefabs;
 
-    private float timerBeforeNextSpawn;
-    
-    private int enemiesLeftToSpawn;
-    private List<GameObject> aliveEnemies;
+    public EnemyDictionary EnemyPrefabs => enemyPrefabs;
+    // Properties utilisé dans chaque Spawner
     private Coroutine cor;
-    [Space()] [Header("Size = total wave number")]
-   [SerializeField] private List<WaveManager> waveManager;
+    
+    
 
-    void Start()
+    protected override void Start()
     {
-        aliveEnemies = new List<GameObject>();
-        if (container == null) GameObject.Find("EnemyContainer");
-        // StartCoroutine(nameof(StartWave));
-        ShopManager.Instance.NumberOfWaves = waveManager.Count;
+        base.Start();
+        team = eTeam.enemy;
 
-    }
-
-    public void StartWaveSequence()
-    {
-        if(cor == null)
-            cor = StartCoroutine(StartWave());
-    }
-
-    // Commence une vague et spawn des ennemis
-    IEnumerator StartWave()
-    {
-        enemiesLeftToSpawn = waveManager[ShopManager.Instance.ActualWaveNumber-1].EnemyNumberToSpawn;
-        GetTargets();
-        yield return new WaitForSeconds(delayBeforeFirstSpawn);
-        while (!isWaveFinished())
-        {
-            if (enemiesLeftToSpawn > 0)
-            {
-                if (timerBeforeNextSpawn <= 0f)
-                {
-                    GameObject enemy = Instantiate(waveManager[ShopManager.Instance.ActualWaveNumber-1].TypeOfEnemyToSpawn,
-                        new Vector3(waveManager[ShopManager.Instance.ActualWaveNumber-1].SpawnerPos.position.x, 0,waveManager[ShopManager.Instance.ActualWaveNumber-1].SpawnerPos.position.z), Quaternion.identity);
-                    enemy.transform.parent = container.transform;
-                    aliveEnemies.Add(enemy);
-
-                    --enemiesLeftToSpawn;
-                    timerBeforeNextSpawn = delayBetweenSpawns;
-                }
-                else
-                {
-                    timerBeforeNextSpawn -= Time.deltaTime;
-                }
-            }
-
-            yield return null;
-        }
-
-        cor = null;
-        GameManager.Instance.ChangePhase(GameStateEnum.Shop);
-    }
-
-    public void RemoveEnemyFromList(GameObject enemy)
-    {
-        aliveEnemies.Remove(enemy);
     }
 
     public bool isWaveFinished()
     {
-        if (aliveEnemies.Count <= 0 && enemiesLeftToSpawn == 0) return true;
+        if (instantiatedItems.Count <= 0 && itemsLeftToSpawn == 0) return true;
         return false;
     }
 
-    private void GetTargets()
+    public GameObject GetPrefab(eEnemyType enemyType)
     {
-        targets = new List<GameObject>(GameObject.FindGameObjectsWithTag("Turret"));
+        return enemyPrefabs[enemyType];
     }
-
-    public Transform GetNearestTarget(Vector3 pos)
-    {
-        if (aliveEnemies.Count <= 0) return null;
-        Transform nearest = aliveEnemies[0].transform;
-        float minSqrDist = (nearest.position - pos).sqrMagnitude;
-        for (int i = 1; i < aliveEnemies.Count; i++)
-        {
-            float sqrDist = (aliveEnemies[i].transform.position - pos).sqrMagnitude;
-            if (minSqrDist > sqrDist)
-            {
-                nearest = aliveEnemies[i].transform;
-                minSqrDist = sqrDist;
-            }
-        }
-
-        return nearest;
-    }
-    
+}
     /*public List<GameObject>()
     {
         
     }*/
-}
+/*public class SerializableDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
+{
+    [SerializeField]
+    private List<TKey> keys = new List<TKey>();
+     
+    [SerializeField]
+    private List<TValue> values = new List<TValue>();
+     
+    // save the dictionary to lists
+    public void OnBeforeSerialize()
+    {
+        keys.Clear();
+        values.Clear();
+        foreach(KeyValuePair<TKey, TValue> pair in this)
+        {
+            keys.Add(pair.Key);
+            values.Add(pair.Value);
+        }
+    }
+     
+    // load dictionary from lists
+    public void OnAfterDeserialize()
+    {
+        this.Clear();
+ 
+        if(keys.Count != values.Count)
+            throw new System.Exception(string.Format("there are {0} keys and {1} values after deserialization. Make sure that both key and value types are serializable."));
+ 
+        for(int i = 0; i < keys.Count; i++)
+            this.Add(keys[i], values[i]);
+    }
+}*/
+
+
+
+
+
+

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
@@ -25,26 +26,26 @@ public class ShopManager : MonoBehaviour
 
     private Coroutine cor;
     private Coroutine placingCor;
+    
+    
 
-    [SerializeField] private GameObject uiShopSequence;
-    [SerializeField] private float baseShopTimer;
-    private float shopTimer;
-
-    [SerializeField] private Text waveText;
-    [SerializeField] private Text coinsText;
-    [SerializeField] private Text shopText;
-    [SerializeField] private int numberOfWaves;
-    public int NumberOfWaves
-    {
-        get => numberOfWaves;
-        set => numberOfWaves = value;
-    }
-    [SerializeField] private int actualWaveNumber;
-    public int ActualWaveNumber => actualWaveNumber;
     [SerializeField] private int bCoins;
-    [SerializeField] private GameObject turretPrefab;
+    [SerializeField] private float bShopTimer;
+    private float shopTimer;
+    // Décaler ça dans wave manager
+    
+    [Header("UI")]
+    [SerializeField] private GameObject UI_ShopSequence;
+    [SerializeField] private Text coins_Text;
+    [SerializeField] private Text headerShopSequence_Text;
+    
+    
     private GameObject equipedPrefab;
-    [SerializeField] private Turret turret;
+    private GameObject newTurret;
+    private Turret turretScript;
+
+    private WaveManager waveManager;
+    private CameraController cc;
 
     public GameObject EquipedPrefab
     {
@@ -57,6 +58,8 @@ public class ShopManager : MonoBehaviour
     {
         turretManager = GameObject.FindObjectOfType<TurretManager>().GetComponent<TurretManager>();
         coins = bCoins;
+        coins_Text.text = " : " + coins;
+        placingCor = null;
         if (instance == null)
         {
             instance = this;
@@ -64,12 +67,16 @@ public class ShopManager : MonoBehaviour
         }
     }
 
-    void Update()
+    // à mettre dans l'UI Manager
+    public void UpdateCoins(int amount)
     {
-        coinsText.text = " : " + coins;
+        coins += amount;
+        coins_Text.text = " : " + coins;
     }
+    
     public void StartShopSequence()
     {
+        cc = GameManager.Instance.CC;
         if (cor == null)
         {
             cor = StartCoroutine(ShopSequence());
@@ -78,40 +85,51 @@ public class ShopManager : MonoBehaviour
 
     private IEnumerator ShopSequence()
     {
-        // Afficher l'UI du shop
-        // Permettre d'acheter une tourelle
-        // Permettre de cancel un achat de tourelle
-        // Permettre de poser une tourelle
-        // TOUT CA SOUS UN TIMER DE 30s
+        UI_ShopSequence.SetActive(true);
+        shopTimer = bShopTimer;
         
-        uiShopSequence.SetActive(true);
-        shopTimer = baseShopTimer;
-        actualWaveNumber += 1;
-        waveText.text = "wave " + actualWaveNumber + "/" + numberOfWaves;
         while (shopTimer > 0f)
         {
             shopTimer -= Time.deltaTime;
-            shopText.text = "Phase de préparation,posez des tourelles\n"+(int)shopTimer;
-            // if (Input.GetMouseButtonDown(1))
-            // {
-            //     //txt.text = "Placing turret";
-            //     StartPlacingTurret();
-            // }
+            headerShopSequence_Text.text = "Phase de préparation, posez des tourelles\n"+(int)shopTimer;
             yield return null;
         }
         
-        uiShopSequence.SetActive(false);
-        turretManager.GetTurrets();
+        UI_ShopSequence.SetActive(false);
+
+        if (placingCor != null)
+            StopCoroutine(placingCor);
         cor = null;
-        GameManager.Instance.ChangePhase(GameStateEnum.Wave);
+
+        
+        if (turretScript != null)
+        {
+            Debug.Log("passe muraille");
+            RefundTurret();
+        }
+        yield return null;
+        yield return new WaitForEndOfFrame();
+        GameManager.Instance.ChangePhase(eGameState.Wave);
     }
 
-    public void StartPlacingTurret()
+    public void StartPlacingTurret(GameObject turretPrefab)
     {
-        if (placingCor ==  null && coins >= turret.SoTurret.Price)
+        newTurret = Instantiate(turretPrefab);
+        equipedPrefab = newTurret;
+        turretScript = equipedPrefab.GetComponent<Turret>();
+        Debug.Log("passe temps");
+        if (placingCor ==  null && coins >= turretScript.SoTurret.Price)
         {
             placingCor = StartCoroutine(PlaceTurret());
         }
+    }
+
+    private void RefundTurret()
+    {
+        //coins += turretScript.SoTurret.Price;
+        Destroy(equipedPrefab);
+        equipedPrefab = null;
+        turretScript = null;
     }
     
     
@@ -123,82 +141,36 @@ public class ShopManager : MonoBehaviour
         Material oldMat = null;
         Color oldColor = new Color();
         
-        GameObject newTurret = Instantiate(turretPrefab);
+        
         Turret newTurretScript = newTurret.GetComponent<Turret>();
         newTurretScript.enabled = false;
-
+        
         while (!isTurretPlaced)
         {
             Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1f);
-            Ray castPoint = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray castPoint = cc.CurrentCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
             if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
             {
                 Node n = GameManager.Instance.ActualGrid.GetNodeWithPosition(hit.point);
                     newTurret.transform.position = n.position;
-                
-                
-                
-               /* if (selected != hit.collider.gameObject.GetComponent<MeshRenderer>())
+
+                    if (CheckIfTurretable(n))
                 {
-
-                    if (selected != null)
-                    {
-                        /*
-                            selected.material = oldMat;
-                            selected.material.color = oldColor;
-                    }
-
-                    /*selected = hit.collider.gameObject.GetComponent<MeshRenderer>();
-                    oldMat = selected.material;
-                    oldColor = selected.material.color;
-                }*/
-
-
-
-                
-                if (CheckIfTurretable(n))
-                {
-                  //  selected.material.color = Color.green;
                     if (Input.GetAxisRaw("Fire1") == 1f)
                     {
                         newTurretScript.enabled = true;
-                        //new Vector3(n.position.x, n.position.y, n.position.z), Quaternion.identity);
-                        // Déployer une tourelle
-                        equipedPrefab = null;
-                        coins -= turret.SoTurret.Price;
-                        //selected.material = oldMat;
-                        //selected.material.color = oldColor;
-                        //selected = null;
+                        
+                        GameManager.Instance.P_TurretManager.AddItemToList(equipedPrefab);
+                        UpdateCoins(turretScript.SoTurret.Price * -1);
+                        
                         n.isWalkable = false;
                         n.isTurretable = false;
                         
-                        isTurretPlaced = true;
-                        //GameManager.Instance.txt.text = "TurretPlaced";
+                        equipedPrefab = null;
                         break;
                     }
                 }
-                
-                else
-                {
-                    //selected.material.color = Color.red;
-                }
-            }
-            else
-            {
-   //             Debug.Log("Color should change back to normal");
-                if (selected != null)
-                {
-//                    Debug.Log("kekw");
-                    selected.material.color = oldColor;
-                    selected = null;
-                }
-
-            /*if (selected != null)
-            {
-                selected.material = oldMat;
-                selected = null;
-            }*/
             }
 
             yield return null;

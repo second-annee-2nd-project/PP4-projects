@@ -15,6 +15,8 @@ public class Grid : MonoBehaviour
     [SerializeField] private int gridWidth;
     [SerializeField] private int gridLength;
     [SerializeField] private int gridHeight;
+    public int P_GridWidth => gridWidth;
+    public int P_GridLength => gridLength;
 
     [SerializeField] private int gridSizeWidth;
     [SerializeField] private int gridSizeLength;
@@ -43,7 +45,7 @@ public class Grid : MonoBehaviour
             {
                 float newPosX = i * gridSizeWidth - positionOffset.x;
                 float newPosZ = j * gridSizeLength - positionOffset.z;
-                Vector3 position = new Vector3(newPosX, 0, newPosZ) + centerPosition;
+                Vector3 position = centerPosition + new Vector3(newPosX, 0, newPosZ) ;
                 float radius = Mathf.Sqrt(gridSizeWidth * gridSizeWidth + gridSizeLength * gridSizeLength);
                 bool isWalkable = true;
                 bool isTurretable = true;
@@ -57,7 +59,7 @@ public class Grid : MonoBehaviour
                     isTurretable = false;
                 }
 
-                nodes[i, j] = new Node(new Vector3(newPosX, 0, newPosZ), radius / 2f, isWalkable, isTurretable);
+                nodes[i, j] = new Node(position, radius / 2f, isWalkable, isTurretable);
             }
         }
     }

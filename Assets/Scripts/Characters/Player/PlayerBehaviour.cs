@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class PlayerBehaviour : DestroyableUnit
@@ -12,26 +13,31 @@ public class PlayerBehaviour : DestroyableUnit
    [SerializeField] private Weapon weapon;
    [SerializeField] private int dropAmount;
    [SerializeField] private float gazeHoldTimer = 2f;
+   [SerializeField] private Image life_Img;
 
    private float lastBulletShot;
   
-   private Transform nearestTarget;
- 
 
-   void Start()
+   protected override void Start()
    {
+      base.Start();
       rb = GetComponent<Rigidbody>();
       if (weapon != null) weapon.Team = Team;
+      
+      life_Img.fillAmount = healthPoints / bHealthPoints;
+      GameManager.Instance.P_TeamManager.AddToTeam(team, gameObject);
    }
 
    void Update()
    {
+      life_Img.fillAmount = healthPoints / bHealthPoints;
       movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-      nearestTarget = GameManager.Instance.P_EnemiesManager.GetNearestTarget(transform.position);
+      nearestTarget = GameManager.Instance.P_TeamManager.GetNearestEnemyUnit(transform.position, team);
+      
       if (nearestTarget != null && lastBulletShot > 0)
       {
-         transform.LookAt(nearestTarget.position);
+         transform.LookAt(nearestTarget);
          lastBulletShot -= Time.deltaTime;
          if (lastBulletShot <= 0f) lastBulletShot = 0;
       }
@@ -42,14 +48,23 @@ public class PlayerBehaviour : DestroyableUnit
 
       if (Input.GetKeyDown(KeyCode.Space))
       {
-         if (weapon.CanShoot() && nearestTarget != null)
+         if (weapon.CanShoot())
          {
-            transform.LookAt(nearestTarget.position);
-            weapon.Shoot(nearestTarget.position - transform.position);
-            lastBulletShot = gazeHoldTimer;
-            //weapon.Shoot(transform.forward);
+            if (nearestTarget != null)
+            {
+               transform.LookAt(nearestTarget.position);
+               weapon.Shoot(nearestTarget.position - transform.position);
+               lastBulletShot = gazeHoldTimer;
+               //weapon.Shoot(transform.forward);
+            }
+            else
+            {
+               weapon.Shoot(transform.forward);
+            }
          }
       }
+
+     // healthPoints -= Time.deltaTime;
    }
 
    void FixedUpdate()
@@ -67,8 +82,11 @@ public class PlayerBehaviour : DestroyableUnit
       if (col.gameObject.tag == ("CoinsLoot"))
       {
          Destroy(col.gameObject);
-         ShopManager.Instance.Coins += dropAmount;
-
+         ShopManager.Instance.UpdateCoins(dropAmount);
+      }
+      else if (col.gameObject.tag == ("Enemy"))
+      {
+         
       }
    }
 }

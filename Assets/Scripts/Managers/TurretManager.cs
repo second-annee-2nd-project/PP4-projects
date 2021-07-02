@@ -2,16 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurretManager : MonoBehaviour
+public class TurretManager : UnitManager
 {
-  public List<Transform> turretList;
+    [SerializeField] private TurretDictionary turretPrefabs;
 
-    // public List<Transform> TurretList => turretList;
-    public void GetTurrets()
-    {
-        foreach (var turret in GameObject.FindGameObjectsWithTag("Turret") )
-        {
-            turretList.Add(turret.transform);
-        }
-    }
+    public TurretDictionary TurretPrefabs => turretPrefabs;
 }
