@@ -114,8 +114,8 @@ MonoBehaviour:
   speed: 3
   attackDamage: 1
   detectionRange: 200
-  attackRange: 3
-  attackSpeed: 1
+  attackRange: 1.25
+  attackSpeed: 1.5
   rotationSpeed: 0
   weapon: {fileID: 0}
   loot: {fileID: 4948436641781267108, guid: a924d7c7346bafc4292c290c307c9f02, type: 3}
