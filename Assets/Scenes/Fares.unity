@@ -1054,6 +1054,10 @@ PrefabInstance:
       propertyPath: turretPrefabs._values.Array.data[1]
       value: 
       objectReference: {fileID: 8595243058685341945, guid: 776207f546576bd408c17927ab14b75d, type: 3}
+    - target: {fileID: 4831495320168656806, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: enemyPrefabs._values.Array.data[0]
+      value: 
+      objectReference: {fileID: 2620402960462493725, guid: 9bbe424da5037a94ebbb04d523e58687, type: 3}
     - target: {fileID: 4831495320848035492, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
       propertyPath: m_Name
       value: Mandatory

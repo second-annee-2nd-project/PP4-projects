@@ -69,6 +69,8 @@ public class Spawner : MonoBehaviour
 
     private void Spawn(GameObject prefab)
     {
+    
+        EnemiesManager enemiesManager = GameManager.Instance.P_EnemiesManager;
         int x = (int) objectSize.x;
         int y = (int) objectSize.y;
         int z = (int) objectSize.z;
@@ -80,7 +82,6 @@ public class Spawner : MonoBehaviour
         GameObject enemy = Instantiate(prefab,
             new Vector3(rx, ry, rz), Quaternion.identity);
         
-        EnemiesManager enemiesManager = GameManager.Instance.P_EnemiesManager;
         
         enemiesManager.AddItemToList(enemy);
         enemiesManager.ItemsLeftToSpawn--;

@@ -81,6 +81,7 @@ public class Turret : DestroyableUnit
 
     public void Shoot(Vector3 direction, Transform _target)
     {
+        weapon.Team = team;
         weapon.Shoot(direction, _target);
     }
 
