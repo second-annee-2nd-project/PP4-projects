@@ -118,7 +118,7 @@ MonoBehaviour:
   attackSpeed: 1
   rotationSpeed: 3
   weapon: {fileID: 0}
-  amountToLoot: 0
+  amountToLoot: 1
   loot: {fileID: 4948436641781267108, guid: a924d7c7346bafc4292c290c307c9f02, type: 3}
 --- !u!54 &4556598745569951214
 Rigidbody:
