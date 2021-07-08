@@ -109,11 +109,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d981a327e8f4341a8f62097e9f7451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 0
+  team: 1
   bulletType: 1
-  speed: 4
+  speed: 8
   isSeekingBullet: 1
-  target: {fileID: 0}
 --- !u!54 &7662414646846361387
 Rigidbody:
   m_ObjectHideFlags: 0
