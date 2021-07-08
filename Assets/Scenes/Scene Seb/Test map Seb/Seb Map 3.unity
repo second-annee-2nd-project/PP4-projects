@@ -3498,23 +3498,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2312711781352939925, guid: a92bc1e5e9cfd0d4e93fa08def36895d, type: 3}
       propertyPath: bRange
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2312711781352939925, guid: a92bc1e5e9cfd0d4e93fa08def36895d, type: 3}
       propertyPath: bFireRate
-      value: 0.05
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 2312711781352939925, guid: a92bc1e5e9cfd0d4e93fa08def36895d, type: 3}
       propertyPath: bReloadTimer
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 2312711781352939925, guid: a92bc1e5e9cfd0d4e93fa08def36895d, type: 3}
       propertyPath: bAmmo
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2312711781352939925, guid: a92bc1e5e9cfd0d4e93fa08def36895d, type: 3}
       propertyPath: bNumberOfBullets
-      value: 10
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2312711781840666723, guid: a92bc1e5e9cfd0d4e93fa08def36895d, type: 3}
       propertyPath: m_LocalPosition.x
