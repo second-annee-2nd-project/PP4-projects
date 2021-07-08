@@ -1041,7 +1041,7 @@ MonoBehaviour:
   enemyPrefabs:
     _keys: 0000000001000000
     _values:
-    - {fileID: 2649643738587564240, guid: 660f1f766c9a93f4c919136b0545e70b, type: 3}
+    - {fileID: 2620402960462493725, guid: 9bbe424da5037a94ebbb04d523e58687, type: 3}
     - {fileID: 2181964494168382518, guid: 17de1b8b447769042ab5b14229d3b701, type: 3}
 --- !u!1 &4831495320231298922
 GameObject:
