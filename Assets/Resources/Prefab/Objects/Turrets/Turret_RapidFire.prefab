@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1
-  bHealthPoints: 1
+  bHealthPoints: 5
   partToRotate: {fileID: 8595243058685341890}
   weapon: {fileID: 8985155240517371903}
   firePoint: {fileID: 8595243058252061291}
