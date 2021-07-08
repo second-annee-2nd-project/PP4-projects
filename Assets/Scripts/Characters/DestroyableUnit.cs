@@ -13,7 +13,7 @@ public class DestroyableUnit : TeamUnit
     {
         healthPoints = bHealthPoints;
     }
-    public void GetDamaged(float damage)
+    public virtual void GetDamaged(float damage)
     {
         healthPoints -= damage;
         if (healthPoints <= 0)

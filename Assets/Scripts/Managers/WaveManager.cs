@@ -33,11 +33,16 @@ public class WaveManager : MonoBehaviour
 
    private EnemiesManager enemiesManager;
 
-   public void StartWaveSequence()
+   public void Init()
    {
-      enemiesManager = GameManager.Instance.P_EnemiesManager;
       actualWaveNumber = 1;
       numberOfWaves = waveDatas.Count;
+      UpdateWaveText();
+      enemiesManager = GameManager.Instance.P_EnemiesManager;
+   }
+
+   public void StartWaveSequence()
+   {
       if(cor == null)
          cor = StartCoroutine(StartWave());
    }
@@ -69,8 +74,8 @@ public class WaveManager : MonoBehaviour
          while (!enemiesManager.isWaveFinished())
          {
             yield return null;
-            actualWaveNumber++;
          }
+         actualWaveNumber++;
       }
 
 

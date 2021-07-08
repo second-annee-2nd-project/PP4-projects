@@ -86,7 +86,7 @@ public class GameManager : MonoBehaviour
     private void StartGame()
     {
         cc.Init();
-        waveManager.UpdateWaveText();
+        waveManager.Init();
         ChangePhase(eGameState.Shop);
 
         //

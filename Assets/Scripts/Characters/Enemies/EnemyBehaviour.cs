@@ -17,6 +17,8 @@ public class EnemyBehaviour : DestroyableUnit
     [SerializeField] protected Weapon weapon;
 
     [Header("Object prefab dropped at death")] [SerializeField]
+    protected int amountToLoot;
+    [SerializeField]
     protected GameObject loot;
     
     protected Transform player;
@@ -122,8 +124,8 @@ public class EnemyBehaviour : DestroyableUnit
         if (healthPoints <= 0)
         {
             GameManager.Instance.P_EnemiesManager.RemoveItemFromList(gameObject);
-            Instantiate(loot, transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
+            GameObject newLoot = Instantiate(loot, transform.position, Quaternion.identity);
+            newLoot.GetComponent<Loot>().AmountToLoot = amountToLoot;
         }
     }
 

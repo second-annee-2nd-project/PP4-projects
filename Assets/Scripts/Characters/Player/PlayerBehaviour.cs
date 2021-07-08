@@ -46,14 +46,14 @@ public class PlayerBehaviour : DestroyableUnit
          transform.LookAt((transform.position + movement * speed * Time.fixedDeltaTime));
       }
 
-      if (Input.GetKeyDown(KeyCode.Space))
+      if (Input.GetKey(KeyCode.Space))
       {
          if (weapon.CanShoot())
          {
             if (nearestTarget != null)
             {
                transform.LookAt(nearestTarget.position);
-               weapon.Shoot(nearestTarget.position - transform.position);
+               weapon.Shoot(nearestTarget.position - weapon.P_FirePosition.position);
                lastBulletShot = gazeHoldTimer;
                //weapon.Shoot(transform.forward);
             }
@@ -81,12 +81,16 @@ public class PlayerBehaviour : DestroyableUnit
    {
       if (col.gameObject.tag == ("CoinsLoot"))
       {
-         Destroy(col.gameObject);
-         ShopManager.Instance.UpdateCoins(dropAmount);
+         col.GetComponent<Loot>().Looted(this);
       }
       else if (col.gameObject.tag == ("Enemy"))
       {
          
       }
+   }
+
+   public void Loot(int dropAmount)
+   {
+      ShopManager.Instance.UpdateCoins(dropAmount);
    }
 }

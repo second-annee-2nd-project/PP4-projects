@@ -1116,11 +1116,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
       propertyPath: waveDatas.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
       propertyPath: waveDatas.Array.data[1].spawnerDatas.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
       propertyPath: waveDatas.Array.data[1].spawnerDatas.Array.data[0].enemyGroups.Array.size
@@ -1128,10 +1128,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
       propertyPath: waveDatas.Array.data[2].spawnerDatas.Array.size
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
       propertyPath: waveDatas.Array.data[2].spawnerDatas.Array.data[0].enemyGroups.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: waveDatas.Array.data[1].spawnerDatas.Array.data[1].enemyGroups.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: waveDatas.Array.data[1].spawnerDatas.Array.data[2].enemyGroups.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: waveDatas.Array.data[2].spawnerDatas.Array.data[1].enemyGroups.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: waveDatas.Array.data[2].spawnerDatas.Array.data[2].enemyGroups.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
@@ -1224,6 +1240,70 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
       propertyPath: waveDatas.Array.data[2].spawnerDatas.Array.data[0].enemyGroups.Array.data[0].timerBeforeFirstSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: waveDatas.Array.data[1].spawnerDatas.Array.data[1].spawnerTr
+      value: 
+      objectReference: {fileID: 103537495}
+    - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: waveDatas.Array.data[1].spawnerDatas.Array.data[1].enemyGroups.Array.data[0].enemyNumberToSpawn
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: waveDatas.Array.data[1].spawnerDatas.Array.data[1].enemyGroups.Array.data[0].timerBetweenSpawns
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: waveDatas.Array.data[1].spawnerDatas.Array.data[1].enemyGroups.Array.data[0].timerBeforeFirstSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: waveDatas.Array.data[1].spawnerDatas.Array.data[2].spawnerTr
+      value: 
+      objectReference: {fileID: 191303896}
+    - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: waveDatas.Array.data[1].spawnerDatas.Array.data[2].enemyGroups.Array.data[0].enemyNumberToSpawn
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: waveDatas.Array.data[1].spawnerDatas.Array.data[2].enemyGroups.Array.data[0].timerBetweenSpawns
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: waveDatas.Array.data[1].spawnerDatas.Array.data[2].enemyGroups.Array.data[0].timerBeforeFirstSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: waveDatas.Array.data[2].spawnerDatas.Array.data[1].spawnerTr
+      value: 
+      objectReference: {fileID: 103537495}
+    - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: waveDatas.Array.data[2].spawnerDatas.Array.data[1].enemyGroups.Array.data[0].enemyNumberToSpawn
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: waveDatas.Array.data[2].spawnerDatas.Array.data[1].enemyGroups.Array.data[0].timerBetweenSpawns
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: waveDatas.Array.data[2].spawnerDatas.Array.data[1].enemyGroups.Array.data[0].timerBeforeFirstSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: waveDatas.Array.data[2].spawnerDatas.Array.data[2].spawnerTr
+      value: 
+      objectReference: {fileID: 191303896}
+    - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: waveDatas.Array.data[2].spawnerDatas.Array.data[2].enemyGroups.Array.data[0].enemyNumberToSpawn
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: waveDatas.Array.data[2].spawnerDatas.Array.data[2].enemyGroups.Array.data[0].timerBetweenSpawns
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: waveDatas.Array.data[2].spawnerDatas.Array.data[2].enemyGroups.Array.data[0].timerBeforeFirstSpawn
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4831495320962542219, guid: d092627f3b4052e42932fada1c650bb3, type: 3}

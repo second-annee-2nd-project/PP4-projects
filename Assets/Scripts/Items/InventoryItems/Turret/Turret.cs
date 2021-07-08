@@ -57,7 +57,6 @@ public class Turret : DestroyableUnit
             //         Shoot(dir, nearestTarget);
             //     }
             // }
-            Debug.Log(hits[0].collider.name);
             for (int i = 0; i < hits.Length; i++)
             {
                 if (hits[i].collider.tag == "Enemy")
@@ -85,19 +84,11 @@ public class Turret : DestroyableUnit
         weapon.Shoot(direction, _target);
     }
 
-    public void TakeDamage(float amount)
+    protected override void Die()
     {
-        health-= amount;
-       TurretDeath();
+        turretManager.RemoveItemFromList(gameObject);
+        Destroy(gameObject);
     }
-
-    void TurretDeath()
-    {
-        if (health<= 0)
-        {
-            GameManager.Instance.P_TurretManager.RemoveItemFromList(gameObject);
-            Destroy(gameObject);
-        }
-    }
+        
     
 }
