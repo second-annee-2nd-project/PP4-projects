@@ -55,8 +55,6 @@ public class WaveManager : MonoBehaviour
    // Commence une vague et spawn des ennemis
    IEnumerator StartWave()
    {
-      while (actualWaveNumber <= numberOfWaves)
-      {
          UpdateWaveText();
          GameManager.Instance.P_EnemiesManager.GetTargets();
          GameManager.Instance.P_TurretManager.GetTargets();
@@ -76,11 +74,15 @@ public class WaveManager : MonoBehaviour
             yield return null;
          }
          actualWaveNumber++;
-      }
+         if (actualWaveNumber > numberOfWaves)
+         {
+            actualWaveNumber = 1;
+            Debug.Log("WAVE FINI NEXT MAP SHOULD BE LOADED");
+         }
 
-
-      cor = null;
       GameManager.Instance.ChangePhase(eGameState.Shop);
+      cor = null;
+      
    }
 }
 
