@@ -115,10 +115,14 @@ MonoBehaviour:
   attackDamage: 1
   detectionRange: 200
 <<<<<<< HEAD
+<<<<<<< HEAD
   attackRange: 1
   attackSpeed: 2
 =======
   attackRange: 1.5
+=======
+  attackRange: 3
+>>>>>>> parent of 30dadd3 (test et petite modif)
   attackSpeed: 1
 >>>>>>> 30dadd31556f76fae63deb96de690362c6cb021f
   rotationSpeed: 0
