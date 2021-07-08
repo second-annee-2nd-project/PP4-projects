@@ -40,8 +40,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private Text headerShopSequence_Text;
     
     
-    private GameObject equipedPrefab;
-    private GameObject newTurret;
+    private GameObject equipedPrefabInstance;
     private Turret turretScript;
 
     private WaveManager waveManager;
@@ -49,8 +48,8 @@ public class ShopManager : MonoBehaviour
 
     public GameObject EquipedPrefab
     {
-        get => equipedPrefab;
-        set => equipedPrefab = value;
+        get => equipedPrefabInstance;
+        set => equipedPrefabInstance = value;
     }
     private TurretManager turretManager;
 
@@ -98,7 +97,11 @@ public class ShopManager : MonoBehaviour
         UI_ShopSequence.SetActive(false);
 
         if (placingCor != null)
+        {
             StopCoroutine(placingCor);
+            placingCor = null;
+        }
+
         cor = null;
 
         
@@ -114,9 +117,8 @@ public class ShopManager : MonoBehaviour
 
     public void StartPlacingTurret(GameObject turretPrefab)
     {
-        newTurret = Instantiate(turretPrefab);
-        equipedPrefab = newTurret;
-        turretScript = equipedPrefab.GetComponent<Turret>();
+        equipedPrefabInstance = Instantiate(turretPrefab);
+        turretScript = equipedPrefabInstance.GetComponent<Turret>();
         Debug.Log("passe temps");
         if (placingCor ==  null && coins >= turretScript.SoTurret.Price)
         {
@@ -127,8 +129,8 @@ public class ShopManager : MonoBehaviour
     private void RefundTurret()
     {
         //coins += turretScript.SoTurret.Price;
-        Destroy(equipedPrefab);
-        equipedPrefab = null;
+        Destroy(equipedPrefabInstance);
+        equipedPrefabInstance = null;
         turretScript = null;
     }
     
@@ -137,12 +139,8 @@ public class ShopManager : MonoBehaviour
     private IEnumerator PlaceTurret()
     {
         bool isTurretPlaced = false;
-        MeshRenderer selected = null;
-        Material oldMat = null;
-        Color oldColor = new Color();
-        
-        
-        Turret newTurretScript = newTurret.GetComponent<Turret>();
+
+        Turret newTurretScript = equipedPrefabInstance.GetComponent<Turret>();
         newTurretScript.enabled = false;
         
         while (!isTurretPlaced)
@@ -153,7 +151,7 @@ public class ShopManager : MonoBehaviour
             if (Physics.Raycast(castPoint, out hit, Mathf.Infinity))
             {
                 Node n = GameManager.Instance.ActualGrid.GetNodeWithPosition(hit.point);
-                    newTurret.transform.position = n.position;
+                    equipedPrefabInstance.transform.position = n.position;
 
                     if (CheckIfTurretable(n))
                 {
@@ -161,13 +159,13 @@ public class ShopManager : MonoBehaviour
                     {
                         newTurretScript.enabled = true;
                         
-                        GameManager.Instance.P_TurretManager.AddItemToList(equipedPrefab);
+                        GameManager.Instance.P_TurretManager.AddItemToList(equipedPrefabInstance);
                         UpdateCoins(turretScript.SoTurret.Price * -1);
                         
                         n.isWalkable = false;
                         n.isTurretable = false;
                         
-                        equipedPrefab = null;
+                        equipedPrefabInstance = null;
                         break;
                     }
                 }
