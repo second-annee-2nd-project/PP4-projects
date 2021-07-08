@@ -114,7 +114,7 @@ MonoBehaviour:
   speed: 3
   attackDamage: 1
   detectionRange: 200
-  attackRange: 3
+  attackRange: 1.5
   attackSpeed: 1
   rotationSpeed: 0
   weapon: {fileID: 0}
