@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bAmmo: 1
-  bReloadTimer: 4
+  bReloadTimer: 0
   bFireRate: 4
   bNumberOfBullets: 1
   bDiffusionAngle: 0
