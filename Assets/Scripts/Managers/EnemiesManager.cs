@@ -8,7 +8,10 @@ using UnityEngine.AI;
 public enum eEnemyType
 {
     classic,
-    assault
+    assault,
+    armored,
+    speed,
+    warrior
 }
 
 public class EnemiesManager : UnitManager
