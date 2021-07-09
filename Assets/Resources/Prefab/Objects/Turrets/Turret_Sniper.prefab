@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 3421709979753554265}
   - component: {fileID: 5482270771019580506}
   m_Layer: 0
-  m_Name: Turret_SlowFire
+  m_Name: Turret_Sniper
   m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1
-  bHealthPoints: 5
+  bHealthPoints: 30
   partToRotate: {fileID: 2631654730221049444}
   weapon: {fileID: 3421709979753554265}
   firePoint: {fileID: 2631654729781361869}
@@ -160,12 +160,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bAmmo: 1
-  bReloadTimer: 1
-  bFireRate: 3
+  bReloadTimer: 4
+  bFireRate: 4
   bNumberOfBullets: 1
   bDiffusionAngle: 0
-  bDamage: 1
-  bRange: 20
+  bDamage: 40
+  bRange: 10
   firePosition: {fileID: 2631654729781361869}
   bulletPrefab: {fileID: 7497547957538424816, guid: 4d8d5547bfb105843b7600b15e9b8501, type: 3}
   bulletsPool: {fileID: 0}

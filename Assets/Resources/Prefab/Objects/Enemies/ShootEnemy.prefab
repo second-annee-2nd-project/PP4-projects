@@ -146,8 +146,8 @@ MonoBehaviour:
   bFireRate: 1
   bNumberOfBullets: 1
   bDiffusionAngle: 0
-  bDamage: 1
-  bRange: 8
+  bDamage: 5
+  bRange: 5
   firePosition: {fileID: 7555066002779299187}
   bulletPrefab: {fileID: 2852258047591489820, guid: 3081e5623b21c2d4391cb48b2a49b6e5, type: 3}
   bulletsPool: {fileID: 0}
@@ -164,15 +164,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 2
-  bHealthPoints: 1
+  bHealthPoints: 40
   speed: 2
   attackDamage: 1
-  detectionRange: 10
-  attackRange: 8
+  detectionRange: 30
+  attackRange: 5
   attackSpeed: 1
   rotationSpeed: 3
   weapon: {fileID: 3390009989817607011}
-  amountToLoot: 2
+  amountToLoot: 4
   loot: {fileID: 4948436641781267108, guid: a924d7c7346bafc4292c290c307c9f02, type: 3}
 --- !u!54 &6122066194438175831
 Rigidbody:
