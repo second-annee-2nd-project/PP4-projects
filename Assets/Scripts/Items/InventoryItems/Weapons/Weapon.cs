@@ -17,16 +17,19 @@ public class Weapon : MonoBehaviour
     private string name;
     private eWeaponType weaponType;
 
-    [Header("Base Stats")]
-    [SerializeField] private int bAmmo;
-    [SerializeField] private float bReloadTimer;
-    [SerializeField] private float bFireRate;
+    [Header("Base Stats")] 
+    [SerializeField] private SO_Weapon weaponStats;
 
-    [SerializeField] private int bNumberOfBullets;
-    [SerializeField] private float bDiffusionAngle;
+    public SO_Weapon WeaponStats => weaponStats;
+    private int bAmmo;
+    private float bReloadTimer;
+    private float bFireRate;
 
-    [SerializeField] private float bDamage;
-    [SerializeField] private float bRange;
+    private int bNumberOfBullets;
+    private float bDiffusionAngle;
+
+    private float bDamage;
+    private float bRange;
 
     public float P_BRange => bRange;
     // [SerializeField] private float bDiffusionAngle;
@@ -76,11 +79,22 @@ public class Weapon : MonoBehaviour
 
     void Start()
     {
+        
         Init();
     }
 
     public void Init()
     {
+        //b Stats
+        bAmmo = weaponStats.MaxAmmo;
+        bReloadTimer = 0f;
+        bFireRate = weaponStats.FireRate;
+        bNumberOfBullets = weaponStats.NumberOfBulletsPerShot;
+        bDiffusionAngle = weaponStats.DiffusionAngle;
+        bDamage = weaponStats.Damage;
+        bRange = weaponStats.Range;
+    
+        //actual stats    
         ammo = bAmmo;
         reloadTimer = bReloadTimer;
         fireRate = bFireRate;
@@ -124,9 +138,17 @@ public class Weapon : MonoBehaviour
             Reload();
             return;
         }
-        
+
+        float newAngle = bDiffusionAngle % 360f;
+        float bHalfAngle = newAngle / 2f;
+        float angleToAdd = bDiffusionAngle / numberOfBullets;
         for (int i = 0; i < numberOfBullets; i++)
         {
+            float nextAngle = -bHalfAngle + i * angleToAdd * Mathf.Deg2Rad;
+
+            float newDirectionX = direction.x * Mathf.Cos(nextAngle) - direction.z * Mathf.Sin(nextAngle);
+            float newDirectionZ = direction.x * Mathf.Sin(nextAngle) - direction.z * Mathf.Cos(nextAngle);
+            
            GameObject newBullet = bulletsPool.GetNextBulletInstance(bulletPrefabScript.BulletType);
            newBullet.SetActive(true);
            Bullet newBulletScript = newBullet.GetComponent<Bullet>();
@@ -134,6 +156,7 @@ public class Weapon : MonoBehaviour
            newBulletScript.Team = Team;
            newBulletScript.MaxRange = bRange;
            newBulletScript.Damage = bDamage;
+           
            newBulletScript.Shoot(direction);
            ammo--;
         }

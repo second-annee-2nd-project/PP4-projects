@@ -80,7 +80,7 @@ public class WaveManager : MonoBehaviour
             Debug.Log("WAVE FINI NEXT MAP SHOULD BE LOADED");
          }
 
-      GameManager.Instance.ChangePhase(eGameState.Shop);
+      GameManager.Instance.ChangePhase(eGameState.AutoLoot);
       cor = null;
       
    }

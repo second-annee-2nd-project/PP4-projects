@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public enum eGameState
 {
     Wave,
-    Shop
+    Shop,
+    AutoLoot
 }
 
 public class GameManager : MonoBehaviour
@@ -27,11 +28,19 @@ public class GameManager : MonoBehaviour
 
     public Grid ActualGrid => actualGrid;
     
+    private Joystick joystick;
+    public Joystick Joystick => joystick;
+    
+    private FireButton fireButton;
+    public FireButton FireButton => fireButton;
+    
     #region Managers
     
         private WaveManager waveManager;
         public WaveManager P_WaveManager => waveManager;
 
+        private UI_Manager uiManager;
+        public UI_Manager P_UiManager => uiManager;
         private ShopManager shopManager;
         public ShopManager P_ShopManager => shopManager;
         
@@ -43,6 +52,11 @@ public class GameManager : MonoBehaviour
 
         private TeamManager teamManager;
         public TeamManager P_TeamManager => teamManager;
+        private LootManager lootManager;
+        public LootManager P_LootManager => lootManager;
+
+        private PathRequestManager pathRequestManager;
+        public PathRequestManager P_PathRequestManager => pathRequestManager;
         #endregion
 
         public CameraController CC => cc;
@@ -59,13 +73,18 @@ public class GameManager : MonoBehaviour
             DontDestroyOnLoad(this);
         }
         
+        fireButton = FindObjectOfType<FireButton>();
+        joystick = FindObjectOfType<Joystick>();
+        uiManager = FindObjectOfType<UI_Manager>();
         actualGrid = FindObjectOfType<Grid>();
+        lootManager = FindObjectOfType<LootManager>();
         teamManager = FindObjectOfType<TeamManager>();
         teamManager.Init();
         shopManager = FindObjectOfType<ShopManager>();
         enemiesManager = FindObjectOfType<EnemiesManager>();
         turretManager = FindObjectOfType<TurretManager>();
         waveManager = FindObjectOfType<WaveManager>();
+        pathRequestManager = FindObjectOfType<PathRequestManager>();
     }
 
     private void Start()
@@ -86,6 +105,7 @@ public class GameManager : MonoBehaviour
     private void StartGame()
     {
         cc.Init();
+        pathRequestManager.Init();
         waveManager.Init();
         ChangePhase(eGameState.Shop);
 
@@ -110,6 +130,10 @@ public class GameManager : MonoBehaviour
                     //Gérer l'UI
                     waveManager.StartWaveSequence();
                     break;
+            case eGameState.AutoLoot:
+                _eGameState = eGameState.AutoLoot;
+                lootManager.StartAutoLootSequence();
+                break;
         }
 
         cc.ChangeState(newEGameState);

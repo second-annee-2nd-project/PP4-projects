@@ -28,7 +28,6 @@ public class EnemiesManager : UnitManager
     {
         base.Start();
         team = eTeam.enemy;
-
     }
 
     public bool isWaveFinished()

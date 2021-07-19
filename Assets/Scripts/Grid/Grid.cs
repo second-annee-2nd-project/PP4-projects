@@ -45,7 +45,7 @@ public class Grid : MonoBehaviour
             {
                 float newPosX = i * gridSizeWidth - positionOffset.x;
                 float newPosZ = j * gridSizeLength - positionOffset.z;
-                Vector3 position = centerPosition + new Vector3(newPosX, 0, newPosZ) ;
+                Vector3 position = centerPosition + new Vector3(newPosX, 0, newPosZ);
                 float radius = Mathf.Sqrt(gridSizeWidth * gridSizeWidth + gridSizeLength * gridSizeLength);
                 bool isWalkable = true;
                 bool isTurretable = true;
@@ -59,7 +59,9 @@ public class Grid : MonoBehaviour
                     isTurretable = false;
                 }
 
-                nodes[i, j] = new Node(position, radius / 2f, isWalkable, isTurretable);
+                Vector3 newInternalPosition = new Vector3(Mathf.Abs(position.x), Mathf.Abs(position.y), Mathf.Abs(position.z));
+                Vector3 internalPosition = new Vector3(i, 0, j);
+                nodes[i, j] = new Node(position, internalPosition, radius / 2f, isWalkable, isTurretable);
             }
         }
     }
@@ -79,8 +81,6 @@ public class Grid : MonoBehaviour
                 Vector3 nodePos = nodes[realI, realJ].position;
                 if (pos.x >= nodePos.x  && pos.x <= nodePos.x + gridSizeWidth && pos.z >= nodePos.z && pos.z <= nodePos.z + gridSizeLength)
                 {
-                    Debug.Log(realI+" ; "+realJ);
-                    Debug.Log("Position de la node : " + nodes[realI, realJ].position);
                     return nodes[realI, realJ];
                 }
 
