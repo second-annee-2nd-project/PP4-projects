@@ -148,7 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   bHealthPoints: 100
-  speed: 200
+  speed: 3
   weaponTr: {fileID: 8863914270187979949}
   weapon: {fileID: 2312711781352939925}
   dropAmount: 2
