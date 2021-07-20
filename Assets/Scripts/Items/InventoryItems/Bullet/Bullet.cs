@@ -93,6 +93,7 @@ public class Bullet : TeamUnit
     }
     public void Shoot(Vector3 direction)
     {
+        
         dir = direction;
         if (cor != null)
         {

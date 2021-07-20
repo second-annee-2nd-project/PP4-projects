@@ -1,13 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PathRequestManager : MonoBehaviour
 {
-    public List<PathRequest> pathRequests;
-
-    public Vector3 target;
-    public Vector3 startingPoint;
+    public Dictionary<EnemyBehaviour, PathRequest> pathRequests;
     
     public Node current;
     public Node startingNode;
@@ -24,19 +22,23 @@ public class PathRequestManager : MonoBehaviour
     public List<PriorityQueue> boundaries;*/
 
     //public List<Node> path;
-    public int j;
+    private int j;
     private Coroutine cor;
 
-    void Awake()
+    public void Init()
     {
-        pathRequests = new List<PathRequest>();
+        pathRequests = new Dictionary<EnemyBehaviour, PathRequest>();
         nodes = FindObjectOfType<Grid>().Nodes;
         j = 0;
     }
 
-    public void AddPath(PathRequest newPathRequest)
+    public void AddPath(PathRequest newPathRequest, EnemyBehaviour enemy)
     {
-        pathRequests.Add(newPathRequest);
+        if (pathRequests.ContainsKey(enemy))
+        {
+            pathRequests.Remove(enemy);
+        }
+        pathRequests.Add(enemy, newPathRequest);
         if(cor != null) return;
         cor = StartCoroutine(Instantiate());
     }
@@ -46,7 +48,7 @@ public class PathRequestManager : MonoBehaviour
         while (pathRequests.Count > 0)
         {
             PathFinder();
-            yield return new WaitForSeconds(1f);
+            yield return null;
         }
 
         cor = null;
@@ -70,13 +72,13 @@ public class PathRequestManager : MonoBehaviour
         List<Node> neighbours = new List<Node>();
         
         List<PriorityQueue> boundaries = new List<PriorityQueue>();
-        Dictionary<Node, int>costs = new Dictionary<Node, int>();
+        Dictionary<Node, int> costs = new Dictionary<Node, int>();
         Dictionary<Node, Node> cameFrom = new Dictionary<Node, Node>();
         List<Node> path = new List<Node>();
-//        path = new List<Node>();
-//
-      //  targetNode = pathRequests[0].requestedFrom.target;
-       // startingNode = pathRequests[0].requestedFrom.start;
+        
+        targetNode = pathRequests.First().Value.requestedFrom.TargetingNode;
+        startingNode = pathRequests.First().Value.requestedFrom.StartingNode;
+        EnemyBehaviour eb = pathRequests.First().Value.requestedFrom;
         
         boundaries.Add(new PriorityQueue(startingNode, 0));
         current = boundaries[0].node;
@@ -86,7 +88,7 @@ public class PathRequestManager : MonoBehaviour
         cameFrom[current] = null;
         visited.Add(current);
 
-        while (boundaries != null)
+        while (boundaries != null && boundaries.Count > 0)
         {
             current = GetFirst(boundaries);
             if (current == null) break;
@@ -100,7 +102,7 @@ public class PathRequestManager : MonoBehaviour
             
             for (int i = 0; i < neighbours.Count; i++)
             {
-                int distance = GetDistance(targetNode.position, neighbours[i].position);
+                int distance = GetDistance(targetNode.internalPosition, neighbours[i].internalPosition);
                 int newCost = costs[current] + 1;
 
                 if(!costs.ContainsKey(neighbours[i]) || newCost < costs[neighbours[i]])
@@ -127,10 +129,9 @@ public class PathRequestManager : MonoBehaviour
             }
             boundaries.RemoveAt(0);
         }
-        pathRequests[0].path = RetracePath(cameFrom, first);
-        pathRequests[0].ReturnPath();
-        StartCoroutine(pathRequests[0].requestedFrom.Move());
-        pathRequests.RemoveAt(0);
+        pathRequests.First().Value.path = RetracePath(cameFrom, first);
+        pathRequests.First().Value.ReturnPath();
+        pathRequests.Remove(pathRequests.First().Key);
     }
 
     public List<Node> RetracePath(Dictionary<Node, Node> cf, Node f)
@@ -173,12 +174,13 @@ public class PathRequestManager : MonoBehaviour
             if (count == 0)
                 sorted = true;
         }
-        
+
         return priorityQueuesList?[0]?.node;
     }
     
     List<Node> GetNeighbours(Node node)
     {
+//        Debug.Log("NodeX : "+node.position.x);
         List<Node> n = new List<Node>();
 
         int xOffset = -1; 
@@ -191,19 +193,20 @@ public class PathRequestManager : MonoBehaviour
                 {
                     x++;
                 }
+                //Debug.Log("Nombre de neighbours : "+(xOffset + x + node.internalPosition.x));
 
-                if ((int) ( xOffset + x + node.position.x) >= 0 &&
-                    (int) ( xOffset + x + node.position.x) < nodes.GetLength(0))
+                if ((int) ( xOffset + x + node.internalPosition.x) >= 0 &&
+                    (int) ( xOffset + x + node.internalPosition.x) < nodes.GetLength(0))
                 {
-                    if ((int) ( zOffset + z + node.position.z) >= 0 &&
-                        (int) ( zOffset + z + node.position.z) < nodes.GetLength(1))
+                    if ((int) ( zOffset + z + node.internalPosition.z) >= 0 &&
+                        (int) ( zOffset + z + node.internalPosition.z) < nodes.GetLength(1))
                     {
-                        n.Add(nodes[(int) (xOffset + x + node.position.x), (int) (z + zOffset + node.position.z)]);
+                        n.Add(nodes[(int) (xOffset + x + node.internalPosition.x), (int) (z + zOffset + node.internalPosition.z)]);
                     }
                 }
             }
         }
-
+        
         return n;
         
     }

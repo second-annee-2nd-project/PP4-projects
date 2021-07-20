@@ -52,10 +52,12 @@ public class ShopManager : MonoBehaviour
         set => equipedPrefabInstance = value;
     }
     private TurretManager turretManager;
-
+    private PlayerBehaviour playerBehaviour;
+    [SerializeField] private GameObject joystickController;
     private void Awake()
     {
         turretManager = GameObject.FindObjectOfType<TurretManager>().GetComponent<TurretManager>();
+        playerBehaviour = GameObject.FindObjectOfType<PlayerBehaviour>();
         coins = bCoins;
         coins_Text.text = " : " + coins;
         placingCor = null;
@@ -85,6 +87,7 @@ public class ShopManager : MonoBehaviour
     private IEnumerator ShopSequence()
     {
         UI_ShopSequence.SetActive(true);
+        joystickController.SetActive(false);
         shopTimer = bShopTimer;
         
         while (shopTimer > 0f)
@@ -95,7 +98,7 @@ public class ShopManager : MonoBehaviour
         }
         
         UI_ShopSequence.SetActive(false);
-
+        joystickController.SetActive(true);
         if (placingCor != null)
         {
             StopCoroutine(placingCor);
@@ -124,6 +127,29 @@ public class ShopManager : MonoBehaviour
         {
             placingCor = StartCoroutine(PlaceTurret());
         }
+    }
+
+    public void BuyWeapon(GameObject weaponGO)
+    {
+        Weapon wp = weaponGO.GetComponent<Weapon>();
+
+        if (wp)
+        {
+            if (coins >= wp.WeaponStats.Price)
+            {
+                GameObject newInstance = Instantiate(weaponGO);
+                playerBehaviour.PickUpWeapon(newInstance);
+                UpdateCoins(-wp.WeaponStats.Price);
+            }
+            else
+            {
+                //introduce feedback here;
+            }
+            
+        }
+        
+        
+        
     }
 
     private void RefundTurret()

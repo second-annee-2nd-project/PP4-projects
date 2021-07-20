@@ -15,7 +15,7 @@ public class DestroyableUnit : TeamUnit
     }
     public virtual void GetDamaged(float damage)
     {
-        healthPoints -= damage;
+        healthPoints -= damage; 
         if (healthPoints <= 0)
         {
             Die();
