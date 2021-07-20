@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class EnemyBehaviour : DestroyableUnit
 {
+    private static int id = 1;
+    public int ID;
     private bool turretDetected;
     [SerializeField] protected float speed;
     [SerializeField] private float attackDamage;
@@ -55,11 +57,15 @@ public class EnemyBehaviour : DestroyableUnit
     // Start is called before the first frame update
     void Awake()
     {
+        ID = id;
+        id++;
+        name += " "+ID;
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         enemiesManager = GameManager.Instance.P_EnemiesManager;
         grid = GameManager.Instance.ActualGrid;
         path = new List<Node>();
+        
         
         
 
@@ -80,11 +86,11 @@ public class EnemyBehaviour : DestroyableUnit
 
     public void Init()
     {
-        GetNearestEnemy(); 
+        GetNearestEnemy();
+        path = new List<Node>();
         pathRequestManager = FindObjectOfType<PathRequestManager>();
         startingNode = GameManager.Instance.ActualGrid.GetNode(transform.position);
-        StartCoroutine(Move());
-
+        StartMoving();
     }
 
     public IEnumerator Move()
@@ -143,35 +149,47 @@ public class EnemyBehaviour : DestroyableUnit
 
             }
 
-            Vector3 startPosition = transform.position;
-            Vector3 targetPosition = new Vector3(path[0].position.x, this.transform.position.y, path[0].position.z);
 
-            Vector3 nearestEnemyGrounded =
-                new Vector3(nearestEnemy.position.x, transform.position.y, nearestEnemy.position.z);
-
-
-            Vector3 dir = nearestEnemyGrounded - weapon.P_FirePosition.position;
-
-            // Debug.DrawRay(weapon.P_FirePosition.position, dir, Color.blue);
-
-            if (Vector3.Distance(transform.position, nearestEnemyGrounded) > attackRange || !IsFirstColliderEnemy(dir))
+            if (!(path == null || path.Count < 1))
             {
-                transform.position = Vector3.MoveTowards(startPosition, targetPosition, speed * Time.deltaTime);
-                transform.LookAt(targetPosition);
-            }
-            else
-            {
-                Debug.Log("tried to attack");
-                TryToAttack();
-            }
+                Vector3 startPosition = transform.position;
+                Vector3 targetPosition = new Vector3(path[0].position.x, this.transform.position.y, path[0].position.z);
 
-            if (startPosition == targetPosition)
-            {
-                path.RemoveAt(0);
+                Vector3 nearestEnemyGrounded =
+                    new Vector3(nearestEnemy.position.x, transform.position.y, nearestEnemy.position.z);
+
+                Vector3 dir;
+                if (weapon != null)
+                    dir = nearestEnemyGrounded - weapon.P_FirePosition.position;
+                else
+                    dir = nearestEnemyGrounded - transform.position;
+
+                // Debug.DrawRay(weapon.P_FirePosition.position, dir, Color.blue);
+
+                if (Vector3.Distance(transform.position, nearestEnemyGrounded) > attackRange ||
+                    !IsFirstColliderEnemy(dir))
+                {
+                    transform.position = Vector3.MoveTowards(startPosition, targetPosition, speed * Time.deltaTime);
+                    transform.LookAt(targetPosition);
+                }
+                else
+                {
+                    Debug.Log("tried to attack");
+                    TryToAttack();
+                }
+
+                if (startPosition == targetPosition)
+                {
+                    path.RemoveAt(0);
+                }
+                
+                yield return null;
             }
 
             yield return null;
         }
+        yield return null;
+        Debug.Log(name+" a fini une séquence Move");
     }
 
     private bool IsFirstColliderEnemy(Vector3 dir)
@@ -181,7 +199,6 @@ public class EnemyBehaviour : DestroyableUnit
         if (hits.Length > 0)
         {
             Debug.DrawRay(weapon.P_FirePosition.position, dir, Color.blue);
-            Debug.Log(hits[0].collider.name);
             if(hits[0].collider.tag == "Player")
             {
                 return true;
@@ -189,6 +206,11 @@ public class EnemyBehaviour : DestroyableUnit
         }
 
         return false;
+    }
+
+    public void StartMoving()
+    {
+        StartCoroutine(Move());
     }
 
     // Update is called once per frame

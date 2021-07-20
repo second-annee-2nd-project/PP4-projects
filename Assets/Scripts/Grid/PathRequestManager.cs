@@ -67,6 +67,7 @@ public class PathRequestManager : MonoBehaviour
     
     public void PathFinder()
     {
+        
         List<Node> visited = new List<Node>();
         List<Node> taken = new List<Node>();
         List<Node> neighbours = new List<Node>();
@@ -90,6 +91,7 @@ public class PathRequestManager : MonoBehaviour
 
         while (boundaries != null && boundaries.Count > 0)
         {
+            Debug.Log(pathRequests.First().Key.name+" demande un path.");
             current = GetFirst(boundaries);
             if (current == null) break;
 
