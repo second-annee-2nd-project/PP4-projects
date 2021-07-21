@@ -39,7 +39,6 @@ public class Grid : MonoBehaviour
     public void Instantiate()
     {
         Vector3 positionOffset = new Vector3((gridWidth * gridSizeWidth) / 2f - gridSizeWidth/ 2f, 0f, (gridLength * gridSizeLength) / 2f - gridSizeLength/ 2f);
-        Debug.Log(positionOffset);
         for (int i = 0; i < gridWidth; i++)
         {
             for (int j = 0; j < gridLength; j++)

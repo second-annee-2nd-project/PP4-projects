@@ -91,7 +91,6 @@ public class PathRequestManager : MonoBehaviour
 
         while (boundaries != null && boundaries.Count > 0 && pathRequests.First().Key != null)
         {
-            Debug.Log(pathRequests.First().Key.name+" demande un path.");
             current = GetFirst(boundaries);
             if (current == null) break;
 
@@ -101,7 +100,7 @@ public class PathRequestManager : MonoBehaviour
             }
             
             neighbours = GetNeighbours(current);
-            
+
             for (int i = 0; i < neighbours.Count; i++)
             {
                 int distance = GetDistance(targetNode.internalPosition, neighbours[i].internalPosition);
@@ -109,64 +108,7 @@ public class PathRequestManager : MonoBehaviour
 
                 if(!costs.ContainsKey(neighbours[i]) || newCost < costs[neighbours[i]])
                 {
-                    
-                    // 0 1 2
-                    // 3 x 4
-                    // 5 6 7
-                    // diagonales
-                    if (i == 0 || i == 2 || i == 5 || i == 7)
-                    {
-                        switch (i)
-                        {
-                            case 0:
-                                //Calculer en fonction de 1 et 3
-                                if (neighbours.Count > 1 && neighbours.Count > 3)
-                                {
-                                    // S'il n'y a pas de mur alors c'est bon
-                                    if (neighbours[1].isWalkable && neighbours[3].isWalkable)
-                                    {
-                                        
-                                    }
-                                }
-                                break;
-                            
-                            case 2:
-                                //Calculer en fonction de 1 et 4
-                                if (neighbours.Count > 1 && neighbours.Count > 4)
-                                {
-                                    // S'il n'y a pas de mur alors c'est bon
-                                    if (neighbours[1].isWalkable && neighbours[4].isWalkable)
-                                    {
-                                        
-                                    }
-                                }
-                                break;
-                            
-                            case 5:
-                                //Calculer en fonction de 3 et 6
-                                if (neighbours.Count > 3 && neighbours.Count > 6)
-                                {
-                                    // S'il n'y a pas de mur alors c'est bon
-                                    if (neighbours[3].isWalkable && neighbours[6].isWalkable)
-                                    {
-                                        
-                                    }
-                                }
-                                break;
-                            case 7:
-                                //Calculer en fonction de 4 et 6
-                                if (neighbours.Count > 4 && neighbours.Count > 6)
-                                {
-                                    // S'il n'y a pas de mur alors c'est bon
-                                    if (neighbours[4].isWalkable && neighbours[6].isWalkable)
-                                    {
-                                        
-                                    }
-                                }
-                                break;
-                        }
-                    }
-                    if(neighbours[i].isWalkable)
+                    if(neighbours[i].isWalkable && IsDiagonalPossible(neighbours, i))
                     {
                         if (!costs.ContainsKey(neighbours[i]))
                         {
@@ -193,6 +135,66 @@ public class PathRequestManager : MonoBehaviour
         pathRequests.Remove(pathRequests.First().Key);
     }
 
+    private bool IsDiagonalPossible(List<Node> neighbours, int i)
+    {
+        // 0 1 2
+        // 3 x 4
+        // 5 6 7
+        // diagonales
+        if (i == 0 || i == 2 || i == 5 || i == 7)
+        {
+            switch (i)
+            {
+                case 0:
+                    //Calculer en fonction de 1 et 3
+                    if (neighbours.Count > 1 && neighbours.Count > 3)
+                    {
+                        // S'il n'y a pas de mur alors c'est bon
+                        if (!neighbours[1].isWalkable || !neighbours[3].isWalkable)
+                        {
+                            return false;
+                        }
+                    }
+                    break;
+                
+                case 2:
+                    //Calculer en fonction de 1 et 4
+                    if (neighbours.Count > 1 && neighbours.Count > 4)
+                    {
+                        // S'il n'y a pas de mur alors c'est bon
+                        if (!neighbours[1].isWalkable || !neighbours[4].isWalkable)
+                        {
+                            return false;
+                        }
+                    }
+                    break;
+                
+                case 5:
+                    //Calculer en fonction de 3 et 6
+                    if (neighbours.Count > 3 && neighbours.Count > 6)
+                    {
+                        // S'il n'y a pas de mur alors c'est bon
+                        if (!neighbours[3].isWalkable || !neighbours[6].isWalkable)
+                        {
+                            return false;
+                        }
+                    }
+                    break;
+                case 7:
+                    //Calculer en fonction de 4 et 6
+                    if (neighbours.Count > 4 && neighbours.Count > 6)
+                    {
+                        // S'il n'y a pas de mur alors c'est bon
+                        if (!neighbours[4].isWalkable || !neighbours[6].isWalkable)
+                        {
+                            return false;
+                        }
+                    }
+                    break;
+            }
+        }
+        return true;
+    }
     public List<Node> RetracePath(Dictionary<Node, Node> cf, Node f)
     {
         List<Node> newPath = new List<Node>();

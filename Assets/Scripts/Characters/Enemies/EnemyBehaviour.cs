@@ -52,6 +52,7 @@ public class EnemyBehaviour : DestroyableUnit
         get => targetingNode;
     }
 
+    private float groundY;
   
     
     // Start is called before the first frame update
@@ -65,9 +66,9 @@ public class EnemyBehaviour : DestroyableUnit
         enemiesManager = GameManager.Instance.P_EnemiesManager;
         grid = GameManager.Instance.ActualGrid;
         path = new List<Node>();
-        
-        
-        
+
+
+        groundY = grid.CenterPosition.y;
 
         if (weapon != null)
         {
@@ -156,18 +157,15 @@ public class EnemyBehaviour : DestroyableUnit
                 Vector3 targetPosition = new Vector3(path[0].position.x, this.transform.position.y, path[0].position.z);
 
                 Vector3 nearestEnemyGrounded =
-                    new Vector3(nearestEnemy.position.x, transform.position.y, nearestEnemy.position.z);
+                    new Vector3(nearestEnemy.position.x, groundY, nearestEnemy.position.z);
+                Vector3 myPositionGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
 
-                Vector3 dir;
-                if (weapon != null)
-                    dir = nearestEnemyGrounded - weapon.P_FirePosition.position;
-                else
-                    dir = nearestEnemyGrounded - transform.position;
+                Vector3 sightDir = nearestEnemyGrounded - myPositionGrounded;
 
                 // Debug.DrawRay(weapon.P_FirePosition.position, dir, Color.blue);
 
                 if (Vector3.Distance(transform.position, nearestEnemyGrounded) > attackRange ||
-                    !IsFirstColliderEnemy(dir))
+                    !IsFirstColliderEnemy(sightDir))
                 {
                     transform.position = Vector3.MoveTowards(startPosition, targetPosition, speed * Time.deltaTime);
                     transform.LookAt(targetPosition);
@@ -195,10 +193,12 @@ public class EnemyBehaviour : DestroyableUnit
     private bool IsFirstColliderEnemy(Vector3 dir)
     {
         RaycastHit[] hits;
-        hits = Physics.RaycastAll(transform.position, dir, attackRange);
+        Vector3 myPositionGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
+        hits = Physics.RaycastAll(myPositionGrounded, dir, attackRange);
         //RaycastHit[] hits = Physics.RaycastAll(weapon.P_FirePosition.position, dir, attackRange);
         if (hits.Length > 0)
         {
+            Debug.DrawRay(myPositionGrounded, dir, Color.blue);
             //Debug.DrawRay(weapon.P_FirePosition.position, dir, Color.blue);
             if(hits[0].collider.tag == "Player")
             {
