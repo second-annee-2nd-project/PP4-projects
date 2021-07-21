@@ -89,7 +89,7 @@ public class PathRequestManager : MonoBehaviour
         cameFrom[current] = null;
         visited.Add(current);
 
-        while (boundaries != null && boundaries.Count > 0)
+        while (boundaries != null && boundaries.Count > 0 && pathRequests.First().Key != null)
         {
             Debug.Log(pathRequests.First().Key.name+" demande un path.");
             current = GetFirst(boundaries);
@@ -109,6 +109,63 @@ public class PathRequestManager : MonoBehaviour
 
                 if(!costs.ContainsKey(neighbours[i]) || newCost < costs[neighbours[i]])
                 {
+                    
+                    // 0 1 2
+                    // 3 x 4
+                    // 5 6 7
+                    // diagonales
+                    if (i == 0 || i == 2 || i == 5 || i == 7)
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                                //Calculer en fonction de 1 et 3
+                                if (neighbours.Count > 1 && neighbours.Count > 3)
+                                {
+                                    // S'il n'y a pas de mur alors c'est bon
+                                    if (neighbours[1].isWalkable && neighbours[3].isWalkable)
+                                    {
+                                        
+                                    }
+                                }
+                                break;
+                            
+                            case 2:
+                                //Calculer en fonction de 1 et 4
+                                if (neighbours.Count > 1 && neighbours.Count > 4)
+                                {
+                                    // S'il n'y a pas de mur alors c'est bon
+                                    if (neighbours[1].isWalkable && neighbours[4].isWalkable)
+                                    {
+                                        
+                                    }
+                                }
+                                break;
+                            
+                            case 5:
+                                //Calculer en fonction de 3 et 6
+                                if (neighbours.Count > 3 && neighbours.Count > 6)
+                                {
+                                    // S'il n'y a pas de mur alors c'est bon
+                                    if (neighbours[3].isWalkable && neighbours[6].isWalkable)
+                                    {
+                                        
+                                    }
+                                }
+                                break;
+                            case 7:
+                                //Calculer en fonction de 4 et 6
+                                if (neighbours.Count > 4 && neighbours.Count > 6)
+                                {
+                                    // S'il n'y a pas de mur alors c'est bon
+                                    if (neighbours[4].isWalkable && neighbours[6].isWalkable)
+                                    {
+                                        
+                                    }
+                                }
+                                break;
+                        }
+                    }
                     if(neighbours[i].isWalkable)
                     {
                         if (!costs.ContainsKey(neighbours[i]))

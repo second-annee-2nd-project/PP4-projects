@@ -18,13 +18,13 @@ public class Grid : MonoBehaviour
     public int P_GridWidth => gridWidth;
     public int P_GridLength => gridLength;
 
-    [SerializeField] private int gridSizeWidth;
-    [SerializeField] private int gridSizeLength;
-    [SerializeField] private int gridSizeHeight;
+    [SerializeField] private float gridSizeWidth;
+    [SerializeField] private float gridSizeLength;
+    [SerializeField] private float gridSizeHeight;
 
     [SerializeField] private Vector3 centerPosition;
     public Vector3 CenterPosition => centerPosition;
-
+    public LayerMask enemyMask;
     public LayerMask unwalkableMask;
 
     private GameObject ground;
@@ -38,7 +38,8 @@ public class Grid : MonoBehaviour
 
     public void Instantiate()
     {
-        Vector3 positionOffset = new Vector3((gridWidth - gridSizeWidth) / 2f, 0f, (gridLength - gridSizeWidth) / 2f);
+        Vector3 positionOffset = new Vector3((gridWidth * gridSizeWidth) / 2f - gridSizeWidth/ 2f, 0f, (gridLength * gridSizeLength) / 2f - gridSizeLength/ 2f);
+        Debug.Log(positionOffset);
         for (int i = 0; i < gridWidth; i++)
         {
             for (int j = 0; j < gridLength; j++)
@@ -68,14 +69,14 @@ public class Grid : MonoBehaviour
     
     public Node GetNode(Vector3 pos)
     {
-        int totalWidth = gridWidth * gridSizeWidth;
-        int totalLength = gridLength * gridSizeLength;
+        float totalWidth = gridWidth / gridSizeWidth;
+        float totalLength = gridLength / gridSizeLength;
         int realI = 0;
         int realJ = 0;
-        for (int i = 0; i < totalWidth; i+=gridSizeWidth)
+        for (int i = 0; i < gridWidth; i++)
         {
             realJ = 0;
-            for (int j = 0; j < totalLength; j+=gridSizeLength)
+            for (int j = 0; j < gridLength; j++)
             {
                 //
                 Vector3 nodePos = nodes[realI, realJ].position;
@@ -160,7 +161,7 @@ public class Grid : MonoBehaviour
                 {
                     Gizmos.color = nodes[i, j].isWalkable ? Color.green : Color.red;
 
-                    Gizmos.DrawWireCube(this.transform.position + nodes[i, j].position, new Vector3(gridSizeWidth, gridSizeHeight, gridSizeLength));
+                    Gizmos.DrawWireCube(nodes[i, j].position, new Vector3(gridSizeWidth, gridSizeHeight, gridSizeLength));
                 }
             }
         }

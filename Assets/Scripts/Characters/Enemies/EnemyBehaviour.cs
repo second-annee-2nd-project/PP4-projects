@@ -195,10 +195,7 @@ public class EnemyBehaviour : DestroyableUnit
     private bool IsFirstColliderEnemy(Vector3 dir)
     {
         RaycastHit[] hits;
-        if(weapon != null)
-             hits = Physics.RaycastAll(weapon.P_FirePosition.position, dir, attackRange);
-        else
-            hits = Physics.RaycastAll(transform.position, dir, attackRange);
+        hits = Physics.RaycastAll(transform.position, dir, attackRange);
         //RaycastHit[] hits = Physics.RaycastAll(weapon.P_FirePosition.position, dir, attackRange);
         if (hits.Length > 0)
         {
@@ -220,27 +217,12 @@ public class EnemyBehaviour : DestroyableUnit
     // Update is called once per frame
     void Update()
     {
-        /*GetNearestEnemy();
-        if (nearestEnemy != null)
-        {
-            transform.LookAt(nearestEnemy.transform.position);
-            ChaseEnemy();
-        }*/
         if (weapon != null) return;
         if (nextAttack > 0)
         {
             nextAttack -= Time.deltaTime;
             if (nextAttack <= 0f) nextAttack = -1f;
         }
-    }
-    
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, detectionRange);
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 
     protected override void Die()
@@ -299,8 +281,13 @@ public class EnemyBehaviour : DestroyableUnit
         }
     }
     
-    void OnDrawGizmos()
+    void OnDrawGizmosSelected()
     {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, detectionRange);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
         if (path.Count < 1) return;
         for (int i = 0; i < path.Count; i++)
         {

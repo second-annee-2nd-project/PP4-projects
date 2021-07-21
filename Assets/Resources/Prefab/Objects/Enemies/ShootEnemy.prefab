@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7555066002779299187}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,8 @@ GameObject:
   - component: {fileID: 3390009989817607011}
   - component: {fileID: 1732887759072661462}
   - component: {fileID: 6122066194438175831}
-  m_Layer: 0
+  - component: {fileID: -4035429581945930926}
+  m_Layer: 9
   m_Name: ShootEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -74,7 +75,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2181964494168382518}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &2181964494168382523
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -123,9 +124,9 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2181964494168382518}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b2cc1eb2d03183145acfaf7f06c6cc84, type: 2}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -159,6 +160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 2
   bHealthPoints: 40
+  ID: 0
   speed: 2
   attackDamage: 1
   detectionRange: 30
@@ -184,6 +186,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 0
+--- !u!135 &-4035429581945930926
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2181964494168382518}
+  m_Material: {fileID: 13400000, guid: b2cc1eb2d03183145acfaf7f06c6cc84, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8978021418422761935
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +210,7 @@ GameObject:
   - component: {fileID: 623806538017686287}
   - component: {fileID: 9047004442897270116}
   - component: {fileID: 6701644927394390553}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
