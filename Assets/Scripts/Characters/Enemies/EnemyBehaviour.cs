@@ -194,11 +194,15 @@ public class EnemyBehaviour : DestroyableUnit
 
     private bool IsFirstColliderEnemy(Vector3 dir)
     {
-        RaycastHit[] hits = Physics.RaycastAll(transform.position, dir, attackRange);
+        RaycastHit[] hits;
+        if(weapon != null)
+             hits = Physics.RaycastAll(weapon.P_FirePosition.position, dir, attackRange);
+        else
+            hits = Physics.RaycastAll(transform.position, dir, attackRange);
         //RaycastHit[] hits = Physics.RaycastAll(weapon.P_FirePosition.position, dir, attackRange);
         if (hits.Length > 0)
         {
-            Debug.DrawRay(weapon.P_FirePosition.position, dir, Color.blue);
+            //Debug.DrawRay(weapon.P_FirePosition.position, dir, Color.blue);
             if(hits[0].collider.tag == "Player")
             {
                 return true;
