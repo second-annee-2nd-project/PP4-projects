@@ -5,23 +5,14 @@ using UnityEngine;
 
 public class PathRequestManager : MonoBehaviour
 {
-    public Dictionary<EnemyBehaviour, PathRequest> pathRequests;
+    private Dictionary<EnemyBehaviour, PathRequest> pathRequests;
     
-    public Node current;
-    public Node startingNode;
-    public Node targetNode;
+    private Node current;
+    private Node startingNode;
+    private Node targetNode;
     
-    public Node[,] nodes;
-   /* public List<Node> neighbours;
-    public List<Node> visited;
-    public List<Node> taken;*/
+    private Node[,] nodes;
     
-    /*public Dictionary<Node, int> costs;
-    public Dictionary<Node, Node> cameFrom;
-    public Node first;
-    public List<PriorityQueue> boundaries;*/
-
-    //public List<Node> path;
     private int j;
     private Coroutine cor;
 
@@ -38,9 +29,13 @@ public class PathRequestManager : MonoBehaviour
         {
             pathRequests.Remove(enemy);
         }
+        
         pathRequests.Add(enemy, newPathRequest);
+        
+        PathFinder();
+        /*
         if(cor != null) return;
-        cor = StartCoroutine(Instantiate());
+        cor = StartCoroutine(Instantiate());*/
     }
 
     public IEnumerator Instantiate()
@@ -48,9 +43,9 @@ public class PathRequestManager : MonoBehaviour
         while (pathRequests.Count > 0)
         {
             PathFinder();
-            yield return null;
+            
         }
-
+        yield return null;
         cor = null;
     }
 

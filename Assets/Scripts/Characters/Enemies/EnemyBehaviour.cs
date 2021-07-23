@@ -120,7 +120,7 @@ public class EnemyBehaviour : DestroyableUnit
                     Vector3 dirUnitToNode1 = (path[0].position - transform.position).normalized;
                     Vector3 dirUnitToNode2 = (path[1].position - transform.position).normalized;
 
-                    if (dirUnitToNode1.x == 0 || dirUnitToNode1.z == 0)
+                    if (Mathf.Approximately(dirUnitToNode1.x, 0f) || Mathf.Approximately(dirUnitToNode1.x, 0f))
                     {
                         removedPos = path[0].position;
                         path.Remove(path[0]);
