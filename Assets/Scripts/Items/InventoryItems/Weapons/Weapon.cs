@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -46,11 +47,11 @@ public class Weapon : MonoBehaviour
     private bool reloading;
 
     [Header("Bullet")]
-    [SerializeField]  private Transform firePosition;
+    [SerializeField]  private Transform fireTransform;
 
-    public Transform P_FirePosition => firePosition;
+    public Transform P_FireTransform => fireTransform;
     [SerializeField]  private GameObject bulletPrefab;
-    [SerializeField] private BulletsPool bulletsPool;
+    private BulletsPool bulletsPool;
     private eTeam team;
 
     public eTeam Team
@@ -144,26 +145,35 @@ public class Weapon : MonoBehaviour
         float angleToAdd = bDiffusionAngle / numberOfBullets;
         for (int i = 0; i < numberOfBullets; i++)
         {
-            float nextAngle = -bHalfAngle + i * angleToAdd * Mathf.Deg2Rad;
-
-            float newDirectionX = direction.x * Mathf.Cos(nextAngle) - direction.z * Mathf.Sin(nextAngle);
-            float newDirectionZ = direction.x * Mathf.Sin(nextAngle) - direction.z * Mathf.Cos(nextAngle);
+            float nextAngle = (-bHalfAngle + i * angleToAdd) * Mathf.Deg2Rad;
             
-           GameObject newBullet = bulletsPool.GetNextBulletInstance(bulletPrefabScript.BulletType);
+            //produit matriciel
+            // [dir.x][cos(), -sin()]
+            // [dir.z][sin(), cos()]
+            // [dir.x * cos + dir.z * -sin]
+            // [dir.x * sin + dir.z * cos]
+
+            float newDirectionX = direction.x * Mathf.Cos(nextAngle) + direction.z * -Mathf.Sin(nextAngle);
+            float newDirectionZ = direction.x * Mathf.Sin(nextAngle) + direction.z * Mathf.Cos(nextAngle);
+            Vector3 newDir = new Vector3(newDirectionX, 0f, newDirectionZ);
+            
+            Debug.DrawRay(fireTransform.position, newDir, Color.red);
+            
+            GameObject newBullet = bulletsPool.GetNextBulletInstance(bulletPrefabScript.BulletType);
            newBullet.SetActive(true);
            Bullet newBulletScript = newBullet.GetComponent<Bullet>();
-           newBullet.transform.position = firePosition.position;
+           newBullet.transform.position = fireTransform.position;
            newBulletScript.Team = Team;
            newBulletScript.MaxRange = bRange;
            newBulletScript.Damage = bDamage;
            
-           newBulletScript.Shoot(direction);
+           newBulletScript.Shoot(newDir);
            ammo--;
         }
         nextFire = fireRate;
     }
 
-    public void Shoot(Vector3 direction, Transform target)
+    public virtual void Shoot(Vector3 direction, Transform target)
     {
         if (ammo == 0)
         {
@@ -176,12 +186,46 @@ public class Weapon : MonoBehaviour
             GameObject newBullet = bulletsPool.GetNextBulletInstance(bulletPrefabScript.BulletType);
             newBullet.SetActive(true);
             Bullet newBulletScript = newBullet.GetComponent<Bullet>();
-            newBullet.transform.position = firePosition.position;
+            newBullet.transform.position = fireTransform.position;
             newBulletScript.Team = Team;
             newBulletScript.MaxRange = bRange;
             newBulletScript.Damage = bDamage;
             newBulletScript.Target = target;
             newBulletScript.Shoot(direction);
+            ammo--;
+        }
+
+        nextFire = fireRate;
+    }
+    public virtual  void ShootDouble(Vector3 direction, Transform target,Transform firePos)
+    {
+        if (ammo == 0)
+        {
+            Reload();
+            return;
+        }
+        
+        for (int i = 0; i < numberOfBullets; i++)
+        {
+            GameObject newBullet = bulletsPool.GetNextBulletInstance(bulletPrefabScript.BulletType);
+            newBullet.SetActive(true);
+            Bullet newBulletScript = newBullet.GetComponent<Bullet>();
+            newBullet.transform.position = fireTransform.position;
+            newBulletScript.Team = Team;
+            newBulletScript.MaxRange = bRange;
+            newBulletScript.Damage = bDamage;
+            newBulletScript.Target = target;
+            newBulletScript.Shoot(direction);
+            ammo--;
+            GameObject anotherNewBullet = bulletsPool.GetNextBulletInstance(bulletPrefabScript.BulletType);
+            anotherNewBullet.SetActive(true);
+            Bullet anotherNwBulletScript =anotherNewBullet.GetComponent<Bullet>();
+            anotherNwBulletScript.transform.position = firePos.position;
+            anotherNwBulletScript.Team = Team;
+            anotherNwBulletScript.MaxRange = bRange;
+            anotherNwBulletScript.Damage = bDamage;
+            anotherNwBulletScript.Target = target;
+            anotherNwBulletScript.Shoot(direction);
             ammo--;
         }
 

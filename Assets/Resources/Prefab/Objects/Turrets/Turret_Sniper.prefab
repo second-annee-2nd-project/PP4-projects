@@ -159,13 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996b4528f2967aa4484dba1cb173cdaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bAmmo: 1
-  bReloadTimer: 0
-  bFireRate: 4
-  bNumberOfBullets: 1
-  bDiffusionAngle: 0
-  bDamage: 40
-  bRange: 10
+  weaponStats: {fileID: 11400000, guid: 29c52d07d0afcb044a45db09443120bb, type: 2}
   firePosition: {fileID: 2631654729781361869}
   bulletPrefab: {fileID: 7497547957538424816, guid: 4d8d5547bfb105843b7600b15e9b8501, type: 3}
   bulletsPool: {fileID: 0}

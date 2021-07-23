@@ -77,7 +77,7 @@ public class PlayerBehaviour : DestroyableUnit
          if (nearestTarget != null)
          {
             transform.LookAt(nearestTarget.position);
-            weapon.Shoot(nearestTarget.position - weapon.P_FirePosition.position);
+            weapon.Shoot(nearestTarget.position - weapon.P_FireTransform.position);
             lastBulletShot = gazeHoldTimer;
             //weapon.Shoot(transform.forward);
          }

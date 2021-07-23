@@ -143,6 +143,21 @@ namespace TeamExtensionMethods
 
             return arrayToReturn;
         }
+
+        public static bool IsEnemy(this eTeam myTeam, eTeam theirTeam)
+        {
+            eTeam[] eTeamArray = GetAllEnemies(myTeam);
+
+            for (int i = 0; i < eTeamArray.Length; i++)
+            {
+                if (eTeamArray[i] == theirTeam)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 
     public static class DistanceExtension

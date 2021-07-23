@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using TeamExtensionMethods;
 using UnityEngine;
 
 public class EnemyBehaviour : DestroyableUnit
@@ -53,6 +54,8 @@ public class EnemyBehaviour : DestroyableUnit
     }
 
     private float groundY;
+
+    private Vector3 removedPos;
   
     
     // Start is called before the first frame update
@@ -90,16 +93,17 @@ public class EnemyBehaviour : DestroyableUnit
         GetNearestEnemy();
         path = new List<Node>();
         pathRequestManager = FindObjectOfType<PathRequestManager>();
-        startingNode = GameManager.Instance.ActualGrid.GetNode(transform.position);
+        startingNode = GameManager.Instance.ActualGrid.GetNodeWithPosition(transform.position);
         StartMoving();
     }
 
     public IEnumerator Move()
     {
+        int a = 0;
         while (healthPoints > 0)
         {
             GetNearestEnemy();
-            startingNode = GameManager.Instance.ActualGrid.GetNode(transform.position);
+            startingNode = GameManager.Instance.ActualGrid.GetNodeWithPosition(transform.position);
             targetingNode = grid.GetNodeWithPosition(nearestEnemy.transform.position);
             if (targetingNode != lastNearestEnemyNode)
             {
@@ -110,41 +114,22 @@ public class EnemyBehaviour : DestroyableUnit
                 {
 
                     Vector3 dirNode1ToUnit = (transform.position - path[0].position).normalized;
+                    Vector3 dirNode1ToNode2 = (path[1].position - path[0].position).normalized;
+                    Vector3 dirNode2ToTarget = (targetingNode.position - path[1].position).normalized;
+                    
+                    Vector3 dirUnitToNode1 = (path[0].position - transform.position).normalized;
                     Vector3 dirUnitToNode2 = (path[1].position - transform.position).normalized;
 
-/*
-                    float uX = dirNode1ToUnit.x;
-                    float uY = dirNode1ToUnit.z;
-                    float vX = dirUnitToNode2.x;
-                    float vY = dirUnitToNode2.z;
-
-                    
-                    // produit scalaire élevé au carré pour le dénominateur
-                    float num = uX * vX + uY * vY;
-                    float numSqr = num * num;
-                    
-                    // norme U & V sans racine carrée
-                    float den = (uX * uX + uY * uY) * (vX * vX + vY * vY);
-
-
-                    float Mathf.Cos(num / den);*/
-
-
-
-
-/*
-                    float a = Vector3.Distance(transform.position, path[0].position);
-                    float b = Vector3.Distance(transform.position, path[1].position);
-
-                    if (b < a)
+                    if (dirUnitToNode1.x == 0 || dirUnitToNode1.z == 0)
                     {
-
-                    }*/
-
-                    if (dirNode1ToUnit == dirUnitToNode2)
+                        removedPos = path[0].position;
+                        path.Remove(path[0]);
+                    }
+                    else if ((int) Mathf.Sign(dirUnitToNode1.x) != (int) Mathf.Sign(dirUnitToNode2.x) ||
+                        (int) Mathf.Sign(dirUnitToNode1.z) != (int) Mathf.Sign(dirUnitToNode2.z))
                     {
-
-                        path.RemoveAt(0);
+                        removedPos = path[0].position;
+                        path.Remove(path[0]);
                     }
                 }
 
@@ -200,9 +185,13 @@ public class EnemyBehaviour : DestroyableUnit
         {
             Debug.DrawRay(myPositionGrounded, dir, Color.blue);
             //Debug.DrawRay(weapon.P_FirePosition.position, dir, Color.blue);
-            if(hits[0].collider.tag == "Player")
+            TeamUnit tu = hits[0].collider.GetComponent<TeamUnit>();
+            if(tu)
             {
-                return true;
+                if (tu.Team.IsEnemy(this.team))
+                {
+                    return true;
+                }
             }
         }
 
@@ -268,7 +257,7 @@ public class EnemyBehaviour : DestroyableUnit
             if (weapon.CanShoot())
             {
                 transform.LookAt(nearestEnemy.position);
-                Vector3 shootDir = nearestEnemy.position - weapon.P_FirePosition.position;
+                Vector3 shootDir = nearestEnemy.position - weapon.P_FireTransform.position;
                 weapon.Shoot(shootDir);
             }
         }
@@ -288,13 +277,16 @@ public class EnemyBehaviour : DestroyableUnit
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackRange);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(removedPos, 0.5f);
         if (path.Count < 1) return;
         for (int i = 0; i < path.Count; i++)
         {
                     Gizmos.color = Color.blue;
                     Vector3 uppedPosition = path[i].position;
                     uppedPosition.y += 3; 
-                    Gizmos.DrawWireCube(path[i].position, new Vector3(1, 1, 1));
+                    Gizmos.DrawWireSphere(path[i].position, 0.5f);
         }
     }
 

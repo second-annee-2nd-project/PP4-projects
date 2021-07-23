@@ -140,6 +140,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponStats: {fileID: 11400000, guid: 7673a79204d99874c83d0f672fe68cc5, type: 2}
-  firePosition: {fileID: 5889960711493920625}
+  fireTransform: {fileID: 5889960711493920625}
   bulletPrefab: {fileID: 6853525456481171506, guid: dcd37c00f139e0c408c0bd061c6cb6da, type: 3}
-  bulletsPool: {fileID: 0}

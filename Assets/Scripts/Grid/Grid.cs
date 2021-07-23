@@ -46,12 +46,17 @@ public class Grid : MonoBehaviour
                 float newPosX = i * gridSizeWidth - positionOffset.x;
                 float newPosZ = j * gridSizeLength - positionOffset.z;
                 Vector3 position = centerPosition + new Vector3(newPosX, 0, newPosZ);
-                float radius = Mathf.Sqrt(gridSizeWidth * gridSizeWidth + gridSizeLength * gridSizeLength);
+                // Diamètre du cercle circonscrit
+                //float diameter = Mathf.Sqrt(gridSizeWidth * gridSizeWidth + gridSizeLength * gridSizeLength);
+                //Diamètre du cercle inscrit
+                float diameter = gridSizeWidth;
                 bool isWalkable = true;
                 bool isTurretable = true;
 
                 Collider[] hitColliders = new Collider[10];
-                int size = Physics.OverlapSphereNonAlloc(position, radius / 2f - 0.3f, hitColliders, unwalkableMask.value);
+                
+                // On enlève 0.1 pour ne pas toucher les bords
+                    int size = Physics.OverlapSphereNonAlloc(position, (diameter - 0.1f)/2f, hitColliders, unwalkableMask.value);
 
                 if (size > 0)
                 {
@@ -61,70 +66,9 @@ public class Grid : MonoBehaviour
 
                 Vector3 newInternalPosition = new Vector3(Mathf.Abs(position.x), Mathf.Abs(position.y), Mathf.Abs(position.z));
                 Vector3 internalPosition = new Vector3(i, 0, j);
-                nodes[i, j] = new Node(position, internalPosition, radius / 2f, isWalkable, isTurretable);
+                nodes[i, j] = new Node(position, internalPosition, diameter/2f, isWalkable, isTurretable);
             }
         }
-    }
-    
-    public Node GetNode(Vector3 pos)
-    {
-        float totalWidth = gridWidth / gridSizeWidth;
-        float totalLength = gridLength / gridSizeLength;
-        int realI = 0;
-        int realJ = 0;
-        for (int i = 0; i < gridWidth; i++)
-        {
-            realJ = 0;
-            for (int j = 0; j < gridLength; j++)
-            {
-                //
-                Vector3 nodePos = nodes[realI, realJ].position;
-                if (pos.x >= nodePos.x  && pos.x <= nodePos.x + gridSizeWidth && pos.z >= nodePos.z && pos.z <= nodePos.z + gridSizeLength)
-                {
-                    return nodes[realI, realJ];
-                }
-
-                realJ++;
-            }
-
-            realI++;
-        }
-
-        return nodes[0, 0];
-    }
-    
-    public Node TestWorldToScreenPoint(Vector3 _position)
-    {
-        int x = 0;
-        int z = 0;
-        float distance = 10000000000f;
-
-        //return GetNode(_position);
-        
-        for (int i = 0; i < nodes.GetLength(0); i++)
-        {
-            for (int j = 0; j < nodes.GetLength(1); j++)
-            {
-                Vector2 a = new Vector3(Camera.main.WorldToScreenPoint(_position).x,0f ,Camera.main.WorldToScreenPoint(_position).z);
-                Vector2 b = new Vector3(Camera.main.WorldToScreenPoint(nodes[i, j].position).x,0f ,Camera.main.WorldToScreenPoint(nodes[i, j].position).z);
-                
-                float d = Vector3.Distance(a, b);
-                if (d < distance)
-                {
-                  //  Debug.Log("Smallest distance is now : "+d +" from "+distance);
-                    distance = d;
-                    x = i;
-                    z = j;
-                 //   Debug.Log("Found smaller distance on "+x+", "+z+"]");
-                    
-                }
-            }
-        }
-
-        Debug.Log("Position de l'objet sélectionné : " + _position);
-        Debug.Log("Position de la node : " + nodes[x, z].position);
-        Debug.Log("Coordonnées : ["+x+", "+z+"]");
-        return nodes[x, z];
     }
     
     public Node GetNodeWithPosition(Vector3 _position)
@@ -138,7 +82,7 @@ public class Grid : MonoBehaviour
             for (int j = 0; j < nodes.GetLength(1); j++)
             {
                 float d = Vector3.Distance(_position, nodes[i, j].position);
-                if (d < distance)
+                if (d < distance && nodes[i, j].isWalkable)
                 {
                     distance = d;
                     x = i;
@@ -152,6 +96,7 @@ public class Grid : MonoBehaviour
     
     void OnDrawGizmos()
     {
+        float d = gridSizeWidth;
         for (int i = 0; i < gridWidth; i++)
         {
             for (int j = 0; j < gridLength; j++)
@@ -159,8 +104,8 @@ public class Grid : MonoBehaviour
                 if (nodes!= null)
                 {
                     Gizmos.color = nodes[i, j].isWalkable ? Color.green : Color.red;
-
-                    Gizmos.DrawWireCube(nodes[i, j].position, new Vector3(gridSizeWidth, gridSizeHeight, gridSizeLength));
+                    Gizmos.DrawWireSphere(nodes[i, j].position, gridSizeWidth/2f);
+                    //Gizmos.DrawWireCube(nodes[i, j].position, new Vector3(gridSizeWidth, gridSizeHeight, gridSizeLength));
                 }
             }
         }
