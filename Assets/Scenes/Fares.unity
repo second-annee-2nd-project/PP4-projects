@@ -523,7 +523,7 @@ MonoBehaviour:
         m_MethodName: BuyWeapon
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5889960712774308738, guid: 57eb59e6cb04a544e889875019fc0386, type: 3}
+          m_ObjectArgument: {fileID: 2186136081076314979, guid: 04a532c62a4bb224787004fccbd8ad18, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -730,7 +730,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Prix : 1
+  m_Text: 'Prix : 10
 
 '
 --- !u!222 &492822532
@@ -1669,9 +1669,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Pistol
-
-'
+  m_Text: Shotgun
 --- !u!222 &1536699498
 CanvasRenderer:
   m_ObjectHideFlags: 0
