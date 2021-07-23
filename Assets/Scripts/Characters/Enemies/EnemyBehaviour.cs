@@ -175,26 +175,53 @@ public class EnemyBehaviour : DestroyableUnit
         Debug.Log(name+" a fini une séquence Move");
     }
 
+    
+    // Beaucoup de RaycastAll
     private bool IsFirstColliderEnemy(Vector3 dir)
     {
-        RaycastHit[] hits;
-        Vector3 myPositionGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
-        hits = Physics.RaycastAll(myPositionGrounded, dir, attackRange);
+        RaycastHit[][] hitsArray;
+        hitsArray = new RaycastHit[3][];
+        
+        
+        float radius = transform.GetComponent<Collider>().bounds.size.x;
+        
+        Vector3 myPositionCenteredGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
+        Vector3 myPositionLeftGrounded = new Vector3(transform.position.x - radius, groundY, transform.position.z);
+        Vector3 myPositionRightGrounded = new Vector3(transform.position.x + radius, groundY, transform.position.z);
+        hitsArray[0] = Physics.RaycastAll(myPositionCenteredGrounded, dir, attackRange);
+        hitsArray[1] = Physics.RaycastAll(myPositionLeftGrounded, dir, attackRange);
+        hitsArray[2] = Physics.RaycastAll(myPositionRightGrounded, dir, attackRange);
+        
+        Debug.DrawRay(myPositionCenteredGrounded, dir, Color.blue);
+        Debug.DrawRay(myPositionLeftGrounded, dir, Color.blue);
+        Debug.DrawRay(myPositionRightGrounded, dir, Color.blue);
         //RaycastHit[] hits = Physics.RaycastAll(weapon.P_FirePosition.position, dir, attackRange);
-        if (hits.Length > 0)
+        
+        
+        //hitsArray[i][0] = premier hit de chaque hitsArray
+        
+        bool firstCollidedIsEnemy = false;
+        int numberOfHits = 0;
+        for (int i = 0; i < hitsArray.Length; i++)
         {
-            Debug.DrawRay(myPositionGrounded, dir, Color.blue);
-            //Debug.DrawRay(weapon.P_FirePosition.position, dir, Color.blue);
-            TeamUnit tu = hits[0].collider.GetComponent<TeamUnit>();
-            if(tu)
+            if (hitsArray[i].Length > 0)
             {
-                if (tu.Team.IsEnemy(this.team))
+                TeamUnit tu = hitsArray[i][0].collider.GetComponent<TeamUnit>();
+                if(tu)
                 {
-                    return true;
+                    if (tu.Team.IsEnemy(this.team))
+                    {
+                        numberOfHits++;
+                    }
                 }
             }
         }
 
+        if (numberOfHits == hitsArray.Length)
+        {
+            return true;
+        }
+        
         return false;
     }
 
