@@ -113,13 +113,8 @@ MonoBehaviour:
   team: 0
   bHealthPoints: 20
   ID: 0
-  speed: 3
-  attackDamage: 5
-  detectionRange: 50
-  attackRange: 1.5
-  attackSpeed: 1
-  rotationSpeed: 3
   weapon: {fileID: 0}
+  enemyStats: {fileID: 11400000, guid: 462308a46d30f2f4d806079bc3b823d7, type: 2}
   amountToLoot: 2
   loot: {fileID: 4948436641781267108, guid: a924d7c7346bafc4292c290c307c9f02, type: 3}
 --- !u!54 &4556598745569951214

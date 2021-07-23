@@ -19,4 +19,7 @@ public class SO_Enemy : SO_Character
 
     [SerializeField] private float detectionRange;
     public float DetectionRange => detectionRange;
+    
+    [SerializeField] private float rotationSpeed;
+    public float  RotationSpeed =>  rotationSpeed;
 }

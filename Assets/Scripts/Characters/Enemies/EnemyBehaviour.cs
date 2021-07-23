@@ -10,15 +10,18 @@ public class EnemyBehaviour : DestroyableUnit
     private static int id = 1;
     public int ID;
     private bool turretDetected;
-    [SerializeField] protected float speed;
-    [SerializeField] private float attackDamage;
-    [SerializeField] protected  float detectionRange;
-    [SerializeField] protected  float attackRange;
-    [SerializeField] protected float attackSpeed;
-    [SerializeField] protected float rotationSpeed;
+    protected float speed;
+    private float attackDamage;
+    protected  float detectionRange;
+     protected  float attackRange;
+    protected float attackSpeed; 
+    protected float rotationSpeed;
     protected float nextAttack;
     [SerializeField] protected Weapon weapon;
+    
+    [SerializeField] private SO_Enemy enemyStats;
 
+    public SO_Enemy EnemyStats => enemyStats;
     [Header("Object prefab dropped at death")] [SerializeField]
     protected int amountToLoot;
     [SerializeField]
@@ -90,6 +93,12 @@ public class EnemyBehaviour : DestroyableUnit
 
     public void Init()
     {
+        speed = enemyStats.Speed;
+        attackDamage = enemyStats.AttackDamage;
+        detectionRange = enemyStats.DetectionRange;
+        attackRange = enemyStats.AttackRange;
+        attackSpeed = enemyStats.AttackSpeed; 
+        rotationSpeed = enemyStats.RotationSpeed;
         GetNearestEnemy();
         path = new List<Node>();
         pathRequestManager = FindObjectOfType<PathRequestManager>();

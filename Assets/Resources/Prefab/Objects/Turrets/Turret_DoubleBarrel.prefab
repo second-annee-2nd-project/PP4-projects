@@ -117,7 +117,7 @@ MonoBehaviour:
   weapons:
   - {fileID: 8138301086874426888}
   - {fileID: 5363147808351336829}
-  soTurret: {fileID: 11400000, guid: 0ee366b39f11e114794034aec53f207e, type: 2}
+  soTurret: {fileID: 11400000, guid: f3f2df20da9ec6d4a8b03e8f9e03a759, type: 2}
 --- !u!54 &3308000736593172158
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996b4528f2967aa4484dba1cb173cdaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponStats: {fileID: 11400000, guid: 29c52d07d0afcb044a45db09443120bb, type: 2}
+  weaponStats: {fileID: 11400000, guid: 52b04c4ba4347334a86de8212f44c46c, type: 2}
   fireTransform: {fileID: 5006055638126882345}
   bulletPrefab: {fileID: 7497547957538424816, guid: 4d8d5547bfb105843b7600b15e9b8501, type: 3}
 --- !u!1 &5138892601077492542
@@ -385,7 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996b4528f2967aa4484dba1cb173cdaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponStats: {fileID: 11400000, guid: 29c52d07d0afcb044a45db09443120bb, type: 2}
+  weaponStats: {fileID: 11400000, guid: 52b04c4ba4347334a86de8212f44c46c, type: 2}
   fireTransform: {fileID: 5138892601120268888}
   bulletPrefab: {fileID: 7497547957538424816, guid: 4d8d5547bfb105843b7600b15e9b8501, type: 3}
 --- !u!1 &5138892601120268889

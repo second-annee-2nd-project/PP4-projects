@@ -193,13 +193,21 @@ public class PathRequestManager : MonoBehaviour
     public List<Node> RetracePath(Dictionary<Node, Node> cf, Node f)
     {
         List<Node> newPath = new List<Node>();
+        if (cf.Count == 1)
+        {
+            newPath.Add(cf.First().Key);
+        }
         if (cf.ContainsKey(targetNode))
         {
-            newPath.Add(targetNode);
+            //newPath.Add(targetNode);
             Node nodeToTake = cf[targetNode];
             newPath.Add(nodeToTake);
             while (nodeToTake != f)
             {
+                if (nodeToTake == null)
+                { 
+                    break;
+                }
                 nodeToTake = cf[nodeToTake];
 
                 newPath.Add(nodeToTake);
