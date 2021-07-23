@@ -144,8 +144,8 @@ MonoBehaviour:
   team: 1
   bHealthPoints: 40
   partToRotate: {fileID: 8595243058685341890}
-  weapon: {fileID: 8985155240517371903}
-  firePoint: {fileID: 8595243058252061291}
+  weapons:
+  - {fileID: 8985155240517371903}
   soTurret: {fileID: 11400000, guid: 0ee366b39f11e114794034aec53f207e, type: 2}
 --- !u!114 &8985155240517371903
 MonoBehaviour:
@@ -160,9 +160,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponStats: {fileID: 11400000, guid: 29c52d07d0afcb044a45db09443120bb, type: 2}
-  firePosition: {fileID: 8595243058252061291}
+  fireTransform: {fileID: 8595243058252061291}
   bulletPrefab: {fileID: 7497547957538424816, guid: 4d8d5547bfb105843b7600b15e9b8501, type: 3}
-  bulletsPool: {fileID: 0}
 --- !u!54 &2294870112084730620
 Rigidbody:
   m_ObjectHideFlags: 0
