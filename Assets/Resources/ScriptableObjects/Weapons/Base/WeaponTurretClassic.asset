@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: WeaponTurretClassic
   m_EditorClassIdentifier: 
   name: classicTurret
-  range: 10
-  damage: 2
-  fireRate: 0.6
-  maxAmmo: 20
+  range: 8
+  damage: 40
+  fireRate: 3
+  maxAmmo: 1000000
   numberOfBulletsPerShot: 1
   diffusionAngle: 0
   price: 2
