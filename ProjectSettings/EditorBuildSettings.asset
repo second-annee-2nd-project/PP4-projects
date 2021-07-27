@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Scene Seb/Test map Seb/Seb Map 3.unity
     guid: 077f83122e767db43adc324c7cca16e3
+  - enabled: 1
+    path: Assets/Scenes/scene nico test/map 15 test.unity
+    guid: 04f596313799f7241a892b963240ed2f
   m_configObjects: {}
