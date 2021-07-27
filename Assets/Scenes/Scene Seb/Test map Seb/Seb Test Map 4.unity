@@ -920,7 +920,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-430602
+  m_Name: pb_Mesh28324
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2250,7 +2250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a0e80317025ff4f9397be003ba52d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectSize: {x: 1, y: 1, z: -8}
+  objectSize: {x: 1, y: 1, z: -12}
 --- !u!43 &794554778
 Mesh:
   m_ObjectHideFlags: 0
@@ -6960,25 +6960,41 @@ MonoBehaviour:
     - spawnerTr: {fileID: 758590707}
       enemyGroups:
       - typeOfEnemyToSpawn: 0
-        enemyNumberToSpawn: 3
-        timerBetweenSpawns: 1.25
-        timerBeforeFirstSpawn: 0
-    - spawnerTr: {fileID: 32874507}
-      enemyGroups:
+        enemyNumberToSpawn: 2
+        timerBetweenSpawns: 6
+        timerBeforeFirstSpawn: 0.75
       - typeOfEnemyToSpawn: 0
         enemyNumberToSpawn: 2
-        timerBetweenSpawns: 0.1
-        timerBeforeFirstSpawn: 3.5
-    - spawnerTr: {fileID: 1397498118}
+        timerBetweenSpawns: 0.25
+        timerBeforeFirstSpawn: 4
+    - spawnerTr: {fileID: 32874507}
       enemyGroups:
       - typeOfEnemyToSpawn: 0
         enemyNumberToSpawn: 1
         timerBetweenSpawns: 0
-        timerBeforeFirstSpawn: 7.25
-    - spawnerTr: {fileID: 2119876807}
+        timerBeforeFirstSpawn: 0
+      - typeOfEnemyToSpawn: 1
+        enemyNumberToSpawn: 2
+        timerBetweenSpawns: 0.5
+        timerBeforeFirstSpawn: 4.75
+    - spawnerTr: {fileID: 1397498118}
       enemyGroups:
       - typeOfEnemyToSpawn: 0
         enemyNumberToSpawn: 2
+        timerBetweenSpawns: 0
+        timerBeforeFirstSpawn: 5
+      - typeOfEnemyToSpawn: 0
+        enemyNumberToSpawn: 1
+        timerBetweenSpawns: 5
+        timerBeforeFirstSpawn: 1
+    - spawnerTr: {fileID: 2119876807}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 0
+        enemyNumberToSpawn: 3
+        timerBetweenSpawns: 0.15
+        timerBeforeFirstSpawn: 2.25
+      - typeOfEnemyToSpawn: 1
+        enemyNumberToSpawn: 1
         timerBetweenSpawns: 0.5
         timerBeforeFirstSpawn: 8
   waveCount_Text: {fileID: 5775752290763266432}
