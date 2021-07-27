@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PathRequest
 {
-    public EnemyBehaviour requestedFrom;
+    public BaseEnemyBehaviour requestedFrom;
     public Transform target;
     public List<Node> path;
 
-    public PathRequest(EnemyBehaviour enemy, Transform target)
+    public PathRequest(BaseEnemyBehaviour enemy, Transform target)
     {
         target = target;
         requestedFrom = enemy;

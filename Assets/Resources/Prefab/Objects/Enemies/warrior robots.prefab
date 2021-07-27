@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4631529547422645357}
   - component: {fileID: 3955079880172065336}
   - component: {fileID: 3587342123264521478}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: warrior robots
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -112,16 +112,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 0
   bHealthPoints: 40
-  ID: 0
-  speed: 3
-  attackDamage: 5
-  detectionRange: 50
-  attackRange: 1.5
-  attackSpeed: 1
-  rotationSpeed: 3
-  weapon: {fileID: 0}
+  enemyStats: {fileID: 0}
   amountToLoot: 4
   loot: {fileID: 4948436641781267108, guid: a924d7c7346bafc4292c290c307c9f02, type: 3}
+  weapon: {fileID: 0}
 --- !u!54 &3955079880172065336
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -149,5 +143,5 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}

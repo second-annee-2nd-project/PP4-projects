@@ -14,10 +14,11 @@ public class PlayerBehaviour : DestroyableUnit
    [SerializeField] private Weapon weapon;
 
    private GameObject weaponGO;
-
-   [SerializeField] private int dropAmount;
    [SerializeField] private float gazeHoldTimer = 2f;
    [SerializeField] float animationBarSpeed;
+
+   [SerializeField] private float maxInvincibilityTimer;
+   private float invincibilityTimer = 0;
   
 
    private float lastBulletShot;
@@ -40,6 +41,11 @@ public class PlayerBehaviour : DestroyableUnit
    void Update()
    {
       healthPoints = Mathf.Clamp(healthPoints, 0, bHealthPoints);
+      if (invincibilityTimer > 0)
+      {
+         invincibilityTimer -= Time.deltaTime;
+         // Changer de couleur ici j'imagine
+      }
       UpdateLifeBar();
       if (GameManager.Instance.EGameState != eGameState.Wave)
       {
@@ -133,6 +139,15 @@ public class PlayerBehaviour : DestroyableUnit
       weapon = null;
    }
 
+   public override void GetDamaged(float damage)
+   {
+      if (invincibilityTimer <= 0)
+      {
+         base.GetDamaged(damage);
+         invincibilityTimer = maxInvincibilityTimer;
+      }
+   }
+
    private void UpdateLifeBar()
    {
       float actualHealth = healthPoints / bHealthPoints;
@@ -165,6 +180,12 @@ public class PlayerBehaviour : DestroyableUnit
 
    public void GainHealth()
    {
-      healthPoints += bHealthPoints / 10;
+      if (ShopManager.Instance.Coins >= ShopManager.Instance.HealPrice)
+      {
+         healthPoints += bHealthPoints / 10;
+         ShopManager.Instance.UpdateCoins(-ShopManager.Instance.HealPrice);
+
+      }
+      
    }
 }

@@ -48,16 +48,14 @@ public class Turret : DestroyableUnit
 
         foreach (var weapon in weapons)
         {
-            Debug.DrawRay(weapon.P_FireTransform.position, dir, Color.blue);
-            if (weapon.CanShoot() && Vector3.Distance(nearestTarget.position, transform.position) < weapon.P_BRange)
+            Debug.DrawRay(transform.position, dir, Color.blue);
+            if (weapon.CanShoot() && Vector3.Distance(nearestTarget.position, transform.position) <= weapon.P_BRange)
             {
 
                 if (IsFirstColliderEnemy(dir,weapon.P_BRange))
                 {
                     Shoot(dir,nearestTarget,weapon);
                 }
-                
-
             }
         }
        
@@ -67,14 +65,14 @@ public class Turret : DestroyableUnit
     protected bool IsFirstColliderEnemy(Vector3 dir,float attackRange)
     {
         RaycastHit[] hits;
-        Vector3 myPositionGrounded = new Vector3(transform.position.x, GameManager.Instance.ActualGrid.CenterPosition.y ,transform.position.z);
+        Vector3 myPositionGrounded = new Vector3(transform.position.x, GameManager.Instance.ActualGrid.CenterPosition.y, transform.position.z);
         hits = Physics.RaycastAll(myPositionGrounded, dir, attackRange);
         //RaycastHit[] hits = Physics.RaycastAll(weapon.P_FirePosition.position, dir, attackRange);
-        if (hits.Length > 0)
+
+        RaycastHit hit;
+        if (Physics.Raycast(myPositionGrounded, dir, out hit, attackRange))
         {
-            Debug.DrawRay(myPositionGrounded, dir, Color.blue);
-            //Debug.DrawRay(weapon.P_FirePosition.position, dir, Color.blue);
-            TeamUnit tu = hits[0].collider.GetComponent<TeamUnit>();
+            TeamUnit tu = hit.collider.GetComponent<TeamUnit>();
             if(tu)
             {
                 if (tu.Team.IsEnemy(this.team))

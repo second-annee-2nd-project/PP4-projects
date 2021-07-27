@@ -5,12 +5,12 @@ using UnityEngine;
 public class Node
 {
     public Vector3 position;
-    public Vector3 internalPosition;
+    public Vector3Int internalPosition;
     public float nodeRadius;
     public bool isWalkable;
     public bool isTurretable;
     
-    public Node(Vector3 position, Vector3 internalPosition, float nodeRadius, bool isWalkable, bool isTurretable)
+    public Node(Vector3 position, Vector3Int internalPosition, float nodeRadius, bool isWalkable, bool isTurretable)
     {
         this.position = position;
         this.internalPosition = internalPosition;

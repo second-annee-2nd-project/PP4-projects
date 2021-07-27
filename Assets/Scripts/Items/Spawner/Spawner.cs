@@ -75,9 +75,9 @@ public class Spawner : MonoBehaviour
         int y = (int) objectSize.y;
         int z = (int) objectSize.z;
 
-        float rx = transform.position.x + Random.Range(0f, x/2f);
+        float rx = transform.position.x - x/2f + Random.Range(0f, x);
         float ry = transform.position.y;
-        float rz = transform.position.z + Random.Range(0f, z/2f);
+        float rz = transform.position.z - z/2f + Random.Range(0f, z);
         
         GameObject enemy = Instantiate(prefab,
             new Vector3(rx, ry, rz), Quaternion.identity);

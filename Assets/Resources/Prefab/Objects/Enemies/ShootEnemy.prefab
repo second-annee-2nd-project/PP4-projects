@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7555066002779299187}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 1732887759072661462}
   - component: {fileID: 6122066194438175831}
   - component: {fileID: -4035429581945930926}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: ShootEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -145,11 +145,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 2
   bHealthPoints: 40
-  ID: 0
-  weapon: {fileID: 3390009989817607011}
   enemyStats: {fileID: 11400000, guid: 86533b5981736dd4d9f697495525ffb1, type: 2}
   amountToLoot: 4
   loot: {fileID: 4948436641781267108, guid: a924d7c7346bafc4292c290c307c9f02, type: 3}
+  weapon: {fileID: 3390009989817607011}
 --- !u!54 &6122066194438175831
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -177,7 +176,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8978021418422761935
 GameObject:
@@ -190,7 +189,7 @@ GameObject:
   - component: {fileID: 623806538017686287}
   - component: {fileID: 9047004442897270116}
   - component: {fileID: 6701644927394390553}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -65,7 +65,7 @@ public class Grid : MonoBehaviour
                 }
 
                 Vector3 newInternalPosition = new Vector3(Mathf.Abs(position.x), Mathf.Abs(position.y), Mathf.Abs(position.z));
-                Vector3 internalPosition = new Vector3(i, 0, j);
+                Vector3Int internalPosition = new Vector3Int(i, 0, j);
                 nodes[i, j] = new Node(position, internalPosition, diameter/2f, isWalkable, isTurretable);
             }
         }

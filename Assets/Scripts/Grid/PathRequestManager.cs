@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PathRequestManager : MonoBehaviour
 {
-    private Dictionary<EnemyBehaviour, PathRequest> pathRequests;
+    private Dictionary<BaseEnemyBehaviour, PathRequest> pathRequests;
     
     private Node current;
     private Node startingNode;
@@ -18,12 +18,12 @@ public class PathRequestManager : MonoBehaviour
 
     public void Init()
     {
-        pathRequests = new Dictionary<EnemyBehaviour, PathRequest>();
+        pathRequests = new Dictionary<BaseEnemyBehaviour, PathRequest>();
         nodes = FindObjectOfType<Grid>().Nodes;
         j = 0;
     }
 
-    public void AddPath(PathRequest newPathRequest, EnemyBehaviour enemy)
+    public void AddPath(PathRequest newPathRequest, BaseEnemyBehaviour enemy)
     {
         if (pathRequests.ContainsKey(enemy))
         {
@@ -74,7 +74,7 @@ public class PathRequestManager : MonoBehaviour
         
         targetNode = pathRequests.First().Value.requestedFrom.TargetingNode;
         startingNode = pathRequests.First().Value.requestedFrom.StartingNode;
-        EnemyBehaviour eb = pathRequests.First().Value.requestedFrom;
+        BaseEnemyBehaviour eb = pathRequests.First().Value.requestedFrom;
         
         boundaries.Add(new PriorityQueue(startingNode, 0));
         current = boundaries[0].node;

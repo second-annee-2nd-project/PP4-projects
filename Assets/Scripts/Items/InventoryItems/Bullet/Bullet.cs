@@ -161,6 +161,10 @@ public class Bullet : TeamUnit
             {
                 du.GetDamaged(damage);
             }
+            else
+            {
+                return;
+            }
         }
         
         DestroyBullet();

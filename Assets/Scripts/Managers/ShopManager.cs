@@ -26,9 +26,10 @@ public class ShopManager : MonoBehaviour
 
     private Coroutine cor;
     private Coroutine placingCor;
-    
-    
 
+    [SerializeField] private int healPrice;
+    public int HealPrice => healPrice;
+    
     [SerializeField] private int bCoins;
     [SerializeField] private float bShopTimer;
     private float shopTimer;

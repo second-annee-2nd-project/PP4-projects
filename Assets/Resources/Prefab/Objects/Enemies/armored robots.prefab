@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 875625219973434854}
   - component: {fileID: 8828150211492357043}
   - component: {fileID: 929796784000826061}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: armored robots
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -112,16 +112,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 0
   bHealthPoints: 80
-  ID: 0
-  speed: 1.5
-  attackDamage: 10
-  detectionRange: 50
-  attackRange: 1.5
-  attackSpeed: 1
-  rotationSpeed: 3
-  weapon: {fileID: 0}
+  enemyStats: {fileID: 0}
   amountToLoot: 6
   loot: {fileID: 4948436641781267108, guid: a924d7c7346bafc4292c290c307c9f02, type: 3}
+  weapon: {fileID: 0}
 --- !u!54 &8828150211492357043
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -149,5 +143,5 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}

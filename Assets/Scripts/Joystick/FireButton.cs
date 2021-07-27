@@ -11,7 +11,8 @@ public class FireButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     public bool FirePressed => firePressed;
     public void OnPointerDown(PointerEventData data)
     {
-        firePressed = true;
+        if(GameManager.Instance.EGameState==eGameState.Wave)
+            firePressed = true;
     }
  
     public void OnPointerUp(PointerEventData data)

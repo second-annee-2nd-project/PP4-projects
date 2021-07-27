@@ -11,7 +11,8 @@ public enum eEnemyType
     assault,
     armored,
     speed,
-    warrior
+    warrior,
+    explosive
 }
 
 public class EnemiesManager : UnitManager
