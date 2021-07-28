@@ -20,3 +20,5 @@ MonoBehaviour:
   numberOfBulletsPerShot: 1
   diffusionAngle: 0
   price: 2
+  weaponSound: {fileID: 0}
+  muzzleFlash: {fileID: 0}
