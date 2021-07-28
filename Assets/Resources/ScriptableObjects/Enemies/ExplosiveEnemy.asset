@@ -16,7 +16,7 @@ MonoBehaviour:
   healthPoints: 5
   speed: 2
   attackDamage: 20
-  attackRange: 1
+  attackRange: 2
   detectionRange: 7
   rotationSpeed: 1
   explosionRadius: 2
