@@ -9,13 +9,14 @@ public class DestroyableUnit : TeamUnit
     [SerializeField] protected float bHealthPoints;
     
     protected float healthPoints;
-
+    
     protected virtual void Start()
     {
         healthPoints = bHealthPoints;
 
-        transform.position = new Vector3(transform.position.x, GameManager.Instance.ActualGrid.CenterPosition.y,
+        transform.position = new Vector3(transform.position.x, GameManager.Instance.ActualGrid.CenterPosition.y, 
             transform.position.z);
+        GameManager.Instance.P_SoundManager.AudioSource = FindObjectOfType<AudioSource>();
     }
     public virtual void GetDamaged(float damage)
     {

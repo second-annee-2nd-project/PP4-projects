@@ -29,4 +29,10 @@ public class SO_Weapon : ScriptableObject
 
     [SerializeField] private int price;
     public int Price => price;
+
+    [SerializeField] private AudioClip weaponSound;
+    public AudioClip WeaponSound => weaponSound;
+
+    [SerializeField] private GameObject muzzleFlash;
+    public GameObject MuzzleFlash => muzzleFlash;
 }

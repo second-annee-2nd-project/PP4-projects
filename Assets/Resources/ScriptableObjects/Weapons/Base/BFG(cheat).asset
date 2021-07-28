@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ecf821100641b341818f6dc47098c5a, type: 3}
-  m_Name: Weapon
+  m_Name: BFG(cheat)
   m_EditorClassIdentifier: 
-  name: 
-  range: 0
-  damage: 0
-  fireRate: 0
-  maxAmmo: 0
-  numberOfBulletsPerShot: 0
-  diffusionAngle: 0
-  price: 0
+  name: BFG(cheat)
+  range: 20
+  damage: 100
+  fireRate: 0.25
+  maxAmmo: 2147483647
+  numberOfBulletsPerShot: 20
+  diffusionAngle: 30
+  price: 1
+  weaponSound: {fileID: 0}
+  muzzleFlash: {fileID: 0}
