@@ -15,4 +15,10 @@ public abstract class SO_BaseEnemy : SO_Character
     
     [SerializeField] private float rotationSpeed;
     public float  RotationSpeed =>  rotationSpeed;
+    
+    [SerializeField] private AudioClip deathSound;
+    public AudioClip DeathSound => deathSound;
+    
+    [SerializeField] private GameObject deathEffectt;
+    public GameObject DeathEffectt =>  deathEffectt;
 }

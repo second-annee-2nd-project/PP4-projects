@@ -169,6 +169,9 @@ public class Weapon : MonoBehaviour
            
            newBulletScript.Shoot(newDir);
            ammo--;
+           GameManager.Instance.P_SoundManager.AudioSource.PlayOneShot(weaponStats.WeaponSound);
+          Destroy(Instantiate(weaponStats.MuzzleFlash,fireTransform.position, Quaternion.identity),0.1f);
+
         }
         nextFire = fireRate;
     }
@@ -192,40 +195,6 @@ public class Weapon : MonoBehaviour
             newBulletScript.Damage = bDamage;
             newBulletScript.Target = target;
             newBulletScript.Shoot(direction);
-            ammo--;
-        }
-
-        nextFire = fireRate;
-    }
-    public virtual  void ShootDouble(Vector3 direction, Transform target,Transform firePos)
-    {
-        if (ammo == 0)
-        {
-            Reload();
-            return;
-        }
-        
-        for (int i = 0; i < numberOfBullets; i++)
-        {
-            GameObject newBullet = bulletsPool.GetNextBulletInstance(bulletPrefabScript.BulletType);
-            newBullet.SetActive(true);
-            Bullet newBulletScript = newBullet.GetComponent<Bullet>();
-            newBullet.transform.position = fireTransform.position;
-            newBulletScript.Team = Team;
-            newBulletScript.MaxRange = bRange;
-            newBulletScript.Damage = bDamage;
-            newBulletScript.Target = target;
-            newBulletScript.Shoot(direction);
-            ammo--;
-            GameObject anotherNewBullet = bulletsPool.GetNextBulletInstance(bulletPrefabScript.BulletType);
-            anotherNewBullet.SetActive(true);
-            Bullet anotherNwBulletScript =anotherNewBullet.GetComponent<Bullet>();
-            anotherNwBulletScript.transform.position = firePos.position;
-            anotherNwBulletScript.Team = Team;
-            anotherNwBulletScript.MaxRange = bRange;
-            anotherNwBulletScript.Damage = bDamage;
-            anotherNwBulletScript.Target = target;
-            anotherNwBulletScript.Shoot(direction);
             ammo--;
         }
 

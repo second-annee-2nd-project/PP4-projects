@@ -10,15 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe418fb06e88fd7458afcb95b849981d, type: 3}
-  m_Name: ClassicEnemy
+  m_Name: WarriorEnemy
   m_EditorClassIdentifier: 
-  name: ClassicEnemy
-  healthPoints: 6
+  name: WarriorEnemy
+  healthPoints: 40
   speed: 2.5
-  attackDamage: 2
+  attackDamage: 5
   attackRange: 2
   detectionRange: 7
   rotationSpeed: 1
-  deathSound: {fileID: 8300000, guid: 5ebf2d117b9a8c84c8c25e9bfb71f0d5, type: 3}
-  deathEffectt: {fileID: 8622043387622166326, guid: d61b89e4c8e5d9b4786c052bad50a99e, type: 3}
   attackSpeed: 1

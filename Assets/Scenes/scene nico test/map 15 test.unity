@@ -1201,6 +1201,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1976061317050673690, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 7567667814818690613, guid: 59ac4197403eeb94eb86c891d7f18c32, type: 3}
     - target: {fileID: 2104417086910431170, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
@@ -1252,6 +1256,12 @@ PrefabInstance:
     - target: {fileID: 2104417087172312011, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 2985641369314813697, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: m_Text
+      value: 'BFG(cheat)
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 4831495319338190157, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
       propertyPath: bShopTimer
@@ -1403,7 +1413,7 @@ PrefabInstance:
       objectReference: {fileID: 799641900}
     - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
       propertyPath: waveDatas.Array.data[0].spawnerDatas.Array.data[2].enemyGroups.Array.data[0].typeOfEnemyToSpawn
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4831495320942468936, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
       propertyPath: waveDatas.Array.data[1].spawnerDatas.Array.data[0].spawnerTr

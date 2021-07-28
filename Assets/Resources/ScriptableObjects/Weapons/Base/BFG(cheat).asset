@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ecf821100641b341818f6dc47098c5a, type: 3}
-  m_Name: BasePistol
+  m_Name: BFG(cheat)
   m_EditorClassIdentifier: 
-  name: Pistol
-  range: 10
-  damage: 5
-  fireRate: 0.5
-  maxAmmo: 999999
-  numberOfBulletsPerShot: 1
-  diffusionAngle: 0
+  name: BFG(cheat)
+  range: 20
+  damage: 100
+  fireRate: 0.25
+  maxAmmo: 2147483647
+  numberOfBulletsPerShot: 20
+  diffusionAngle: 30
   price: 1
-  weaponSound: {fileID: 8300000, guid: 529a99eebd5f52c4f85cd1369012f1e5, type: 3}
-  muzzleFlash: {fileID: 441624651237726128, guid: 713eb188cb301bf46a97e2b8845aadf4, type: 3}
+  weaponSound: {fileID: 0}
+  muzzleFlash: {fileID: 0}

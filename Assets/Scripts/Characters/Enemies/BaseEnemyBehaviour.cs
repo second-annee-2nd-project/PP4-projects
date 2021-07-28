@@ -143,6 +143,8 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         GameObject newLoot = Instantiate(loot, transform.position, Quaternion.identity);
         newLoot.GetComponent<Loot>().AmountToLoot = amountToLoot;
         GameManager.Instance.P_LootManager.AddItemToList(newLoot);
+        GameManager.Instance.P_SoundManager.AudioSource.PlayOneShot(enemyStats.DeathSound);
+        Destroy(Instantiate(enemyStats.DeathEffectt, transform.position, Quaternion.identity), 2);
     }
 
     protected void GetNearestEnemy()

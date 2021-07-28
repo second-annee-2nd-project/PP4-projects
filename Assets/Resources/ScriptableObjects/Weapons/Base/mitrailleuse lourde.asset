@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ecf821100641b341818f6dc47098c5a, type: 3}
-  m_Name: BaseMachineGun
+  m_Name: mitrailleuse lourde
   m_EditorClassIdentifier: 
-  name: Machine Gun
-  range: 10
-  damage: 20
-  fireRate: 0.08
-  maxAmmo: 1000000
-  numberOfBulletsPerShot: 1
-  diffusionAngle: 5
-  price: 2
+  name: 
+  range: 0
+  damage: 0
+  fireRate: 0
+  maxAmmo: 0
+  numberOfBulletsPerShot: 0
+  diffusionAngle: 0
+  price: 0
+  weaponSound: {fileID: 0}
+  muzzleFlash: {fileID: 0}

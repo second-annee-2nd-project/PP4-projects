@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
         private WaveManager waveManager;
         public WaveManager P_WaveManager => waveManager;
 
+        private SoundManager soundManager;
+        public SoundManager P_SoundManager => soundManager;
+
         private UI_Manager uiManager;
         public UI_Manager P_UiManager => uiManager;
         private ShopManager shopManager;
@@ -85,6 +88,7 @@ public class GameManager : MonoBehaviour
         turretManager = FindObjectOfType<TurretManager>();
         waveManager = FindObjectOfType<WaveManager>();
         pathRequestManager = FindObjectOfType<PathRequestManager>();
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     private void Start()
