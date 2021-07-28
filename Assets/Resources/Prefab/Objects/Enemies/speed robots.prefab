@@ -112,8 +112,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 0
   bHealthPoints: 20
-  enemyStats: {fileID: 0}
-  amountToLoot: 2
+  enemyStats: {fileID: 11400000, guid: 145041fa395cd774f9771368bfaae950, type: 2}
+  amountToLoot: 4
   loot: {fileID: 4948436641781267108, guid: a924d7c7346bafc4292c290c307c9f02, type: 3}
   weapon: {fileID: 0}
 --- !u!54 &1690015540975460662
