@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ClassicEnemy
   m_EditorClassIdentifier: 
   name: ClassicEnemy
-  healthPoints: 6
+  healthPoints: 20
   speed: 2.5
   attackDamage: 2
   attackRange: 2

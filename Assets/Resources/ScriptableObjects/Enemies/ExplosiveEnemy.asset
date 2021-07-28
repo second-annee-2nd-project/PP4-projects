@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ExplosiveEnemy
   m_EditorClassIdentifier: 
   name: ExplosiveEnemy
-  healthPoints: 5
+  healthPoints: 20
   speed: 2
   attackDamage: 20
   attackRange: 2

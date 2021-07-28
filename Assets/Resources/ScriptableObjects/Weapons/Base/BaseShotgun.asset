@@ -17,8 +17,8 @@ MonoBehaviour:
   damage: 5
   fireRate: 1
   maxAmmo: 999999
-  numberOfBulletsPerShot: 8
+  numberOfBulletsPerShot: 10
   diffusionAngle: 20
   price: 10
-  weaponSound: {fileID: 8300000, guid: d1f0177bd53d0094d865858cc995d1a3, type: 3}
+  weaponSound: {fileID: 8300000, guid: 218f778b94f678d45bb0a496eced9cf8, type: 3}
   muzzleFlash: {fileID: 441624651237726128, guid: 713eb188cb301bf46a97e2b8845aadf4, type: 3}

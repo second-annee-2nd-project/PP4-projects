@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: ShootEnemy
   m_EditorClassIdentifier: 
   name: ShootEnemy
-  healthPoints: 3
+  healthPoints: 40
   speed: 2
   attackDamage: 5
   attackRange: 5
-  detectionRange: 6
+  detectionRange: 7
   rotationSpeed: 1
   deathSound: {fileID: 8300000, guid: 5ebf2d117b9a8c84c8c25e9bfb71f0d5, type: 3}
   deathEffectt: {fileID: 8622043387622166326, guid: d61b89e4c8e5d9b4786c052bad50a99e, type: 3}
-  attackSpeed: 2
+  attackSpeed: 1

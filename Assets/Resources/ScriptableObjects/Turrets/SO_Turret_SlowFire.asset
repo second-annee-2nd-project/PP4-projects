@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SO_Turret_SlowFire
   m_EditorClassIdentifier: 
   name: SlowFire
-  healthPoints: 1
-  attackSpeed: 2
+  healthPoints: 20
+  attackSpeed: 3
   range: 20
   price: 2
   turnSpeed: 5

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Base mitraillette
   m_EditorClassIdentifier: 
   name: Machine Gun
-  range: 10
-  damage: 20
-  fireRate: 0.08
+  range: 8
+  damage: 5
+  fireRate: 0.2
   maxAmmo: 999999
   numberOfBulletsPerShot: 1
   diffusionAngle: 5
   price: 2
-  weaponSound: {fileID: 8300000, guid: f9b5f0f1ff04c0e4cb2a18dd1fc44a92, type: 3}
+  weaponSound: {fileID: 8300000, guid: 4364f8723627172448fc495de7b91a79, type: 3}
   muzzleFlash: {fileID: 441624651237726128, guid: 713eb188cb301bf46a97e2b8845aadf4, type: 3}
