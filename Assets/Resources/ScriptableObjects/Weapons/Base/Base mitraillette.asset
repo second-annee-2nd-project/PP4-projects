@@ -16,7 +16,7 @@ MonoBehaviour:
   range: 10
   damage: 20
   fireRate: 0.08
-  maxAmmo: 1000000
+  maxAmmo: 999999
   numberOfBulletsPerShot: 1
   diffusionAngle: 5
   price: 2
