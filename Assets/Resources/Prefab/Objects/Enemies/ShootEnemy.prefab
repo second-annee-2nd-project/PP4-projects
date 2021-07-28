@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996b4528f2967aa4484dba1cb173cdaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponStats: {fileID: 11400000, guid: 7673a79204d99874c83d0f672fe68cc5, type: 2}
+  weaponStats: {fileID: 11400000, guid: bd088a5a620af494da5e49b3a2a2ef0d, type: 2}
   fireTransform: {fileID: 7555066002779299187}
   bulletPrefab: {fileID: 2852258047591489820, guid: 3081e5623b21c2d4391cb48b2a49b6e5, type: 3}
 --- !u!114 &1732887759072661462

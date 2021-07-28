@@ -15,7 +15,7 @@ MonoBehaviour:
   name: ShootEnemy
   healthPoints: 3
   speed: 2
-  attackDamage: 1
+  attackDamage: 5
   attackRange: 5
   detectionRange: 6
   rotationSpeed: 1
