@@ -1086,14 +1086,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1642362328}
-    - target: {fileID: 4831495319338190157, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
-      propertyPath: bCoins
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4831495319338190157, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
-      propertyPath: bShopTimer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4831495320848035492, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
       propertyPath: m_Name
       value: Mandatory
