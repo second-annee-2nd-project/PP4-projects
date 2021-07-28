@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 608f7d8a649417f429f2cace477f23bf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,5 +111,5 @@ MonoBehaviour:
   team: 2
   bHealthPoints: 0
   enemyStats: {fileID: 11400000, guid: 61c0eaf19b6640742b209bf8db87e728, type: 2}
-  amountToLoot: 1
+  amountToLoot: 4
   loot: {fileID: 4948436641781267108, guid: a924d7c7346bafc4292c290c307c9f02, type: 3}

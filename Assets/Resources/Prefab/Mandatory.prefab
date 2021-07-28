@@ -2646,8 +2646,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healPrice: 4
-  bCoins: 5
-  bShopTimer: 5
+  bCoins: 20
+  bShopTimer: 10
   UI_ShopSequence: {fileID: 4831495321412214254}
   coins_Text: {fileID: 4831495321303510329}
   headerShopSequence_Text: {fileID: 4831495320388523717}
@@ -3082,10 +3082,14 @@ MonoBehaviour:
   team: 2
   container: {fileID: 4831495321281546684}
   enemyPrefabs:
-    _keys: 0000000001000000
+    _keys: 000000000100000002000000030000000400000005000000
     _values:
     - {fileID: 2620402960462493725, guid: 9bbe424da5037a94ebbb04d523e58687, type: 3}
     - {fileID: 2181964494168382518, guid: 17de1b8b447769042ab5b14229d3b701, type: 3}
+    - {fileID: 7053238626034574912, guid: cde6905f0f503334db396ed6c279b7fa, type: 3}
+    - {fileID: 870853749791990981, guid: e64bde2219a009a4bb9bf77c0d0b6be4, type: 3}
+    - {fileID: 3279329452083058635, guid: 7623a6e2f847d284480cc5cb1bbe7314, type: 3}
+    - {fileID: 1612209544566975667, guid: 6eb192a9928dad14c8d5bf24ed4216d5, type: 3}
 --- !u!1 &4831495320314293054
 GameObject:
   m_ObjectHideFlags: 0
