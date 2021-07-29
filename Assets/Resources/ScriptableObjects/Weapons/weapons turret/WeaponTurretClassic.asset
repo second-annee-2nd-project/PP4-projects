@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ecf821100641b341818f6dc47098c5a, type: 3}
   m_Name: WeaponTurretClassic
   m_EditorClassIdentifier: 
-  name: classicTurret
+  name: sniperTurret
   range: 8
   damage: 40
-  fireRate: 3
+  fireRate: 2.5
   maxAmmo: 1000000
   numberOfBulletsPerShot: 1
   diffusionAngle: 0

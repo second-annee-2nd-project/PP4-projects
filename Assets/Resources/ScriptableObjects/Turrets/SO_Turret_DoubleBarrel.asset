@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SO_Turret_DoubleBarrel
   m_EditorClassIdentifier: 
   name: DoubleBarrel
-  healthPoints: 30
+  healthPoints: 20
   attackSpeed: 1.5
   range: 20
   price: 30
