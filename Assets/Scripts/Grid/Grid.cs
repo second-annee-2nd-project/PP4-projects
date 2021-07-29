@@ -70,6 +70,11 @@ public class Grid : MonoBehaviour
             }
         }
     }
+
+    public void Restart()
+    {
+        Instantiate();
+    }
     
     public Node GetNodeWithPosition(Vector3 _position)
     {

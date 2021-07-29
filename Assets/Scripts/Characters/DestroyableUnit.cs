@@ -12,11 +12,21 @@ public class DestroyableUnit : TeamUnit
     
     protected virtual void Start()
     {
+        Init();
+    }
+
+    public virtual void Init()
+    {
         healthPoints = bHealthPoints;
 
         transform.position = new Vector3(transform.position.x, GameManager.Instance.ActualGrid.CenterPosition.y, 
             transform.position.z);
         GameManager.Instance.P_SoundManager.AudioSource = FindObjectOfType<AudioSource>();
+    }
+
+    public virtual void Restart()
+    {
+        Init();
     }
     public virtual void GetDamaged(float damage)
     {

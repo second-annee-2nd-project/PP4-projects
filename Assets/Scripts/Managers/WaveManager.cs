@@ -41,6 +41,11 @@ public class WaveManager : MonoBehaviour
       enemiesManager = GameManager.Instance.P_EnemiesManager;
    }
 
+   public void Restart()
+   {
+      Init();
+   }
+
    public void StartWaveSequence()
    {
       if(cor == null)

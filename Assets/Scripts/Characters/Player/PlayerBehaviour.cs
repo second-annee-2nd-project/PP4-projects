@@ -7,6 +7,11 @@ using UnityEngine.UI;
 public class PlayerBehaviour : DestroyableUnit
 {
    private Rigidbody rb;
+
+   [Header("Can die & Respawn : ")] 
+   [SerializeField] private bool canDie;
+   [SerializeField] private Transform spawnTransform;
+   [Header("Stats")]
    [SerializeField] private float speed;
    public float Speed => speed;
    private Vector3 movement;
@@ -18,6 +23,7 @@ public class PlayerBehaviour : DestroyableUnit
    [SerializeField] float animationBarSpeed;
 
    [SerializeField] private float maxInvincibilityTimer;
+   private bool frozen = false;
    private float invincibilityTimer = 0;
   
 
@@ -30,12 +36,31 @@ public class PlayerBehaviour : DestroyableUnit
    protected override void Start()
    {
       base.Start();
-      
-      PickUpWeapon(weapon.gameObject);
-      if (weapon != null) weapon.Team = Team;
+      Init();
+
+   }
+
+   public override void Init()
+   {
+      base.Init();
+
+      if (weapon != null)
+      {
+         PickUpWeapon(weapon.gameObject);
+         weapon.Team = Team;
+         
+      }
+
+      if(spawnTransform != null)
+         transform.position = spawnTransform.position;
       
       GameManager.Instance.P_UiManager.Life_Img.fillAmount = healthPoints / bHealthPoints;
       GameManager.Instance.P_TeamManager.AddToTeam(team, gameObject);
+   }
+   
+   public override void Restart()
+   {
+      Init();
    }
 
    void Update()
@@ -72,8 +97,6 @@ public class PlayerBehaviour : DestroyableUnit
       {
         Shoot();
       }
-      
-     
    }
 
    public void Shoot()
@@ -145,6 +168,14 @@ public class PlayerBehaviour : DestroyableUnit
       {
          base.GetDamaged(damage);
          invincibilityTimer = maxInvincibilityTimer;
+      }
+   }
+
+   protected override void Die()
+   {
+      if (canDie)
+      {
+         GameManager.Instance.P_UI_Manager.RenderRetryButton(true);
       }
    }
 

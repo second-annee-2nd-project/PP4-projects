@@ -227,6 +227,8 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
 
                 Vector3 sightDir = nearestEnemyGrounded - myPositionGrounded;
 
+                Debug.DrawRay(transform.position, sightDir, Color.blue); 
+
                 if (Vector3.Distance(transform.position, nearestEnemyGrounded) > attackRange ||
                     !IsFirstColliderEnemy(sightDir))
                 {

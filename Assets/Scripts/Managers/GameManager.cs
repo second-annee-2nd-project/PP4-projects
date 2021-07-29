@@ -60,6 +60,12 @@ public class GameManager : MonoBehaviour
 
         private PathRequestManager pathRequestManager;
         public PathRequestManager P_PathRequestManager => pathRequestManager;
+
+        private PlayerBehaviour player;
+        public PlayerBehaviour Player => player;
+
+        private UI_Manager UI_Manager;
+        public UI_Manager P_UI_Manager => UI_Manager;
         #endregion
 
         public CameraController CC => cc;
@@ -75,7 +81,21 @@ public class GameManager : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(this);
         }
+
+        Init();
+    }
+
+    private void Start()
+    {
         
+        
+        cc = FindObjectOfType<CameraController>();
+
+        StartGame();
+    }
+
+    private void Init()
+    {
         fireButton = FindObjectOfType<FireButton>();
         joystick = FindObjectOfType<Joystick>();
         uiManager = FindObjectOfType<UI_Manager>();
@@ -89,21 +109,24 @@ public class GameManager : MonoBehaviour
         waveManager = FindObjectOfType<WaveManager>();
         pathRequestManager = FindObjectOfType<PathRequestManager>();
         soundManager = FindObjectOfType<SoundManager>();
+        player = FindObjectOfType<PlayerBehaviour>();
+        UI_Manager = FindObjectOfType<UI_Manager>();
     }
 
-    private void Start()
+    public void Restart()
     {
+        GameManager.Instance.P_UI_Manager.RenderRetryButton(false);
         
-        
-        cc = FindObjectOfType<CameraController>();
+        teamManager.Restart();
+        shopManager.Restart();
+        enemiesManager.Restart();
+        turretManager.Restart();
+        waveManager.Restart();
+        actualGrid.Restart();
+        pathRequestManager.Restart();
+        player.Restart();
 
         StartGame();
-    }
-
-    private void Update()
-    {
-       /* */
-     
     }
 
     private void StartGame()
