@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: EnnemyassautGun
   range: 6
-  damage: 6
+  damage: 5
   fireRate: 1
   maxAmmo: 10000000
   numberOfBulletsPerShot: 1

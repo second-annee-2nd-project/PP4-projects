@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: fusil d'assaut
   range: 10
-  damage: 14
-  fireRate: 0.35
+  damage: 8
+  fireRate: 0.2
   maxAmmo: 1000000000
   numberOfBulletsPerShot: 1
   diffusionAngle: 0
