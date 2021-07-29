@@ -2542,9 +2542,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7553e3de797eb3048b2a0993b978fdb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healPrice: 4
+  healPrice: 5
   bCoins: 20
-  bShopTimer: 10
+  bShopTimer: 15
   UI_ShopSequence: {fileID: 4831495321412214254}
   coins_Text: {fileID: 4831495321303510329}
   headerShopSequence_Text: {fileID: 4831495320388523717}
