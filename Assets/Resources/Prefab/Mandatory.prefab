@@ -928,7 +928,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Turret RapidFire
+  m_Text: Turret Sniper
 --- !u!1 &1072678257120452920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,7 +1114,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Prix : 2'
+  m_Text: 'Prix : 10'
 --- !u!1 &1072678257813161867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1193,7 +1193,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Turret Slow Fire
+  m_Text: 'Turret RapidFire
+
+'
 --- !u!1 &1072678258071005315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,7 +1274,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Prix : 3'
+  m_Text: 'Prix : 20'
 --- !u!1 &1381324697625040445
 GameObject:
   m_ObjectHideFlags: 0
@@ -2335,7 +2337,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Prix : 1
+  m_Text: 'Prix : 140
 
 '
 --- !u!1 &4185076122210568659
@@ -2495,9 +2497,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Pistol
-
-'
+  m_Text: fusil d'assaut
 --- !u!1 &4831495319338190155
 GameObject:
   m_ObjectHideFlags: 0
@@ -3231,7 +3231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: f819db38acde4254cbe9613a6623ec18, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -4185,7 +4185,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Turret DoubleBarrel
+  m_Text: Turret DoubleCanon
 --- !u!1 &5826079451081242094
 GameObject:
   m_ObjectHideFlags: 0
@@ -4799,7 +4799,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Prix : 5'
+  m_Text: 'Prix : 30'
 --- !u!1 &5826079452175645064
 GameObject:
   m_ObjectHideFlags: 0
@@ -4878,7 +4878,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Prix : 10
+  m_Text: 'Prix : 80
 
 '
 --- !u!1 &5826079452427558402
@@ -5252,7 +5252,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'MachineGun
+  m_Text: 'mitraillette
 
 '
 --- !u!1 &8266484801476260443
@@ -5654,7 +5654,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Prix : 2'
+  m_Text: 'Prix : 40'
 --- !u!1 &9028307428068570718
 GameObject:
   m_ObjectHideFlags: 0
