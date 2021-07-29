@@ -1646,7 +1646,7 @@ MonoBehaviour:
         m_MethodName: BuyWeapon
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5889960712774308738, guid: 57eb59e6cb04a544e889875019fc0386, type: 3}
+          m_ObjectArgument: {fileID: 2872637116051814785, guid: 724c7c388fb5570439674a7f905ed9d3, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2337,7 +2337,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Prix : 140
+  m_Text: 'Prix : 120
 
 '
 --- !u!1 &4185076122210568659
@@ -3703,7 +3703,7 @@ MonoBehaviour:
         m_MethodName: StartPlacingTurret
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2631654730221049439, guid: 59e63eb8e9b6c5b46bed11a83f070b8f, type: 3}
+          m_ObjectArgument: {fileID: 8595243058685341945, guid: 776207f546576bd408c17927ab14b75d, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -3882,7 +3882,7 @@ MonoBehaviour:
         m_MethodName: StartPlacingTurret
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8595243058685341945, guid: 776207f546576bd408c17927ab14b75d, type: 3}
+          m_ObjectArgument: {fileID: 2631654730221049439, guid: 59e63eb8e9b6c5b46bed11a83f070b8f, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0

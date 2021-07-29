@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b35b2710f8cb834f8f9b35ab1028b48, type: 3}
   m_Name: SO_Turret_SlowFire
   m_EditorClassIdentifier: 
-  name: SlowFire
+  name: snipe
   healthPoints: 20
   attackSpeed: 3
   range: 20
-  price: 2
+  price: 20
   turnSpeed: 5
