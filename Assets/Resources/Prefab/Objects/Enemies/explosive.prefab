@@ -111,5 +111,5 @@ MonoBehaviour:
   team: 2
   bHealthPoints: 0
   enemyStats: {fileID: 11400000, guid: 61c0eaf19b6640742b209bf8db87e728, type: 2}
-  amountToLoot: 4
+  amountToLoot: 2
   loot: {fileID: 4948436641781267108, guid: a924d7c7346bafc4292c290c307c9f02, type: 3}

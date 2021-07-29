@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: gun double
   range: 6
-  damage: 5
+  damage: 4
   fireRate: 0.5
   maxAmmo: 1000000
   numberOfBulletsPerShot: 1

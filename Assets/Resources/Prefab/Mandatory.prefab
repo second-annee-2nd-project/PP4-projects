@@ -928,7 +928,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Turret RapidFire
+  m_Text: Turret Sniper
 --- !u!1 &1072678257120452920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,7 +1114,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Prix : 2'
+  m_Text: 'Prix : 10'
 --- !u!1 &1072678257813161867
 GameObject:
   m_ObjectHideFlags: 0
@@ -1193,7 +1193,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Turret Slow Fire
+  m_Text: 'Turret RapidFire
+
+'
 --- !u!1 &1072678258071005315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1272,7 +1274,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Prix : 3'
+  m_Text: 'Prix : 20'
 --- !u!1 &1381324697625040445
 GameObject:
   m_ObjectHideFlags: 0
@@ -1644,7 +1646,7 @@ MonoBehaviour:
         m_MethodName: BuyWeapon
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5889960712774308738, guid: 57eb59e6cb04a544e889875019fc0386, type: 3}
+          m_ObjectArgument: {fileID: 2872637116051814785, guid: 724c7c388fb5570439674a7f905ed9d3, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2335,7 +2337,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Prix : 1
+  m_Text: 'Prix : 120
 
 '
 --- !u!1 &4185076122210568659
@@ -2495,9 +2497,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Pistol
-
-'
+  m_Text: fusil d'assaut
 --- !u!1 &4831495319338190155
 GameObject:
   m_ObjectHideFlags: 0
@@ -2542,9 +2542,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7553e3de797eb3048b2a0993b978fdb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healPrice: 4
+  healPrice: 5
   bCoins: 20
-  bShopTimer: 10
+  bShopTimer: 15
   UI_ShopSequence: {fileID: 4831495321412214254}
   coins_Text: {fileID: 4831495321303510329}
   headerShopSequence_Text: {fileID: 4831495320388523717}
@@ -2980,10 +2980,14 @@ MonoBehaviour:
   team: 2
   container: {fileID: 4831495321281546684}
   enemyPrefabs:
-    _keys: 0000000001000000
+    _keys: 000000000100000003000000040000000200000005000000
     _values:
     - {fileID: 2620402960462493725, guid: 9bbe424da5037a94ebbb04d523e58687, type: 3}
     - {fileID: 2181964494168382518, guid: 17de1b8b447769042ab5b14229d3b701, type: 3}
+    - {fileID: 870853749791990981, guid: e64bde2219a009a4bb9bf77c0d0b6be4, type: 3}
+    - {fileID: 3279329452083058635, guid: 7623a6e2f847d284480cc5cb1bbe7314, type: 3}
+    - {fileID: 7053238626034574912, guid: cde6905f0f503334db396ed6c279b7fa, type: 3}
+    - {fileID: 1612209544566975667, guid: 6eb192a9928dad14c8d5bf24ed4216d5, type: 3}
 --- !u!1 &4831495320314293054
 GameObject:
   m_ObjectHideFlags: 0
@@ -3231,7 +3235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: f819db38acde4254cbe9613a6623ec18, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -3703,7 +3707,7 @@ MonoBehaviour:
         m_MethodName: StartPlacingTurret
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2631654730221049439, guid: 59e63eb8e9b6c5b46bed11a83f070b8f, type: 3}
+          m_ObjectArgument: {fileID: 8595243058685341945, guid: 776207f546576bd408c17927ab14b75d, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -3882,7 +3886,7 @@ MonoBehaviour:
         m_MethodName: StartPlacingTurret
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8595243058685341945, guid: 776207f546576bd408c17927ab14b75d, type: 3}
+          m_ObjectArgument: {fileID: 2631654730221049439, guid: 59e63eb8e9b6c5b46bed11a83f070b8f, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4185,7 +4189,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Turret DoubleBarrel
+  m_Text: Turret DoubleCanon
 --- !u!1 &5826079451081242094
 GameObject:
   m_ObjectHideFlags: 0
@@ -4799,7 +4803,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Prix : 5'
+  m_Text: 'Prix : 30'
 --- !u!1 &5826079452175645064
 GameObject:
   m_ObjectHideFlags: 0
@@ -4878,7 +4882,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Prix : 10
+  m_Text: 'Prix : 80
 
 '
 --- !u!1 &5826079452427558402
@@ -5252,7 +5256,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'MachineGun
+  m_Text: 'mitraillette
 
 '
 --- !u!1 &8266484801476260443
@@ -5654,7 +5658,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Prix : 2'
+  m_Text: 'Prix : 40'
 --- !u!1 &9028307428068570718
 GameObject:
   m_ObjectHideFlags: 0

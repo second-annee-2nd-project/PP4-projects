@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ecf821100641b341818f6dc47098c5a, type: 3}
   m_Name: fusil d'assaut
   m_EditorClassIdentifier: 
-  name: 
-  range: 0
-  damage: 0
-  fireRate: 0
-  maxAmmo: 0
-  numberOfBulletsPerShot: 0
+  name: fusil d'assaut
+  range: 10
+  damage: 8
+  fireRate: 0.2
+  maxAmmo: 1000000000
+  numberOfBulletsPerShot: 1
   diffusionAngle: 0
-  price: 0
+  price: 120
+  weaponSound: {fileID: 8300000, guid: 258424411bad1f945ae5516cbd37e105, type: 3}
+  muzzleFlash: {fileID: 441624651237726128, guid: 713eb188cb301bf46a97e2b8845aadf4, type: 3}

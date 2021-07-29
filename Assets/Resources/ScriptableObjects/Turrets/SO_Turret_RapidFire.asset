@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SO_Turret_RapidFire
   m_EditorClassIdentifier: 
   name: RapidFire
-  healthPoints: 40
+  healthPoints: 25
   attackSpeed: 2
   range: 20
-  price: 3
+  price: 10
   turnSpeed: 5
