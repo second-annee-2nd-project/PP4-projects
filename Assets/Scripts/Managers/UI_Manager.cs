@@ -10,23 +10,6 @@ public class UI_Manager : MonoBehaviour
      
        [SerializeField] private Image life_Img_Damage_Heal;
        public Image Life_Img_Damage_Heal => life_Img_Damage_Heal;
-
-       [SerializeField] private CanvasGroup retryButton;
-       public CanvasGroup RetryButton => RetryButton;
-
-       public void RenderRetryButton(bool state)
-       {
-           if (state)
-           {
-               retryButton.alpha = 1;
-           }
-           else
-           {
-               retryButton.alpha = 0;
-           }
-           retryButton.interactable = state;
-           retryButton.blocksRaycasts = state;
-       }
-
-
+       
+      
 }

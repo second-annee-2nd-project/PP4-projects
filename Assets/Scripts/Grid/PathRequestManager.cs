@@ -19,13 +19,8 @@ public class PathRequestManager : MonoBehaviour
     public void Init()
     {
         pathRequests = new Dictionary<BaseEnemyBehaviour, PathRequest>();
-        nodes = GameManager.Instance.ActualGrid.Nodes;
+        nodes = FindObjectOfType<Grid>().Nodes;
         j = 0;
-    }
-
-    public void Restart()
-    {
-        Init();
     }
 
     public void AddPath(PathRequest newPathRequest, BaseEnemyBehaviour enemy)

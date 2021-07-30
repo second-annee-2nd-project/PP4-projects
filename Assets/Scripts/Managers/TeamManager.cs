@@ -92,11 +92,6 @@ public class TeamManager : MonoBehaviour
         }
         return nearestEnemy;
     }
-
-    public void Restart()
-    {
-        Init();
-    }
 }
 
 namespace TeamExtensionMethods

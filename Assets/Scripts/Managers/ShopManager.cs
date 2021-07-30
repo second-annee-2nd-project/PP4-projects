@@ -57,22 +57,17 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private GameObject joystickController;
     private void Awake()
     {
-        Init();
+        turretManager = GameObject.FindObjectOfType<TurretManager>().GetComponent<TurretManager>();
+        playerBehaviour = GameObject.FindObjectOfType<PlayerBehaviour>();
+        coins = bCoins;
+        coins_Text.text = " : " + coins;
+        placingCor = null;
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(this);
         }
     }
-    
-    private void Init()
-    {
-        turretManager = GameObject.FindObjectOfType<TurretManager>().GetComponent<TurretManager>();
-        playerBehaviour = GameObject.FindObjectOfType<PlayerBehaviour>();
-        coins = bCoins;
-        coins_Text.text = " : " + coins;
-    }
-
 
     // à mettre dans l'UI Manager
     public void UpdateCoins(int amount)
@@ -212,17 +207,6 @@ public class ShopManager : MonoBehaviour
     bool CheckIfTurretable(Node n)
     {
         return n.isTurretable;
-    }
-
-    
-    public void Restart()
-    {
-        Init();
-        if (placingCor != null)
-        {
-            StopCoroutine(placingCor);
-        }
-        placingCor = null;
     }
     
 }
