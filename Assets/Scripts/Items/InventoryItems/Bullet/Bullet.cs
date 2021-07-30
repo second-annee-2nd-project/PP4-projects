@@ -5,38 +5,38 @@ using UnityEngine;
 
 public class Bullet : TeamUnit
 {
-    private BulletsPool bulletsPool;
-    private Rigidbody rb;
+    protected BulletsPool bulletsPool;
+    protected Rigidbody rb;
 
-    private Vector3 dir;
+    protected Vector3 dir;
     
-    private float damage;
+    protected float damage;
     public float Damage
     {
         get => damage;
         set => damage = value;
     }
-    private float maxRange;
+    protected float maxRange;
     public float MaxRange
     {
         get => maxRange;
         set => maxRange = value;
     }
 
-    private float distance;
+    protected float distance;
 
-    [SerializeField] private eBulletType bulletType;
+    [SerializeField] protected eBulletType bulletType;
     public eBulletType BulletType
     {
         get => bulletType;
         set => bulletType = value;
     }
 
-    private Coroutine cor;
+    protected Coroutine cor;
     
-    [SerializeField] private float speed;
-    [SerializeField] private bool isSeekingBullet;
-    private Transform target;
+    [SerializeField] protected float speed;
+    [SerializeField] protected bool isSeekingBullet;
+    protected Transform target;
 
     public Transform Target
     {
@@ -86,7 +86,7 @@ public class Bullet : TeamUnit
         }
     }
 
-    private void DestroyBullet()
+    protected void DestroyBullet()
     {
         Team = eTeam.neutral;
         bulletsPool.ReleaseBulletInstance(gameObject, bulletType);
@@ -150,7 +150,12 @@ public class Bullet : TeamUnit
     }
     
 
-    private void OnTriggerEnter(Collider col)
+    protected virtual void OnTriggerEnter(Collider col)
+    {
+        TestCollider(col);
+    }
+
+    protected virtual void TestCollider(Collider col)
     {
         // S'il ne faut pas détruire en fonction de ce que la balle touche
         if (col.tag == "Bullet" || col.tag == "CoinsLoot") return;
@@ -166,9 +171,13 @@ public class Bullet : TeamUnit
                 return;
             }
         }
+        else
+        {
+            Debug.Log("shouldn't");
+        }
         
         DestroyBullet();
     }
-    
+
 }
 

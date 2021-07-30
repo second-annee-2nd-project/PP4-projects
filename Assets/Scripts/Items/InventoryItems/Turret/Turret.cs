@@ -13,16 +13,16 @@ public enum eTurretType
 }
 public class Turret : DestroyableUnit
 {
-    [SerializeField] private Transform partToRotate;
-    [SerializeField] private Weapon[] weapons;
-    private float health;
+    [SerializeField] protected Transform partToRotate;
+    [SerializeField] protected Weapon[] weapons;
+    protected float health;
 
     //[SerializeField] private GameObject turretPrefab;
    //[SerializeField] private GameObject bulletPrefab;
   
-   [SerializeField] private SO_Turret soTurret;
+   [SerializeField] protected SO_Turret soTurret;
    public SO_Turret SoTurret => soTurret;
-   private TurretManager turretManager;
+   protected TurretManager turretManager;
    protected override void Start()
    {
        base.Start();
@@ -39,13 +39,18 @@ public class Turret : DestroyableUnit
         if (nearestTarget == null)
             return;
 
-        // SHOOT TOURELLE
-            
         Vector3 dir = nearestTarget.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * soTurret.TurnSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
+        TryToShoot(dir);
+    }
+
+    
+    // CALCUL DE DISTANCE AVEC UNE RACINE CARREE
+    protected virtual void TryToShoot(Vector3 dir)
+    {
         foreach (var weapon in weapons)
         {
             Debug.DrawRay(transform.position, dir, Color.blue);
@@ -58,8 +63,6 @@ public class Turret : DestroyableUnit
                 }
             }
         }
-       
-            
     }
     
     protected bool IsFirstColliderEnemy(Vector3 dir,float attackRange)
@@ -89,7 +92,6 @@ public class Turret : DestroyableUnit
         GetComponent<MeshRenderer>().enabled = true;
         transform.position = position;
         transform.rotation = rotation;
-        //GameObject newTurret = GameObject.Instantiate(turretPrefab, position, rotation);
     }
 
     public void Shoot(Vector3 direction, Transform _target,Weapon weapon)
@@ -100,6 +102,7 @@ public class Turret : DestroyableUnit
 
     protected override void Die()
     {
+        //GameManager.Instance.ActualGrid.Nodes();
         turretManager.RemoveItemFromList(gameObject);
         Destroy(gameObject);
     }

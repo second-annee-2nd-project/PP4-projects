@@ -92,6 +92,48 @@ public class TeamManager : MonoBehaviour
         }
         return nearestEnemy;
     }
+
+    public Transform GetNearestVisibleEnemyUnit(Vector3 pos, float range, eTeam allyTeam)
+    {
+        List<GameObject> targets = GetStrictEnemies(allyTeam);
+        float squaredShortestDistance = Mathf.Infinity;
+        Transform nearestEnemy = null;
+        Vector3 enemyTestedPos;
+        float squaredDistanceToEnemy;
+        Vector3 dirToEnemy;
+
+        foreach (GameObject target in targets)
+        {
+            enemyTestedPos = target.transform.position;
+            squaredDistanceToEnemy = (pos.x - enemyTestedPos.x) * (pos.x - enemyTestedPos.x) + (pos.z - enemyTestedPos.z) * (pos.z - enemyTestedPos.z);
+            dirToEnemy = enemyTestedPos - pos;
+
+            // Ray
+            RaycastHit hit;
+            Physics.Raycast(pos, dirToEnemy, out hit, range);
+
+            DestroyableUnit du = hit.collider.GetComponent<DestroyableUnit>();
+
+            bool isEnemy = true;
+
+            if (du == null || !allyTeam.IsEnemy(du.Team))
+            {
+                isEnemy = false;
+            }
+
+            if (squaredDistanceToEnemy < squaredShortestDistance && isEnemy)
+            {
+                squaredShortestDistance = squaredDistanceToEnemy;
+                nearestEnemy = target.transform;
+            }
+        }
+        return nearestEnemy;
+    }
+
+    public void Restart()
+    {
+        Init();
+    }
 }
 
 namespace TeamExtensionMethods

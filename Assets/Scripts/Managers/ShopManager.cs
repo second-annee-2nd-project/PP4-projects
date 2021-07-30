@@ -47,6 +47,8 @@ public class ShopManager : MonoBehaviour
     private WaveManager waveManager;
     private CameraController cc;
 
+    private bool isSkipShopButtonPressed;
+
     public GameObject EquipedPrefab
     {
         get => equipedPrefabInstance;
@@ -57,17 +59,22 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private GameObject joystickController;
     private void Awake()
     {
-        turretManager = GameObject.FindObjectOfType<TurretManager>().GetComponent<TurretManager>();
-        playerBehaviour = GameObject.FindObjectOfType<PlayerBehaviour>();
-        coins = bCoins;
-        coins_Text.text = " : " + coins;
-        placingCor = null;
+        Init();
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(this);
         }
     }
+    
+    private void Init()
+    {
+        turretManager = GameObject.FindObjectOfType<TurretManager>().GetComponent<TurretManager>();
+        playerBehaviour = GameObject.FindObjectOfType<PlayerBehaviour>();
+        coins = bCoins;
+        coins_Text.text = " : " + coins;
+    }
+
 
     // à mettre dans l'UI Manager
     public void UpdateCoins(int amount)
@@ -85,13 +92,19 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    public void SkipButtonPressed()
+    {
+        isSkipShopButtonPressed = true;
+    }
+
     private IEnumerator ShopSequence()
     {
         UI_ShopSequence.SetActive(true);
         joystickController.SetActive(false);
         shopTimer = bShopTimer;
+        isSkipShopButtonPressed = false;
         
-        while (shopTimer > 0f)
+        while (shopTimer > 0f && !isSkipShopButtonPressed)
         {
             shopTimer -= Time.deltaTime;
             headerShopSequence_Text.text = "Phase de préparation, posez des tourelles\n"+(int)shopTimer;
@@ -111,7 +124,6 @@ public class ShopManager : MonoBehaviour
         
         if (turretScript != null)
         {
-            Debug.Log("passe muraille");
             RefundTurret();
         }
         yield return null;
@@ -123,7 +135,6 @@ public class ShopManager : MonoBehaviour
     {
         equipedPrefabInstance = Instantiate(turretPrefab);
         turretScript = equipedPrefabInstance.GetComponent<Turret>();
-        Debug.Log("passe temps");
         if (placingCor ==  null && coins >= turretScript.SoTurret.Price)
         {
             placingCor = StartCoroutine(PlaceTurret());
@@ -207,6 +218,17 @@ public class ShopManager : MonoBehaviour
     bool CheckIfTurretable(Node n)
     {
         return n.isTurretable;
+    }
+
+    
+    public void Restart()
+    {
+        Init();
+        if (placingCor != null)
+        {
+            StopCoroutine(placingCor);
+        }
+        placingCor = null;
     }
     
 }

@@ -148,14 +148,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   bHealthPoints: 100
-  canDie: 0
-  spawnTransform: {fileID: 0}
-  speed: 2
+  speed: 3
   weaponTr: {fileID: 8863914270187979949}
   weapon: {fileID: 2312711781352939925}
+  dropAmount: 2
   gazeHoldTimer: 2
   animationBarSpeed: 0.2
-  maxInvincibilityTimer: 0
 --- !u!114 &1116104211110330210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,8 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996b4528f2967aa4484dba1cb173cdaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponStats: {fileID: 11400000, guid: 7673a79204d99874c83d0f672fe68cc5, type: 2}
-  fireTransform: {fileID: 2312711782756930712}
+  weaponStats: {fileID: 11400000, guid: 29c52d07d0afcb044a45db09443120bb, type: 2}
+  fireTransform: {fileID: 0}
   bulletPrefab: {fileID: 6853525456481171506, guid: dcd37c00f139e0c408c0bd061c6cb6da, type: 3}
 --- !u!65 &1642362325
 BoxCollider:
@@ -288,8 +286,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996b4528f2967aa4484dba1cb173cdaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &2312711782756930712 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5889960711493920625, guid: 57eb59e6cb04a544e889875019fc0386, type: 3}
-  m_PrefabInstance: {fileID: 8189020850336068585}
-  m_PrefabAsset: {fileID: 0}

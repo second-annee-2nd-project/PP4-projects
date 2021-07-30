@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum eItemType
@@ -35,6 +36,17 @@ public class ItemManager : MonoBehaviour
     public virtual void RemoveItemFromList(GameObject item)
     {
         instantiatedItems.Remove(item);
+    }
+
+    public virtual void Restart()
+    {
+        GameObject newGO;
+        while (instantiatedItems.Count > 0)
+        {
+            newGO = instantiatedItems.First();
+            instantiatedItems.Remove(newGO);
+            Destroy(newGO);
+        }
     }
 
     

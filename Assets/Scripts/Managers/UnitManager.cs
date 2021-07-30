@@ -64,5 +64,11 @@ public class UnitManager : ItemManager
         base.RemoveItemFromList(item);
         teamUnitManager.RemoveAndDestroyFromTeam(team, item);
     }
+
+    public override void Restart()
+    {
+        base.Restart();
+        teamUnitManager.Restart();
+    }
         
 }
