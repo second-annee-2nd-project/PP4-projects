@@ -936,6 +936,14 @@ PrefabInstance:
       propertyPath: enemyPrefabs._values.Array.data[5]
       value: 
       objectReference: {fileID: 1612209544566975667, guid: 6eb192a9928dad14c8d5bf24ed4216d5, type: 3}
+    - target: {fileID: 4831495320168656806, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: enemyPrefabs._values.Array.data[0]
+      value: 
+      objectReference: {fileID: 2620402960462493725, guid: 9bbe424da5037a94ebbb04d523e58687, type: 3}
+    - target: {fileID: 4831495320168656806, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
+      propertyPath: enemyPrefabs._keys.Array.data[5]
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4831495320848035492, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
       propertyPath: m_Name
       value: Mandatory
@@ -4523,6 +4531,10 @@ PrefabInstance:
     - target: {fileID: 2312711781840666723, guid: a92bc1e5e9cfd0d4e93fa08def36895d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312711781840666724, guid: a92bc1e5e9cfd0d4e93fa08def36895d, type: 3}
+      propertyPath: canDie
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2312711781840666725, guid: a92bc1e5e9cfd0d4e93fa08def36895d, type: 3}
       propertyPath: m_Name
