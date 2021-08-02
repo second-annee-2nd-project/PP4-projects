@@ -170,7 +170,7 @@ public class Weapon : MonoBehaviour
            newBulletScript.Shoot(newDir);
            ammo--;
            GameManager.Instance.P_SoundManager.AudioSource.PlayOneShot(weaponStats.WeaponSound);
-          Destroy(Instantiate(weaponStats.MuzzleFlash,fireTransform.position, Quaternion.identity),0.1f);
+          Destroy(Instantiate(weaponStats.MuzzleFlash,fireTransform.position, fireTransform.rotation),0.1f);
 
         }
         nextFire = fireRate;
