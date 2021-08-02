@@ -20,7 +20,6 @@ public class PlayerBehaviour : DestroyableUnit
 
    private GameObject weaponGO;
    [SerializeField] private float gazeHoldTimer = 2f;
-   [SerializeField] float animationBarSpeed;
 
    [SerializeField] private float maxInvincibilityTimer;
    private bool frozen = false;
@@ -183,36 +182,6 @@ public class PlayerBehaviour : DestroyableUnit
       {
          GameManager.Instance.P_UI_Manager.RenderRetryButton(true);
       }
-   }
-
-   private void UpdateLifeBar()
-   {
-      float actualHealth = healthPoints / bHealthPoints;
-
-      if (GameManager.Instance.P_UiManager.Life_Img_Damage_Heal.fillAmount > actualHealth)
-      {
-         GameManager.Instance.P_UiManager.Life_Img.fillAmount = actualHealth;
-         GameManager.Instance.P_UiManager.Life_Img_Damage_Heal.color = Color.red;
-         GameManager.Instance.P_UiManager.Life_Img_Damage_Heal.fillAmount  -= animationBarSpeed * Time.deltaTime;
-
-      }
-      else
-      {
-         GameManager.Instance.P_UiManager.Life_Img_Damage_Heal.fillAmount = actualHealth;
-      }
-
-      if (actualHealth > GameManager.Instance.P_UiManager.Life_Img.fillAmount)
-      {
-         GameManager.Instance.P_UiManager.Life_Img_Damage_Heal.color = Color.green;
-         GameManager.Instance.P_UiManager.Life_Img_Damage_Heal.fillAmount = actualHealth;
-         GameManager.Instance.P_UiManager.Life_Img.fillAmount  += animationBarSpeed * Time.deltaTime;
-         
-      }
-      else
-      {
-         GameManager.Instance.P_UiManager.Life_Img.fillAmount = actualHealth;
-      }
-
    }
 
    public void GainHealth()

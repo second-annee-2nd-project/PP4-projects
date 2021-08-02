@@ -148,12 +148,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   team: 1
   bHealthPoints: 100
-  speed: 3
+  lifeBar_Img: {fileID: 0}
+  backLifeBar_Img: {fileID: 0}
+  animationBarSpeed: 0.2
+  canDie: 1
+  spawnTransform: {fileID: 0}
+  speed: 2
   weaponTr: {fileID: 8863914270187979949}
   weapon: {fileID: 2312711781352939925}
-  dropAmount: 2
   gazeHoldTimer: 2
-  animationBarSpeed: 0.2
+  maxInvincibilityTimer: 0
 --- !u!114 &1116104211110330210
 MonoBehaviour:
   m_ObjectHideFlags: 0

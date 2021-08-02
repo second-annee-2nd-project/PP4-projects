@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TeamExtensionMethods;
+using UnityEngine.UI;
 
 public class DestroyableUnit : TeamUnit
 {
@@ -9,6 +10,10 @@ public class DestroyableUnit : TeamUnit
     [SerializeField] protected float bHealthPoints;
     
     protected float healthPoints;
+
+    [SerializeField] private Image lifeBar_Img;
+    [SerializeField] private Image backLifeBar_Img;
+    [SerializeField] private float animationBarSpeed;
     
     protected virtual void Start()
     {
@@ -42,4 +47,33 @@ public class DestroyableUnit : TeamUnit
         
     }
   
+    public void UpdateLifeBar()
+    {
+        float actualHealth = healthPoints / bHealthPoints;
+
+        if (backLifeBar_Img.fillAmount > actualHealth)
+        {
+           lifeBar_Img.fillAmount = actualHealth;
+           backLifeBar_Img.color = Color.red;
+           backLifeBar_Img.fillAmount  -= animationBarSpeed * Time.deltaTime;
+
+        }
+        else
+        {
+            backLifeBar_Img.fillAmount = actualHealth;
+        }
+
+        if (actualHealth > lifeBar_Img.fillAmount)
+        {
+            backLifeBar_Img.color = Color.green;
+            backLifeBar_Img.fillAmount = actualHealth;
+            lifeBar_Img.fillAmount  += animationBarSpeed * Time.deltaTime;
+         
+        }
+        else
+        {
+            lifeBar_Img.fillAmount = actualHealth;
+        }
+
+    }
 }

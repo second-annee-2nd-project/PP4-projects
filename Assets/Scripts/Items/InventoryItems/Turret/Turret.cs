@@ -36,6 +36,7 @@ public class Turret : DestroyableUnit
     void Update()
     {
         UpdateTarget();
+        UpdateLifeBar();
         if (nearestTarget == null)
             return;
 

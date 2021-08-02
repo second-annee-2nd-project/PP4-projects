@@ -100,6 +100,7 @@ public class EnemyBehaviour : BaseEnemyBehaviour
     // Update is called once per frame
     protected void Update()
     {
+        UpdateLifeBar();
         if (weapon != null) return;
         if (nextAttack > 0)
         {

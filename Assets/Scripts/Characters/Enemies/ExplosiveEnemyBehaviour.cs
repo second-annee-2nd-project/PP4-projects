@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TeamExtensionMethods;
 using UnityEngine;
@@ -8,6 +9,11 @@ public class ExplosiveEnemyBehaviour : BaseEnemyBehaviour
     private float explosionRadius;
 
     private SO_ExplosiveEnemy enemyRealStats;
+
+    private void Update()
+    {
+        UpdateLifeBar();
+    }
 
     public override void Init()
     {
