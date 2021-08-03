@@ -9,6 +9,7 @@ public class Node
     public float nodeRadius;
     public bool isWalkable;
     public bool isTurretable;
+    public TeamUnit occupiedBy;  
     
     public Node(Vector3 position, Vector3Int internalPosition, float nodeRadius, bool isWalkable, bool isTurretable)
     {

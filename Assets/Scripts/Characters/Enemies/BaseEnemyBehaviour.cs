@@ -174,14 +174,15 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
             GetNearestEnemy();
             startingNode = grid.GetNodeWithPosition(transform.position);
             targetingNode = grid.GetNodeWithPosition(nearestEnemy.transform.position);
-            if (targetingNode != lastNearestEnemyNode)
+            
+            if (targetingNode != lastNearestEnemyNode || IsPathOccupied())
             {
                 AskForPath();
                 lastNearestEnemyNode = targetingNode;
                 
                 if(path.Count > 1 && path[0]!= null && path[1] != null)
                 {
-                    
+                    AskForPath();
                     Vector3 dirUnitToNode1 = (path[0].position - transform.position).normalized;
                     Vector3 dirUnitToNode2 = (path[1].position - transform.position).normalized;
 
@@ -206,43 +207,31 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
             {
                 Vector3 startPosition = transform.position;
                 Vector3 targetPosition = new Vector3(path[0].position.x, this.transform.position.y, path[0].position.z);
-                
+                Vector3Int coord = path[0].internalPosition;
+
+                //grid.Nodes[coord.x, coord.z].occupiedBy = this;
                 //essai de s'approprier la case
 
-                /*Node actualNode = grid.GetNodeWithPosition(transform.position);
+                Node actualNode = grid.GetNodeWithPosition(transform.position);
                 if (actualNode != lastNode)
                 {
-                    lastNode.isWalkable = true;
+                    //lastNode.isWalkable = true;
+                    lastNode.occupiedBy = null;
 
-                    actualNode.isWalkable = false;
+                    //actualNode.isWalkable = false;
+                    actualNode.occupiedBy = this;
 
                     lastNode = actualNode;
-                }*/
-                
-                
-
-                Vector3 nearestEnemyGrounded =
-                    new Vector3(nearestEnemy.position.x, groundY, nearestEnemy.position.z);
-                Vector3 myPositionGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
-
-                Vector3 sightDir = nearestEnemyGrounded - myPositionGrounded;
-
-                Debug.DrawRay(transform.position, sightDir, Color.blue); 
-
-                if (Vector3.Distance(transform.position, nearestEnemyGrounded) > attackRange ||
-                    !IsFirstColliderEnemy(sightDir))
-                {
-                    transform.position = Vector3.MoveTowards(startPosition, targetPosition, speed * Time.deltaTime);
-                    transform.LookAt(targetPosition);
                 }
-                else
-                {
-                    TryToAttack();
-                }
+
+
+
+                ChoseAction(startPosition, targetPosition);
 
                 if (startPosition == targetPosition)
                 {
                     path.RemoveAt(0);
+                    //grid.Nodes[coord.x, coord.z].occupiedBy = null;
                 }
                 
                 yield return null;
@@ -250,6 +239,43 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
             yield return null;
         }
         yield return null;
+    }
+
+    protected bool IsPathOccupied()
+    {
+        for (int i = 0; i < path.Count; i++)
+        {
+            if (path[i].occupiedBy != null && path[i].occupiedBy != this)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    protected void ChoseAction(Vector3 startPosition, Vector3 targetPosition)
+    {
+        Vector3 nearestEnemyGrounded =
+            new Vector3(nearestEnemy.position.x, groundY, nearestEnemy.position.z);
+        Vector3 myPositionGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
+
+        Vector3 sightDir = nearestEnemyGrounded - myPositionGrounded;
+
+        Debug.DrawRay(transform.position, sightDir, Color.blue); 
+
+        if (Vector3.Distance(transform.position, nearestEnemyGrounded) > attackRange ||
+            !IsFirstColliderEnemy(sightDir))
+        {
+            Debug.Log("?");
+            transform.position = Vector3.MoveTowards(startPosition, targetPosition, speed * Time.deltaTime);
+            transform.LookAt(targetPosition);
+        }
+        else
+        {
+            Debug.Log("!");
+            TryToAttack();
+        }
     }
 
     protected virtual void AskForPath()
