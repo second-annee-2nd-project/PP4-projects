@@ -108,7 +108,7 @@ public class PathRequestManager : MonoBehaviour
 
                 if(!costs.ContainsKey(neighbours[i]) || newCost < costs[neighbours[i]])
                 {
-                    if(neighbours[i].isWalkable && IsDiagonalPossible(neighbours, i))
+                    if(neighbours[i].isWalkable && (neighbours[i].occupiedBy == pathRequests.First().Key || neighbours[i].occupiedBy == null) && IsDiagonalPossible(neighbours, i))
                     {
                         if (!costs.ContainsKey(neighbours[i]))
                         {

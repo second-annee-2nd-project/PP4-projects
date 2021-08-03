@@ -30,11 +30,34 @@ public class ExplosiveEnemyBehaviour : BaseEnemyBehaviour
 
         StartMoving();
     }
+    /*
+    protected override void ChoseAction(Vector3 startPosition, Vector3 targetPosition)
+    {
+        Vector3 nearestEnemyGrounded =
+            new Vector3(nearestEnemy.position.x, groundY, nearestEnemy.position.z);
+        Vector3 myPositionGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
+
+        Vector3 sightDir = nearestEnemyGrounded - myPositionGrounded;
+
+        Debug.DrawRay(transform.position, sightDir, Color.blue); 
+
+        if (Vector3.Distance(transform.position, nearestEnemyGrounded) > attackRange ||
+            !IsFirstColliderEnemy(sightDir))
+        {
+            transform.position = Vector3.MoveTowards(startPosition, targetPosition, speed * Time.deltaTime);
+            transform.LookAt(targetPosition);
+        }
+        else
+        {
+            TryToAttack();
+        }
+    }*/
     
     protected override void Attack()
     {
         Collider[] colliders = new Collider[20];
         Physics.OverlapSphereNonAlloc(transform.position, explosionRadius, colliders);
+        Debug.Log("J'ia attaqué : "+colliders.Length);
         for (int i = 0; i < colliders.Length; i++)
         {
             if (colliders[i])
@@ -51,6 +74,18 @@ public class ExplosiveEnemyBehaviour : BaseEnemyBehaviour
         }
 
         Die();
+    }
+
+    protected void OnCollisionEnter(Collision col)
+    {
+        DestroyableUnit du = col.gameObject.GetComponent<DestroyableUnit>();
+        if (du)
+        {
+            if (this.team.IsEnemy(du.Team))
+            {
+                TryToAttack();
+            }
+        }
     }
 
     protected override void TryToAttack()

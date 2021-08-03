@@ -109,8 +109,12 @@ public class Grid : MonoBehaviour
                 if (nodes!= null)
                 {
                     Gizmos.color = nodes[i, j].isWalkable ? Color.green : Color.red;
-                    Gizmos.DrawWireSphere(nodes[i, j].position, gridSizeWidth/2f);
-                    //Gizmos.DrawWireCube(nodes[i, j].position, new Vector3(gridSizeWidth, gridSizeHeight, gridSizeLength));
+                    if (nodes[i, j].occupiedBy != null)
+                    {
+                        Gizmos.color = Color.white;
+                    }
+                    //Gizmos.DrawWireSphere(nodes[i, j].position, gridSizeWidth/2f);
+                    Gizmos.DrawWireCube(nodes[i, j].position, new Vector3(gridSizeWidth, gridSizeHeight, gridSizeLength));
                 }
             }
         }
