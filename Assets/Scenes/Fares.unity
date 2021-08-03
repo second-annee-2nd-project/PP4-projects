@@ -315,6 +315,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &698499858 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2312711781840666725, guid: a92bc1e5e9cfd0d4e93fa08def36895d, type: 3}
+  m_PrefabInstance: {fileID: 1888512101}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &700319778 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4831495319338190157, guid: d092627f3b4052e42932fada1c650bb3, type: 3}
@@ -874,7 +879,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2312711781840666724, guid: a92bc1e5e9cfd0d4e93fa08def36895d, type: 3}
   m_PrefabInstance: {fileID: 1888512101}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 698499858}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6ed2a5e2181efa446ad2ce9ed77f8405, type: 3}
@@ -1095,6 +1100,10 @@ PrefabInstance:
       propertyPath: backLifeBar_Img
       value: 
       objectReference: {fileID: 1984295898}
+    - target: {fileID: 2312711781840666724, guid: a92bc1e5e9cfd0d4e93fa08def36895d, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 698499858}
     - target: {fileID: 2312711781840666725, guid: a92bc1e5e9cfd0d4e93fa08def36895d, type: 3}
       propertyPath: m_Name
       value: Player

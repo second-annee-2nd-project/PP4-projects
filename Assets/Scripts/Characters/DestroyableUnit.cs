@@ -35,6 +35,8 @@ public class DestroyableUnit : TeamUnit
     }
     public virtual void GetDamaged(float damage)
     {
+        lifeBar_Img.gameObject.SetActive(true);
+        backLifeBar_Img.gameObject.SetActive(true);
         healthPoints -= damage; 
         if (healthPoints <= 0)
         {
