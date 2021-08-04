@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bde2874fe5319d14ba2756bfd407127f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team: 0
+  team: 2
   bHealthPoints: 40
   lifeBar_Img: {fileID: 1139375034796267267}
   backLifeBar_Img: {fileID: 6889916185991950950}
