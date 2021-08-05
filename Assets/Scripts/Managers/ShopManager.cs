@@ -57,6 +57,7 @@ public class ShopManager : MonoBehaviour
     private TurretManager turretManager;
     private PlayerBehaviour playerBehaviour;
     [SerializeField] private GameObject joystickController;
+    private Turret newTurretScript;
     private void Awake()
     {
         Init();
@@ -178,7 +179,7 @@ public class ShopManager : MonoBehaviour
     {
         bool isTurretPlaced = false;
 
-        Turret newTurretScript = equipedPrefabInstance.GetComponent<Turret>();
+         newTurretScript = equipedPrefabInstance.GetComponent<Turret>();
         newTurretScript.enabled = false;
         
         while (!isTurretPlaced)
@@ -195,8 +196,9 @@ public class ShopManager : MonoBehaviour
                 {
                     if (Input.GetAxisRaw("Fire1") == 1f)
                     {
+                        newTurretScript.TurretAnim.SetBool("canDeploy",true);
+                        StartCoroutine(nameof(StopDeploy));
                         newTurretScript.enabled = true;
-                        
                         GameManager.Instance.P_TurretManager.AddItemToList(equipedPrefabInstance);
                         UpdateCoins(turretScript.SoTurret.Price * -1);
                         
@@ -213,6 +215,12 @@ public class ShopManager : MonoBehaviour
         }
 
         placingCor = null;
+    }
+
+    IEnumerator StopDeploy()
+    {
+        yield return new WaitForSeconds(2f);
+        newTurretScript.TurretAnim.SetBool("canDeploy",false);
     }
 
     bool CheckIfTurretable(Node n)

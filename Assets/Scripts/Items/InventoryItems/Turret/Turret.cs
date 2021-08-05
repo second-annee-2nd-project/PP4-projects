@@ -5,6 +5,7 @@ using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 using TeamExtensionMethods;
+using UnityEditor.Animations;
 
 public enum eTurretType
 {
@@ -23,13 +24,21 @@ public class Turret : DestroyableUnit
    [SerializeField] protected SO_Turret soTurret;
    public SO_Turret SoTurret => soTurret;
    protected TurretManager turretManager;
+   private Animator turretAnim;
+   public Animator TurretAnim => turretAnim;
+
+   void Awake()
+   {
+       turretAnim = FindObjectOfType<Animator>();
+   }
    protected override void Start()
    {
        base.Start();
        // InvokeRepeating("UpdateTarget", 0f, 0.5f);
        turretManager = FindObjectOfType<TurretManager>();
        health = soTurret.HealthPoints;
-    }
+     
+   }
 
     
 
@@ -61,11 +70,22 @@ public class Turret : DestroyableUnit
                 if (IsFirstColliderEnemy(dir,weapon.P_BRange))
                 {
                     Shoot(dir,nearestTarget,weapon);
+                    turretAnim.SetBool("Shoot",true);
                 }
+            }
+            else
+            {
+                StopCoroutine(nameof(StopAnim));
+                StartCoroutine(nameof(StopAnim));
             }
         }
     }
-    
+
+    IEnumerator StopAnim()
+    {
+        yield return new WaitForSeconds(0.1f);
+        turretAnim.SetBool("Shoot",false);
+    }
     protected bool IsFirstColliderEnemy(Vector3 dir,float attackRange)
     {
         RaycastHit[] hits;

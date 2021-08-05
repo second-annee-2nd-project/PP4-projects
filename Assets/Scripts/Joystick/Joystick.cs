@@ -17,6 +17,7 @@ using UnityEngine.EventSystems ;
       private float maxLength ;
 
       private bool _isTouching = false ;
+      public bool _IsTouching => _isTouching;
 
       public UnityAction OnJoystickDownAction ;
       public UnityAction OnJoystickUpAction ;

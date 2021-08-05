@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
 
     public Grid ActualGrid => actualGrid;
     
-    private Joystick joystick;
+    [SerializeField] private Joystick joystick;
     public Joystick Joystick => joystick;
     
     private FireButton fireButton;
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
     private void Init()
     {
         fireButton = FindObjectOfType<FireButton>();
-        joystick = FindObjectOfType<Joystick>();
+        // joystick = FindObjectOfType<Joystick>();
         uiManager = FindObjectOfType<UI_Manager>();
         actualGrid = FindObjectOfType<Grid>();
         lootManager = FindObjectOfType<LootManager>();

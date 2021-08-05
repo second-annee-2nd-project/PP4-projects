@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 8595243058685341894}
   - component: {fileID: 8985155240517371903}
   - component: {fileID: 2294870112084730620}
+  - component: {fileID: 1565605432038565142}
   m_Layer: 0
   m_Name: Turret_RapidFire
   m_TagString: Turret
@@ -432,3 +433,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!95 &1565605432038565142
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8595243058685341945}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0f0523e6d6603114b8154ded93cbd514, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

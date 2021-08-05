@@ -24,6 +24,8 @@ public class PlayerBehaviour : DestroyableUnit
    [SerializeField] private float maxInvincibilityTimer;
    private bool frozen = false;
    private float invincibilityTimer = 0;
+   [SerializeField] private Joystick shootJoystick;
+   private Vector3 shotDir;
   
 
    private float lastBulletShot;
@@ -78,23 +80,16 @@ public class PlayerBehaviour : DestroyableUnit
       }
         
       movement = new Vector3(GameManager.Instance.Joystick.Horizontal(), 0, GameManager.Instance.Joystick.Vertical());
+      shotDir =  new Vector3(shootJoystick.Horizontal(), 0, shootJoystick.Vertical());
 
-      nearestTarget = GameManager.Instance.P_TeamManager.GetNearestEnemyUnit(transform.position, team);
-      
-      if (nearestTarget != null && lastBulletShot > 0)
+      if (Input.GetKey(KeyCode.Space) || shootJoystick._IsTouching)
       {
-         transform.LookAt(nearestTarget);
-         lastBulletShot -= Time.deltaTime;
-         if (lastBulletShot <= 0f) lastBulletShot = 0;
+        Shoot();
+        transform.LookAt((transform.position + shotDir * speed * Time.fixedDeltaTime));
       }
       else
       {
          transform.LookAt((transform.position + movement * speed * Time.fixedDeltaTime));
-      }
-
-      if (Input.GetKey(KeyCode.Space) || GameManager.Instance.FireButton.FirePressed)
-      {
-        Shoot();
       }
    }
 
@@ -102,17 +97,7 @@ public class PlayerBehaviour : DestroyableUnit
    {
       if (weapon.CanShoot())
       {
-         if (nearestTarget != null)
-         {
-            transform.LookAt(nearestTarget.position);
-            weapon.Shoot(nearestTarget.position - weapon.P_FireTransform.position);
-            lastBulletShot = gazeHoldTimer;
-            //weapon.Shoot(transform.forward);
-         }
-         else
-         {
-            weapon.Shoot(transform.forward);
-         }
+         weapon.Shoot(transform.forward + shotDir);
       }
    }
    void FixedUpdate()
