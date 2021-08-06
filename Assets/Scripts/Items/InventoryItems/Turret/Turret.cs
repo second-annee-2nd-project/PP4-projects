@@ -113,7 +113,6 @@ public class Turret : DestroyableUnit
     }
     public void Deploy(Vector3 position, Vector3Int innerPos, Quaternion rotation)
     {
-        GetComponent<MeshRenderer>().enabled = true;
         transform.position = position;
         transform.rotation = rotation;
         

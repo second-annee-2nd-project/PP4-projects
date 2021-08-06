@@ -201,6 +201,7 @@ public class ShopManager : MonoBehaviour
                         newTurretScript.Deploy(n.position, n.internalPosition, Quaternion.identity);
 
                         equipedPrefabInstance = null;
+                        isTurretPlaced = true;
                         break;
                     }
                 }
