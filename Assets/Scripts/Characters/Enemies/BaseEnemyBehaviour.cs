@@ -16,6 +16,9 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     protected float attackRange;
     protected float nextAttack;
     protected float rotationSpeed;
+
+    protected float timerBeforeLookingAtPath = 2.5f;
+    protected float remainingTimerBeforeLookingAtPath;
     
     [SerializeField] protected SO_BaseEnemy enemyStats;
 
@@ -91,29 +94,36 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     }
     
     // Beaucoup de RaycastAll
-    protected bool IsFirstColliderEnemy(Vector3 dir)
+    protected bool IsFirstColliderEnemy(Vector3 target)
     {
-        RaycastHit[][] hitsArray;
-        hitsArray = new RaycastHit[3][];
-        
-        
-        float radius = transform.GetComponent<Collider>().bounds.size.x;
+        RaycastHit[] hitsArray;
+        hitsArray = new RaycastHit[3];
+
+        float radius = transform.GetComponent<Collider>().bounds.size.x/2f;
         
         Vector3 myPositionCenteredGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
         Vector3 myPositionLeftGrounded = new Vector3(transform.position.x - radius, groundY, transform.position.z);
         Vector3 myPositionRightGrounded = new Vector3(transform.position.x + radius, groundY, transform.position.z);
+
+        Vector3 dirCenteredToTarget = target - myPositionCenteredGrounded;
+        Vector3 dirLeftToTarget = target - myPositionLeftGrounded;
+        Vector3 dirRightToTarget = target - myPositionRightGrounded;
         
-        hitsArray[0] = Physics.RaycastAll(myPositionCenteredGrounded, dir, attackRange);
-        hitsArray[1] = Physics.RaycastAll(myPositionLeftGrounded, dir, attackRange);
-        hitsArray[2] = Physics.RaycastAll(myPositionRightGrounded, dir, attackRange);
+        Physics.Raycast(myPositionCenteredGrounded, dirCenteredToTarget, out hitsArray[0], attackRange);
+        Physics.Raycast(myPositionLeftGrounded, dirLeftToTarget, out hitsArray[1], attackRange);
+        Physics.Raycast(myPositionRightGrounded, dirRightToTarget, out hitsArray[2], attackRange);
+/*
+        Debug.DrawRay(myPositionCenteredGrounded, dirCenteredToTarget, Color.blue);
+        Debug.DrawRay(myPositionLeftGrounded, dirLeftToTarget, Color.blue);
+        Debug.DrawRay(myPositionRightGrounded, dirRightToTarget, Color.blue);*/
         
         bool firstCollidedIsEnemy = false;
         int numberOfHits = 0;
         for (int i = 0; i < hitsArray.Length; i++)
         {
-            if (hitsArray[i].Length > 0)
-            {
-                TeamUnit tu = hitsArray[i][0].collider.GetComponent<TeamUnit>();
+            /*if (hitsArray[i].Length > 0)
+            {*/
+                TeamUnit tu = hitsArray[i].collider.GetComponent<TeamUnit>();
                 if(tu)
                 {
                     if (tu.Team.IsEnemy(this.team))
@@ -121,7 +131,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
                         numberOfHits++;
                     }
                 }
-            }
+            //}
         }
 
         if (numberOfHits == hitsArray.Length)
@@ -171,74 +181,102 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         Node lastNode = grid.GetNodeWithPosition(transform.position);;
         while (healthPoints > 0)
         {
-            GetNearestEnemy();
-            startingNode = grid.GetNodeWithPosition(transform.position);
-            targetingNode = grid.GetNodeWithPosition(nearestEnemy.transform.position);
+            CheckIfPathNeedsToChange();
             
-            if (targetingNode != lastNearestEnemyNode || IsPathOccupied())
+            Vector3 nearestEnemyGrounded =
+                new Vector3(nearestEnemy.position.x, groundY, nearestEnemy.position.z);
+            Vector3 myPositionGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
+
+            Vector3 sightDir = nearestEnemyGrounded - myPositionGrounded;
+
+            if (Vector3.Distance(transform.position, nearestEnemyGrounded) <= attackRange &&
+                IsFirstColliderEnemy(nearestEnemyGrounded))
             {
-                AskForPath();
-                lastNearestEnemyNode = targetingNode;
-                
-                if(path.Count > 1 && path[0]!= null && path[1] != null)
-                {
-                    AskForPath();
-                    Vector3 dirUnitToNode1 = (path[0].position - transform.position).normalized;
-                    Vector3 dirUnitToNode2 = (path[1].position - transform.position).normalized;
-
-                    if (Mathf.Approximately(dirUnitToNode1.x, 0f) || Mathf.Approximately(dirUnitToNode1.x, 0f))
-                    {
-                        removedPos = path[0].position;
-                        path.Remove(path[0]);
-                    }
-                    else if ((int) Mathf.Sign(dirUnitToNode1.x) != (int) Mathf.Sign(dirUnitToNode2.x) ||
-                        (int) Mathf.Sign(dirUnitToNode1.z) != (int) Mathf.Sign(dirUnitToNode2.z))
-                    {
-                        removedPos = path[0].position;
-                        path.Remove(path[0]);
-                    }
-                }
-
+                TryToAttack();
             }
-
-
-            
-            if (!(path == null || path.Count < 1) && path[0] != null)
+            else
             {
-                Vector3 startPosition = transform.position;
-                Vector3 targetPosition = new Vector3(path[0].position.x, this.transform.position.y, path[0].position.z);
-                Vector3Int coord = path[0].internalPosition;
-
-                //grid.Nodes[coord.x, coord.z].occupiedBy = this;
-                //essai de s'approprier la case
-
-                Node actualNode = grid.GetNodeWithPosition(transform.position);
-                if (actualNode != lastNode)
+                if (path != null && path.Count > 0 && path[0] != null)
                 {
-                    //lastNode.isWalkable = true;
-                    lastNode.occupiedBy = null;
+                    Vector3 startPosition = transform.position;
+                    Vector3 targetPosition = new Vector3(path[0].position.x, this.transform.position.y, path[0].position.z);
+                    Vector3Int coord = path[0].internalPosition;
 
-                    //actualNode.isWalkable = false;
-                    actualNode.occupiedBy = this;
+                    //grid.Nodes[coord.x, coord.z].occupiedBy = this;
+                    //essai de s'approprier la case
 
-                    lastNode = actualNode;
+                    Node actualNode = grid.GetNodeWithPosition(transform.position);
+                    if (actualNode != lastNode)
+                    {
+                        //lastNode.isWalkable = true;
+                        lastNode.occupiedBy = null;
+
+                        //actualNode.isWalkable = false;
+                        actualNode.occupiedBy = this;
+
+                        lastNode = actualNode;
+                    }
+
+                    
+                    transform.position = Vector3.MoveTowards(startPosition, targetPosition, speed * Time.deltaTime);
+                    if (remainingTimerBeforeLookingAtPath > 0f)
+                    {
+                        remainingTimerBeforeLookingAtPath -= Time.deltaTime;
+                        transform.LookAt(nearestEnemyGrounded);
+                    }
+                    else
+                    {
+                        transform.LookAt(targetPosition);
+                    }
+                    
+
+                    //ChoseAction(startPosition, targetPosition);
+
+                    if (startPosition == targetPosition)
+                    {
+                        path.RemoveAt(0);
+                        //grid.Nodes[coord.x, coord.z].occupiedBy = null;
+                    }
+
+                    yield return null;
                 }
-
-
-
-                ChoseAction(startPosition, targetPosition);
-
-                if (startPosition == targetPosition)
-                {
-                    path.RemoveAt(0);
-                    //grid.Nodes[coord.x, coord.z].occupiedBy = null;
-                }
-                
-                yield return null;
             }
             yield return null;
         }
         yield return null;
+    }
+
+    protected void CheckIfPathNeedsToChange()
+    {
+        GetNearestEnemy();
+        startingNode = grid.GetNodeWithPosition(transform.position);
+        targetingNode = grid.GetNodeWithPosition(nearestEnemy.transform.position);
+            
+        if (targetingNode != lastNearestEnemyNode || IsPathOccupied())
+        {
+            AskForPath();
+            lastNearestEnemyNode = targetingNode;
+                
+            if(path.Count > 1 && path[0]!= null && path[1] != null)
+            {
+                AskForPath();
+                Vector3 dirUnitToNode1 = (path[0].position - transform.position).normalized;
+                Vector3 dirUnitToNode2 = (path[1].position - transform.position).normalized;
+
+                if (Mathf.Approximately(dirUnitToNode1.x, 0f) || Mathf.Approximately(dirUnitToNode1.x, 0f))
+                {
+                    removedPos = path[0].position;
+                    path.Remove(path[0]);
+                }
+                else if ((int) Mathf.Sign(dirUnitToNode1.x) != (int) Mathf.Sign(dirUnitToNode2.x) ||
+                         (int) Mathf.Sign(dirUnitToNode1.z) != (int) Mathf.Sign(dirUnitToNode2.z))
+                {
+                    removedPos = path[0].position;
+                    path.Remove(path[0]);
+                }
+            }
+
+        }
     }
 
     protected bool IsPathOccupied()

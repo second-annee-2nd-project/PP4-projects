@@ -91,7 +91,7 @@ public class Bullet : TeamUnit
         Team = eTeam.neutral;
         bulletsPool.ReleaseBulletInstance(gameObject, bulletType);
     }
-    public void Shoot(Vector3 direction)
+    public virtual void Shoot(Vector3 direction)
     {
         
         dir = direction;

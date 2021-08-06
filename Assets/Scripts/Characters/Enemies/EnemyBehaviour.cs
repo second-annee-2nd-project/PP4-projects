@@ -121,6 +121,7 @@ public class EnemyBehaviour : BaseEnemyBehaviour
         {
             if (weapon.CanShoot())
             {
+                remainingTimerBeforeLookingAtPath = timerBeforeLookingAtPath;
                 transform.LookAt(nearestEnemy.position);
                 Vector3 shootDir = nearestEnemy.position - weapon.P_FireTransform.position;
                 weapon.Shoot(shootDir);

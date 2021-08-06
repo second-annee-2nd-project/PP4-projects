@@ -27,6 +27,9 @@ public class Turret : DestroyableUnit
    private Animator turretAnim;
    public Animator TurretAnim => turretAnim;
 
+   private Vector3Int innerPos;
+   public Vector3Int InnerPos => innerPos;
+
    void Awake()
    {
        turretAnim = FindObjectOfType<Animator>();
@@ -108,11 +111,16 @@ public class Turret : DestroyableUnit
 
         return false;
     }
-    public void Deploy(Vector3 position, Quaternion rotation)
+    public void Deploy(Vector3 position, Vector3Int innerPos, Quaternion rotation)
     {
         GetComponent<MeshRenderer>().enabled = true;
         transform.position = position;
         transform.rotation = rotation;
+        
+        GameManager.Instance.ActualGrid.Nodes[innerPos.x, innerPos.z].isWalkable = false;
+        GameManager.Instance.ActualGrid.Nodes[innerPos.x, innerPos.z].isTurretable = false;
+
+        this.innerPos = innerPos;
     }
 
     public void Shoot(Vector3 direction, Transform _target,Weapon weapon)
@@ -123,7 +131,8 @@ public class Turret : DestroyableUnit
 
     protected override void Die()
     {
-        //GameManager.Instance.ActualGrid.Nodes();
+        GameManager.Instance.ActualGrid.Nodes[innerPos.x, innerPos.z].isWalkable = true;
+        GameManager.Instance.ActualGrid.Nodes[innerPos.x, innerPos.z].isTurretable = true;
         turretManager.RemoveItemFromList(gameObject);
         Destroy(gameObject);
     }

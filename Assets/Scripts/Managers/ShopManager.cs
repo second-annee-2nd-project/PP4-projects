@@ -31,8 +31,6 @@ public class ShopManager : MonoBehaviour
     public int HealPrice => healPrice;
     
     [SerializeField] private int bCoins;
-    [SerializeField] private float bShopTimer;
-    private float shopTimer;
     // Décaler ça dans wave manager
     
     [Header("UI")]
@@ -102,13 +100,11 @@ public class ShopManager : MonoBehaviour
     {
         UI_ShopSequence.SetActive(true);
         joystickController.SetActive(false);
-        shopTimer = bShopTimer;
         isSkipShopButtonPressed = false;
         
-        while (shopTimer > 0f && !isSkipShopButtonPressed)
+        while (!isSkipShopButtonPressed)
         {
-            shopTimer -= Time.deltaTime;
-            headerShopSequence_Text.text = "Phase de préparation, posez des tourelles\n"+(int)shopTimer;
+            headerShopSequence_Text.text = "Phase de préparation, posez des tourelles\n";
             yield return null;
         }
         
@@ -202,9 +198,8 @@ public class ShopManager : MonoBehaviour
                         GameManager.Instance.P_TurretManager.AddItemToList(equipedPrefabInstance);
                         UpdateCoins(turretScript.SoTurret.Price * -1);
                         
-                        n.isWalkable = false;
-                        n.isTurretable = false;
-                        
+                        newTurretScript.Deploy(n.position, n.internalPosition, Quaternion.identity);
+
                         equipedPrefabInstance = null;
                         break;
                     }

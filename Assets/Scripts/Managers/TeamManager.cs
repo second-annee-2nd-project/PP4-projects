@@ -111,14 +111,18 @@ public class TeamManager : MonoBehaviour
             // Ray
             RaycastHit hit;
             Physics.Raycast(pos, dirToEnemy, out hit, range);
-
-            DestroyableUnit du = hit.collider.GetComponent<DestroyableUnit>();
-
+            
             bool isEnemy = true;
-
-            if (du == null || !allyTeam.IsEnemy(du.Team))
+            
+            if (hit.collider == null) isEnemy = false;
+            else
             {
-                isEnemy = false;
+                DestroyableUnit du = hit.collider.GetComponent<DestroyableUnit>();
+
+                if (du == null || !allyTeam.IsEnemy(du.Team))
+                {
+                    isEnemy = false;
+                }
             }
 
             if (squaredDistanceToEnemy < squaredShortestDistance && isEnemy)
