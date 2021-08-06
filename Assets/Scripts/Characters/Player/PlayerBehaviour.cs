@@ -102,7 +102,7 @@ public class PlayerBehaviour : DestroyableUnit
    }
    void FixedUpdate()
    {
-      MoveCharacter(movement);
+      MoveCharacter(movement.normalized);
    }
 
    void MoveCharacter(Vector3 direction)
@@ -171,7 +171,7 @@ public class PlayerBehaviour : DestroyableUnit
 
    public void GainHealth()
    {
-      if (ShopManager.Instance.Coins >= ShopManager.Instance.HealPrice)
+      if (ShopManager.Instance.Coins >= ShopManager.Instance.HealPrice && GameManager.Instance.P_UiManager.Life_Img.fillAmount < 1 )
       {
          healthPoints += bHealthPoints / 10;
          ShopManager.Instance.UpdateCoins(-ShopManager.Instance.HealPrice);

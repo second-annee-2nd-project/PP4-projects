@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -192,14 +193,11 @@ public class ShopManager : MonoBehaviour
                 {
                     if (Input.GetAxisRaw("Fire1") == 1f)
                     {
-                        newTurretScript.TurretAnim.SetBool("canDeploy",true);
-                        StartCoroutine(nameof(StopDeploy));
+                       
                         newTurretScript.enabled = true;
                         GameManager.Instance.P_TurretManager.AddItemToList(equipedPrefabInstance);
                         UpdateCoins(turretScript.SoTurret.Price * -1);
-                        
                         newTurretScript.Deploy(n.position, n.internalPosition, Quaternion.identity);
-
                         equipedPrefabInstance = null;
                         isTurretPlaced = true;
                         break;
@@ -211,12 +209,6 @@ public class ShopManager : MonoBehaviour
         }
 
         placingCor = null;
-    }
-
-    IEnumerator StopDeploy()
-    {
-        yield return new WaitForSeconds(2f);
-        newTurretScript.TurretAnim.SetBool("canDeploy",false);
     }
 
     bool CheckIfTurretable(Node n)

@@ -42,10 +42,7 @@ public class Turret : DestroyableUnit
        health = soTurret.HealthPoints;
      
    }
-
-    
-
-    void Update()
+   void Update()
     {
         UpdateTarget();
         UpdateLifeBar();
@@ -73,21 +70,13 @@ public class Turret : DestroyableUnit
                 if (IsFirstColliderEnemy(dir,weapon.P_BRange))
                 {
                     Shoot(dir,nearestTarget,weapon);
-                    turretAnim.SetBool("Shoot",true);
                 }
             }
             else
             {
-                StopCoroutine(nameof(StopAnim));
-                StartCoroutine(nameof(StopAnim));
+                turretAnim.SetBool("Shoot",false);
             }
         }
-    }
-
-    IEnumerator StopAnim()
-    {
-        yield return new WaitForSeconds(0.1f);
-        turretAnim.SetBool("Shoot",false);
     }
     protected bool IsFirstColliderEnemy(Vector3 dir,float attackRange)
     {
@@ -120,12 +109,15 @@ public class Turret : DestroyableUnit
         GameManager.Instance.ActualGrid.Nodes[innerPos.x, innerPos.z].isTurretable = false;
 
         this.innerPos = innerPos;
+        turretAnim.SetBool("canDeploy",true);
     }
-
     public void Shoot(Vector3 direction, Transform _target,Weapon weapon)
     {
         weapon.Team = team;
+        turretAnim.SetBool("canDeploy",false);
+        turretAnim.SetBool("Shoot",true);
         weapon.Shoot(direction, _target);
+        
     }
 
     protected override void Die()
