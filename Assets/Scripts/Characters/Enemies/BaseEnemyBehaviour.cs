@@ -123,6 +123,8 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         {
             /*if (hitsArray[i].Length > 0)
             {*/
+            if (hitsArray[i].collider != null)
+            {
                 TeamUnit tu = hitsArray[i].collider.GetComponent<TeamUnit>();
                 if(tu)
                 {
@@ -131,6 +133,8 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
                         numberOfHits++;
                     }
                 }
+            }
+                
             //}
         }
 
