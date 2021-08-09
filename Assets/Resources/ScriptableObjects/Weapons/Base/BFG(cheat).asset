@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BFG(cheat)
   m_EditorClassIdentifier: 
   name: BFG(cheat)
+  weaponType: 4
   range: 20
   damage: 100
   fireRate: 0.25

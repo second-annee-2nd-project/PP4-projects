@@ -53,39 +53,7 @@ public class Bullet : TeamUnit
     {
         rb = GetComponent<Rigidbody>();
     }
-
-    public void GetTarget(Transform _target)
-    {
-        target = _target;
-    }
     
-    void UpdateTarget()
-    {
-        GameObject[] ennemies = GameObject.FindGameObjectsWithTag("Enemy");
-        float shortsDistance = Mathf.Infinity;
-        GameObject nearestEnemy = null;
-
-        foreach (GameObject enemy in ennemies)
-        {
-            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distanceToEnemy < shortsDistance)
-            {
-                shortsDistance = distanceToEnemy;
-                nearestEnemy = enemy;
-            }
-
-        }
-
-        if (nearestEnemy != null && shortsDistance <= distance)
-        {
-            target = nearestEnemy.transform;
-        }
-        else
-        {
-            DestroyBullet();
-        }
-    }
-
     protected void DestroyBullet()
     {
         Team = eTeam.neutral;
@@ -108,7 +76,7 @@ public class Bullet : TeamUnit
             cor = StartCoroutine(DestroyOnMaxRange());
     }
 
-    private IEnumerator DestroyOnMaxRange()
+    protected virtual IEnumerator DestroyOnMaxRange()
     {
         distance = maxRange;
         Vector3 lastPos = Vector3.zero;

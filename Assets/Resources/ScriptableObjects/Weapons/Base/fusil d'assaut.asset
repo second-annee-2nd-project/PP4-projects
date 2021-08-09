@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: fusil d'assaut
   m_EditorClassIdentifier: 
   name: fusil d'assaut
+  weaponType: 5
   range: 10
   damage: 8
   fireRate: 0.2

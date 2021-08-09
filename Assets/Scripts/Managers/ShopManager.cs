@@ -57,6 +57,8 @@ public class ShopManager : MonoBehaviour
     private PlayerBehaviour playerBehaviour;
     [SerializeField] private GameObject joystickController;
     private Turret newTurretScript;
+    private List<WeaponUI> weaponUIList;
+
     private void Awake()
     {
         Init();
@@ -73,6 +75,8 @@ public class ShopManager : MonoBehaviour
         playerBehaviour = GameObject.FindObjectOfType<PlayerBehaviour>();
         coins = bCoins;
         coins_Text.text = " : " + coins;
+        weaponUIList = new List<WeaponUI>(FindObjectsOfType<WeaponUI>());
+
     }
 
 
@@ -102,6 +106,7 @@ public class ShopManager : MonoBehaviour
         UI_ShopSequence.SetActive(true);
         joystickController.SetActive(false);
         isSkipShopButtonPressed = false;
+        SetWeaponsBtn();
         
         while (!isSkipShopButtonPressed)
         {
@@ -141,6 +146,7 @@ public class ShopManager : MonoBehaviour
 
     public void BuyWeapon(GameObject weaponGO)
     {
+        
         Weapon wp = weaponGO.GetComponent<Weapon>();
 
         if (wp)
@@ -225,6 +231,15 @@ public class ShopManager : MonoBehaviour
             StopCoroutine(placingCor);
         }
         placingCor = null;
+    }
+    
+    public void SetWeaponsBtn()
+    {
+        List<GameObject> weapons =  GameManager.Instance.P_WeaponsManager.GetRandomWeapons(weaponUIList.Count);
+        for (int i = 0; i < weapons.Count; i++)
+        {
+            weaponUIList[i].SetWeaponInfo(weapons[i]);
+        }
     }
     
 }

@@ -2,13 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum eWeaponType
+{
+    Pistol,
+    Mitraillette,
+    Mitrailleuse,
+    Shotgun,
+    Bfg,
+    Assault,
+    MachineGun
+}
+
 
 [CreateAssetMenu(fileName ="Weapon", menuName = "ScriptableObjects/Weapon", order = 1)]
 public class SO_Weapon : ScriptableObject
 {
     [SerializeField] private string name;
     public string Name => name;
-
+    [SerializeField] private eWeaponType weaponType;
+    public eWeaponType WeaponType => weaponType;
     [SerializeField] private float range;
     public float Range => range;
 

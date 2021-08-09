@@ -3,20 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum eWeaponType
-{
-    Pistol,
-    Rifle,
-    Shotgun,
-    Launcher,
-    Bonus
-}
-
 public class Weapon : MonoBehaviour
 {
     [Header("Name")]
     private string name;
-    private eWeaponType weaponType;
 
     [Header("Base Stats")] 
     [SerializeField] private SO_Weapon weaponStats;

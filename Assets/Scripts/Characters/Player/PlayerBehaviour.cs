@@ -17,6 +17,7 @@ public class PlayerBehaviour : DestroyableUnit
    private Vector3 movement;
    [SerializeField] private GameObject weaponTr;
    [SerializeField] private Weapon weapon;
+   public Weapon P_Weapon => weapon;
 
    private GameObject weaponGO;
    [SerializeField] private float gazeHoldTimer = 2f;

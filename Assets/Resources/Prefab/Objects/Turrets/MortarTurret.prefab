@@ -278,7 +278,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1
-  bHealthPoints: 0
+  bHealthPoints: 40
   lifeBar_Img: {fileID: 8079423978056141066}
   backLifeBar_Img: {fileID: 3073698723213129269}
   animationBarSpeed: 0.2

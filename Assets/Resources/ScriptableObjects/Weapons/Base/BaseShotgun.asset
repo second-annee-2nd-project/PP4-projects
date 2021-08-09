@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BaseShotgun
   m_EditorClassIdentifier: 
   name: Shotgun
+  weaponType: 3
   range: 5
   damage: 5
   fireRate: 1

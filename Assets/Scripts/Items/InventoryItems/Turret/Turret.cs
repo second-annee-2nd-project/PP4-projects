@@ -24,15 +24,15 @@ public class Turret : DestroyableUnit
    [SerializeField] protected SO_Turret soTurret;
    public SO_Turret SoTurret => soTurret;
    protected TurretManager turretManager;
-   private Animator turretAnim;
-   public Animator TurretAnim => turretAnim;
+   // private Animator turretAnim;
+   // public Animator TurretAnim => turretAnim;
 
    private Vector3Int innerPos;
    public Vector3Int InnerPos => innerPos;
 
    void Awake()
    {
-       turretAnim = FindObjectOfType<Animator>();
+       // turretAnim = FindObjectOfType<Animator>();
    }
    protected override void Start()
    {
@@ -72,10 +72,10 @@ public class Turret : DestroyableUnit
                     Shoot(dir,nearestTarget,weapon);
                 }
             }
-            else
-            {
-                turretAnim.SetBool("Shoot",false);
-            }
+            // else
+            // {
+            //     turretAnim.SetBool("Shoot",false);
+            // }
         }
     }
     protected bool IsFirstColliderEnemy(Vector3 dir,float attackRange)
@@ -109,13 +109,13 @@ public class Turret : DestroyableUnit
         GameManager.Instance.ActualGrid.Nodes[innerPos.x, innerPos.z].isTurretable = false;
 
         this.innerPos = innerPos;
-        turretAnim.SetBool("canDeploy",true);
+        // turretAnim.SetBool("canDeploy",true);
     }
     public void Shoot(Vector3 direction, Transform _target,Weapon weapon)
     {
         weapon.Team = team;
-        turretAnim.SetBool("canDeploy",false);
-        turretAnim.SetBool("Shoot",true);
+        // turretAnim.SetBool("canDeploy",false);
+        // turretAnim.SetBool("Shoot",true);
         weapon.Shoot(direction, _target);
         
     }

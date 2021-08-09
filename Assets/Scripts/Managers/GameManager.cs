@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
 
         private UI_Manager uiManager;
         public UI_Manager P_UiManager => uiManager;
+        
         private ShopManager shopManager;
         public ShopManager P_ShopManager => shopManager;
         
@@ -66,6 +67,9 @@ public class GameManager : MonoBehaviour
 
         private UI_Manager UI_Manager;
         public UI_Manager P_UI_Manager => UI_Manager;
+        
+        private WeaponsManager weaponsManager;
+        public WeaponsManager P_WeaponsManager => weaponsManager;
         #endregion
 
         public CameraController CC => cc;
@@ -111,6 +115,7 @@ public class GameManager : MonoBehaviour
         soundManager = FindObjectOfType<SoundManager>();
         player = FindObjectOfType<PlayerBehaviour>();
         UI_Manager = FindObjectOfType<UI_Manager>();
+        weaponsManager = FindObjectOfType<WeaponsManager>();
     }
 
     public void Restart()

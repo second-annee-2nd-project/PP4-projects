@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BaseMachineGun
   m_EditorClassIdentifier: 
   name: Machine Gun
+  weaponType: 6
   range: 10
   damage: 20
   fireRate: 0.08

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8748006364317753500}
   - component: {fileID: 4376959074456471055}
   - component: {fileID: 497500691391061771}
-  - component: {fileID: 341573856503240657}
+  - component: {fileID: -2747298374967845789}
   m_Layer: 0
   m_Name: BulletMortarTurret
   m_TagString: Bullet
@@ -113,7 +113,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &341573856503240657
+--- !u!114 &-2747298374967845789
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 341573856503240656}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eadec28b8c7d3a14e9ea4ac4c708ab49, type: 3}
+  m_Script: {fileID: 11500000, guid: 3fa0029dc556d2443b298bd83a63318d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1

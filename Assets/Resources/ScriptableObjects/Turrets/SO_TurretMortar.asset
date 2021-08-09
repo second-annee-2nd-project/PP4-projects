@@ -15,6 +15,6 @@ MonoBehaviour:
   name: Mortar
   healthPoints: 50
   attackSpeed: 0.5
-  range: 10
+  range: 100
   price: 5
   turnSpeed: 5
