@@ -136,10 +136,11 @@ public class ShopManager : MonoBehaviour
 
     public void StartPlacingTurret(GameObject turretPrefab)
     {
-        equipedPrefabInstance = Instantiate(turretPrefab);
-        turretScript = equipedPrefabInstance.GetComponent<Turret>();
+      
+        turretScript = turretPrefab.GetComponent<Turret>();
         if (placingCor ==  null && coins >= turretScript.SoTurret.Price)
         {
+            equipedPrefabInstance = Instantiate(turretPrefab);
             placingCor = StartCoroutine(PlaceTurret());
         }
     }
@@ -184,7 +185,7 @@ public class ShopManager : MonoBehaviour
 
          newTurretScript = equipedPrefabInstance.GetComponent<Turret>();
         newTurretScript.enabled = false;
-        
+        UI_ShopSequence.SetActive(false);
         while (!isTurretPlaced)
         {
             Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1f);
@@ -213,7 +214,7 @@ public class ShopManager : MonoBehaviour
 
             yield return null;
         }
-
+        UI_ShopSequence.SetActive(true);
         placingCor = null;
     }
 
