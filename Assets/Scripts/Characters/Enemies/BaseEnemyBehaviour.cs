@@ -37,6 +37,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     protected Grid grid;
     protected EnemiesManager enemiesManager;
     protected List<Node> path;
+    [SerializeField] private GameObject spawnEffect;
     public List<Node> Path
     {
         get => path;
@@ -74,6 +75,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         grid = GameManager.Instance.ActualGrid;
         
         groundY = grid.CenterPosition.y;
+        Destroy(Instantiate(spawnEffect,transform.position, transform.rotation),1f);
         
     }
 

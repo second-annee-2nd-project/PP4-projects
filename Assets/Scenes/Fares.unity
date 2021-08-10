@@ -718,6 +718,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5874275153302324257, guid: e53df217b8340d84ea682293b881d432, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5874275153302324259, guid: e53df217b8340d84ea682293b881d432, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.59
@@ -1101,6 +1105,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2312711781840666727, guid: a92bc1e5e9cfd0d4e93fa08def36895d, type: 3}
+      propertyPath: m_Constraints
+      value: 116
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312711781840666727, guid: a92bc1e5e9cfd0d4e93fa08def36895d, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a92bc1e5e9cfd0d4e93fa08def36895d, type: 3}
 --- !u!4 &1899477260 stripped
@@ -1175,6 +1187,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2550007597259441865, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: waveDatas.Array.data[0].spawnerDatas.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550007597259441865, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: waveDatas.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550007597259441865, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: waveDatas.Array.data[1].spawnerDatas.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550007597259441865, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: waveDatas.Array.data[0].spawnerDatas.Array.data[0].spawnerTr
       value: 
       objectReference: {fileID: 139614615}
@@ -1238,6 +1262,30 @@ PrefabInstance:
       propertyPath: waveDatas.Array.data[4].spawnerDatas.Array.data[3].spawnerTr
       value: 
       objectReference: {fileID: 191303896}
+    - target: {fileID: 2550007597785881804, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: bCoins
+      value: 2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550007598163424807, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: enemyPrefabs._values.Array.data[1]
+      value: 
+      objectReference: {fileID: 1359286073271687219, guid: 66375936b881fb741a6f255780744b0e, type: 3}
+    - target: {fileID: 2550007598163424807, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: enemyPrefabs._values.Array.data[5]
+      value: 
+      objectReference: {fileID: 2585232125693606351, guid: d0bcf0dce569b7442ad786cc2f87d1f3, type: 3}
+    - target: {fileID: 2550007598163424807, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: enemyPrefabs._values.Array.data[4]
+      value: 
+      objectReference: {fileID: 6119425663154712118, guid: dd96fed8fb2aaff4ea2c0ea5ee65db8e, type: 3}
+    - target: {fileID: 2550007598163424807, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: enemyPrefabs._values.Array.data[3]
+      value: 
+      objectReference: {fileID: 696926411704935639, guid: cc5d43858d4365846a57849214591138, type: 3}
+    - target: {fileID: 2550007598163424807, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: enemyPrefabs._values.Array.data[0]
+      value: 
+      objectReference: {fileID: 2112906380520513785, guid: c6e90f5752f49dc408827112001f270f, type: 3}
     - target: {fileID: 4825020791085314921, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1282,6 +1330,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5874275153302324257, guid: e53df217b8340d84ea682293b881d432, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5874275153302324259, guid: e53df217b8340d84ea682293b881d432, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.86
