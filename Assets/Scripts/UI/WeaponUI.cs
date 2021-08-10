@@ -12,8 +12,7 @@ public class WeaponUI : MonoBehaviour
       Weapon wp = weaponGo.GetComponent<Weapon>();
       costText.text =  "Prix : " + wp.WeaponStats.Price;
       nameText.text =  wp.WeaponStats.Name;
-      buyWeaponBtn.onClick.RemoveAllListeners(); 
-         Debug.Log(weaponGo);
+      buyWeaponBtn.onClick.RemoveAllListeners();
       buyWeaponBtn.onClick.AddListener(delegate { ShopManager.Instance.BuyWeapon(weaponGo); });
    }
 }
