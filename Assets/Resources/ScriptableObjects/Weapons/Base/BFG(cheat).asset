@@ -18,7 +18,7 @@ MonoBehaviour:
   damage: 100
   fireRate: 0.25
   maxAmmo: 2147483647
-  numberOfBulletsPerShot: 20
+  numberOfBulletsPerShot: 6
   diffusionAngle: 30
   price: 1
   weaponSound: {fileID: 0}
