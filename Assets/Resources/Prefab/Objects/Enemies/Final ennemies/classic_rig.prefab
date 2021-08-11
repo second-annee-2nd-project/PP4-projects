@@ -662,7 +662,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 2
-  bHealthPoints: 20
   lifeBar_Img: {fileID: 6102944902980809117}
   backLifeBar_Img: {fileID: 6247744324285605365}
   animationBarSpeed: 0.2
@@ -685,7 +684,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &2381305681826154659
 GameObject:

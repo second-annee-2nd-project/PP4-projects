@@ -6,7 +6,7 @@ using TeamExtensionMethods;
 
 public class TeamManager : MonoBehaviour
 {
-    private Dictionary<eTeam, List<GameObject>> differentTeams;
+   private Dictionary<eTeam, List<GameObject>> differentTeams;
 
     public void Init()
     {
@@ -202,6 +202,32 @@ namespace TeamExtensionMethods
                 }
             }
 
+            return false;
+        }
+        
+        public static bool IsFirstColliderEnemy(this eTeam myTeam, Vector3 position, Vector3 target,float attackRange, out DestroyableUnit duReturn)
+        {
+            RaycastHit[] hits;
+            Vector3 dir = target - position;
+            Vector3 myPositionGrounded = new Vector3(position.x, target.y, position.z);
+            hits = Physics.RaycastAll(myPositionGrounded, dir, attackRange);
+            //RaycastHit[] hits = Physics.RaycastAll(weapon.P_FirePosition.position, dir, attackRange);
+
+            RaycastHit hit;
+            if (Physics.Raycast(myPositionGrounded, dir, out hit, attackRange))
+            {
+                DestroyableUnit du = hit.collider.GetComponent<DestroyableUnit>();
+                if(du)
+                {
+                    if (du.Team.IsEnemy(myTeam))
+                    {
+                        duReturn = du;
+                        return true;
+                    }
+                }
+            }
+
+            duReturn = null;
             return false;
         }
     }

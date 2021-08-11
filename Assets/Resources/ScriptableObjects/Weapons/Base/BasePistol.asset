@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BasePistol
   m_EditorClassIdentifier: 
   name: Pistol
+  weaponType: 0
   range: 8
   damage: 5
   fireRate: 0.5

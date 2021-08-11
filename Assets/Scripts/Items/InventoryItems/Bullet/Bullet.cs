@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Bullet : TeamUnit
 {
+    
     protected BulletsPool bulletsPool;
     protected Rigidbody rb;
 
@@ -56,6 +57,7 @@ public class Bullet : TeamUnit
     
     protected void DestroyBullet()
     {
+        cor = null;
         Team = eTeam.neutral;
         bulletsPool.ReleaseBulletInstance(gameObject, bulletType);
     }
@@ -147,6 +149,5 @@ public class Bullet : TeamUnit
             DestroyBullet();
         // DestroyBullet();
     }
-
 }
 

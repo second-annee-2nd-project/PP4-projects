@@ -38,6 +38,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     protected EnemiesManager enemiesManager;
     protected List<Node> path;
     [SerializeField] private GameObject spawnEffect;
+    
     public List<Node> Path
     {
         get => path;
@@ -78,18 +79,21 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         GameObject effect = Instantiate(spawnEffect,transform.position, transform.rotation);
         effect.transform.parent = transform;
         Destroy(effect,1f);
-        
-        
     }
 
     protected override void Start()
     {
         base.Start();
-        Init();
+       
     }
 
-    public virtual void Init()
+    public override void Init()
     {
+        base.Init();
+        bHealthPoints = enemyStats.HealthPoints;
+        Debug.Log(bHealthPoints);
+        healthPoints = bHealthPoints;
+        transform.position = new Vector3(transform.position.x, GameManager.Instance.ActualGrid.CenterPosition.y - GameManager.Instance.ActualGrid.P_GridHeight * 0.5f, transform.position.z);
         speed = enemyStats.Speed;
         attackDamage = enemyStats.AttackDamage;
         detectionRange = enemyStats.DetectionRange;
@@ -104,7 +108,8 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         RaycastHit[] hitsArray;
         hitsArray = new RaycastHit[3];
 
-        float radius = transform.GetComponent<Collider>().bounds.size.x/2f;
+        float radius = transform.GetComponent<Collider>().bounds.size.x * 0.5f - 0.1f;
+        target = new Vector3(target.x, groundY, target.z);
         
         Vector3 myPositionCenteredGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
         Vector3 myPositionLeftGrounded = new Vector3(transform.position.x - radius, groundY, transform.position.z);
@@ -117,19 +122,21 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         Physics.Raycast(myPositionCenteredGrounded, dirCenteredToTarget, out hitsArray[0], attackRange, ~GameManager.Instance.ActualGrid.videMask);
         Physics.Raycast(myPositionLeftGrounded, dirLeftToTarget, out hitsArray[1], attackRange, ~GameManager.Instance.ActualGrid.videMask);
         Physics.Raycast(myPositionRightGrounded, dirRightToTarget, out hitsArray[2], attackRange , ~GameManager.Instance.ActualGrid.videMask);
-/*
-        Debug.DrawRay(myPositionCenteredGrounded, dirCenteredToTarget, Color.blue);
-        Debug.DrawRay(myPositionLeftGrounded, dirLeftToTarget, Color.blue);
-        Debug.DrawRay(myPositionRightGrounded, dirRightToTarget, Color.blue);*/
+
+        Debug.DrawRay(myPositionCenteredGrounded, dirCenteredToTarget, Color.black);
+        Debug.DrawRay(myPositionLeftGrounded, dirLeftToTarget, Color.black);
+        Debug.DrawRay(myPositionRightGrounded, dirRightToTarget, Color.black);
         
         bool firstCollidedIsEnemy = false;
         int numberOfHits = 0;
         for (int i = 0; i < hitsArray.Length; i++)
         {
+           
             /*if (hitsArray[i].Length > 0)
             {*/
             if (hitsArray[i].collider != null)
             {
+                Debug.Log(hitsArray[i].collider.name);
                 TeamUnit tu = hitsArray[i].collider.GetComponent<TeamUnit>();
                 if(tu)
                 {
@@ -168,7 +175,6 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
 
     protected void GetNearestEnemy()
     {
-        float minimumDistance = Mathf.Infinity;
         nearestEnemy = enemiesManager.GetNearestTarget(transform.position);
     }
 
@@ -187,9 +193,11 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     public IEnumerator Move()
     {
         int a = 0;
-        Node lastNode = grid.GetNodeWithPosition(transform.position);;
+        Node lastNode = grid.GetNodeWithPosition(transform.position);
+        
         while (healthPoints > 0)
         {
+            
             CheckIfPathNeedsToChange();
             
             Vector3 nearestEnemyGrounded =
@@ -198,7 +206,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
 
             Vector3 sightDir = nearestEnemyGrounded - myPositionGrounded;
 
-            if (Vector3.Distance(transform.position, nearestEnemyGrounded) <= attackRange &&
+            if (Vector3.Distance(myPositionGrounded, nearestEnemyGrounded) <= attackRange &&
                 IsFirstColliderEnemy(nearestEnemyGrounded))
             {
                 TryToAttack();
@@ -207,27 +215,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
             {
                 if (path != null && path.Count > 0 && path[0] != null)
                 {
-                    Vector3 startPosition = transform.position;
-                    Vector3 targetPosition = new Vector3(path[0].position.x, this.transform.position.y, path[0].position.z);
-                    Vector3Int coord = path[0].internalPosition;
-
-                    //grid.Nodes[coord.x, coord.z].occupiedBy = this;
-                    //essai de s'approprier la case
-
-                    Node actualNode = grid.GetNodeWithPosition(transform.position);
-                    if (actualNode != lastNode)
-                    {
-                        //lastNode.isWalkable = true;
-                        lastNode.occupiedBy = null;
-
-                        //actualNode.isWalkable = false;
-                        actualNode.occupiedBy = this;
-
-                        lastNode = actualNode;
-                    }
-
-                    
-                    transform.position = Vector3.MoveTowards(startPosition, targetPosition, speed * Time.deltaTime);
+                  
                     if (remainingTimerBeforeLookingAtPath > 0f)
                     {
                         remainingTimerBeforeLookingAtPath -= Time.deltaTime;
@@ -235,17 +223,41 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
                     }
                     else
                     {
+                        CallAnim(); 
+                        Vector3 startPosition = transform.position;
+                        Vector3 targetPosition = new Vector3(path[0].position.x, this.transform.position.y, path[0].position.z);
+                      
+                        Vector3Int coord = path[0].internalPosition;
+
+                        //grid.Nodes[coord.x, coord.z].occupiedBy = this;
+                        //essai de s'approprier la case
+
+                        Node actualNode = grid.GetNodeWithPosition(transform.position);
+                        if (actualNode != lastNode)
+                        {
+                            //lastNode.isWalkable = true;
+                            lastNode.occupiedBy = null;
+
+                            //actualNode.isWalkable = false;
+                            actualNode.occupiedBy = this;
+
+                            lastNode = actualNode;
+                        }
+
+                    
+                        transform.position = Vector3.MoveTowards(startPosition, targetPosition, speed * Time.deltaTime);
                         transform.LookAt(targetPosition);
+                        if (startPosition == targetPosition)
+                        {
+                            path.RemoveAt(0);
+                            //grid.Nodes[coord.x, coord.z].occupiedBy = null;
+                        }
                     }
                     
 
                     //ChoseAction(startPosition, targetPosition);
 
-                    if (startPosition == targetPosition)
-                    {
-                        path.RemoveAt(0);
-                        //grid.Nodes[coord.x, coord.z].occupiedBy = null;
-                    }
+                    
 
                     yield return null;
                 }
@@ -255,6 +267,10 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         yield return null;
     }
 
+    protected virtual void CallAnim()
+    {
+        
+    }
     protected void CheckIfPathNeedsToChange()
     {
         GetNearestEnemy();
@@ -340,7 +356,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(removedPos, 0.5f);
-        if (path.Count < 1) return;
+        if (path == null || path.Count < 1) return;
         for (int i = 0; i < path.Count; i++)
         {
                     Gizmos.color = Color.blue;
@@ -349,5 +365,4 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
                     Gizmos.DrawWireSphere(path[i].position, 0.5f);
         }
     }
-
 }

@@ -147,7 +147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1
-  bHealthPoints: 100
   lifeBar_Img: {fileID: 0}
   backLifeBar_Img: {fileID: 0}
   animationBarSpeed: 0.2
@@ -158,6 +157,8 @@ MonoBehaviour:
   weapon: {fileID: 2312711781352939925}
   gazeHoldTimer: 2
   maxInvincibilityTimer: 0
+  shootJoystick: {fileID: 0}
+  characterStats: {fileID: 11400000, guid: 6eab13c776679fb4d929dfa0fc2121bd, type: 2}
 --- !u!114 &1116104211110330210
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -129,3 +129,4 @@ MonoBehaviour:
   bulletType: 1
   speed: 8
   isSeekingBullet: 1
+  height: 1.4
