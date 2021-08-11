@@ -29,7 +29,6 @@ public class EnemyBehaviour : BaseEnemyBehaviour
 
     public override void Init()
     {
-        base.Init();
         enemyRealStats = (SO_Enemy) enemyStats;
         
         speed = enemyRealStats.Speed;

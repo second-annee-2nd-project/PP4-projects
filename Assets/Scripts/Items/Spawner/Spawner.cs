@@ -76,7 +76,7 @@ public class Spawner : MonoBehaviour
         int z = (int) objectSize.z;
 
         float rx = transform.position.x - x/2f + Random.Range(0f, x);
-        float ry = GameManager.Instance.ActualGrid.CenterPosition.y - GameManager.Instance.ActualGrid.P_GridHeight * 0.5f;
+        float ry = transform.position.y;
         float rz = transform.position.z - z/2f + Random.Range(0f, z);
         
         GameObject enemy = Instantiate(prefab,

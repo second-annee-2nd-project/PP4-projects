@@ -38,7 +38,6 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     protected EnemiesManager enemiesManager;
     protected List<Node> path;
     [SerializeField] private GameObject spawnEffect;
-    
     public List<Node> Path
     {
         get => path;
@@ -79,21 +78,18 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         GameObject effect = Instantiate(spawnEffect,transform.position, transform.rotation);
         effect.transform.parent = transform;
         Destroy(effect,1f);
+        
+        
     }
 
     protected override void Start()
     {
         base.Start();
-       
+        Init();
     }
 
-    public override void Init()
+    public virtual void Init()
     {
-        base.Init();
-        bHealthPoints = enemyStats.HealthPoints;
-        Debug.Log(bHealthPoints);
-        healthPoints = bHealthPoints;
-        transform.position = new Vector3(transform.position.x, GameManager.Instance.ActualGrid.CenterPosition.y - GameManager.Instance.ActualGrid.P_GridHeight * 0.5f, transform.position.z);
         speed = enemyStats.Speed;
         attackDamage = enemyStats.AttackDamage;
         detectionRange = enemyStats.DetectionRange;
@@ -109,7 +105,6 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         hitsArray = new RaycastHit[3];
 
         float radius = transform.GetComponent<Collider>().bounds.size.x/2f;
-        target = new Vector3(target.x, groundY, target.z);
         
         Vector3 myPositionCenteredGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
         Vector3 myPositionLeftGrounded = new Vector3(transform.position.x - radius, groundY, transform.position.z);
@@ -122,10 +117,10 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         Physics.Raycast(myPositionCenteredGrounded, dirCenteredToTarget, out hitsArray[0], attackRange, ~GameManager.Instance.ActualGrid.videMask);
         Physics.Raycast(myPositionLeftGrounded, dirLeftToTarget, out hitsArray[1], attackRange, ~GameManager.Instance.ActualGrid.videMask);
         Physics.Raycast(myPositionRightGrounded, dirRightToTarget, out hitsArray[2], attackRange , ~GameManager.Instance.ActualGrid.videMask);
-
+/*
         Debug.DrawRay(myPositionCenteredGrounded, dirCenteredToTarget, Color.blue);
         Debug.DrawRay(myPositionLeftGrounded, dirLeftToTarget, Color.blue);
-        Debug.DrawRay(myPositionRightGrounded, dirRightToTarget, Color.blue);
+        Debug.DrawRay(myPositionRightGrounded, dirRightToTarget, Color.blue);*/
         
         bool firstCollidedIsEnemy = false;
         int numberOfHits = 0;
@@ -173,6 +168,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
 
     protected void GetNearestEnemy()
     {
+        float minimumDistance = Mathf.Infinity;
         nearestEnemy = enemiesManager.GetNearestTarget(transform.position);
     }
 
@@ -191,11 +187,9 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     public IEnumerator Move()
     {
         int a = 0;
-        Node lastNode = grid.GetNodeWithPosition(transform.position);
-        Debug.Log(healthPoints);
+        Node lastNode = grid.GetNodeWithPosition(transform.position);;
         while (healthPoints > 0)
         {
-            
             CheckIfPathNeedsToChange();
             
             Vector3 nearestEnemyGrounded =
@@ -215,7 +209,6 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
                 {
                     Vector3 startPosition = transform.position;
                     Vector3 targetPosition = new Vector3(path[0].position.x, this.transform.position.y, path[0].position.z);
-                    Debug.Log(targetPosition);
                     Vector3Int coord = path[0].internalPosition;
 
                     //grid.Nodes[coord.x, coord.z].occupiedBy = this;
@@ -347,7 +340,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(removedPos, 0.5f);
-        if (path == null || path.Count < 1) return;
+        if (path.Count < 1) return;
         for (int i = 0; i < path.Count; i++)
         {
                     Gizmos.color = Color.blue;

@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour
     private string name;
 
     [Header("Base Stats")] 
-    [SerializeField] protected SO_Weapon weaponStats;
+    [SerializeField] private SO_Weapon weaponStats;
 
     public SO_Weapon WeaponStats => weaponStats;
     private int bAmmo;
@@ -42,7 +42,7 @@ public class Weapon : MonoBehaviour
     public Transform P_FireTransform => fireTransform;
     [SerializeField]  private GameObject bulletPrefab;
     private BulletsPool bulletsPool;
-    protected eTeam team;
+    private eTeam team;
 
     public eTeam Team
     {
@@ -102,7 +102,7 @@ public class Weapon : MonoBehaviour
         // diffusionAngle = bDiffusionAngle;
     }
 
-    protected virtual void Update()
+    void Update()
     {
         if (nextFire > 0f)
             nextFire -= Time.deltaTime;
@@ -122,7 +122,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    public virtual void Shoot(Vector3 direction)
+    public void Shoot(Vector3 direction)
     {
         if (ammo == 0)
         {
@@ -197,7 +197,7 @@ public class Weapon : MonoBehaviour
         //_sr.color = Color.red;
     }
 
-    public virtual bool CanShoot()
+    public bool CanShoot()
     {
         if (nextFire <= 0f)
         {
