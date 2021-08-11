@@ -143,9 +143,9 @@ public class Bullet : TeamUnit
         {
             Debug.Log("shouldn't");
         }
-        // if(col.tag != "Vide")
-        //     DestroyBullet();
-        DestroyBullet();
+        if(col.tag != "Vide")
+            DestroyBullet();
+        // DestroyBullet();
     }
 
 }

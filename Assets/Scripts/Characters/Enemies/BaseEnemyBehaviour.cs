@@ -75,7 +75,10 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         grid = GameManager.Instance.ActualGrid;
         
         groundY = grid.CenterPosition.y;
-        Destroy(Instantiate(spawnEffect,transform.position, transform.rotation),1f);
+        GameObject effect = Instantiate(spawnEffect,transform.position, transform.rotation);
+        effect.transform.parent = transform;
+        Destroy(effect,1f);
+        
         
     }
 
@@ -111,9 +114,9 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         Vector3 dirLeftToTarget = target - myPositionLeftGrounded;
         Vector3 dirRightToTarget = target - myPositionRightGrounded;
         
-        Physics.Raycast(myPositionCenteredGrounded, dirCenteredToTarget, out hitsArray[0], attackRange);
-        Physics.Raycast(myPositionLeftGrounded, dirLeftToTarget, out hitsArray[1], attackRange);
-        Physics.Raycast(myPositionRightGrounded, dirRightToTarget, out hitsArray[2], attackRange);
+        Physics.Raycast(myPositionCenteredGrounded, dirCenteredToTarget, out hitsArray[0], attackRange, ~GameManager.Instance.ActualGrid.videMask);
+        Physics.Raycast(myPositionLeftGrounded, dirLeftToTarget, out hitsArray[1], attackRange, ~GameManager.Instance.ActualGrid.videMask);
+        Physics.Raycast(myPositionRightGrounded, dirRightToTarget, out hitsArray[2], attackRange , ~GameManager.Instance.ActualGrid.videMask);
 /*
         Debug.DrawRay(myPositionCenteredGrounded, dirCenteredToTarget, Color.blue);
         Debug.DrawRay(myPositionLeftGrounded, dirLeftToTarget, Color.blue);

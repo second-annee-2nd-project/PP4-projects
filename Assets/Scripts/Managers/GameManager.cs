@@ -183,4 +183,19 @@ public class GameManager : MonoBehaviour
         _eGameState = eGameState.Shop;
         
     }
+    public void PauseGame ()
+    {
+           
+        if (Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+            P_UiManager.Pause.alpha = 0;
+        }
+        else
+        {
+            Time.timeScale = 0;
+            P_UiManager.Pause.alpha = 1;
+        }
+    }
+    
 }

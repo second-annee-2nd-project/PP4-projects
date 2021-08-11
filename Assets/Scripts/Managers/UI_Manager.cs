@@ -14,6 +14,9 @@ public class UI_Manager : MonoBehaviour
        [SerializeField] private CanvasGroup retryButton;
        public CanvasGroup RetryButton => RetryButton;
 
+       [SerializeField] private CanvasGroup pause;
+       public CanvasGroup Pause => pause;
+       
        public void RenderRetryButton(bool state)
        {
            if (state)

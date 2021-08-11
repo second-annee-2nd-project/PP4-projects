@@ -15,6 +15,7 @@ public class Grid : MonoBehaviour
     [SerializeField] private int gridWidth;
     [SerializeField] private int gridLength;
     [SerializeField] private int gridHeight;
+    public int P_GridHeight => gridHeight;
     public int P_GridWidth => gridWidth;
     public int P_GridLength => gridLength;
 
@@ -26,6 +27,7 @@ public class Grid : MonoBehaviour
     public Vector3 CenterPosition => centerPosition;
     public LayerMask enemyMask;
     public LayerMask unwalkableMask;
+    public LayerMask videMask;
 
     private GameObject ground;
 
@@ -33,6 +35,7 @@ public class Grid : MonoBehaviour
     {
         nodes = new Node[gridWidth, gridLength];
         unwalkableMask = LayerMask.GetMask("Unwalkable");
+        videMask = LayerMask.GetMask("Vide");
         Instantiate();
     }
 
@@ -56,7 +59,8 @@ public class Grid : MonoBehaviour
                 Collider[] hitColliders = new Collider[10];
                 
                 // On enlève 0.1 pour ne pas toucher les bords
-                    int size = Physics.OverlapSphereNonAlloc(position, (diameter - 0.1f)/2f, hitColliders, unwalkableMask.value);
+                
+                    int size = Physics.OverlapSphereNonAlloc(position, (diameter - 0.1f)/2f, hitColliders, LayerMask.GetMask("Unwalkable","Vide"));
 
                 if (size > 0)
                 {
