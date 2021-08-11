@@ -13,12 +13,13 @@ public class EnemyBehaviour : BaseEnemyBehaviour
 
     private SO_Enemy enemyRealStats;
 
-
+    private Animator enemyAnim;
+    
     // Start is called before the first frame update
     protected override void Awake()
     {
         base.Awake();
-
+        enemyAnim = GetComponent<Animator>();
         if (weapon != null)
         {
             weapon.Team = Team;
@@ -121,10 +122,15 @@ public class EnemyBehaviour : BaseEnemyBehaviour
         {
             if (weapon.CanShoot())
             {
+                enemyAnim.SetBool("Attacking",true);
                 remainingTimerBeforeLookingAtPath = timerBeforeLookingAtPath;
                 transform.LookAt(nearestEnemy.position);
                 Vector3 shootDir = nearestEnemy.position - weapon.P_FireTransform.position;
                 weapon.Shoot(shootDir);
+            }
+            else
+            {
+                enemyAnim.SetBool("Attacking",false);
             }
         }
         else
@@ -132,6 +138,11 @@ public class EnemyBehaviour : BaseEnemyBehaviour
             if (nextAttack <= 0)
             {
                 Attack();
+                enemyAnim.SetBool("Attacking",true);
+            }
+            else
+            {
+                enemyAnim.SetBool("Attacking",false);
             }
         }
     }
@@ -146,7 +157,7 @@ public class EnemyBehaviour : BaseEnemyBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(removedPos, 0.5f);
-        if (path.Count < 1) return;
+        if (path == null || path.Count < 1) return;
         for (int i = 0; i < path.Count; i++)
         {
             Gizmos.color = Color.blue;
