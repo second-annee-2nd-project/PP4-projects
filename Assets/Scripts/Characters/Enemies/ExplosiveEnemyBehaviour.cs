@@ -103,7 +103,7 @@ public class ExplosiveEnemyBehaviour : BaseEnemyBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(removedPos, 0.5f);
-        if (path.Count < 1) return;
+        if (path == null || path.Count < 1) return;
         for (int i = 0; i < path.Count; i++)
         {
             Gizmos.color = Color.blue;

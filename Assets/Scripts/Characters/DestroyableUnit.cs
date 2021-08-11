@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class DestroyableUnit : TeamUnit
 {
-    [Header("Health Points")]
-    [SerializeField] protected float bHealthPoints;
+   
+    protected float bHealthPoints;
     
     protected float healthPoints;
 
@@ -24,9 +24,9 @@ public class DestroyableUnit : TeamUnit
     {
         healthPoints = bHealthPoints;
 
-        transform.position = new Vector3(transform.position.x, GameManager.Instance.ActualGrid.CenterPosition.y, 
-            transform.position.z);
+        transform.position = new Vector3(transform.position.x, GameManager.Instance.ActualGrid.CenterPosition.y, transform.position.z);
         GameManager.Instance.P_SoundManager.AudioSource = FindObjectOfType<AudioSource>();
+      
     }
 
     public virtual void Restart()

@@ -73,6 +73,16 @@ public class BulletsPool : MonoBehaviour
                 }
                 break;
             case eBulletType.TurretBulletFares:
+                int count = poolSize;
+                for (int i = 0; i < poolSize; i++)
+                {
+                    if (turretBulletInstances[i].activeSelf)
+                    {
+                        count--;
+                    }
+                }
+                //Debug.Log("Nombre de balles dispo : "+count);
+
                 for (int i = 0; i < poolSize; i++)
                 {
                     if (turretBulletInstances[i].activeSelf)
