@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WeaponTurretRapidFire
   m_EditorClassIdentifier: 
   name: rapidFireTurret
+  weaponType: 0
   range: 5
   damage: 2
   fireRate: 0.2
@@ -20,5 +21,5 @@ MonoBehaviour:
   numberOfBulletsPerShot: 1
   diffusionAngle: 0
   price: 0
-  weaponSound: {fileID: 0}
-  muzzleFlash: {fileID: 0}
+  weaponSound: {fileID: 8300000, guid: 54da63e32a28d774b8f75c5734d44a6a, type: 3}
+  muzzleFlash: {fileID: 441624651237726128, guid: 713eb188cb301bf46a97e2b8845aadf4, type: 3}

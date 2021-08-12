@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ecf821100641b341818f6dc47098c5a, type: 3}
-  m_Name: fusil d'assaut
+  m_Name: "fusil Am\xE9lior\xE9"
   m_EditorClassIdentifier: 
-  name: fusil d'assaut
+  name: "Fusil Am\xE9lior\xE9"
   weaponType: 5
-  range: 10
-  damage: 8
-  fireRate: 0.2
-  maxAmmo: 1000000000
+  range: 12
+  damage: 20
+  fireRate: 0.3
+  maxAmmo: 1000000
   numberOfBulletsPerShot: 1
   diffusionAngle: 0
-  price: 120
+  price: 200
   weaponSound: {fileID: 8300000, guid: 69dadc57bd2a29847abe1bda1c6bf3a7, type: 3}
   muzzleFlash: {fileID: 441624651237726128, guid: 713eb188cb301bf46a97e2b8845aadf4, type: 3}

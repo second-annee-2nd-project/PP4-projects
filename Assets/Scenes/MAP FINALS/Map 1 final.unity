@@ -14228,6 +14228,30 @@ PrefabInstance:
       propertyPath: waveDatas.Array.data[0].spawnerDatas.Array.data[0].enemyGroups.Array.data[0].enemyNumberToSpawn
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2611679223996070179, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: weaponPrefabs._keys.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2611679223996070179, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: weaponPrefabs._values.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2611679223996070179, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: weaponPrefabs._values.Array.data[4]
+      value: 
+      objectReference: {fileID: 2186136081076314979, guid: 04a532c62a4bb224787004fccbd8ad18, type: 3}
+    - target: {fileID: 2611679223996070179, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: weaponPrefabs._keys.Array.data[2]
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2611679223996070179, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: weaponPrefabs._values.Array.data[2]
+      value: 
+      objectReference: {fileID: 2872637116051814785, guid: 724c7c388fb5570439674a7f905ed9d3, type: 3}
+    - target: {fileID: 3509990106818722801, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4825020791085314921, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

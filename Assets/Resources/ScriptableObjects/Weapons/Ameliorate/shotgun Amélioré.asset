@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ecf821100641b341818f6dc47098c5a, type: 3}
-  m_Name: smg
+  m_Name: "shotgun Am\xE9lior\xE9"
   m_EditorClassIdentifier: 
-  name: smg
-  weaponType: 0
-  range: 100
-  damage: 1000
-  fireRate: 0.2
-  maxAmmo: 10000000
-  numberOfBulletsPerShot: 1
-  diffusionAngle: 0
-  price: 90000
-  weaponSound: {fileID: 0}
-  muzzleFlash: {fileID: 0}
+  name: "Shotgun am\xE9liorer"
+  weaponType: 3
+  range: 7
+  damage: 8
+  fireRate: 1
+  maxAmmo: 1000000
+  numberOfBulletsPerShot: 10
+  diffusionAngle: 30
+  price: 120
+  weaponSound: {fileID: 8300000, guid: 218f778b94f678d45bb0a496eced9cf8, type: 3}
+  muzzleFlash: {fileID: 441624651237726128, guid: 713eb188cb301bf46a97e2b8845aadf4, type: 3}
