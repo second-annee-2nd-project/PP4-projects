@@ -1880,7 +1880,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1435709501116481100}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2550007597785881804}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: BuyWeapon
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8297874499855603084, guid: 2f7beb4bb071f924ca0dbd05f88abe01, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1815869580388496527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1893,9 +1905,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d169a9ddc80476845b1a0555c220a5a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costText: {fileID: 7120270647240805491}
-  nameText: {fileID: 6149888322959387595}
-  buyWeaponBtn: {fileID: 1257720291639412315}
 --- !u!1 &2100195606134960095
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,9 +2115,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Mitraillette
-
-'
+  m_Text: FlameThrower
 --- !u!1 &2550007596602302647
 GameObject:
   m_ObjectHideFlags: 0
@@ -4201,7 +4208,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4209199392063536365}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2550007597785881804}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: BuyWeapon
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2872637116051814785, guid: 724c7c388fb5570439674a7f905ed9d3, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2611679223575155035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4214,9 +4233,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d169a9ddc80476845b1a0555c220a5a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costText: {fileID: 1923845128071806811}
-  nameText: {fileID: 2633703908256218943}
-  buyWeaponBtn: {fileID: 4103605361254597882}
 --- !u!1 &3982684627685599739
 GameObject:
   m_ObjectHideFlags: 0
@@ -4374,7 +4390,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Prix : 40'
+  m_Text: 'Prix : 200'
 --- !u!1 &5119410348588938147
 GameObject:
   m_ObjectHideFlags: 0
@@ -5234,7 +5250,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5423061997565235396}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2550007597785881804}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: BuyWeapon
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2186136081076314979, guid: 04a532c62a4bb224787004fccbd8ad18, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2611679225102858420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5247,9 +5275,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d169a9ddc80476845b1a0555c220a5a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  costText: {fileID: 1815869579585446570}
-  nameText: {fileID: 1815869580756070080}
-  buyWeaponBtn: {fileID: 5423061997565235397}
 --- !u!1 &5884496990685234541
 GameObject:
   m_ObjectHideFlags: 0
@@ -6625,7 +6650,6 @@ GameObject:
   - component: {fileID: 8412495412205117380}
   - component: {fileID: 8412495412205117383}
   - component: {fileID: 1598602764}
-  - component: {fileID: 8660314168440665411}
   m_Layer: 5
   m_Name: Upgrade_Btn
   m_TagString: Untagged
@@ -6735,7 +6759,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8660314168440665411}
+      - m_Target: {fileID: 1598602764}
         m_TargetAssemblyTypeName: UpgradeWeapon, Assembly-CSharp
         m_MethodName: BuyUpgradeWeapon
         m_Mode: 1
@@ -6748,20 +6772,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1598602764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8412495412205117401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 06f4a6bd6b286be49b13c9f7955e563e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  costText: {fileID: 1815869581181965863}
-  nameText: {fileID: 1815869580474893604}
---- !u!114 &8660314168440665411
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

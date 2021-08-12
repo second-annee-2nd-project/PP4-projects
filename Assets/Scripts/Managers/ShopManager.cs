@@ -106,7 +106,7 @@ public class ShopManager : MonoBehaviour
         UI_ShopSequence.SetActive(true);
         joystickController.SetActive(false);
         isSkipShopButtonPressed = false;
-        SetWeaponsBtn();
+        // SetWeaponsBtn();
         
         while (!isSkipShopButtonPressed)
         {
@@ -238,13 +238,13 @@ public class ShopManager : MonoBehaviour
         placingCor = null;
     }
     
-    public void SetWeaponsBtn()
-    {
-        List<GameObject> weapons =  GameManager.Instance.P_WeaponsManager.GetRandomWeapons(weaponUIList.Count);
-        for (int i = 0; i < weapons.Count; i++)
-        {
-            weaponUIList[i].SetWeaponInfo(weapons[i]);
-        }
-    }
+    // public void SetWeaponsBtn()
+    // {
+    //     List<GameObject> weapons =  GameManager.Instance.P_WeaponsManager.GetRandomWeapons(weaponUIList.Count);
+    //     for (int i = 0; i < weapons.Count; i++)
+    //     {
+    //         weaponUIList[i].SetWeaponInfo(weapons[i]);
+    //     }
+    // }
     
 }
