@@ -17368,6 +17368,7 @@ MonoBehaviour:
   life_Img: {fileID: 5775752289461576082}
   life_Img_Damage_Heal: {fileID: 1381324696971408494}
   retryButton: {fileID: 0}
+  pause: {fileID: 0}
 --- !u!1 &1083726649
 GameObject:
   m_ObjectHideFlags: 0
@@ -28676,6 +28677,9 @@ MonoBehaviour:
   unwalkableMask:
     serializedVersion: 2
     m_Bits: 256
+  videMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1737542154
 GameObject:
   m_ObjectHideFlags: 0
