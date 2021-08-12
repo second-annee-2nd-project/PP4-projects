@@ -19,7 +19,7 @@ MonoBehaviour:
   fireRate: 0
   maxAmmo: 0
   numberOfBulletsPerShot: 0
-  diffusionAngle: 60
+  diffusionAngle: 90
   price: 1000
   weaponSound: {fileID: 0}
   muzzleFlash: {fileID: 0}
