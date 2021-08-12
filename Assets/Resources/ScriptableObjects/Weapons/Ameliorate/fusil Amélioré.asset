@@ -16,7 +16,7 @@ MonoBehaviour:
   weaponType: 5
   range: 12
   damage: 20
-  fireRate: 0.3
+  fireRate: 0.2
   maxAmmo: 1000000
   numberOfBulletsPerShot: 1
   diffusionAngle: 0
