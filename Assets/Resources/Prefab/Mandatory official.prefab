@@ -584,7 +584,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Turret mortier
+  m_Text: Turret mortar
 --- !u!1 &1815869579883244545
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,7 +1188,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: A venir
+  m_Text: 'Prix : 50'
 --- !u!1 &1815869580756070094
 GameObject:
   m_ObjectHideFlags: 0
@@ -2523,7 +2523,7 @@ MonoBehaviour:
   - spawnerDatas:
     - spawnerTr: {fileID: 0}
       enemyGroups:
-      - typeOfEnemyToSpawn: 4
+      - typeOfEnemyToSpawn: 1
         enemyNumberToSpawn: 1
         timerBetweenSpawns: 3
         timerBeforeFirstSpawn: 1
@@ -2782,6 +2782,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 6853525456481171506, guid: dcd37c00f139e0c408c0bd061c6cb6da, type: 3}
   turretBulletPrefab: {fileID: 7497547957538424816, guid: 4d8d5547bfb105843b7600b15e9b8501, type: 3}
+  mortarBulletPrefab: {fileID: 341573856503240656, guid: ae77f4a7dbca48a49b65736d63736f48, type: 3}
+  enemyBulletPrefab: {fileID: 2852258047591489820, guid: 3081e5623b21c2d4391cb48b2a49b6e5, type: 3}
   poolSize: 50
 --- !u!1 &2550007597562232866
 GameObject:

@@ -126,6 +126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 2
-  bulletType: 0
-  speed: 300
+  bulletType: 3
+  speed: 8
   isSeekingBullet: 0

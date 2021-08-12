@@ -5,16 +5,22 @@ using UnityEngine;
 public enum eBulletType
 {
     BulletYannis,
-    TurretBulletFares
+    TurretBulletFares,
+    MortarBullet,
+    EnemyBullet
 }
 public class BulletsPool : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab = default;
     [SerializeField] private GameObject turretBulletPrefab = default;
+    [SerializeField] private GameObject mortarBulletPrefab = default;
+    [SerializeField] private GameObject enemyBulletPrefab = default;
     [SerializeField] private int poolSize = 50;
 
     private GameObject[] bulletInstances;
     private GameObject[] turretBulletInstances;
+    private GameObject[] enemyBulletInstances;
+    private GameObject[] mortarBulletInstances;
     
     //permet de récupérer toutes les instances 
     private Dictionary<eBulletType, int> bulletRow;
@@ -54,6 +60,30 @@ public class BulletsPool : MonoBehaviour
                 turretBulletInstances[j] = newBullet;
             }
         }
+        mortarBulletInstances = new GameObject[poolSize];
+        for (int i = 0; i < poolSize; i++)
+        {
+            for (int j = 0; j < poolSize; j++)
+            {
+                GameObject newBullet = Instantiate(mortarBulletPrefab, Vector3.zero, Quaternion.identity);
+                newBullet.transform.parent = tr;
+                newBullet.GetComponent<Bullet>().P_BulletsPool = this;
+                newBullet.SetActive(false);
+                mortarBulletInstances[j] = newBullet;
+            }
+        }
+        enemyBulletInstances = new GameObject[poolSize];
+        for (int i = 0; i < poolSize; i++)
+        {
+            for (int j = 0; j < poolSize; j++)
+            {
+                GameObject newBullet = Instantiate(enemyBulletPrefab, Vector3.zero, Quaternion.identity);
+                newBullet.transform.parent = tr;
+                newBullet.GetComponent<Bullet>().P_BulletsPool = this;
+                newBullet.SetActive(false);
+                enemyBulletInstances[j] = newBullet;
+            }
+        }
 
         availableBulletInstance = bulletInstances[0];
     }
@@ -70,6 +100,17 @@ public class BulletsPool : MonoBehaviour
                         continue;
                     }
                     return bulletInstances[i];
+                }
+
+                break;
+            case eBulletType.EnemyBullet:
+                for (int i = 0; i < poolSize; i++)
+                {
+                    if (enemyBulletInstances[i].activeSelf)
+                    {
+                        continue;
+                    }
+                    return enemyBulletInstances[i];
                 }
                 break;
             case eBulletType.TurretBulletFares:
@@ -92,6 +133,26 @@ public class BulletsPool : MonoBehaviour
                     return turretBulletInstances[i];
                 }
                 break;
+            case eBulletType.MortarBullet:
+                int countMortar = poolSize;
+                for (int i = 0; i < poolSize; i++)
+                {
+                    if (mortarBulletInstances[i].activeSelf)
+                    {
+                        countMortar--;
+                    }
+                }
+                //Debug.Log("Nombre de balles dispo : "+count);
+
+                for (int i = 0; i < poolSize; i++)
+                {
+                    if (mortarBulletInstances[i].activeSelf)
+                    {
+                        continue;
+                    }
+                    return mortarBulletInstances[i];
+                }
+                break;
 
         }
         
@@ -105,6 +166,26 @@ public class BulletsPool : MonoBehaviour
         {
             case eBulletType.BulletYannis:
                 foreach (GameObject b in bulletInstances)
+                {
+                    if (bulletInstance != b)
+                        continue;
+
+                    b.SetActive(false);
+                    break;
+                }
+                break;
+            case eBulletType.EnemyBullet:
+                foreach (GameObject b in enemyBulletInstances)
+                {
+                    if (bulletInstance != b)
+                        continue;
+
+                    b.SetActive(false);
+                    break;
+                }
+                break;
+            case eBulletType.MortarBullet:
+                foreach (GameObject b in mortarBulletInstances)
                 {
                     if (bulletInstance != b)
                         continue;
