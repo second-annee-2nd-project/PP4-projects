@@ -165,9 +165,17 @@ public class Weapon : MonoBehaviour
               newBulletScript.Team = Team;
               newBulletScript.MaxRange = bRange;
               newBulletScript.Damage = bDamage;
-              
-              newBulletScript.Shoot(newDir);
-              ammo--;
+
+              ParableBullet pb = newBullet.GetComponent<ParableBullet>();
+              if (pb)
+              {
+                  Debug.Log(":o)");
+                  SO_AoEWeapon aoew = (SO_AoEWeapon) weaponStats;
+                  pb.DamageRadius = aoew.DamageRadius;
+              }
+
+                newBulletScript.Shoot(newDir);
+                ammo--;
               GameManager.Instance.P_SoundManager.AudioSource.PlayOneShot(weaponStats.WeaponSound);
              Destroy(Instantiate(weaponStats.MuzzleFlash,fireTransform.position, fireTransform.rotation),0.1f);
    
@@ -193,6 +201,14 @@ public class Weapon : MonoBehaviour
                newBulletScript.MaxRange = bRange;
                newBulletScript.Damage = bDamage;
                newBulletScript.Target = target;
+               
+               ParableBullet pb = newBullet.GetComponent<ParableBullet>();
+               if (pb)
+               {
+                   Debug.Log(":o)");
+                   SO_AoEWeapon aoew = (SO_AoEWeapon) weaponStats;
+                   pb.DamageRadius = aoew.DamageRadius;
+               }
                newBulletScript.Shoot(direction);
                ammo--;
            }

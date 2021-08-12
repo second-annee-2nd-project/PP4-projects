@@ -35,7 +35,7 @@ public class ThrowerWeapon : Weapon
         {
             Vector3 dir = allEnemies[i].transform.position - P_FireTransform.position;
 
-            if (dir.sqrMagnitude > weaponStats.Range * weaponStats.Range)
+            if (dir.sqrMagnitude > weaponStats.Range * weaponStats.Range /*|| dir.sqrMagnitude <= 0.3f*/)
                 continue;
             
             // Debug.Log("Player is in range!");

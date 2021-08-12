@@ -13,6 +13,15 @@ public class ParableBullet : Bullet
     private Vector3 moveDirection;
     private bool hitTarget;
 
+    private float damageRadius;
+
+    public float DamageRadius
+    {
+        get => damageRadius;
+        set => damageRadius = value;
+    }
+    
+
     protected override IEnumerator DestroyOnMaxRange()
     {
          float time = 0;
@@ -52,6 +61,7 @@ public class ParableBullet : Bullet
 
     public override void Shoot(Vector3 direction)
     {
+        
         if (height <= 0) height = 1f;
 
         hitTarget = false;
@@ -64,5 +74,54 @@ public class ParableBullet : Bullet
         if (cor == null)
             cor = StartCoroutine(DestroyOnMaxRange());
        
+    }
+/*protected override void TestCollider(Collider col)
+    {
+        if (col.tag == "Bullet" || col.tag == "CoinsLoot") return;
+        Collider[] hitColliders = new Collider[20];
+        int size = Physics.OverlapSphereNonAlloc(transform.position, damageRadius, hitColliders);
+        
+        //play anim
+
+        for (int i = 0; i < size; i++)
+        {
+            DestroyableUnit du = hitColliders[i].GetComponent<DestroyableUnit>();
+            if (du)
+            {
+                if (du.Team != this.Team)
+                {
+                    du.GetDamaged(damage);
+                }
+            }
+        }
+
+        DestroyBullet();
+    }*/
+
+    
+    
+    protected override void DestroyBullet()
+    {
+        
+        Collider[] hitColliders = new Collider[20];
+        int size = Physics.OverlapSphereNonAlloc(transform.position, damageRadius, hitColliders);
+        
+        //play anim
+
+        for (int i = 0; i < size; i++)
+        {
+            DestroyableUnit du = hitColliders[i].GetComponent<DestroyableUnit>();
+            if (du)
+            {
+                if (du.Team != this.Team)
+                {
+                    du.GetDamaged(damage);
+                }
+            }
+        }
+        
+        cor = null;
+        Team = eTeam.neutral;
+        bulletsPool.ReleaseBulletInstance(gameObject, bulletType);
     }
 }
