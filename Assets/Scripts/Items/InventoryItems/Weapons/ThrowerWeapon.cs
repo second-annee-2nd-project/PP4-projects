@@ -5,11 +5,31 @@ using UnityEngine;
 public class ThrowerWeapon : Weapon
 {
     private Transform nearestEnemy;
-    
+    [SerializeField] private List<ParticleSystem> particleSystems;
+
+    private bool isShooting = true;
+    private bool lastIsShooting = false;
+    [SerializeField] private float timeForFireToStop = 2f;
+    private float remainingTimeForFireToStop = 0f;
+
+    public override void Init()
+    {
+        base.Init();
+        foreach (ParticleSystem particleSystem in particleSystems)
+        {
+            ParticleSystem.ShapeModule sm = particleSystem.shape;
+            sm.angle = weaponStats.DiffusionAngle;
+            ParticleSystem.MainModule mm = particleSystem.main;
+            mm.startSpeed = weaponStats.Range / particleSystem.main.startLifetimeMultiplier;
+            particleSystem.Stop();
+        }
+    }
+
     public override void Shoot(Vector3 direction)
     {
+        isShooting = true;
+        remainingTimeForFireToStop = timeForFireToStop;
         List<GameObject> allEnemies = GameManager.Instance.P_TeamManager.GetStrictEnemies(Team);
-        
 
         for (int i = 0; i < allEnemies.Count; i++)
         {
@@ -20,8 +40,9 @@ public class ThrowerWeapon : Weapon
             
             // Debug.Log("Player is in range!");
 
+            Vector3 vecToEnemy = allEnemies[i].transform.position - transform.position;
             // --- Orientation check
-            float deltaAngle = Vector3.Angle(transform.forward, direction);
+            float deltaAngle = Vector3.Angle(vecToEnemy, direction);
             //if (deltaAngle > weaponStats.DiffusionAngle/2f || deltaAngle < -weaponStats.DiffusionAngle/2f)
             if (deltaAngle > weaponStats.DiffusionAngle * .5f)
                 continue;
@@ -53,10 +74,45 @@ public class ThrowerWeapon : Weapon
     protected override void Update()
     {
         nearestEnemy = GameManager.Instance.P_TeamManager.GetNearestEnemyUnit(transform.position, team);
+
+        if (remainingTimeForFireToStop > 0)
+        {
+            remainingTimeForFireToStop -= Time.deltaTime;
+        }
+        if(remainingTimeForFireToStop <= 0f)
+        {
+           
+            isShooting = false;
+        }
+        
+        
+        if (isShooting != lastIsShooting)
+        {
+            if (isShooting)
+            {
+                foreach (ParticleSystem particleSystem in particleSystems)
+                {
+                    particleSystem.Play();
+                }
+            }
+            else
+            {
+                foreach (ParticleSystem particleSystem in particleSystems)
+                {
+                    particleSystem.Stop();
+                }
+            }
+            lastIsShooting = isShooting;
+        }
+
+        
     }
 
     public override bool CanShoot()
     {
+        return true;
+        if (nearestEnemy == null) return true;
+        
         if((nearestEnemy.position - P_FireTransform.position).sqrMagnitude <= weaponStats.Range * weaponStats.Range)
             return true;
 

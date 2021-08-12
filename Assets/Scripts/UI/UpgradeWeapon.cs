@@ -16,12 +16,15 @@ public class UpgradeWeapon : MonoBehaviour
     }
     public void SetUpgradedWeaponInfo()
     {
-        wp = GameManager.Instance.Player.P_Weapon.GetComponent<Weapon>();
+        wp = GameManager.Instance.Player.P_Weapon;
         costText.text =  "Prix : " + wp.UpgradeWeaponStats.Price;
         nameText.text = "Upgrade : " + wp.WeaponStats.Name;
     }
     public void BuyUpgradeWeapon()
     {
+        //même arme feedback
+        wp = GameManager.Instance.Player.P_Weapon;
+        if (wp.WeaponStats == wp.UpgradeWeaponStats) return;
         if (ShopManager.Instance.Coins >= wp.UpgradeWeaponStats.Price)
         {
             GameManager.Instance.Player.WeaponGo.GetComponent<Weapon>().WeaponStats = wp.UpgradeWeaponStats;

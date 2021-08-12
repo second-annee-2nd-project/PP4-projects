@@ -152,6 +152,9 @@ public class ShopManager : MonoBehaviour
 
         if (wp)
         {
+            //même arme feedback
+            if (wp.WeaponStats.WeaponType == playerBehaviour.P_Weapon.WeaponStats.WeaponType) return;
+            
             if (coins >= wp.WeaponStats.Price)
             {
                 GameObject newInstance = Instantiate(weaponGO);

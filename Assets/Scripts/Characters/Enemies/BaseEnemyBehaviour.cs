@@ -91,7 +91,6 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     {
         base.Init();
         bHealthPoints = enemyStats.HealthPoints;
-        Debug.Log(bHealthPoints);
         healthPoints = bHealthPoints;
         transform.position = new Vector3(transform.position.x, GameManager.Instance.ActualGrid.CenterPosition.y - GameManager.Instance.ActualGrid.P_GridHeight * 0.5f, transform.position.z);
         speed = enemyStats.Speed;
@@ -136,7 +135,6 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
             {*/
             if (hitsArray[i].collider != null)
             {
-                Debug.Log(hitsArray[i].collider.name);
                 TeamUnit tu = hitsArray[i].collider.GetComponent<TeamUnit>();
                 if(tu)
                 {

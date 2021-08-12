@@ -82,7 +82,7 @@ public class Weapon : MonoBehaviour
            Init();
        }
    
-       public void Init()
+       public virtual void Init()
        {
            //b Stats
            bAmmo = weaponStats.MaxAmmo;
@@ -105,7 +105,8 @@ public class Weapon : MonoBehaviour
            }
            numberOfBullets = bNumberOfBullets;
    
-           bulletPrefabScript = bulletPrefab.GetComponent<Bullet>();
+           if(bulletPrefab)
+               bulletPrefabScript = bulletPrefab.GetComponent<Bullet>();
            bulletsPool = FindObjectOfType<BulletsPool>();
            // diffusionAngle = bDiffusionAngle;
        }

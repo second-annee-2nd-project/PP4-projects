@@ -119,7 +119,12 @@ public class Turret : DestroyableUnit
         // turretAnim.SetBool("canDeploy",false);
         // turretAnim.SetBool("Shoot",true);
         weapon.Shoot(direction, _target);
-        
+    }
+
+    public void Shoot(Vector3 direction, Weapon weapon)
+    {
+        weapon.Team = team;
+        weapon.Shoot(direction);
     }
 
     protected override void Die()
