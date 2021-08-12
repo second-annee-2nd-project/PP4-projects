@@ -16,7 +16,7 @@ MonoBehaviour:
   weaponType: 0
   range: 8
   damage: 8
-  fireRate: 0.4
+  fireRate: 0.1
   maxAmmo: 2147483647
   numberOfBulletsPerShot: 1
   diffusionAngle: 0

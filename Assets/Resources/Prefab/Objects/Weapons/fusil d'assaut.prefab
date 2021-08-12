@@ -110,6 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponStats: {fileID: 11400000, guid: d3e5a20babdca404dafb45305c284a7c, type: 2}
+  upgradeWeaponStats: {fileID: 11400000, guid: 9f691e07883f78f4aa900d2c3f273d79, type: 2}
   fireTransform: {fileID: 2872637116786904434}
   bulletPrefab: {fileID: 6853525456481171506, guid: dcd37c00f139e0c408c0bd061c6cb6da, type: 3}
 --- !u!1 &2872637116786904435

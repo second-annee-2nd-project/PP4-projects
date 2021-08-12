@@ -80,7 +80,8 @@ public class GameManager : MonoBehaviour
     
     
     private CameraController cc;
-
+    private WeaponUI weaponUI;
+    public WeaponUI P_WeaponUI => weaponUI;
     private void Awake()
     {
         if (instance == null)
@@ -120,6 +121,7 @@ public class GameManager : MonoBehaviour
         player = FindObjectOfType<PlayerBehaviour>();
         UI_Manager = FindObjectOfType<UI_Manager>();
         weaponsManager = FindObjectOfType<WeaponsManager>();
+        weaponUI = FindObjectOfType<WeaponUI>();
     }
 
     public void Restart()
