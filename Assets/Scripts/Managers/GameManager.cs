@@ -34,6 +34,12 @@ public class GameManager : MonoBehaviour
     private FireButton fireButton;
     public FireButton FireButton => fireButton;
     
+    private PlayerBehaviour player;
+    public PlayerBehaviour Player => player;
+    
+    private UpgradeWeapon upgradeWeapon;
+    public UpgradeWeapon  P_UpgradeWeapon =>  upgradeWeapon;
+    
     #region Managers
     
         private WaveManager waveManager;
@@ -61,9 +67,6 @@ public class GameManager : MonoBehaviour
 
         private PathRequestManager pathRequestManager;
         public PathRequestManager P_PathRequestManager => pathRequestManager;
-
-        private PlayerBehaviour player;
-        public PlayerBehaviour Player => player;
 
         private UI_Manager UI_Manager;
         public UI_Manager P_UI_Manager => UI_Manager;
@@ -103,6 +106,7 @@ public class GameManager : MonoBehaviour
         fireButton = FindObjectOfType<FireButton>();
         // joystick = FindObjectOfType<Joystick>();
         uiManager = FindObjectOfType<UI_Manager>();
+        upgradeWeapon = FindObjectOfType<UpgradeWeapon>();
         actualGrid = FindObjectOfType<Grid>();
         lootManager = FindObjectOfType<LootManager>();
         teamManager = FindObjectOfType<TeamManager>();

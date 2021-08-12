@@ -10,8 +10,16 @@ public class Weapon : MonoBehaviour
    
        [Header("Base Stats")] 
        [SerializeField] protected SO_Weapon weaponStats;
-   
-       public SO_Weapon WeaponStats => weaponStats;
+       public SO_Weapon WeaponStats
+       {
+           get => weaponStats;
+           set => weaponStats = value;
+       }
+
+       [Header("Upgraded Stats")] 
+       [SerializeField] protected SO_Weapon upgradeWeaponStats;
+       public SO_Weapon UpgradeWeaponStats => upgradeWeaponStats;
+       
        private int bAmmo;
        private float bReloadTimer;
        private float bFireRate;

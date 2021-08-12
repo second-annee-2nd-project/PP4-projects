@@ -157,6 +157,7 @@ public class ShopManager : MonoBehaviour
                 GameObject newInstance = Instantiate(weaponGO);
                 playerBehaviour.PickUpWeapon(newInstance);
                 UpdateCoins(-wp.WeaponStats.Price);
+                GameManager.Instance.P_UpgradeWeapon.SetUpgradedWeaponInfo();
             }
             else
             {

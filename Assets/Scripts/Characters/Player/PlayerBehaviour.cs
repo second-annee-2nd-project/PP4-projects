@@ -20,6 +20,7 @@ public class PlayerBehaviour : DestroyableUnit
    public Weapon P_Weapon => weapon;
 
    private GameObject weaponGO;
+   public GameObject WeaponGo => weaponGO;
    [SerializeField] private float gazeHoldTimer = 2f;
 
    [SerializeField] private float maxInvincibilityTimer;

@@ -39,7 +39,9 @@ public class Turret : DestroyableUnit
        base.Start();
        // InvokeRepeating("UpdateTarget", 0f, 0.5f);
        turretManager = FindObjectOfType<TurretManager>();
-       health = soTurret.HealthPoints;
+       bHealthPoints = soTurret.HealthPoints;
+       healthPoints = bHealthPoints;
+    
      
    }
    void Update()
