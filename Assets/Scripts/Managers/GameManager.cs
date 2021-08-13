@@ -191,17 +191,16 @@ public class GameManager : MonoBehaviour
     }
     public void PauseGame ()
     {
-           
-        if (Time.timeScale == 0)
-        {
-            Time.timeScale = 1;
-            P_UiManager.Pause.alpha = 0;
-        }
-        else
-        {
-            Time.timeScale = 0;
-            P_UiManager.Pause.alpha = 1;
-        }
+        Time.timeScale = 0;
+        P_UiManager.RenderJoystick(false);
+        P_UiManager.RenderPause(true);
+    }
+
+    public void UnpauseGame()
+    {
+        Time.timeScale = 1;
+        P_UiManager.RenderJoystick(true);
+        P_UiManager.RenderPause(false);
     }
     
 }

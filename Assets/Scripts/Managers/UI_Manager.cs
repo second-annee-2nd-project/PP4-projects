@@ -16,6 +16,8 @@ public class UI_Manager : MonoBehaviour
 
        [SerializeField] private CanvasGroup pause;
        public CanvasGroup Pause => pause;
+       [SerializeField] private CanvasGroup joystick;
+       public CanvasGroup Joystick => joystick;
        
        public void RenderRetryButton(bool state)
        {
@@ -29,6 +31,32 @@ public class UI_Manager : MonoBehaviour
            }
            retryButton.interactable = state;
            retryButton.blocksRaycasts = state;
+       }
+       public void RenderJoystick(bool state)
+       {
+           if (state)
+           {
+               joystick.alpha = 1;
+           }
+           else
+           {
+               joystick.alpha = 0;
+           }
+           joystick.interactable = state;
+           joystick.blocksRaycasts = state;
+       }
+       public void RenderPause(bool state)
+       {
+           if (state)
+           {
+               pause.alpha = 1;
+           }
+           else
+           {
+              pause.alpha = 0;
+           }
+           pause.interactable = state;
+           pause.blocksRaycasts = state;
        }
 
 
