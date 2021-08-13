@@ -38,51 +38,40 @@ public class BulletsPool : MonoBehaviour
         bulletInstances = new GameObject[poolSize];
         for (int i = 0; i < poolSize; i++)
         {
-            for (int j = 0; j < poolSize; j++)
-            {
                 GameObject newBullet = Instantiate(bulletPrefab, Vector3.zero, Quaternion.identity);
                 newBullet.transform.parent = tr;
                 newBullet.GetComponent<Bullet>().P_BulletsPool = this;
                 newBullet.SetActive(false);
-                bulletInstances[j] = newBullet;
-            }
+                bulletInstances[i] = newBullet;
         }
         
         turretBulletInstances = new GameObject[poolSize];
         for (int i = 0; i < poolSize; i++)
         {
-            for (int j = 0; j < poolSize; j++)
-            {
                 GameObject newBullet = Instantiate(turretBulletPrefab, Vector3.zero, Quaternion.identity);
                 newBullet.transform.parent = tr;
                 newBullet.GetComponent<Bullet>().P_BulletsPool = this;
                 newBullet.SetActive(false);
-                turretBulletInstances[j] = newBullet;
-            }
+                turretBulletInstances[i] = newBullet;
         }
+        
         mortarBulletInstances = new GameObject[poolSize];
         for (int i = 0; i < poolSize; i++)
         {
-            for (int j = 0; j < poolSize; j++)
-            {
                 GameObject newBullet = Instantiate(mortarBulletPrefab, Vector3.zero, Quaternion.identity);
                 newBullet.transform.parent = tr;
                 newBullet.GetComponent<Bullet>().P_BulletsPool = this;
                 newBullet.SetActive(false);
-                mortarBulletInstances[j] = newBullet;
-            }
+                mortarBulletInstances[i] = newBullet;
         }
         enemyBulletInstances = new GameObject[poolSize];
         for (int i = 0; i < poolSize; i++)
         {
-            for (int j = 0; j < poolSize; j++)
-            {
                 GameObject newBullet = Instantiate(enemyBulletPrefab, Vector3.zero, Quaternion.identity);
                 newBullet.transform.parent = tr;
                 newBullet.GetComponent<Bullet>().P_BulletsPool = this;
                 newBullet.SetActive(false);
-                enemyBulletInstances[j] = newBullet;
-            }
+                enemyBulletInstances[i] = newBullet;
         }
 
         availableBulletInstance = bulletInstances[0];
@@ -207,5 +196,34 @@ public class BulletsPool : MonoBehaviour
 
         }
         
+    }
+
+    public void Restart()
+    {
+        Bullet b;
+        for (int i = 0; i < poolSize; i++)
+        {
+            b = bulletInstances[i].GetComponent<Bullet>();
+            b.StopBullet();
+            bulletInstances[i].SetActive(false);
+        }
+        for (int i = 0; i < poolSize; i++)
+        {
+            b = turretBulletInstances[i].GetComponent<Bullet>();
+            b.StopBullet();
+            turretBulletInstances[i].SetActive(false);
+        }
+        for (int i = 0; i < poolSize; i++)
+        {
+            b = mortarBulletInstances[i].GetComponent<Bullet>();
+            b.StopBullet();
+            mortarBulletInstances[i].SetActive(false);
+        }
+        for (int i = 0; i < poolSize; i++)
+        {
+            b = enemyBulletInstances[i].GetComponent<Bullet>();
+            b.StopBullet();
+            enemyBulletInstances[i].SetActive(false);
+        }
     }
 }

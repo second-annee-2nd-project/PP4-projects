@@ -19,6 +19,23 @@ public class UI_Manager : MonoBehaviour
        [SerializeField] private CanvasGroup joystick;
        public CanvasGroup Joystick => joystick;
        
+       [SerializeField] private CanvasGroup floatingText;
+       public CanvasGroup FloatingText => floatingText;
+       
+       [SerializeField] private float timeToFade;
+       
+       [SerializeField] private GameObject floatingTextPrefab;
+        public GameObject FloatingTextPrefab => floatingTextPrefab;
+        
+       [SerializeField] private GameObject floatingTextPrefabWorld;
+       public GameObject FloatingTextPrefabWorld => floatingTextPrefabWorld;
+       
+       private GameObject floatTextInstance;
+       
+       [SerializeField] private Transform canvasContainerWorld;
+       public Transform CanvasContainerWorld => canvasContainerWorld;
+
+       private float speedFloatText;
        public void RenderRetryButton(bool state)
        {
            if (state)
@@ -58,6 +75,28 @@ public class UI_Manager : MonoBehaviour
            pause.interactable = state;
            pause.blocksRaycasts = state;
        }
+       
+       public void FloatingTextInstantiate(Vector3 flotingTextPos, Transform transformParent,GameObject prefabToSpawn, float speed)
+       {
+           speedFloatText = speed;
+           floatTextInstance = Instantiate(prefabToSpawn,flotingTextPos,Quaternion.identity);
+           floatTextInstance.transform.parent = transformParent;
+           StopCoroutine(nameof(FadeOutFloatingText));
+           StartCoroutine(nameof(FadeOutFloatingText));
+           Destroy(floatTextInstance,3f);
+       
+       }
+       public IEnumerator FadeOutFloatingText()
+       {
+           float time = 0;
+           while (time < timeToFade)
+           {
+               time += Time.deltaTime;
+               floatTextInstance.transform.position += transform.up* speedFloatText * Time.deltaTime;
+               floatTextInstance.GetComponent<CanvasGroup>().alpha = Mathf.Lerp(1f,0f, time / timeToFade);
+               yield return null;
+           }
+       }
 
-
+    
 }

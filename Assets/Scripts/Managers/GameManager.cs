@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
 
         Init();
@@ -129,14 +129,15 @@ public class GameManager : MonoBehaviour
         GameManager.Instance.P_UI_Manager.RenderRetryButton(false);
         
         teamManager.Restart();
-        shopManager.Restart();
         enemiesManager.Restart();
         turretManager.Restart();
-        waveManager.Restart();
         actualGrid.Restart();
+        lootManager.Restart();
         pathRequestManager.Restart();
         player.Restart();
-
+        shopManager.Restart();
+        waveManager.Restart();
+        
         StartGame();
     }
 

@@ -34,6 +34,7 @@ public class UpgradeWeapon : MonoBehaviour
             GameManager.Instance.Player.WeaponGo.GetComponent<Weapon>().Init();
             soldText.gameObject.SetActive(true);
             upgradeBtn.interactable = false;
+            GameManager.Instance.P_UiManager.FloatingTextInstantiate(upgradeBtn.transform.position,upgradeBtn.transform, GameManager.Instance.P_UiManager.FloatingTextPrefab, 30f);
 
         }
         

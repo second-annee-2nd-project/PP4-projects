@@ -15,6 +15,8 @@ public class ParableBullet : Bullet
 
     private float damageRadius;
 
+    [SerializeField] private GameObject deathEffect;
+
     public float DamageRadius
     {
         get => damageRadius;
@@ -102,7 +104,18 @@ public class ParableBullet : Bullet
     
     protected override void DestroyBullet()
     {
+        // coûte sûrement moins que l'overlapSphere
         
+        /*List<GameObject> allEnemies = GameManager.Instance.P_TeamManager.GetAllEnemies(Team);
+
+        allEnemies = GameManager.Instance.P_TeamManager.GetEnemiesInRange(transform.position, damageRadius, Team);
+        
+        for (int i = 0; i < allEnemies.Count; i++)
+        {
+            DestroyableUnit du = allEnemies[i].GetComponent<DestroyableUnit>();
+            du.GetDamaged(damage);
+        }*/
+      
         Collider[] hitColliders = new Collider[20];
         int size = Physics.OverlapSphereNonAlloc(transform.position, damageRadius, hitColliders);
         
@@ -119,6 +132,8 @@ public class ParableBullet : Bullet
                 }
             }
         }
+        
+        Destroy(Instantiate(deathEffect, transform.position, Quaternion.identity), 2);
         
         cor = null;
         Team = eTeam.neutral;

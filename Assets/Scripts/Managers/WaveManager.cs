@@ -81,8 +81,10 @@ public class WaveManager : MonoBehaviour
          actualWaveNumber++;
          if (actualWaveNumber > numberOfWaves)
          {
-            actualWaveNumber = 1;
-            Debug.Log("WAVE FINI NEXT MAP SHOULD BE LOADED");
+            /*actualWaveNumber = 1;
+            Debug.Log("WAVE FINI NEXT MAP SHOULD BE LOADED");*/
+            
+            SceneManager.Instance.LoadNextScene();
          }
 
       GameManager.Instance.ChangePhase(eGameState.AutoLoot);

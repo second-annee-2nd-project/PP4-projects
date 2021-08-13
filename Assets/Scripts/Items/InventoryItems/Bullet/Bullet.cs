@@ -147,6 +147,14 @@ public class Bullet : TeamUnit
             DestroyBullet();
         // DestroyBullet();
     }
+
+    public virtual void StopBullet()
+    {
+        rb.velocity = Vector3.zero;
+
+        if (cor != null)
+            StopCoroutine(cor);
+    }
     
 }
 

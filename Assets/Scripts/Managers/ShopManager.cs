@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -57,15 +58,17 @@ public class ShopManager : MonoBehaviour
     private PlayerBehaviour playerBehaviour;
     [SerializeField] private GameObject joystickController;
     private Turret newTurretScript;
-    private List<WeaponUI> weaponUIList;
 
+    private Weapon wp;
+    public Weapon WP => wp;
+    
     private void Awake()
     {
         Init();
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
+           // DontDestroyOnLoad(this);
         }
     }
     
@@ -75,7 +78,7 @@ public class ShopManager : MonoBehaviour
         playerBehaviour = GameObject.FindObjectOfType<PlayerBehaviour>();
         coins = bCoins;
         coins_Text.text = " : " + coins;
-        weaponUIList = new List<WeaponUI>(FindObjectsOfType<WeaponUI>());
+        // weaponUIList = new List<WeaponUI>(FindObjectsOfType<WeaponUI>());
 
     }
 
@@ -104,6 +107,7 @@ public class ShopManager : MonoBehaviour
     private IEnumerator ShopSequence()
     {
         UI_ShopSequence.SetActive(true);
+        GameManager.Instance.P_WeaponUI.PossibleToBuyWeapon();
         joystickController.SetActive(false);
         isSkipShopButtonPressed = false;
         // SetWeaponsBtn();
@@ -148,19 +152,25 @@ public class ShopManager : MonoBehaviour
     public void BuyWeapon(GameObject weaponGO)
     {
         
-        Weapon wp = weaponGO.GetComponent<Weapon>();
-
+         Weapon wp = weaponGO.GetComponent<Weapon>();
+       
         if (wp)
         {
             //même arme feedback
-            if (wp.WeaponStats.WeaponType == playerBehaviour.P_Weapon.WeaponStats.WeaponType) return;
-            
+            if (wp.WeaponStats.WeaponType == playerBehaviour.P_Weapon.WeaponStats.WeaponType)
+            {
+                return;
+            }
             if (coins >= wp.WeaponStats.Price)
             {
+                
                 GameObject newInstance = Instantiate(weaponGO);
                 playerBehaviour.PickUpWeapon(newInstance);
                 UpdateCoins(-wp.WeaponStats.Price);
+                GameManager.Instance.P_WeaponUI.PossibleToBuyWeapon();
                 GameManager.Instance.P_UpgradeWeapon.SetUpgradedWeaponInfo();
+               
+               
             }
             else
             {
@@ -209,6 +219,9 @@ public class ShopManager : MonoBehaviour
                         GameManager.Instance.P_TurretManager.AddItemToList(equipedPrefabInstance);
                         UpdateCoins(turretScript.SoTurret.Price * -1);
                         newTurretScript.Deploy(n.position, n.internalPosition, Quaternion.identity);
+                        GameManager.Instance.P_UiManager.FloatingTextInstantiate(newTurretScript.transform.position,
+                            GameManager.Instance.P_UiManager.CanvasContainerWorld,
+                            GameManager.Instance.P_UiManager.FloatingTextPrefabWorld, 2f);
                         equipedPrefabInstance = null;
                         isTurretPlaced = true;
                         break;
