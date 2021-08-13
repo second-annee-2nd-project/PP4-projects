@@ -14178,7 +14178,7 @@ PrefabInstance:
       objectReference: {fileID: 1021265949}
     - target: {fileID: 2550007597259441865, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: waveDatas.Array.data[0].spawnerDatas.Array.data[1].enemyGroups.Array.data[0].typeOfEnemyToSpawn
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2550007597259441865, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: waveDatas.Array.data[0].spawnerDatas.Array.data[1].enemyGroups.Array.data[0].enemyNumberToSpawn
@@ -14228,6 +14228,14 @@ PrefabInstance:
       propertyPath: waveDatas.Array.data[0].spawnerDatas.Array.data[0].enemyGroups.Array.data[0].enemyNumberToSpawn
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2550007597259441865, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: waveDatas.Array.data[0].spawnerDatas.Array.data[0].enemyGroups.Array.data[0].typeOfEnemyToSpawn
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550007598163424807, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: enemyPrefabs._values.Array.data[2]
+      value: 
+      objectReference: {fileID: 2837160632416293691, guid: 8d182ec921d79f349932117197436b57, type: 3}
     - target: {fileID: 2611679223996070179, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: weaponPrefabs._keys.Array.size
       value: 5

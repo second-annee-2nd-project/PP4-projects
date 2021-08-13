@@ -369,7 +369,7 @@ MonoBehaviour:
   partToRotate: {fileID: 6963732471453701362}
   weapons:
   - {fileID: 3694344463797889506}
-  soTurret: {fileID: 11400000, guid: 366cdf396b490184985c0695b3f81bce, type: 2}
+  soTurret: {fileID: 11400000, guid: a92f31ba848c41b41a73d9f6b351d8cd, type: 2}
 --- !u!54 &591469057915848396
 Rigidbody:
   m_ObjectHideFlags: 0
