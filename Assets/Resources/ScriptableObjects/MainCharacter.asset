@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: player
   healthPoints: 100
-  speed: 2
+  speed: 2.75

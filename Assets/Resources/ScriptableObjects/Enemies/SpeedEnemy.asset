@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: SpeedEnemy
   healthPoints: 20
-  speed: 3.5
+  speed: 2.75
   attackDamage: 5
   attackRange: 2
   detectionRange: 7

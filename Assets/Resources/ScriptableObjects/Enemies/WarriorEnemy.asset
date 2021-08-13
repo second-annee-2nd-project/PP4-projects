@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: WarriorEnemy
   healthPoints: 40
-  speed: 2.5
+  speed: 2
   attackDamage: 5
   attackRange: 2
   detectionRange: 7
