@@ -15,7 +15,7 @@ MonoBehaviour:
   name: turret Flame Thrower
   weaponType: 7
   range: 3
-  damage: 0.15
+  damage: 0.1
   fireRate: 0
   maxAmmo: 0
   numberOfBulletsPerShot: 0

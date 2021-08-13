@@ -423,6 +423,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6963732471453701362}
     m_Modifications:
+    - target: {fileID: 8297874499855603083, guid: 2f7beb4bb071f924ca0dbd05f88abe01, type: 3}
+      propertyPath: upgradeWeaponStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 40762fd323b8c684dbcf0eb8933a0b21, type: 2}
+    - target: {fileID: 8297874499855603083, guid: 2f7beb4bb071f924ca0dbd05f88abe01, type: 3}
+      propertyPath: weaponStats
+      value: 
+      objectReference: {fileID: 11400000, guid: 40762fd323b8c684dbcf0eb8933a0b21, type: 2}
     - target: {fileID: 8297874499855603084, guid: 2f7beb4bb071f924ca0dbd05f88abe01, type: 3}
       propertyPath: m_Name
       value: FlameThrower
