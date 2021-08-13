@@ -15,4 +15,12 @@ public class WeaponUI : MonoBehaviour
    //    buyWeaponBtn.onClick.RemoveAllListeners();
    //    buyWeaponBtn.onClick.AddListener(delegate { ShopManager.Instance.BuyWeapon(weaponGo); });
    // }
+   [SerializeField] private Text soldText;
+   [SerializeField] private Button buyWeaponBtn;
+
+   public void WeaponSoldedUI()
+   {
+      buyWeaponBtn.interactable = false;
+      soldText.gameObject.SetActive(true);
+   }
 }

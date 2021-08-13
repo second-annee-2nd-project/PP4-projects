@@ -1349,26 +1349,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2312711781579565057}
-    - target: {fileID: 6948940988529480062, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6948940988529480062, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6948940988529480062, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6948940989410696625, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6948940989410696625, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
 --- !u!114 &4738144425729259493 stripped

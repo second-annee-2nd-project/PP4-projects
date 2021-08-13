@@ -1,5 +1,86 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &265160148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 265160149}
+  - component: {fileID: 265160151}
+  - component: {fileID: 265160150}
+  m_Layer: 5
+  m_Name: SoldText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &265160149
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265160148}
+  m_LocalRotation: {x: 0.0031018772, y: -0.053519282, z: 0.2351168, w: 0.9704876}
+  m_LocalPosition: {x: 0, y: 0, z: 7.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8412495412205117382}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 1.787, y: -5.881, z: 27.145}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 6.6, y: 50.4}
+  m_SizeDelta: {x: 160, y: 66.09827}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &265160151
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265160148}
+  m_CullTransparentMesh: 0
+--- !u!114 &265160150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 265160148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 50
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 5
+    m_MaxSize: 50
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'SOLD
+
+'
 --- !u!1 &1100483331
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +93,7 @@ GameObject:
   - component: {fileID: 1100483334}
   - component: {fileID: 1100483333}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: SoldText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -93,7 +174,7 @@ GameObject:
   - component: {fileID: 7823199088803105456}
   - component: {fileID: 5574399692403502847}
   m_Layer: 5
-  m_Name: Text
+  m_Name: PriceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3170,7 +3251,7 @@ GameObject:
   - component: {fileID: 3426243785241405834}
   - component: {fileID: 3426243785241405833}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: SoldText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3251,7 +3332,7 @@ GameObject:
   - component: {fileID: 3426243785458895156}
   - component: {fileID: 3426243785458895163}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: SoldText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3871,7 +3952,7 @@ GameObject:
   - component: {fileID: 1630027353069138142}
   - component: {fileID: 8850906190331054407}
   m_Layer: 5
-  m_Name: Text
+  m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4073,6 +4154,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2611679223575155035}
+        m_TargetAssemblyTypeName: WeaponUI, Assembly-CSharp
+        m_MethodName: WeaponSoldedUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2611679223575155035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4085,6 +4178,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d169a9ddc80476845b1a0555c220a5a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soldText: {fileID: 1100483333}
+  buyWeaponBtn: {fileID: 4103605361254597882}
 --- !u!1 &3875294325893725477
 GameObject:
   m_ObjectHideFlags: 0
@@ -4220,6 +4315,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 3944930427685459459}
+        m_TargetAssemblyTypeName: WeaponUI, Assembly-CSharp
+        m_MethodName: WeaponSoldedUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3944930427685459459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4232,6 +4339,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d169a9ddc80476845b1a0555c220a5a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soldText: {fileID: 3426243785458895163}
+  buyWeaponBtn: {fileID: 4537419920486163671}
 --- !u!1 &3944930427132728793
 GameObject:
   m_ObjectHideFlags: 0
@@ -4481,7 +4590,7 @@ GameObject:
   - component: {fileID: 3944930427404075041}
   - component: {fileID: 3944930427404075046}
   m_Layer: 5
-  m_Name: Text
+  m_Name: PriceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4562,7 +4671,7 @@ GameObject:
   - component: {fileID: 3944930427621926827}
   - component: {fileID: 3944930427621926824}
   m_Layer: 5
-  m_Name: Text
+  m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5474,7 +5583,7 @@ GameObject:
   - component: {fileID: 3944930428456733775}
   - component: {fileID: 3944930428456733772}
   m_Layer: 5
-  m_Name: Text
+  m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5711,7 +5820,7 @@ GameObject:
   - component: {fileID: 3944930429003756714}
   - component: {fileID: 3944930429003756715}
   m_Layer: 5
-  m_Name: Text
+  m_Name: PriceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6389,6 +6498,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 2611679225102858420}
+        m_TargetAssemblyTypeName: WeaponUI, Assembly-CSharp
+        m_MethodName: WeaponSoldedUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2611679225102858420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6401,6 +6522,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d169a9ddc80476845b1a0555c220a5a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soldText: {fileID: 3426243785241405833}
+  buyWeaponBtn: {fileID: 5423061997565235397}
 --- !u!1 &5686687272042034552
 GameObject:
   m_ObjectHideFlags: 0
@@ -6581,7 +6704,7 @@ GameObject:
   - component: {fileID: 6822688581228570773}
   - component: {fileID: 792841693019200947}
   m_Layer: 5
-  m_Name: Text
+  m_Name: NameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6660,7 +6783,7 @@ GameObject:
   - component: {fileID: 3248128885991931226}
   - component: {fileID: 3836689075205168599}
   m_Layer: 5
-  m_Name: Text
+  m_Name: PriceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10314,6 +10437,7 @@ RectTransform:
   m_Children:
   - {fileID: 3944930427621926825}
   - {fileID: 3944930429003756712}
+  - {fileID: 265160149}
   m_Father: {fileID: 9044829660678121490}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10429,6 +10553,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   costText: {fileID: 3944930429003756715}
   nameText: {fileID: 3944930427621926824}
+  soldText: {fileID: 265160150}
+  upgradeBtn: {fileID: 8412495412205117383}
 --- !u!1 &9033091875505989196
 GameObject:
   m_ObjectHideFlags: 0
