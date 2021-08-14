@@ -59,9 +59,6 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private GameObject joystickController;
     private Turret newTurretScript;
 
-    private Weapon wp;
-    public Weapon WP => wp;
-    
     private void Awake()
     {
         Init();
@@ -108,6 +105,7 @@ public class ShopManager : MonoBehaviour
     {
         UI_ShopSequence.SetActive(true);
         GameManager.Instance.P_WeaponUI.PossibleToBuyWeapon();
+        GameManager.Instance.P_TurretBtnUI.PossibleToBuyTurret();
         joystickController.SetActive(false);
         isSkipShopButtonPressed = false;
         // SetWeaponsBtn();
@@ -176,6 +174,15 @@ public class ShopManager : MonoBehaviour
             {
                 //introduce feedback here;
             }
+             if (coins >= wp.UpgradeWeaponStats.Price)
+             {
+                 GameManager.Instance.P_UpgradeWeapon.UpgradeBtn.interactable = true;
+             }
+             else
+             {
+                 GameManager.Instance.P_UpgradeWeapon.UpgradeBtn.interactable = false;
+             }
+           
             
         }
         
@@ -219,9 +226,10 @@ public class ShopManager : MonoBehaviour
                         GameManager.Instance.P_TurretManager.AddItemToList(equipedPrefabInstance);
                         UpdateCoins(turretScript.SoTurret.Price * -1);
                         newTurretScript.Deploy(n.position, n.internalPosition, Quaternion.identity);
-                        GameManager.Instance.P_UiManager.FloatingTextInstantiate(newTurretScript.transform.position,
+                        GameManager.Instance.P_UiManager.FloatingTextInstantiate(new Vector3(newTurretScript.transform.position.x,newTurretScript.transform.position.y+1f,newTurretScript.transform.position.z),
                             GameManager.Instance.P_UiManager.CanvasContainerWorld,
-                            GameManager.Instance.P_UiManager.FloatingTextPrefabWorld, 2f);
+                            GameManager.Instance.P_UiManager.FloatingTextPrefabWorld, 2f,turretScript.SoTurret.Price);
+                        GameManager.Instance.P_TurretBtnUI.PossibleToBuyTurret();
                         equipedPrefabInstance = null;
                         isTurretPlaced = true;
                         break;

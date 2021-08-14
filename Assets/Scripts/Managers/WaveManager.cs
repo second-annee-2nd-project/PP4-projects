@@ -39,6 +39,7 @@ public class WaveManager : MonoBehaviour
       numberOfWaves = waveDatas.Count;
       UpdateWaveText();
       enemiesManager = GameManager.Instance.P_EnemiesManager;
+      StopAllCoroutines();
    }
 
    public void Restart()

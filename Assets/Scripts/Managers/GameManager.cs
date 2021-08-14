@@ -39,7 +39,9 @@ public class GameManager : MonoBehaviour
     
     private UpgradeWeapon upgradeWeapon;
     public UpgradeWeapon  P_UpgradeWeapon =>  upgradeWeapon;
-    
+
+    private TurretBtnUI turretBtnUI;
+    public TurretBtnUI P_TurretBtnUI => turretBtnUI;
     #region Managers
     
         private WaveManager waveManager;
@@ -104,6 +106,7 @@ public class GameManager : MonoBehaviour
 
     private void Init()
     {
+        turretBtnUI = FindObjectOfType<TurretBtnUI>();
         fireButton = FindObjectOfType<FireButton>();
         // joystick = FindObjectOfType<Joystick>();
         uiManager = FindObjectOfType<UI_Manager>();

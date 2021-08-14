@@ -76,11 +76,13 @@ public class UI_Manager : MonoBehaviour
            pause.blocksRaycasts = state;
        }
        
-       public void FloatingTextInstantiate(Vector3 flotingTextPos, Transform transformParent,GameObject prefabToSpawn, float speed)
+       public void FloatingTextInstantiate(Vector3 flotingTextPos, Transform transformParent,GameObject prefabToSpawn, float speed, float PriceInText)
        {
+          
            speedFloatText = speed;
            floatTextInstance = Instantiate(prefabToSpawn,flotingTextPos,Quaternion.identity);
            floatTextInstance.transform.parent = transformParent;
+           floatTextInstance.GetComponentInChildren<Text>().text = "-" + PriceInText;
            StopCoroutine(nameof(FadeOutFloatingText));
            StartCoroutine(nameof(FadeOutFloatingText));
            Destroy(floatTextInstance,3f);

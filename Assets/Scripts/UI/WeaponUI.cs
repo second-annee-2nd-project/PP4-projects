@@ -55,16 +55,9 @@ public class WeaponUI : MonoBehaviour
          btn.GetComponent<WeaponUI>().soldText.gameObject.SetActive(false);
       }
       soldText.gameObject.SetActive(true);
+      GameManager.Instance.P_UiManager.FloatingTextInstantiate(soldText.gameObject.transform.parent.position, soldText.gameObject.transform,
+         GameManager.Instance.P_UiManager.FloatingTextPrefab, 30f, weaponPriceButton);
    }
 
-   public void ButtonFalse()
-   {
-      foreach (var btn in buttonList)
-      {
-         buyWeaponBtn.interactable = false;
-         // noMoney.gameObject.SetActive(false);
-      }
-
-   }
 }
 

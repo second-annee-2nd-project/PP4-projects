@@ -16,5 +16,5 @@ MonoBehaviour:
   healthPoints: 30
   attackSpeed: 2
   range: 3
-  price: 80
+  price: 200
   turnSpeed: 5

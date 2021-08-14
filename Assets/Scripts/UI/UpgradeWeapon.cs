@@ -9,6 +9,7 @@ public class UpgradeWeapon : MonoBehaviour
     [SerializeField] private Text costText, nameText, soldText;
      private Weapon wp;
      [SerializeField] private Button upgradeBtn;
+     public Button UpgradeBtn => upgradeBtn;
     void Start()
     {
 
@@ -20,7 +21,11 @@ public class UpgradeWeapon : MonoBehaviour
         costText.text =  "Prix : " + wp.UpgradeWeaponStats.Price;
         nameText.text = "Upgrade : " + wp.WeaponStats.Name;
         soldText.gameObject.SetActive(false);
-        upgradeBtn.interactable = true;
+        
+        if(ShopManager.Instance.Coins >= wp.UpgradeWeaponStats.Price)
+         upgradeBtn.interactable = true;
+        else 
+            upgradeBtn.interactable = false;
     }
     public void BuyUpgradeWeapon()
     {
@@ -34,7 +39,7 @@ public class UpgradeWeapon : MonoBehaviour
             GameManager.Instance.Player.WeaponGo.GetComponent<Weapon>().Init();
             soldText.gameObject.SetActive(true);
             upgradeBtn.interactable = false;
-            GameManager.Instance.P_UiManager.FloatingTextInstantiate(upgradeBtn.transform.position,upgradeBtn.transform, GameManager.Instance.P_UiManager.FloatingTextPrefab, 30f);
+            GameManager.Instance.P_UiManager.FloatingTextInstantiate(upgradeBtn.transform.position,upgradeBtn.transform, GameManager.Instance.P_UiManager.FloatingTextPrefab, 30f,wp.UpgradeWeaponStats.Price);
 
         }
         
