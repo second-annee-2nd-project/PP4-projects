@@ -42,14 +42,9 @@ public class WaveManager : MonoBehaviour
    }
 
    public void Restart()
-      {
-         Init();
-         Spawner[] spawners = FindObjectsOfType<Spawner>();
-         for (int i = 0; i < spawners.Length; i++)
-         {
-            spawners[i].StopAllCoroutines();
-         }
-      }
+   {
+      Init();
+   }
 
    public void StartWaveSequence()
    {
@@ -86,10 +81,8 @@ public class WaveManager : MonoBehaviour
          actualWaveNumber++;
          if (actualWaveNumber > numberOfWaves)
          {
-            /*actualWaveNumber = 1;
-            Debug.Log("WAVE FINI NEXT MAP SHOULD BE LOADED");*/
-            
-            SceneManager.Instance.LoadNextScene();
+            actualWaveNumber = 1;
+            Debug.Log("WAVE FINI NEXT MAP SHOULD BE LOADED");
          }
 
       GameManager.Instance.ChangePhase(eGameState.AutoLoot);

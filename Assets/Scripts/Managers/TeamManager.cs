@@ -93,22 +93,6 @@ public class TeamManager : MonoBehaviour
         return nearestEnemy;
     }
 
-    public List<GameObject> GetEnemiesInRange(Vector3 pos, float range, eTeam allyTeam)
-    {
-        List<GameObject> targets = GetStrictEnemies(allyTeam);
-        List<GameObject> enemiesToReturn = new List<GameObject>();
-
-        for (int i = 0; i < targets.Count; i++)
-        {
-            if ((targets[i].transform.position - pos).sqrMagnitude <= range * range)
-            {
-                enemiesToReturn.Add(targets[i]);
-            }
-        }
-
-        return enemiesToReturn;
-    }
-
     public Transform GetNearestVisibleEnemyUnit(Vector3 pos, float range, eTeam allyTeam)
     {
         List<GameObject> targets = GetStrictEnemies(allyTeam);

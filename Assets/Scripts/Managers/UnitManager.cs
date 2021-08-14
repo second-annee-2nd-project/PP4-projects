@@ -68,7 +68,6 @@ public class UnitManager : ItemManager
     public override void Restart()
     {
         base.Restart();
-        targets = new List<GameObject>();
         teamUnitManager.Restart();
     }
         
