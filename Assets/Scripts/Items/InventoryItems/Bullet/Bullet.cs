@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Bullet : TeamUnit
 {
+    
     protected BulletsPool bulletsPool;
     protected Rigidbody rb;
 
@@ -54,8 +55,9 @@ public class Bullet : TeamUnit
         rb = GetComponent<Rigidbody>();
     }
     
-    protected void DestroyBullet()
+    protected virtual void DestroyBullet()
     {
+        cor = null;
         Team = eTeam.neutral;
         bulletsPool.ReleaseBulletInstance(gameObject, bulletType);
     }
@@ -125,8 +127,9 @@ public class Bullet : TeamUnit
 
     protected virtual void TestCollider(Collider col)
     {
-        // S'il ne faut pas détruire en fonction de ce que la balle touche
         if (col.tag == "Bullet" || col.tag == "CoinsLoot") return;
+        // S'il ne faut pas détruire en fonction de ce que la balle touche
+        
         DestroyableUnit du = col.GetComponent<DestroyableUnit>();
         if (du)
         {
@@ -139,14 +142,19 @@ public class Bullet : TeamUnit
                 return;
             }
         }
-        else
-        {
-            Debug.Log("shouldn't");
-        }
+        
         if(col.tag != "Vide")
             DestroyBullet();
         // DestroyBullet();
     }
 
+    public virtual void StopBullet()
+    {
+        rb.velocity = Vector3.zero;
+
+        if (cor != null)
+            StopCoroutine(cor);
+    }
+    
 }
 

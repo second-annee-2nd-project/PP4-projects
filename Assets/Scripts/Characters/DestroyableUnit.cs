@@ -5,9 +5,7 @@ using TeamExtensionMethods;
 using UnityEngine.UI;
 
 public class DestroyableUnit : TeamUnit
-{
-    [Header("Health Points")]
-    [SerializeField] protected float bHealthPoints;
+{ protected float bHealthPoints;
     
     protected float healthPoints;
 
@@ -24,9 +22,9 @@ public class DestroyableUnit : TeamUnit
     {
         healthPoints = bHealthPoints;
 
-        transform.position = new Vector3(transform.position.x, GameManager.Instance.ActualGrid.CenterPosition.y, 
-            transform.position.z);
+        transform.position = new Vector3(transform.position.x, GameManager.Instance.ActualGrid.CenterPosition.y, transform.position.z);
         GameManager.Instance.P_SoundManager.AudioSource = FindObjectOfType<AudioSource>();
+      
     }
 
     public virtual void Restart()
@@ -55,9 +53,9 @@ public class DestroyableUnit : TeamUnit
 
         if (backLifeBar_Img.fillAmount > actualHealth)
         {
-           lifeBar_Img.fillAmount = actualHealth;
-           backLifeBar_Img.color = Color.red;
-           backLifeBar_Img.fillAmount  -= animationBarSpeed * Time.deltaTime;
+            lifeBar_Img.fillAmount = actualHealth;
+            backLifeBar_Img.color = Color.red;
+            backLifeBar_Img.fillAmount  -= animationBarSpeed * Time.deltaTime;
 
         }
         else

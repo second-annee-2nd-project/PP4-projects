@@ -10,7 +10,8 @@ public enum eWeaponType
     Shotgun,
     Bfg,
     Assault,
-    MachineGun
+    MachineGun,
+    FlameThrower
 }
 
 

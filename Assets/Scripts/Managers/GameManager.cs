@@ -34,6 +34,14 @@ public class GameManager : MonoBehaviour
     private FireButton fireButton;
     public FireButton FireButton => fireButton;
     
+    private PlayerBehaviour player;
+    public PlayerBehaviour Player => player;
+    
+    private UpgradeWeapon upgradeWeapon;
+    public UpgradeWeapon  P_UpgradeWeapon =>  upgradeWeapon;
+
+    private TurretBtnUI turretBtnUI;
+    public TurretBtnUI P_TurretBtnUI => turretBtnUI;
     #region Managers
     
         private WaveManager waveManager;
@@ -62,9 +70,6 @@ public class GameManager : MonoBehaviour
         private PathRequestManager pathRequestManager;
         public PathRequestManager P_PathRequestManager => pathRequestManager;
 
-        private PlayerBehaviour player;
-        public PlayerBehaviour Player => player;
-
         private UI_Manager UI_Manager;
         public UI_Manager P_UI_Manager => UI_Manager;
         
@@ -77,13 +82,14 @@ public class GameManager : MonoBehaviour
     
     
     private CameraController cc;
-
+    private WeaponUI weaponUI;
+    public WeaponUI P_WeaponUI => weaponUI;
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
+            //DontDestroyOnLoad(this);
         }
 
         Init();
@@ -100,9 +106,11 @@ public class GameManager : MonoBehaviour
 
     private void Init()
     {
+        turretBtnUI = FindObjectOfType<TurretBtnUI>();
         fireButton = FindObjectOfType<FireButton>();
         // joystick = FindObjectOfType<Joystick>();
         uiManager = FindObjectOfType<UI_Manager>();
+        upgradeWeapon = FindObjectOfType<UpgradeWeapon>();
         actualGrid = FindObjectOfType<Grid>();
         lootManager = FindObjectOfType<LootManager>();
         teamManager = FindObjectOfType<TeamManager>();
@@ -116,6 +124,7 @@ public class GameManager : MonoBehaviour
         player = FindObjectOfType<PlayerBehaviour>();
         UI_Manager = FindObjectOfType<UI_Manager>();
         weaponsManager = FindObjectOfType<WeaponsManager>();
+        weaponUI = FindObjectOfType<WeaponUI>();
     }
 
     public void Restart()
@@ -123,14 +132,15 @@ public class GameManager : MonoBehaviour
         GameManager.Instance.P_UI_Manager.RenderRetryButton(false);
         
         teamManager.Restart();
-        shopManager.Restart();
         enemiesManager.Restart();
         turretManager.Restart();
-        waveManager.Restart();
         actualGrid.Restart();
+        lootManager.Restart();
         pathRequestManager.Restart();
         player.Restart();
-
+        shopManager.Restart();
+        waveManager.Restart();
+        
         StartGame();
     }
 
@@ -185,17 +195,16 @@ public class GameManager : MonoBehaviour
     }
     public void PauseGame ()
     {
-           
-        if (Time.timeScale == 0)
-        {
-            Time.timeScale = 1;
-            P_UiManager.Pause.alpha = 0;
-        }
-        else
-        {
-            Time.timeScale = 0;
-            P_UiManager.Pause.alpha = 1;
-        }
+        Time.timeScale = 0;
+        P_UiManager.RenderJoystick(false);
+        P_UiManager.RenderPause(true);
+    }
+
+    public void UnpauseGame()
+    {
+        Time.timeScale = 1;
+        P_UiManager.RenderJoystick(true);
+        P_UiManager.RenderPause(false);
     }
     
 }

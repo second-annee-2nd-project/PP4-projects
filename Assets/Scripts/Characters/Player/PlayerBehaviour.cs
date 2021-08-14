@@ -20,6 +20,7 @@ public class PlayerBehaviour : DestroyableUnit
    public Weapon P_Weapon => weapon;
 
    private GameObject weaponGO;
+   public GameObject WeaponGo => weaponGO;
    [SerializeField] private float gazeHoldTimer = 2f;
 
    [SerializeField] private float maxInvincibilityTimer;
@@ -27,7 +28,9 @@ public class PlayerBehaviour : DestroyableUnit
    private float invincibilityTimer = 0;
    [SerializeField] private Joystick shootJoystick;
    private Vector3 shotDir;
-  
+   [SerializeField] protected SO_Character characterStats;
+
+   public SO_Character CharacterStats => characterStats;
 
    private float lastBulletShot;
 
@@ -38,14 +41,15 @@ public class PlayerBehaviour : DestroyableUnit
    protected override void Start()
    {
       base.Start();
-      Init();
+      
 
    }
 
    public override void Init()
    {
       base.Init();
-
+      bHealthPoints = characterStats.HealthPoints;
+      healthPoints = bHealthPoints;
       if (weapon != null)
       {
          InstantiateWeapon(weapon.gameObject);

@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class EnemyBehaviour : BaseEnemyBehaviour
 {
-    [SerializeField] protected Weapon weapon;
+   [SerializeField] protected Weapon weapon;
 
     protected float attackSpeed;
 
@@ -27,8 +27,15 @@ public class EnemyBehaviour : BaseEnemyBehaviour
         }
     }
 
+    protected override void CallAnim()
+    {
+        base.CallAnim();
+        enemyAnim.SetBool("Attacking",false);
+    }
+
     public override void Init()
     {
+        base.Init();
         enemyRealStats = (SO_Enemy) enemyStats;
         
         speed = enemyRealStats.Speed;
@@ -40,59 +47,7 @@ public class EnemyBehaviour : BaseEnemyBehaviour
         
         StartMoving();
     }
-
     
-
-    
-    // Beaucoup de RaycastAll
-    private bool IsFirstColliderEnemy(Vector3 dir)
-    {
-        RaycastHit[][] hitsArray;
-        hitsArray = new RaycastHit[3][];
-        
-        
-        float radius = transform.GetComponent<Collider>().bounds.size.x;
-        
-        Vector3 myPositionCenteredGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
-        Vector3 myPositionLeftGrounded = new Vector3(transform.position.x - radius, groundY, transform.position.z);
-        Vector3 myPositionRightGrounded = new Vector3(transform.position.x + radius, groundY, transform.position.z);
-        hitsArray[0] = Physics.RaycastAll(myPositionCenteredGrounded, dir, attackRange);
-        hitsArray[1] = Physics.RaycastAll(myPositionLeftGrounded, dir, attackRange);
-        hitsArray[2] = Physics.RaycastAll(myPositionRightGrounded, dir, attackRange);
-        
-        Debug.DrawRay(myPositionCenteredGrounded, dir, Color.blue);
-        Debug.DrawRay(myPositionLeftGrounded, dir, Color.blue);
-        Debug.DrawRay(myPositionRightGrounded, dir, Color.blue);
-        //RaycastHit[] hits = Physics.RaycastAll(weapon.P_FirePosition.position, dir, attackRange);
-        
-        
-        //hitsArray[i][0] = premier hit de chaque hitsArray
-        
-        bool firstCollidedIsEnemy = false;
-        int numberOfHits = 0;
-        for (int i = 0; i < hitsArray.Length; i++)
-        {
-            if (hitsArray[i].Length > 0)
-            {
-                TeamUnit tu = hitsArray[i][0].collider.GetComponent<TeamUnit>();
-                if(tu)
-                {
-                    if (tu.Team.IsEnemy(this.team))
-                    {
-                        numberOfHits++;
-                    }
-                }
-            }
-        }
-
-        if (numberOfHits == hitsArray.Length)
-        {
-            return true;
-        }
-        
-        return false;
-    }
-
     public void StartMoving()
     {
         StartCoroutine(Move());
@@ -123,15 +78,15 @@ public class EnemyBehaviour : BaseEnemyBehaviour
             if (weapon.CanShoot())
             {
                 enemyAnim.SetBool("Attacking",true);
-                remainingTimerBeforeLookingAtPath = timerBeforeLookingAtPath;
+                remainingTimerBeforeLookingAtPath = attackSpeed;
                 transform.LookAt(nearestEnemy.position);
                 Vector3 shootDir = nearestEnemy.position - weapon.P_FireTransform.position;
                 weapon.Shoot(shootDir);
             }
-            else
-            {
-                enemyAnim.SetBool("Attacking",false);
-            }
+            // else if (remainingTimerBeforeLookingAtPath <= 0)
+            // {
+            //     enemyAnim.SetBool("Attacking",false);
+            // }
         }
         else
         {
@@ -139,10 +94,6 @@ public class EnemyBehaviour : BaseEnemyBehaviour
             {
                 Attack();
                 enemyAnim.SetBool("Attacking",true);
-            }
-            else
-            {
-                enemyAnim.SetBool("Attacking",false);
             }
         }
     }
@@ -166,5 +117,4 @@ public class EnemyBehaviour : BaseEnemyBehaviour
             Gizmos.DrawWireSphere(path[i].position, 0.5f);
         }
     }
-
 }

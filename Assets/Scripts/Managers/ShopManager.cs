@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.ProBuilder.MeshOperations;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -57,7 +58,6 @@ public class ShopManager : MonoBehaviour
     private PlayerBehaviour playerBehaviour;
     [SerializeField] private GameObject joystickController;
     private Turret newTurretScript;
-    private List<WeaponUI> weaponUIList;
 
     private void Awake()
     {
@@ -65,7 +65,7 @@ public class ShopManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(this);
+           // DontDestroyOnLoad(this);
         }
     }
     
@@ -75,7 +75,7 @@ public class ShopManager : MonoBehaviour
         playerBehaviour = GameObject.FindObjectOfType<PlayerBehaviour>();
         coins = bCoins;
         coins_Text.text = " : " + coins;
-        weaponUIList = new List<WeaponUI>(FindObjectsOfType<WeaponUI>());
+        // weaponUIList = new List<WeaponUI>(FindObjectsOfType<WeaponUI>());
 
     }
 
@@ -85,6 +85,9 @@ public class ShopManager : MonoBehaviour
     {
         coins += amount;
         coins_Text.text = " : " + coins;
+        GameManager.Instance.P_WeaponUI.PossibleToBuyWeapon();
+        GameManager.Instance.P_TurretBtnUI.PossibleToBuyTurret();
+        GameManager.Instance.P_UpgradeWeapon.NonInteractable();
     }
     
     public void StartShopSequence()
@@ -104,9 +107,11 @@ public class ShopManager : MonoBehaviour
     private IEnumerator ShopSequence()
     {
         UI_ShopSequence.SetActive(true);
+        GameManager.Instance.P_WeaponUI.PossibleToBuyWeapon();
+        GameManager.Instance.P_TurretBtnUI.PossibleToBuyTurret();
         joystickController.SetActive(false);
         isSkipShopButtonPressed = false;
-        SetWeaponsBtn();
+        // SetWeaponsBtn();
         
         while (!isSkipShopButtonPressed)
         {
@@ -148,21 +153,29 @@ public class ShopManager : MonoBehaviour
     public void BuyWeapon(GameObject weaponGO)
     {
         
-        Weapon wp = weaponGO.GetComponent<Weapon>();
-
+         Weapon wp = weaponGO.GetComponent<Weapon>();
+       
         if (wp)
         {
+            //même arme feedback
+            if (wp.WeaponStats.WeaponType == playerBehaviour.P_Weapon.WeaponStats.WeaponType)
+            {
+                return;
+            }
             if (coins >= wp.WeaponStats.Price)
             {
+                
                 GameObject newInstance = Instantiate(weaponGO);
                 playerBehaviour.PickUpWeapon(newInstance);
+                GameManager.Instance.P_UpgradeWeapon.SetUpgradedWeaponInfo();
                 UpdateCoins(-wp.WeaponStats.Price);
+               
             }
             else
             {
                 //introduce feedback here;
             }
-            
+
         }
         
         
@@ -205,6 +218,9 @@ public class ShopManager : MonoBehaviour
                         GameManager.Instance.P_TurretManager.AddItemToList(equipedPrefabInstance);
                         UpdateCoins(turretScript.SoTurret.Price * -1);
                         newTurretScript.Deploy(n.position, n.internalPosition, Quaternion.identity);
+                        GameManager.Instance.P_UiManager.FloatingTextInstantiate(new Vector3(newTurretScript.transform.position.x,newTurretScript.transform.position.y+1f,newTurretScript.transform.position.z),
+                            GameManager.Instance.P_UiManager.CanvasContainerWorld,
+                            GameManager.Instance.P_UiManager.FloatingTextPrefabWorld, 2f,turretScript.SoTurret.Price);
                         equipedPrefabInstance = null;
                         isTurretPlaced = true;
                         break;
@@ -234,13 +250,13 @@ public class ShopManager : MonoBehaviour
         placingCor = null;
     }
     
-    public void SetWeaponsBtn()
-    {
-        List<GameObject> weapons =  GameManager.Instance.P_WeaponsManager.GetRandomWeapons(weaponUIList.Count);
-        for (int i = 0; i < weapons.Count; i++)
-        {
-            weaponUIList[i].SetWeaponInfo(weapons[i]);
-        }
-    }
+    // public void SetWeaponsBtn()
+    // {
+    //     List<GameObject> weapons =  GameManager.Instance.P_WeaponsManager.GetRandomWeapons(weaponUIList.Count);
+    //     for (int i = 0; i < weapons.Count; i++)
+    //     {
+    //         weaponUIList[i].SetWeaponInfo(weapons[i]);
+    //     }
+    // }
     
 }
