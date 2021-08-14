@@ -20,6 +20,7 @@ public class WeaponUI : MonoBehaviour
    // [SerializeField] private Text noMoney;
    
    [SerializeField] private Text soldText;
+   public Text SoldText => soldText;
   
    
    void Awake()
@@ -58,5 +59,12 @@ public class WeaponUI : MonoBehaviour
          GameManager.Instance.P_UiManager.FloatingTextPrefab, 30f, weaponPriceButton);
    }
 
+   public void SetSoldToFalse()
+   {
+      foreach (var btn in buttonList )
+      {
+         btn.GetComponent<WeaponUI>().soldText.gameObject.SetActive(false);
+      }
+   }
 }
 

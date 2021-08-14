@@ -97,8 +97,21 @@ public class ShopManager : MonoBehaviour
         {
             cor = StartCoroutine(ShopSequence());
         }
+        else
+        {
+           UIRestart();
+        }
     }
 
+    public void UIRestart()
+    {
+        GameManager.Instance.P_WeaponUI.PossibleToBuyWeapon();
+        GameManager.Instance.P_TurretBtnUI.PossibleToBuyTurret();
+        GameManager.Instance.P_UpgradeWeapon.NonInteractable();
+        GameManager.Instance.P_UpgradeWeapon.SoldText.gameObject.SetActive(false);
+        GameManager.Instance.P_WeaponUI.SetSoldToFalse();
+        
+    }
     public void SkipButtonPressed()
     {
         isSkipShopButtonPressed = true;
