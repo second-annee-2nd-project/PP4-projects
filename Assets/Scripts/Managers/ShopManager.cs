@@ -87,7 +87,7 @@ public class ShopManager : MonoBehaviour
         coins_Text.text = " : " + coins;
         GameManager.Instance.P_WeaponUI.PossibleToBuyWeapon();
         GameManager.Instance.P_TurretBtnUI.PossibleToBuyTurret();
-        GameManager.Instance.P_UpgradeWeapon.NonInteractable();
+        // GameManager.Instance.P_UpgradeWeapon.NonInteractable();
     }
     
     public void StartShopSequence()
@@ -97,8 +97,21 @@ public class ShopManager : MonoBehaviour
         {
             cor = StartCoroutine(ShopSequence());
         }
+        else
+        {
+           UIRestart();
+        }
     }
 
+    public void UIRestart()
+    {
+        GameManager.Instance.P_WeaponUI.PossibleToBuyWeapon();
+        GameManager.Instance.P_TurretBtnUI.PossibleToBuyTurret();
+        // GameManager.Instance.P_UpgradeWeapon.NonInteractable();
+        // GameManager.Instance.P_UpgradeWeapon.SoldText.gameObject.SetActive(false);
+        GameManager.Instance.P_WeaponUI.SetSoldToFalse();
+        
+    }
     public void SkipButtonPressed()
     {
         isSkipShopButtonPressed = true;
@@ -167,7 +180,7 @@ public class ShopManager : MonoBehaviour
                 
                 GameObject newInstance = Instantiate(weaponGO);
                 playerBehaviour.PickUpWeapon(newInstance);
-                GameManager.Instance.P_UpgradeWeapon.SetUpgradedWeaponInfo();
+                // GameManager.Instance.P_UpgradeWeapon.SetUpgradedWeaponInfo();
                 UpdateCoins(-wp.WeaponStats.Price);
                
             }

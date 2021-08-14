@@ -169,6 +169,14 @@ PrefabInstance:
       propertyPath: InitialModule.size3D
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1224532181702694575, guid: 92042fb46e5ed7b498b98d97e86b7424, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224532181702694575, guid: 92042fb46e5ed7b498b98d97e86b7424, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1224532181972116756, guid: 92042fb46e5ed7b498b98d97e86b7424, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -184,6 +192,14 @@ PrefabInstance:
     - target: {fileID: 1224532181972116758, guid: 92042fb46e5ed7b498b98d97e86b7424, type: 3}
       propertyPath: ShapeModule.m_Scale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224532181972116758, guid: 92042fb46e5ed7b498b98d97e86b7424, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224532181972116758, guid: 92042fb46e5ed7b498b98d97e86b7424, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 1224532182007415196, guid: 92042fb46e5ed7b498b98d97e86b7424, type: 3}
       propertyPath: m_Name
@@ -241,6 +257,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1224532182200178272, guid: 92042fb46e5ed7b498b98d97e86b7424, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224532182200178272, guid: 92042fb46e5ed7b498b98d97e86b7424, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1224532182441430374, guid: 92042fb46e5ed7b498b98d97e86b7424, type: 3}
       propertyPath: looping
       value: 1
@@ -252,6 +276,10 @@ PrefabInstance:
     - target: {fileID: 1224532182441430374, guid: 92042fb46e5ed7b498b98d97e86b7424, type: 3}
       propertyPath: ShapeModule.m_Scale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1224532182441430374, guid: 92042fb46e5ed7b498b98d97e86b7424, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92042fb46e5ed7b498b98d97e86b7424, type: 3}

@@ -42,7 +42,7 @@ public class ThrowerWeapon : Weapon
 
             Vector3 vecToEnemy = allEnemies[i].transform.position - transform.position;
             // --- Orientation check
-            float deltaAngle = Vector3.Angle(vecToEnemy, direction);
+            float deltaAngle = Vector3.Angle(vecToEnemy, dir);
             //if (deltaAngle > weaponStats.DiffusionAngle/2f || deltaAngle < -weaponStats.DiffusionAngle/2f)
             if (deltaAngle > weaponStats.DiffusionAngle * .5f)
                 continue;

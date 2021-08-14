@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ecf821100641b341818f6dc47098c5a, type: 3}
   m_Name: BasePistol
   m_EditorClassIdentifier: 
-  name: Pistol
+  name: Gun
   weaponType: 0
   range: 8
   damage: 5

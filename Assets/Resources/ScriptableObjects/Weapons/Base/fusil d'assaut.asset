@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ecf821100641b341818f6dc47098c5a, type: 3}
   m_Name: fusil d'assaut
   m_EditorClassIdentifier: 
-  name: fusil d'assaut
+  name: Assaut
   weaponType: 5
   range: 10
   damage: 8

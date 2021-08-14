@@ -39,13 +39,17 @@ public class WaveManager : MonoBehaviour
       numberOfWaves = waveDatas.Count;
       UpdateWaveText();
       enemiesManager = GameManager.Instance.P_EnemiesManager;
-      StopAllCoroutines();
    }
 
    public void Restart()
-   {
-      Init();
-   }
+      {
+         Init();
+         Spawner[] spawners = FindObjectsOfType<Spawner>();
+         for (int i = 0; i < spawners.Length; i++)
+         {
+            spawners[i].StopAllCoroutines();
+         }
+      }
 
    public void StartWaveSequence()
    {

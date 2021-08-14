@@ -15,11 +15,12 @@ public class PlayerBehaviour : DestroyableUnit
    [SerializeField] private float speed;
    public float Speed => speed;
    private Vector3 movement;
-   [SerializeField] private GameObject weaponTr;
-   [SerializeField] private Weapon weapon;
+   [SerializeField] private Transform weaponTr; 
+  private Weapon weapon;
    public Weapon P_Weapon => weapon;
 
    private GameObject weaponGO;
+   [SerializeField] private GameObject weaponPrefab;
    public GameObject WeaponGo => weaponGO;
    [SerializeField] private float gazeHoldTimer = 2f;
 
@@ -33,26 +34,29 @@ public class PlayerBehaviour : DestroyableUnit
    public SO_Character CharacterStats => characterStats;
 
    private float lastBulletShot;
-
+   private Animator playerAnim;
    void Awake()
    {
       rb = GetComponent<Rigidbody>();
+      playerAnim = GetComponent<Animator>();
    }
    protected override void Start()
    {
       base.Start();
       
-
    }
 
    public override void Init()
    {
       base.Init();
+      transform.position = new Vector3(transform.position.x, GameManager.Instance.ActualGrid.CenterPosition.y - GameManager.Instance.ActualGrid.P_GridHeight *0.5f , transform.position.z);
       bHealthPoints = characterStats.HealthPoints;
       healthPoints = bHealthPoints;
-      if (weapon != null)
+      if (weaponPrefab != null)
       {
-         InstantiateWeapon(weapon.gameObject);
+        
+         weaponGO =  InstantiateWeapon(weaponPrefab);
+         weapon = weaponGO.GetComponent<Weapon>();
          weapon.Team = Team;
          
       }
@@ -71,6 +75,7 @@ public class PlayerBehaviour : DestroyableUnit
 
    void Update()
    {
+      CheckWeaponToAnim();
       healthPoints = Mathf.Clamp(healthPoints, 0, bHealthPoints);
       if (invincibilityTimer > 0)
       {
@@ -87,6 +92,34 @@ public class PlayerBehaviour : DestroyableUnit
       movement = new Vector3(GameManager.Instance.Joystick.Horizontal(), 0, GameManager.Instance.Joystick.Vertical());
       shotDir =  new Vector3(shootJoystick.Horizontal(), 0, shootJoystick.Vertical());
 
+      if(movement.z == 0 && shootJoystick._IsTouching)
+      {
+         SetAnimDirection("Arriere",true);
+      } 
+      if (Mathf.Sign(movement.z * shotDir.z) < 0)
+      {
+         SetAnimDirection("Arriere",true);
+      } 
+      if(Mathf.Sign(movement.z * shotDir.z) > 0)
+      {
+         SetAnimDirection("Avant",true);
+      }
+      if(movement.x > 0 && shootJoystick._IsTouching)
+      {
+         SetAnimDirection("Droite",true);
+      } 
+      if(movement.x < 0 && shootJoystick._IsTouching )
+      {
+         SetAnimDirection("Gauche",true);
+      }
+      
+      if (movement == Vector3.zero)
+      {
+         playerAnim.SetBool("Avant",false);
+         playerAnim.SetBool("Gauche",false);
+         playerAnim.SetBool("Arriere",false);
+         playerAnim.SetBool("Droite",false);
+      }
       if (Input.GetKey(KeyCode.Space) || shootJoystick._IsTouching)
       {
         Shoot();
@@ -96,8 +129,48 @@ public class PlayerBehaviour : DestroyableUnit
       {
          transform.LookAt((transform.position + movement * speed * Time.fixedDeltaTime));
       }
+      PlayAnim();
+    
    }
+   void SetAnimDirection(string n, bool state)
+   {
+      switch (n)
+      {
+         case "Avant":
+            playerAnim.SetBool("Avant", state);
+            playerAnim.SetBool("Arriere", !state);
+            playerAnim.SetBool("Droite", !state);
+            playerAnim.SetBool("Gauche", !state);
+            break;
 
+         case "Arriere":
+            playerAnim.SetBool("Arriere", state);
+            playerAnim.SetBool("Avant", !state);
+            playerAnim.SetBool("Droite", !state);
+            playerAnim.SetBool("Avant", !state);
+            break;
+
+         case "Droite":
+            playerAnim.SetBool("Droite", state);
+            playerAnim.SetBool("Avant", !state);
+            playerAnim.SetBool("Arriere", !state);
+            playerAnim.SetBool("Gauche", !state);
+            break;
+
+         case "Gauche":
+            playerAnim.SetBool("Gauche", state);
+            playerAnim.SetBool("Avant", !state);
+            playerAnim.SetBool("Arriere", !state);
+            playerAnim.SetBool("Droite", !state);
+            break;
+      }
+   }
+   private GameObject InstantiateWeapon(GameObject go)
+   {
+      GameObject newGO = Instantiate(go);
+      PickUpWeapon(newGO);
+      return newGO;
+   }
    public void Shoot()
    {
       if (weapon.CanShoot())
@@ -135,19 +208,13 @@ public class PlayerBehaviour : DestroyableUnit
    public void PickUpWeapon(GameObject go)
    {
       if (weapon != null) DropWeapon();
-      go.transform.parent = weaponTr.transform;
+      go.transform.parent = weaponTr;
       go.transform.localPosition = Vector3.zero;
       go.transform.localRotation = Quaternion.identity;
       
       weaponGO = go;
       weapon = weaponGO.GetComponent<Weapon>();
       weapon.Team = team;
-   }
-
-   private void InstantiateWeapon(GameObject go)
-   {
-      GameObject newGO = Instantiate(go);
-      PickUpWeapon(newGO);
    }
 
    public void DropWeapon()
@@ -170,6 +237,7 @@ public class PlayerBehaviour : DestroyableUnit
    {
       if (canDie)
       {
+         playerAnim.SetBool("IsDead",true);
          GameManager.Instance.P_UI_Manager.RenderRetryButton(true);
       }
    }
@@ -188,5 +256,81 @@ public class PlayerBehaviour : DestroyableUnit
    protected override void UpdateTarget()
    {
       nearestTarget = GameManager.Instance.P_TeamManager.GetNearestVisibleEnemyUnit(transform.position, weapon.P_BRange, team);
+   }
+
+   void PlayAnim()
+   {
+      if(shootJoystick._IsTouching)
+         playerAnim.SetBool("IsShooting",true);
+      else
+         playerAnim.SetBool("IsShooting",false);
+       if (movement.x > 0 || movement.x < 0 || movement.z < 0 || movement.z > 0 && !shootJoystick._IsTouching)
+      {
+         playerAnim.SetBool("IsSafe",true);
+      }
+      else if (shootJoystick._IsTouching)
+      {
+         playerAnim.SetBool("IsSafe",false);
+      }
+       
+   }
+
+   void CheckWeaponToAnim()
+   {
+      
+      if (weapon.WeaponStats.Name == "Shotgun")
+      {
+         playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Top"),0);
+         playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Weapon"),1);
+         
+         if(shootJoystick._IsTouching)
+            playerAnim.SetBool("IsShotgun",true);
+         else
+            playerAnim.SetBool("IsShotgun",false);
+         if (movement.x > 0 || movement.x < 0 || movement.z < 0 || movement.z > 0 && !shootJoystick._IsTouching)
+         {
+            playerAnim.SetBool("IsSafe",true);
+         }
+         else if (shootJoystick._IsTouching)
+         {
+            playerAnim.SetBool("IsSafe",false);
+         }
+      }
+      if (weaponPrefab.name == "Flame")
+      {
+         playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Top"),0);
+         playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Weapon"),1);
+         
+         if(shootJoystick._IsTouching)
+            playerAnim.SetBool("IsFlame",true);
+         else
+            playerAnim.SetBool("IsFlame",false);
+         if (movement.x > 0 || movement.x < 0 || movement.z < 0 || movement.z > 0 && !shootJoystick._IsTouching)
+         {
+            playerAnim.SetBool("IsSafe",true);
+         }
+         else if (shootJoystick._IsTouching)
+         {
+            playerAnim.SetBool("IsSafe",false);
+         }
+      } 
+      if (weaponPrefab.name == "Assaut")
+      {
+         playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Top"),0);
+         playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Weapon"),1);
+         
+         if(shootJoystick._IsTouching)
+            playerAnim.SetBool("Assaut",true);
+         else
+            playerAnim.SetBool("Assaut",false);
+         if (movement.x > 0 || movement.x < 0 || movement.z < 0 || movement.z > 0 && !shootJoystick._IsTouching)
+         {
+            playerAnim.SetBool("IsSafe",true);
+         }
+         else if (shootJoystick._IsTouching)
+         {
+            playerAnim.SetBool("IsSafe",false);
+         }
+      }
    }
 }

@@ -27,6 +27,10 @@ public class SceneManager : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(nextLevelID);
         nextLevelID++;
+        if (nextLevelID > UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings)
+        {
+            nextLevelID = 0;
+        }
     }
     public void LoadFirstPlayScene()
     {

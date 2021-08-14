@@ -140,16 +140,17 @@ public class GameManager : MonoBehaviour
         player.Restart();
         shopManager.Restart();
         waveManager.Restart();
-        
+        Time.timeScale = 1;
         StartGame();
     }
 
     private void StartGame()
     {
+        ChangePhase(eGameState.Shop);
         cc.Init();
         pathRequestManager.Init();
         waveManager.Init();
-        ChangePhase(eGameState.Shop);
+        
 
         //
 
