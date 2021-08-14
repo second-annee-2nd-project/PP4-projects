@@ -3557,7 +3557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 9033091876322042443}
   shopCamera: {fileID: 9033091875505989186}
-  topOffset: 2
+  topOffset: 5
   rightOffset: 5
   botOffset: 2
   leftOffset: 5
@@ -3610,8 +3610,20 @@ MonoBehaviour:
   - spawnerDatas:
     - spawnerTr: {fileID: 0}
       enemyGroups:
+      - typeOfEnemyToSpawn: 3
+        enemyNumberToSpawn: 1
+        timerBetweenSpawns: 0.1
+        timerBeforeFirstSpawn: 1
+      - typeOfEnemyToSpawn: 2
+        enemyNumberToSpawn: 1
+        timerBetweenSpawns: 0.1
+        timerBeforeFirstSpawn: 1
+      - typeOfEnemyToSpawn: 4
+        enemyNumberToSpawn: 1
+        timerBetweenSpawns: 0.1
+        timerBeforeFirstSpawn: 1
       - typeOfEnemyToSpawn: 1
-        enemyNumberToSpawn: 5
+        enemyNumberToSpawn: 1
         timerBetweenSpawns: 0.1
         timerBeforeFirstSpawn: 1
   waveCount_Text: {fileID: 2550007598281895657}
@@ -4078,7 +4090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healPrice: 4
-  bCoins: 200
+  bCoins: 20000
   UI_ShopSequence: {fileID: 2550007597192316015}
   coins_Text: {fileID: 2550007597169079480}
   headerShopSequence_Text: {fileID: 2550007596739645252}
@@ -4266,7 +4278,7 @@ MonoBehaviour:
     _values:
     - {fileID: 2112906380520513785, guid: c6e90f5752f49dc408827112001f270f, type: 3}
     - {fileID: 1359286073271687219, guid: 66375936b881fb741a6f255780744b0e, type: 3}
-    - {fileID: 7053238626034574912, guid: cde6905f0f503334db396ed6c279b7fa, type: 3}
+    - {fileID: 2837160632416293691, guid: 8d182ec921d79f349932117197436b57, type: 3}
     - {fileID: 696926411704935639, guid: cc5d43858d4365846a57849214591138, type: 3}
     - {fileID: 6119425663154712118, guid: dd96fed8fb2aaff4ea2c0ea5ee65db8e, type: 3}
     - {fileID: 2585232125693606351, guid: d0bcf0dce569b7442ad786cc2f87d1f3, type: 3}
@@ -6506,7 +6518,7 @@ MonoBehaviour:
         m_MethodName: BuyWeapon
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2872637116051814785, guid: 724c7c388fb5570439674a7f905ed9d3, type: 3}
+          m_ObjectArgument: {fileID: 8820621437278627661, guid: 6cd8184fb0040ec43b400fea6659e1ff, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -6908,7 +6920,7 @@ MonoBehaviour:
         m_MethodName: BuyWeapon
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2186136081076314979, guid: 04a532c62a4bb224787004fccbd8ad18, type: 3}
+          m_ObjectArgument: {fileID: 8011939608474492976, guid: 6410ebf3771a5644dbdc0491a388477a, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -10175,7 +10187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.25100002}
   m_AnchorMax: {x: 1, y: 0.25100002}
-  m_AnchoredPosition: {x: -153, y: -9}
+  m_AnchoredPosition: {x: -153, y: -8.999985}
   m_SizeDelta: {x: 160, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8412495412205117381
@@ -10416,7 +10428,7 @@ MonoBehaviour:
         m_MethodName: BuyWeapon
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8297874499855603084, guid: 2f7beb4bb071f924ca0dbd05f88abe01, type: 3}
+          m_ObjectArgument: {fileID: 8357125496657553054, guid: cd9f6fcadfad3f34095af3abeb75c80e, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0

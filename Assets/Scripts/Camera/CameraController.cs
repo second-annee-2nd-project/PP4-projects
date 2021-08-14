@@ -136,10 +136,11 @@ public class CameraController : MonoBehaviour
         /*float height = Mathf.Abs(GameManager.Instance.ActualGrid.CenterPosition.y - camPos.y);
         float frustrumHalfHeight = height * Mathf.Tan(cam.fieldOfView * 0.5f * Mathf.Deg2Rad);
         float frustrumHalfWidth = frustrumHalfHeight * cam.aspect;*/
-        
+
         float frustrumHeight = GameManager.Instance.ActualGrid.P_GridWidth;
         //float frustrumHalfWidth = );
         float height = frustrumHeight * 0.5f / Mathf.Tan(shopCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);
+        float width = height * currentCamera.aspect;
         float cameraview = GameManager.Instance.ActualGrid.P_GridWidth * Mathf.Tan(shopCamera.fieldOfView * 0.5f * Mathf.Deg2Rad);
         
         float newPosX = 0f;
@@ -157,6 +158,10 @@ public class CameraController : MonoBehaviour
         else
         {
             posModified = playerTr.position ;
+
+            float a = GameManager.Instance.ActualGrid.CenterPosition.z + height * 0.5f;
+            float b = GameManager.Instance.ActualGrid.CenterPosition.x + width * 0.5f;
+            
             if (playerTr.position.z >= maxZ.position.z - topOffset)
             {
                 newPosZ = maxZ.position.z - topOffset;
