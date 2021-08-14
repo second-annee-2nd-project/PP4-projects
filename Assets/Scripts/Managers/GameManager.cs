@@ -146,10 +146,11 @@ public class GameManager : MonoBehaviour
 
     private void StartGame()
     {
+        ChangePhase(eGameState.Shop);
         cc.Init();
         pathRequestManager.Init();
         waveManager.Init();
-        ChangePhase(eGameState.Shop);
+        
 
         //
 
