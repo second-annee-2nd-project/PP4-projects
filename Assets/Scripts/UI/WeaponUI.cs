@@ -51,7 +51,6 @@ public class WeaponUI : MonoBehaviour
    {
       foreach (var btn in buttonList )
       {
-         btn.interactable = true;
          btn.GetComponent<WeaponUI>().soldText.gameObject.SetActive(false);
       }
       soldText.gameObject.SetActive(true);

@@ -85,6 +85,9 @@ public class ShopManager : MonoBehaviour
     {
         coins += amount;
         coins_Text.text = " : " + coins;
+        GameManager.Instance.P_WeaponUI.PossibleToBuyWeapon();
+        GameManager.Instance.P_TurretBtnUI.PossibleToBuyTurret();
+        GameManager.Instance.P_UpgradeWeapon.NonInteractable();
     }
     
     public void StartShopSequence()
@@ -164,26 +167,15 @@ public class ShopManager : MonoBehaviour
                 
                 GameObject newInstance = Instantiate(weaponGO);
                 playerBehaviour.PickUpWeapon(newInstance);
-                UpdateCoins(-wp.WeaponStats.Price);
-                GameManager.Instance.P_WeaponUI.PossibleToBuyWeapon();
                 GameManager.Instance.P_UpgradeWeapon.SetUpgradedWeaponInfo();
-               
+                UpdateCoins(-wp.WeaponStats.Price);
                
             }
             else
             {
                 //introduce feedback here;
             }
-             if (coins >= wp.UpgradeWeaponStats.Price)
-             {
-                 GameManager.Instance.P_UpgradeWeapon.UpgradeBtn.interactable = true;
-             }
-             else
-             {
-                 GameManager.Instance.P_UpgradeWeapon.UpgradeBtn.interactable = false;
-             }
-           
-            
+
         }
         
         
@@ -229,7 +221,6 @@ public class ShopManager : MonoBehaviour
                         GameManager.Instance.P_UiManager.FloatingTextInstantiate(new Vector3(newTurretScript.transform.position.x,newTurretScript.transform.position.y+1f,newTurretScript.transform.position.z),
                             GameManager.Instance.P_UiManager.CanvasContainerWorld,
                             GameManager.Instance.P_UiManager.FloatingTextPrefabWorld, 2f,turretScript.SoTurret.Price);
-                        GameManager.Instance.P_TurretBtnUI.PossibleToBuyTurret();
                         equipedPrefabInstance = null;
                         isTurretPlaced = true;
                         break;

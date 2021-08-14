@@ -21,11 +21,7 @@ public class UpgradeWeapon : MonoBehaviour
         costText.text =  "Prix : " + wp.UpgradeWeaponStats.Price;
         nameText.text = "Upgrade : " + wp.WeaponStats.Name;
         soldText.gameObject.SetActive(false);
-        
-        if(ShopManager.Instance.Coins >= wp.UpgradeWeaponStats.Price)
-         upgradeBtn.interactable = true;
-        else 
-            upgradeBtn.interactable = false;
+      
     }
     public void BuyUpgradeWeapon()
     {
@@ -43,5 +39,13 @@ public class UpgradeWeapon : MonoBehaviour
 
         }
         
+    }
+
+    public void NonInteractable()
+    {
+        if(ShopManager.Instance.Coins >= wp.UpgradeWeaponStats.Price)
+            upgradeBtn.interactable = true;
+        else 
+            upgradeBtn.interactable = false;
     }
 }

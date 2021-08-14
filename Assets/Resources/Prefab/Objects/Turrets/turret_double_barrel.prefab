@@ -686,7 +686,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1
-  bHealthPoints: 40
   lifeBar_Img: {fileID: 2954850805600361787}
   backLifeBar_Img: {fileID: 4591332235008094938}
   animationBarSpeed: 0.2
@@ -1121,7 +1120,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3867139883926914930}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00199, y: 0.0336, z: 0.02733}
+  m_LocalPosition: {x: -0.00014, y: 0.0336, z: 0.02912}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5460942437877957683}
@@ -1347,6 +1346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponStats: {fileID: 11400000, guid: 34bd49fd2dabc7c489b2b754d17540f4, type: 2}
+  upgradeWeaponStats: {fileID: 0}
   fireTransform: {fileID: 2893088748377103742}
   bulletPrefab: {fileID: 7497547957538424816, guid: 4d8d5547bfb105843b7600b15e9b8501, type: 3}
 --- !u!1 &5371915660196354617

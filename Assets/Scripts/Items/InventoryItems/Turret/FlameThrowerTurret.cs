@@ -11,6 +11,8 @@ public class FlameThrowerTurret : Turret
             if (weapon.CanShoot() && (nearestTarget.position - weapon.P_FireTransform.position).sqrMagnitude <= weapon.WeaponStats.Range * weapon.WeaponStats.Range)
             {
                 Shoot(dir, weapon);
+                turretAnim.SetBool("canDeploy",false);
+                turretAnim.SetBool("Shoot",true);
             }
         }
     }

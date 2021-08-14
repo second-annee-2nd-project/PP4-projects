@@ -2232,7 +2232,7 @@ MonoBehaviour:
         m_MethodName: StartPlacingTurret
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 3195867937966922738, guid: 95a3ba538bcf08640aa6ff6b68fa0525, type: 3}
+          m_ObjectArgument: {fileID: 1749780370611255109, guid: 2e5ac765d66e7194092b4ac51a651a26, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2465,7 +2465,7 @@ MonoBehaviour:
         m_MethodName: StartPlacingTurret
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 6963732471453701321, guid: f3566a8407a86fc46a1dbc8d1bbc25cc, type: 3}
+          m_ObjectArgument: {fileID: 5589517751444628090, guid: a41e0f0f0b0bf7448965ae3044b92fed, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -3345,7 +3345,7 @@ MonoBehaviour:
         m_MethodName: StartPlacingTurret
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2631654730221049439, guid: 59e63eb8e9b6c5b46bed11a83f070b8f, type: 3}
+          m_ObjectArgument: {fileID: 7849371516448525937, guid: 76438a28dead3724ba32273158b28b6a, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4078,7 +4078,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healPrice: 4
-  bCoins: 400
+  bCoins: 200
   UI_ShopSequence: {fileID: 2550007597192316015}
   coins_Text: {fileID: 2550007597169079480}
   headerShopSequence_Text: {fileID: 2550007596739645252}
@@ -6501,18 +6501,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3944930427685459459}
-        m_TargetAssemblyTypeName: WeaponUI, Assembly-CSharp
-        m_MethodName: SetInteractableButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2550007597785881804}
         m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
         m_MethodName: BuyWeapon
@@ -6520,6 +6508,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 2872637116051814785, guid: 724c7c388fb5570439674a7f905ed9d3, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3944930427685459459}
+        m_TargetAssemblyTypeName: WeaponUI, Assembly-CSharp
+        m_MethodName: SetInteractableButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6903,18 +6903,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2611679225102858420}
-        m_TargetAssemblyTypeName: WeaponUI, Assembly-CSharp
-        m_MethodName: SetInteractableButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2550007597785881804}
         m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
         m_MethodName: BuyWeapon
@@ -6922,6 +6910,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 2186136081076314979, guid: 04a532c62a4bb224787004fccbd8ad18, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2611679225102858420}
+        m_TargetAssemblyTypeName: WeaponUI, Assembly-CSharp
+        m_MethodName: SetInteractableButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -10411,18 +10411,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8514105449127377831}
-        m_TargetAssemblyTypeName: WeaponUI, Assembly-CSharp
-        m_MethodName: SetInteractableButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 2550007597785881804}
         m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
         m_MethodName: BuyWeapon
@@ -10430,6 +10418,18 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 8297874499855603084, guid: 2f7beb4bb071f924ca0dbd05f88abe01, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8514105449127377831}
+        m_TargetAssemblyTypeName: WeaponUI, Assembly-CSharp
+        m_MethodName: SetInteractableButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
