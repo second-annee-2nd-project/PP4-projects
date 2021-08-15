@@ -92,34 +92,9 @@ public class PlayerBehaviour : DestroyableUnit
       movement = new Vector3(GameManager.Instance.Joystick.Horizontal(), 0, GameManager.Instance.Joystick.Vertical());
       shotDir =  new Vector3(shootJoystick.Horizontal(), 0, shootJoystick.Vertical());
 
-      if(movement.z == 0 && shootJoystick._IsTouching)
-      {
-         SetAnimDirection("Arriere",true);
-      } 
-      if (Mathf.Sign(movement.z * shotDir.z) < 0)
-      {
-         SetAnimDirection("Arriere",true);
-      } 
-      if(Mathf.Sign(movement.z * shotDir.z) > 0)
-      {
-         SetAnimDirection("Avant",true);
-      }
-      if(movement.x > 0 && shootJoystick._IsTouching)
-      {
-         SetAnimDirection("Droite",true);
-      } 
-      if(movement.x < 0 && shootJoystick._IsTouching )
-      {
-         SetAnimDirection("Gauche",true);
-      }
-      
-      if (movement == Vector3.zero)
-      {
-         playerAnim.SetBool("Avant",false);
-         playerAnim.SetBool("Gauche",false);
-         playerAnim.SetBool("Arriere",false);
-         playerAnim.SetBool("Droite",false);
-      }
+      Animate(movement, shotDir);
+
+
       if (Input.GetKey(KeyCode.Space) || shootJoystick._IsTouching)
       {
         Shoot();
@@ -129,9 +104,145 @@ public class PlayerBehaviour : DestroyableUnit
       {
          transform.LookAt((transform.position + movement * speed * Time.fixedDeltaTime));
       }
-      PlayAnim();
-    
    }
+
+   void Animate(Vector3 movement, Vector3 shotDir)
+   {
+      //le joueur ne bouge pas
+      if (movement == Vector3.zero)
+      {
+         playerAnim.SetBool("Avant",false);
+         playerAnim.SetBool("Gauche",false);
+         playerAnim.SetBool("Arriere",false);
+         playerAnim.SetBool("Droite",false);
+      }
+      else
+      {
+         //Le joueur est en train de bouger et de tirer
+   
+         //Direction
+         //up
+         //1
+         //droite
+         //2
+         //bas
+         //4
+         //gauche
+         //8
+   
+         //Tir
+         //up
+         //16
+         //droite
+         //32
+         //bas
+         //64
+         //haut
+         //128
+   
+         if (shootJoystick._IsTouching)
+         {
+            int a = 0;
+            string[] baseDirections = {"Avant", "Gauche", "Arriere", "Droite"};
+            string[] finalDirections = new string[4];
+            if (Mathf.Abs(movement.x) >= Mathf.Abs(movement.z))
+            {
+               if (movement.x <= 0)
+               {
+                  for (int i = 0; i < finalDirections.Length; i++)
+                  {
+                     finalDirections[i] = baseDirections[(i + 1) % finalDirections.Length];
+                  }
+   
+                  a += 1;
+               }
+               else if (movement.x > 0)
+               {
+                  for (int i = 0; i < finalDirections.Length; i++)
+                  {
+                     finalDirections[i] = baseDirections[(i + 3) % finalDirections.Length];
+                  }
+   
+                  a += 2;
+               }
+            }
+            else
+            {
+               if (movement.z <= 0)
+               {
+                  for (int i = 0; i < finalDirections.Length; i++)
+                  {
+                     finalDirections[i] = baseDirections[(i + 2) % finalDirections.Length];
+                  }
+   
+                  a += 4;
+               }
+   
+               else if (movement.z > 0)
+               {
+                  for (int i = 0; i < finalDirections.Length; i++)
+                  {
+                     finalDirections[i] = baseDirections[i];
+                  }
+   
+                  a += 8;
+               }
+            }
+   
+            string s = "";
+            for (int i = 0; i < finalDirections.Length; i++)
+            {
+               s += finalDirections[i];
+            }
+   
+            Debug.Log(s);
+   
+            // introduire un if == alors ça prend l'arrière
+            if (Mathf.Abs(shotDir.x) > Mathf.Abs(shotDir.z))
+            {
+               if (shotDir.x <= 0)
+               {
+                  SetAnimDirection(finalDirections[3], true);
+                  Debug.Log(finalDirections[3]);
+                  a += 16;
+               }
+   
+               else if (shotDir.x > 0)
+               {
+                  SetAnimDirection(finalDirections[1], true);
+                  Debug.Log("zizi" + finalDirections[1]);
+                  a += 32;
+               }
+            }
+            else if (Mathf.Abs(shotDir.x) < Mathf.Abs(shotDir.z))
+            {
+               if (shotDir.z <= 0)
+               {
+                  SetAnimDirection(finalDirections[2], true);
+                  Debug.Log(finalDirections[2]);
+                  a += 64;
+               }
+               else if (shotDir.z > 0)
+               {
+                  SetAnimDirection(finalDirections[0], true);
+                  Debug.Log(finalDirections[0]);
+                  a += 128;
+               }
+            }
+            else
+            {
+               SetAnimDirection("Arriere", true);
+            }
+         }
+         else
+         {
+            Debug.Log("Avant");
+            SetAnimDirection("Avant", true);
+         }
+      }
+      PlayAnim();
+   }
+
    void SetAnimDirection(string n, bool state)
    {
       switch (n)
@@ -142,21 +253,21 @@ public class PlayerBehaviour : DestroyableUnit
             playerAnim.SetBool("Droite", !state);
             playerAnim.SetBool("Gauche", !state);
             break;
-
+   
          case "Arriere":
             playerAnim.SetBool("Arriere", state);
             playerAnim.SetBool("Avant", !state);
             playerAnim.SetBool("Droite", !state);
             playerAnim.SetBool("Avant", !state);
             break;
-
+   
          case "Droite":
             playerAnim.SetBool("Droite", state);
             playerAnim.SetBool("Avant", !state);
             playerAnim.SetBool("Arriere", !state);
             playerAnim.SetBool("Gauche", !state);
             break;
-
+   
          case "Gauche":
             playerAnim.SetBool("Gauche", state);
             playerAnim.SetBool("Avant", !state);
@@ -208,13 +319,14 @@ public class PlayerBehaviour : DestroyableUnit
    public void PickUpWeapon(GameObject go)
    {
       if (weapon != null) DropWeapon();
-      go.transform.parent = weaponTr;
-      go.transform.localPosition = Vector3.zero;
-      go.transform.localRotation = Quaternion.identity;
-      
+
       weaponGO = go;
       weapon = weaponGO.GetComponent<Weapon>();
       weapon.Team = team;
+      weaponPrefab = weaponGO;
+      go.transform.parent = weaponTr;
+      go.transform.localPosition = weaponPrefab.transform.position;
+      go.transform.localRotation = weaponPrefab.transform.rotation;
    }
 
    public void DropWeapon()
@@ -260,19 +372,21 @@ public class PlayerBehaviour : DestroyableUnit
 
    void PlayAnim()
    {
+
       if(shootJoystick._IsTouching)
          playerAnim.SetBool("IsShooting",true);
       else
          playerAnim.SetBool("IsShooting",false);
-       if (movement.x > 0 || movement.x < 0 || movement.z < 0 || movement.z > 0 && !shootJoystick._IsTouching)
+      
+      if ((movement.x > 0 || movement.x < 0 || movement.z < 0 || movement.z > 0) && !shootJoystick._IsTouching)
       {
          playerAnim.SetBool("IsSafe",true);
+         
       }
-      else if (shootJoystick._IsTouching)
+      else if (shootJoystick._IsTouching && movement.x == 0 || movement.x == 0 || movement.z == 0 || movement.z == 0 || shootJoystick._IsTouching)
       {
          playerAnim.SetBool("IsSafe",false);
       }
-       
    }
 
    void CheckWeaponToAnim()
@@ -287,16 +401,8 @@ public class PlayerBehaviour : DestroyableUnit
             playerAnim.SetBool("IsShotgun",true);
          else
             playerAnim.SetBool("IsShotgun",false);
-         if (movement.x > 0 || movement.x < 0 || movement.z < 0 || movement.z > 0 && !shootJoystick._IsTouching)
-         {
-            playerAnim.SetBool("IsSafe",true);
-         }
-         else if (shootJoystick._IsTouching)
-         {
-            playerAnim.SetBool("IsSafe",false);
-         }
       }
-      if (weaponPrefab.name == "Flame")
+      if (weapon.WeaponStats.Name == "Flame")
       {
          playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Top"),0);
          playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Weapon"),1);
@@ -305,32 +411,16 @@ public class PlayerBehaviour : DestroyableUnit
             playerAnim.SetBool("IsFlame",true);
          else
             playerAnim.SetBool("IsFlame",false);
-         if (movement.x > 0 || movement.x < 0 || movement.z < 0 || movement.z > 0 && !shootJoystick._IsTouching)
-         {
-            playerAnim.SetBool("IsSafe",true);
-         }
-         else if (shootJoystick._IsTouching)
-         {
-            playerAnim.SetBool("IsSafe",false);
-         }
       } 
-      if (weaponPrefab.name == "Assaut")
+      if (weapon.WeaponStats.Name == "Assaut")
       {
          playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Top"),0);
          playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Weapon"),1);
          
          if(shootJoystick._IsTouching)
-            playerAnim.SetBool("Assaut",true);
+            playerAnim.SetBool("IsAssaut",true);
          else
-            playerAnim.SetBool("Assaut",false);
-         if (movement.x > 0 || movement.x < 0 || movement.z < 0 || movement.z > 0 && !shootJoystick._IsTouching)
-         {
-            playerAnim.SetBool("IsSafe",true);
-         }
-         else if (shootJoystick._IsTouching)
-         {
-            playerAnim.SetBool("IsSafe",false);
-         }
+            playerAnim.SetBool("IsAssaut",false);
       }
    }
 }

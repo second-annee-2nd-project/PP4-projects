@@ -305,7 +305,9 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     protected bool IsPathOccupied()
     {
         for (int i = 0; i < path.Count; i++)
-        {
+        {/*
+            Debug.Log(path.Count);
+            Debug.Log(this.name);*/ 
             if (path[i].occupiedBy != null && path[i].occupiedBy != this)
             {
                 return true;
