@@ -91,12 +91,17 @@ public class WaveManager : MonoBehaviour
             /*actualWaveNumber = 1;
             Debug.Log("WAVE FINI NEXT MAP SHOULD BE LOADED");*/
             
-            SceneManager.Instance.LoadNextScene();
+            SceneManager.Instance.LoadNextScene(3f);
+            
+         }
+         else
+         {
+            GameManager.Instance.ChangePhase(eGameState.AutoLoot);
+            GameManager.Instance.P_TurretManager.ResetAnimTurret();
+            cor = null;
          }
 
-      GameManager.Instance.ChangePhase(eGameState.AutoLoot);
-      GameManager.Instance.P_TurretManager.ResetAnimTurret();
-      cor = null;
+      
       
    }
 }

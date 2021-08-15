@@ -26,14 +26,14 @@ public class SceneManager : MonoBehaviour
         }
     }
 
-    public void LoadNextScene()
+    public void LoadNextScene(float timer)
     {
-        StartCoroutine(LoadSceneAfterSomeTime());
+        StartCoroutine(LoadSceneAfterSomeTime(timer));
     }
 
-    private IEnumerator LoadSceneAfterSomeTime()
+    private IEnumerator LoadSceneAfterSomeTime(float timer)
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(timer);
         UnityEngine.SceneManagement.SceneManager.LoadScene(nextLevelID);
         nextLevelID++;
         if (nextLevelID > UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings)
@@ -43,7 +43,7 @@ public class SceneManager : MonoBehaviour
     }
     public void LoadFirstPlayScene()
     {
-        LoadNextScene();
+        LoadNextScene(0);
     }
 
     public void QuitGame()
