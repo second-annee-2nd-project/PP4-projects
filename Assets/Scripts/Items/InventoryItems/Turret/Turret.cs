@@ -48,7 +48,7 @@ public class Turret : DestroyableUnit
     {
         UpdateTarget();
         UpdateLifeBar();
-        if (!Object.ReferenceEquals(nearestTarget, null))
+        if (Object.ReferenceEquals(nearestTarget, null))
             return;
         Vector3 nearestTargetGrounded = new Vector3(nearestTarget.position.x, groundY, nearestTarget.position.z);
         Vector3 dir = nearestTargetGrounded - transform.position;
