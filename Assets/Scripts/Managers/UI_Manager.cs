@@ -81,7 +81,7 @@ public class UI_Manager : MonoBehaviour
           
            speedFloatText = speed;
            floatTextInstance = Instantiate(prefabToSpawn,flotingTextPos,Quaternion.identity);
-           floatTextInstance.transform.parent = transformParent;
+           floatTextInstance.transform.SetParent(transformParent); 
            floatTextInstance.GetComponentInChildren<Text>().text = "-" + PriceInText;
            StopCoroutine(nameof(FadeOutFloatingText));
            StartCoroutine(nameof(FadeOutFloatingText));

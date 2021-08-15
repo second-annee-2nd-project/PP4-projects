@@ -21,7 +21,7 @@ public class WeaponUI : MonoBehaviour
    
    [SerializeField] private Text soldText;
    public Text SoldText => soldText;
-  
+   private bool isBough;
    
    void Awake()
    {
@@ -37,7 +37,7 @@ public class WeaponUI : MonoBehaviour
 
    public void WeaponBuyableOrNot()
    {
-      if(weaponPriceButton <= ShopManager.Instance.Coins)
+      if(weaponPriceButton <= ShopManager.Instance.Coins && !isBough )
       {
          buyWeaponBtn.interactable = true;
          // noMoney.gameObject.SetActive(false);
@@ -48,15 +48,22 @@ public class WeaponUI : MonoBehaviour
          // noMoney.gameObject.SetActive(true);
       }
    }
-   public void SetInteractableButton()
+   public void SetInteractableButton(Button button)
    {
+      GameObject pos = button.GetComponent<WeaponUI>().soldText.gameObject;
+    
       foreach (var btn in buttonList )
       {
          btn.GetComponent<WeaponUI>().soldText.gameObject.SetActive(false);
+         btn.interactable = true;
+         btn.GetComponent<WeaponUI>().isBough = false;
+
       }
-      soldText.gameObject.SetActive(true);
-      GameManager.Instance.P_UiManager.FloatingTextInstantiate(soldText.gameObject.transform.parent.position, soldText.gameObject.transform,
-         GameManager.Instance.P_UiManager.FloatingTextPrefab, 30f, weaponPriceButton);
+      GameManager.Instance.P_UiManager.FloatingTextInstantiate(pos.transform.parent.position, pos.transform,
+            GameManager.Instance.P_UiManager.FloatingTextPrefab, 30f, weaponPriceButton);
+         pos.SetActive(true);
+         button.interactable = false;
+         button.GetComponent<WeaponUI>().isBough = true;
    }
 
    public void SetSoldToFalse()
@@ -64,6 +71,8 @@ public class WeaponUI : MonoBehaviour
       foreach (var btn in buttonList )
       {
          btn.GetComponent<WeaponUI>().soldText.gameObject.SetActive(false);
+         btn.GetComponent<WeaponUI>().isBough = false;
+         btn.interactable = true;
       }
    }
 }
