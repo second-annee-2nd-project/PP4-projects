@@ -75,6 +75,7 @@ public class PlayerBehaviour : DestroyableUnit
 
    void Update()
    {
+      CheckWeaponToAnim();
       healthPoints = Mathf.Clamp(healthPoints, 0, bHealthPoints);
       if (invincibilityTimer > 0)
       {
@@ -118,7 +119,7 @@ public class PlayerBehaviour : DestroyableUnit
       else
       {
          //Le joueur est en train de bouger et de tirer
-
+   
          //Direction
          //up
          //1
@@ -128,7 +129,7 @@ public class PlayerBehaviour : DestroyableUnit
          //4
          //gauche
          //8
-
+   
          //Tir
          //up
          //16
@@ -138,7 +139,7 @@ public class PlayerBehaviour : DestroyableUnit
          //64
          //haut
          //128
-
+   
          if (shootJoystick._IsTouching)
          {
             int a = 0;
@@ -152,7 +153,7 @@ public class PlayerBehaviour : DestroyableUnit
                   {
                      finalDirections[i] = baseDirections[(i + 1) % finalDirections.Length];
                   }
-
+   
                   a += 1;
                }
                else if (movement.x > 0)
@@ -161,7 +162,7 @@ public class PlayerBehaviour : DestroyableUnit
                   {
                      finalDirections[i] = baseDirections[(i + 3) % finalDirections.Length];
                   }
-
+   
                   a += 2;
                }
             }
@@ -173,29 +174,29 @@ public class PlayerBehaviour : DestroyableUnit
                   {
                      finalDirections[i] = baseDirections[(i + 2) % finalDirections.Length];
                   }
-
+   
                   a += 4;
                }
-
+   
                else if (movement.z > 0)
                {
                   for (int i = 0; i < finalDirections.Length; i++)
                   {
                      finalDirections[i] = baseDirections[i];
                   }
-
+   
                   a += 8;
                }
             }
-
+   
             string s = "";
             for (int i = 0; i < finalDirections.Length; i++)
             {
                s += finalDirections[i];
             }
-
+   
             Debug.Log(s);
-
+   
             // introduire un if == alors ça prend l'arrière
             if (Mathf.Abs(shotDir.x) > Mathf.Abs(shotDir.z))
             {
@@ -205,7 +206,7 @@ public class PlayerBehaviour : DestroyableUnit
                   Debug.Log(finalDirections[3]);
                   a += 16;
                }
-
+   
                else if (shotDir.x > 0)
                {
                   SetAnimDirection(finalDirections[1], true);
@@ -235,9 +236,11 @@ public class PlayerBehaviour : DestroyableUnit
          }
          else
          {
+            Debug.Log("Avant");
             SetAnimDirection("Avant", true);
          }
       }
+      PlayAnim();
    }
 
    void SetAnimDirection(string n, bool state)
@@ -250,21 +253,21 @@ public class PlayerBehaviour : DestroyableUnit
             playerAnim.SetBool("Droite", !state);
             playerAnim.SetBool("Gauche", !state);
             break;
-
+   
          case "Arriere":
             playerAnim.SetBool("Arriere", state);
             playerAnim.SetBool("Avant", !state);
             playerAnim.SetBool("Droite", !state);
             playerAnim.SetBool("Avant", !state);
             break;
-
+   
          case "Droite":
             playerAnim.SetBool("Droite", state);
             playerAnim.SetBool("Avant", !state);
             playerAnim.SetBool("Arriere", !state);
             playerAnim.SetBool("Gauche", !state);
             break;
-
+   
          case "Gauche":
             playerAnim.SetBool("Gauche", state);
             playerAnim.SetBool("Avant", !state);
@@ -316,13 +319,14 @@ public class PlayerBehaviour : DestroyableUnit
    public void PickUpWeapon(GameObject go)
    {
       if (weapon != null) DropWeapon();
-      go.transform.parent = weaponTr;
-      go.transform.localPosition = Vector3.zero;
-      go.transform.localRotation = Quaternion.identity;
-      
+
       weaponGO = go;
       weapon = weaponGO.GetComponent<Weapon>();
       weapon.Team = team;
+      weaponPrefab = weaponGO;
+      go.transform.parent = weaponTr;
+      go.transform.localPosition = weaponPrefab.transform.position;
+      go.transform.localRotation = weaponPrefab.transform.rotation;
    }
 
    public void DropWeapon()
@@ -345,6 +349,7 @@ public class PlayerBehaviour : DestroyableUnit
    {
       if (canDie)
       {
+         playerAnim.SetBool("IsDead",true);
          GameManager.Instance.P_UI_Manager.RenderRetryButton(true);
       }
    }
@@ -363,5 +368,59 @@ public class PlayerBehaviour : DestroyableUnit
    protected override void UpdateTarget()
    {
       nearestTarget = GameManager.Instance.P_TeamManager.GetNearestVisibleEnemyUnit(transform.position, weapon.P_BRange, team);
+   }
+
+   void PlayAnim()
+   {
+
+      if(shootJoystick._IsTouching)
+         playerAnim.SetBool("IsShooting",true);
+      else
+         playerAnim.SetBool("IsShooting",false);
+      
+      if ((movement.x > 0 || movement.x < 0 || movement.z < 0 || movement.z > 0) && !shootJoystick._IsTouching)
+      {
+         playerAnim.SetBool("IsSafe",true);
+         
+      }
+      else if (shootJoystick._IsTouching && movement.x == 0 || movement.x == 0 || movement.z == 0 || movement.z == 0 || shootJoystick._IsTouching)
+      {
+         playerAnim.SetBool("IsSafe",false);
+      }
+   }
+
+   void CheckWeaponToAnim()
+   {
+      
+      if (weapon.WeaponStats.Name == "Shotgun")
+      {
+         playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Top"),0);
+         playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Weapon"),1);
+         
+         if(shootJoystick._IsTouching)
+            playerAnim.SetBool("IsShotgun",true);
+         else
+            playerAnim.SetBool("IsShotgun",false);
+      }
+      if (weapon.WeaponStats.Name == "Flame")
+      {
+         playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Top"),0);
+         playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Weapon"),1);
+         
+         if(shootJoystick._IsTouching)
+            playerAnim.SetBool("IsFlame",true);
+         else
+            playerAnim.SetBool("IsFlame",false);
+      } 
+      if (weapon.WeaponStats.Name == "Assaut")
+      {
+         playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Top"),0);
+         playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Weapon"),1);
+         
+         if(shootJoystick._IsTouching)
+            playerAnim.SetBool("IsAssaut",true);
+         else
+            playerAnim.SetBool("IsAssaut",false);
+      }
    }
 }
