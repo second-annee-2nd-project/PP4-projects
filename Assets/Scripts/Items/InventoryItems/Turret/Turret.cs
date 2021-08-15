@@ -41,7 +41,7 @@ public class Turret : DestroyableUnit
        turretManager = FindObjectOfType<TurretManager>();
        bHealthPoints = soTurret.HealthPoints;
        healthPoints = bHealthPoints;
-      // groundY = GameManager.Instance.ActualGrid.CenterPosition.y;
+       groundY = GameManager.Instance.ActualGrid.CenterPosition.y;
 
    }
    void Update()

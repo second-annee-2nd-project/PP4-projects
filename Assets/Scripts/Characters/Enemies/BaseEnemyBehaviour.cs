@@ -200,8 +200,12 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
 
             if ((nearestEnemyGrounded - myPositionGrounded).sqrMagnitude <= attackRange * attackRange)
             {
-                if(IsFirstColliderEnemy(nearestEnemyGrounded))
+                if (IsFirstColliderEnemy(nearestEnemyGrounded))
+                {
                     TryToAttack();
+                    CheckIfPathNeedsToChange();
+                }
+                    
             }
             else
             {
@@ -241,9 +245,10 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
                         transform.LookAt(targetPosition);
                         if (startPosition == targetPosition)
                         {
+                            CheckIfPathNeedsToChange();
                             path.RemoveAt(0);
                             //grid.Nodes[coord.x, coord.z].occupiedBy = null;
-                            CheckIfPathNeedsToChange();
+                            
                         }
                     }
                     
