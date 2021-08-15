@@ -204,7 +204,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
 
             Vector3 sightDir = nearestEnemyGrounded - myPositionGrounded;
 
-            if (Vector3.Distance(myPositionGrounded, nearestEnemyGrounded) <= attackRange &&
+            if ((nearestEnemyGrounded - myPositionGrounded).sqrMagnitude <= attackRange * attackRange &&
                 IsFirstColliderEnemy(nearestEnemyGrounded))
             {
                 TryToAttack();

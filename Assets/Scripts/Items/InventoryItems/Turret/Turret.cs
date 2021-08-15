@@ -66,7 +66,7 @@ public class Turret : DestroyableUnit
         foreach (var weapon in weapons)
         {
             Debug.DrawRay(transform.position, dir, Color.blue);
-            if (weapon.CanShoot() && Vector3.Distance(nearestTarget.position, transform.position) <= weapon.P_BRange)
+            if (weapon.CanShoot() && (nearestTarget.position - transform.position).sqrMagnitude <= weapon.P_BRange * weapon.P_BRange)
             {
 
                 if (IsFirstColliderEnemy(dir,weapon.P_BRange))
