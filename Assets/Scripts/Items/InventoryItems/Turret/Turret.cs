@@ -50,9 +50,9 @@ public class Turret : DestroyableUnit
         UpdateLifeBar();
         if (!Object.ReferenceEquals(nearestTarget, null))
             return;
-        //Vector3 nearestTargetGrounded = new Vector3(nearestTarget.position.x, groundY, nearestTarget.position.z);
-       // Vector3 dir = nearestTargetGrounded - transform.position;
-        Vector3 dir = nearestTarget.position - transform.position;
+        Vector3 nearestTargetGrounded = new Vector3(nearestTarget.position.x, groundY, nearestTarget.position.z);
+        Vector3 dir = nearestTargetGrounded - transform.position;
+        //Vector3 dir = nearestTarget.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * soTurret.TurnSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
