@@ -194,7 +194,6 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     {
         int a = 0;
         Node lastNode = grid.GetNodeWithPosition(transform.position);
-        CheckIfPathNeedsToChange();
         
         while (healthPoints > 0)
         {
@@ -205,12 +204,10 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
 
             Vector3 sightDir = nearestEnemyGrounded - myPositionGrounded;
 
-            if ((nearestEnemyGrounded - myPositionGrounded).sqrMagnitude <= attackRange * attackRange)
+            if ((nearestEnemyGrounded - myPositionGrounded).sqrMagnitude <= attackRange * attackRange && IsFirstColliderEnemy(nearestEnemyGrounded))
             {
-                if (IsFirstColliderEnemy(nearestEnemyGrounded))
-                {
+                
                     TryToAttack();
-                }
             }
             else
             {
