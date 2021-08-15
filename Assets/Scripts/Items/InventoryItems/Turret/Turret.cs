@@ -65,7 +65,6 @@ public class Turret : DestroyableUnit
     {
         foreach (var weapon in weapons)
         {
-            Debug.DrawRay(transform.position, dir, Color.blue);
             if (weapon.CanShoot() && (nearestTarget.position - transform.position).sqrMagnitude <= weapon.P_BRange * weapon.P_BRange)
             {
 
@@ -84,7 +83,7 @@ public class Turret : DestroyableUnit
     {
         RaycastHit[] hits;
         Vector3 myPositionGrounded = new Vector3(transform.position.x, GameManager.Instance.ActualGrid.CenterPosition.y, transform.position.z);
-        hits = Physics.RaycastAll(myPositionGrounded, dir, attackRange);
+        //hits = Physics.RaycastAll(myPositionGrounded, dir, attackRange);
         //RaycastHit[] hits = Physics.RaycastAll(weapon.P_FirePosition.position, dir, attackRange);
 
         RaycastHit hit;
