@@ -170,7 +170,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         GameObject newLoot = Instantiate(loot, positionGrounded, Quaternion.identity);
         newLoot.GetComponent<Loot>().AmountToLoot = amountToLoot;
         GameManager.Instance.P_LootManager.AddItemToList(newLoot);
-        GameManager.Instance.P_SoundManager.AudioSource.PlayOneShot(enemyStats.DeathSound);
+        GameManager.Instance.P_SoundsManager.AudioSource.PlayOneShot(enemyStats.DeathSound);
         Destroy(Instantiate(enemyStats.DeathEffectt, transform.position, Quaternion.identity), 2);
     }
 
@@ -181,6 +181,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
 
     protected virtual void Attack()
     {
+        transform.LookAt(nearestEnemy);
         nearestEnemy.gameObject.GetComponent<DestroyableUnit>().GetDamaged(attackDamage);
     }
 
@@ -231,7 +232,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
                         //essai de s'approprier la case
 
                         Node actualNode = grid.GetNodeWithPosition(transform.position);
-                        if (actualNode != lastNode)
+                        if (actualNode != lastNode && Object.Equals(actualNode.occupiedBy, null))
                         {
                             //lastNode.isWalkable = true;
                             lastNode.occupiedBy = null;
@@ -241,7 +242,6 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
 
                             lastNode = actualNode;
                         }
-
                     
                         transform.position = Vector3.MoveTowards(startPosition, targetPosition, speed * Time.deltaTime);
                         transform.LookAt(targetPosition);
@@ -308,11 +308,9 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     {
         for (int i = 0; i < path.Count; i++)
         {
-            Debug.Log(path.Count);
-            Debug.Log(this.name);
             if (path[i] != null)
             {
-                if (path[i].occupiedBy != this)
+                if (path[i].occupiedBy != this && Object.Equals(path[i].occupiedBy, null))
                 {
                     return true;
                 }

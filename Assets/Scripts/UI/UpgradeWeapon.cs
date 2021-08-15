@@ -33,7 +33,6 @@ public class UpgradeWeapon : MonoBehaviour
             else  if(ShopManager.Instance.Coins < wp.UpgradeWeaponStats.Price || isBough)
                 upgradeBtn.interactable = false;
         }
-        Debug.Log(isBough);
     }
     public void SetUpgradedWeaponInfo()
     {
@@ -59,6 +58,8 @@ public class UpgradeWeapon : MonoBehaviour
             soldText.gameObject.SetActive(true);
             isBough = true;
             GameManager.Instance.P_UiManager.FloatingTextInstantiate(upgradeBtn.transform.position,upgradeBtn.transform, GameManager.Instance.P_UiManager.FloatingTextPrefab, 30f,wp.UpgradeWeaponStats.Price);
+            
+            wp.GetComponent<Renderer>().material = wp.UpgradeWeaponStats.UpgradedTexture;
 
         }
         

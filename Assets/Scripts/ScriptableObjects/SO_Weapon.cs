@@ -49,4 +49,7 @@ public class SO_Weapon : ScriptableObject
 
     [SerializeField] private GameObject muzzleFlash;
     public GameObject MuzzleFlash => muzzleFlash;
+    
+    [SerializeField] private Material upgradedTexture;
+    public Material UpgradedTexture => upgradedTexture;
 }
