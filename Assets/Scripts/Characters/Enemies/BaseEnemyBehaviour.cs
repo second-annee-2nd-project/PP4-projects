@@ -304,7 +304,8 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         {
             Debug.Log(path.Count);
             Debug.Log(this.name);
-            if (path[i].occupiedBy != null && path[i].occupiedBy != this)
+            
+            if (!Object.ReferenceEquals(path[i].occupiedBy, null) && path[i].occupiedBy != this)
             {
                 return true;
             }
