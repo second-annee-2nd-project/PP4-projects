@@ -1530,10 +1530,30 @@ PrefabInstance:
       propertyPath: waveDatas.Array.data[1].spawnerDatas.Array.data[0].spawnerTr
       value: 
       objectReference: {fileID: 139614615}
+    - target: {fileID: 3097085203060747515, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: m_MaxValue
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097085203274120556, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: m_Value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097085203274120556, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: m_MaxValue
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3097085203274120556, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: m_MinValue
+      value: -80
+      objectReference: {fileID: 0}
     - target: {fileID: 8306021435955253182, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: canvasContainerWorld
       value: 
       objectReference: {fileID: 2040855332}
+    - target: {fileID: 8723635361532588517, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9033091876322042442, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: m_LocalPosition.y
       value: 7.37
