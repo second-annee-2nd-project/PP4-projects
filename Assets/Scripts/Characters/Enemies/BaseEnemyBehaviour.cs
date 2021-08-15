@@ -206,8 +206,8 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
 
             Vector3 sightDir = nearestEnemyGrounded - myPositionGrounded;
 
-            float rSquared = GameManager.Instance.ActualGrid.P_GridSizeWidth *
-                      GameManager.Instance.ActualGrid.P_GridSizeLength;
+            float rSquared = (GameManager.Instance.ActualGrid.P_GridSizeWidth * 0.5f) * 
+                      (GameManager.Instance.ActualGrid.P_GridSizeLength * 0.5f);
 
             if ((nearestEnemyGrounded - myPositionGrounded).sqrMagnitude <= rSquared)
             {
