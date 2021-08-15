@@ -206,7 +206,14 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
 
             Vector3 sightDir = nearestEnemyGrounded - myPositionGrounded;
 
-            if ((nearestEnemyGrounded - myPositionGrounded).sqrMagnitude <= attackRange * attackRange && IsFirstColliderEnemy(nearestEnemyGrounded))
+            float rSquared = GameManager.Instance.ActualGrid.P_GridSizeWidth *
+                      GameManager.Instance.ActualGrid.P_GridSizeLength;
+
+            if ((nearestEnemyGrounded - myPositionGrounded).sqrMagnitude <= rSquared)
+            {
+                TryToAttack();
+            }
+            else if ((nearestEnemyGrounded - myPositionGrounded).sqrMagnitude <= attackRange * attackRange && IsFirstColliderEnemy(nearestEnemyGrounded))
             {
                 TryToAttack();
             }

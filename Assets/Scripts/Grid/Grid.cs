@@ -22,6 +22,10 @@ public class Grid : MonoBehaviour
     [SerializeField] private float gridSizeWidth;
     [SerializeField] private float gridSizeLength;
     [SerializeField] private float gridSizeHeight;
+    
+    public float P_GridSizeWidth => gridSizeWidth;
+    public float P_GridSizeLength => gridSizeLength;
+    public float P_GridSizeHeight => gridSizeHeight;
 
     [SerializeField] private Vector3 centerPosition;
     public Vector3 CenterPosition => centerPosition;
