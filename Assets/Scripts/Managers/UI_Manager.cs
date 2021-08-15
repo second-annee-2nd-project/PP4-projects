@@ -85,7 +85,7 @@ public class UI_Manager : MonoBehaviour
            floatTextInstance.GetComponentInChildren<Text>().text = "-" + PriceInText;
            StopCoroutine(nameof(FadeOutFloatingText));
            StartCoroutine(nameof(FadeOutFloatingText));
-           Destroy(floatTextInstance,3f);
+           Destroy(floatTextInstance,timeToFade +0.1f);
        
        }
        public IEnumerator FadeOutFloatingText()

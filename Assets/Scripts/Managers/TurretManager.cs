@@ -24,6 +24,13 @@ public class TurretManager : UnitManager
         actualGrid = GameManager.Instance.ActualGrid;
     }
 
-    
+    public void ResetAnimTurret()
+    {
+        foreach (var turretGO in InstantiatedItems)
+        {
+            turretGO.GetComponent<Turret>().TurretAnim.SetBool("Shoot",false);
+        }
+    }
+
 
 }

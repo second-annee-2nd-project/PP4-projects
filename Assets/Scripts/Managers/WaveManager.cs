@@ -93,6 +93,7 @@ public class WaveManager : MonoBehaviour
          }
 
       GameManager.Instance.ChangePhase(eGameState.AutoLoot);
+      GameManager.Instance.P_TurretManager.ResetAnimTurret();
       cor = null;
       
    }

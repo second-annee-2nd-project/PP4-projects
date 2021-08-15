@@ -1175,6 +1175,10 @@ PrefabInstance:
       propertyPath: canvasContainerWorld
       value: 
       objectReference: {fileID: 2040855332}
+    - target: {fileID: 8306021435955253182, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: timeToFade
+      value: 0.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
 --- !u!20 &825232922355526595 stripped

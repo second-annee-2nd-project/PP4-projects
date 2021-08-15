@@ -64,6 +64,8 @@ public class WeaponUI : MonoBehaviour
          pos.SetActive(true);
          button.interactable = false;
          button.GetComponent<WeaponUI>().isBough = true;
+         GameManager.Instance.P_UpgradeWeapon.IsBough = false;
+      
    }
 
    public void SetSoldToFalse()
