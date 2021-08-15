@@ -843,7 +843,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 1
-  bHealthPoints: 40
   lifeBar_Img: {fileID: 1872271437029220421}
   backLifeBar_Img: {fileID: 3735058323564382875}
   animationBarSpeed: 0.2
@@ -862,8 +861,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.036488216, y: 0.03781461, z: 0.031454735}
-  m_Center: {x: 0.0003891031, y: 0.018496606, z: 0.00013113122}
+  m_Size: {x: 0.032883726, y: 0.03781461, z: 0.02629711}
+  m_Center: {x: 0.0021913857, y: 0.018496606, z: -0.0024477781}
 --- !u!114 &4879563862550507230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -877,6 +876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponStats: {fileID: 11400000, guid: 4bf7df20a85ef304ab60df56846a72cc, type: 2}
+  upgradeWeaponStats: {fileID: 0}
   fireTransform: {fileID: 3225988747310340674}
   bulletPrefab: {fileID: 7497547957538424816, guid: 4d8d5547bfb105843b7600b15e9b8501, type: 3}
 --- !u!54 &3255505865629322035

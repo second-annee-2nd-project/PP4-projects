@@ -198,9 +198,10 @@ MonoBehaviour:
   spawnTransform: {fileID: 771985015249536141}
   speed: 2
   weaponTr: {fileID: 1659578766871729940}
+  weaponGO: {fileID: 0}
   weaponPrefab: {fileID: 2195526009689343659, guid: 61e9e96ddf837b84585a3be89df35995, type: 3}
   gazeHoldTimer: 2
-  maxInvincibilityTimer: 0
+  maxInvincibilityTimer: 0.5
   shootJoystick: {fileID: 0}
   characterStats: {fileID: 11400000, guid: 6eab13c776679fb4d929dfa0fc2121bd, type: 2}
 --- !u!65 &143399317547245108
