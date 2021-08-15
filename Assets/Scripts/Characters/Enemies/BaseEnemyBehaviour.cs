@@ -243,8 +243,8 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
                         transform.LookAt(targetPosition);
                         if (startPosition == targetPosition)
                         {
-                            path.RemoveAt(0);
                             CheckIfPathNeedsToChange();
+                            path.RemoveAt(0);
                             //grid.Nodes[coord.x, coord.z].occupiedBy = null;
                         }
                     }
