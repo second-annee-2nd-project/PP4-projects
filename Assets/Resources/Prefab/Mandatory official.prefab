@@ -9569,6 +9569,7 @@ MonoBehaviour:
   sfx: {fileID: 24100000, guid: 8aace33f747b7b64eb3ef9f955b37d15, type: 2}
   sfxSlider: {fileID: 3097085203060747515}
   masterSlider: {fileID: 3097085203274120556}
+  sfxAudioSource: {fileID: 8723635361532588517}
 --- !u!82 &8723635361532588517
 AudioSource:
   m_ObjectHideFlags: 0
