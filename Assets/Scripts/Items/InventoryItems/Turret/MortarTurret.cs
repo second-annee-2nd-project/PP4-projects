@@ -10,9 +10,8 @@ public class MortarTurret : Turret
         
         foreach (var weapon in weapons)
         {
-            if (weapon.CanShoot() && Vector3.Distance(nearestTarget.position, transform.position) <= weapon.P_BRange)
+            if (weapon.CanShoot() && (nearestTarget.position - transform.position).sqrMagnitude <= weapon.P_BRange * weapon.P_BRange)
             {
-                Debug.Log("treid");
                     Shoot(dir,nearestTarget,weapon);
             }
         }

@@ -205,7 +205,6 @@ public class Weapon : MonoBehaviour
                ParableBullet pb = newBullet.GetComponent<ParableBullet>();
                if (pb)
                {
-                   Debug.Log(":o)");
                    SO_AoEWeapon aoew = (SO_AoEWeapon) weaponStats;
                    pb.DamageRadius = aoew.DamageRadius;
                }

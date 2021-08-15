@@ -15,18 +15,24 @@ public class SceneManager : MonoBehaviour
     {
         if (instance != null)
         {
-            Destroy(instance.gameObject);
+            Destroy(gameObject);
         }
-        instance = this;
-        DontDestroyOnLoad(gameObject);
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
 
-        nextLevelID = 1;
+            nextLevelID = 1;
+        }
     }
 
     public void LoadNextScene()
     {
+        Debug.Log("essaye de load la scene ID : "+nextLevelID);
         UnityEngine.SceneManagement.SceneManager.LoadScene(nextLevelID);
         nextLevelID++;
+        Debug.Log("new id : "+nextLevelID);
+        Debug.Log("nombre de scènes : "+UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings);
         if (nextLevelID > UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings)
         {
             nextLevelID = 0;

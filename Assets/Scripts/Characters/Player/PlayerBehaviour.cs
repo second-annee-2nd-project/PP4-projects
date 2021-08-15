@@ -78,6 +78,7 @@ public class PlayerBehaviour : DestroyableUnit
    {
       if (healthPoints <= 0)
       {
+         UpdateLifeBar();
          movement =Vector3.zero;
          return;
       }
