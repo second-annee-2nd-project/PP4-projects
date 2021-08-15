@@ -23,8 +23,6 @@ public class DestroyableUnit : TeamUnit
         healthPoints = bHealthPoints;
 
         transform.position = new Vector3(transform.position.x, GameManager.Instance.ActualGrid.CenterPosition.y, transform.position.z);
-        GameManager.Instance.P_SoundsManager.AudioSource = FindObjectOfType<AudioSource>();
-      
     }
 
     public virtual void Restart()

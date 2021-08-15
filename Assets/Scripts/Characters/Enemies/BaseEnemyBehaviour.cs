@@ -181,6 +181,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
 
     protected virtual void Attack()
     {
+        transform.LookAt(nearestEnemy);
         nearestEnemy.gameObject.GetComponent<DestroyableUnit>().GetDamaged(attackDamage);
     }
 

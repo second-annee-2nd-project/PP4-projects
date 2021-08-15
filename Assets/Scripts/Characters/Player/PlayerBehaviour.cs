@@ -244,7 +244,6 @@ public class PlayerBehaviour : DestroyableUnit
          }
          else
          {
-            Debug.Log("Avant");
             SetAnimDirection("Avant", true);
          }
       }
