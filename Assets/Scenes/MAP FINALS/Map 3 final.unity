@@ -3307,6 +3307,22 @@ PrefabInstance:
       propertyPath: waveDatas.Array.data[4].spawnerDatas.Array.data[7].spawnerTr
       value: 
       objectReference: {fileID: 1766037771}
+    - target: {fileID: 2550007597259441865, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: waveDatas.Array.data[1].spawnerDatas.Array.data[0].enemyGroups.Array.data[0].typeOfEnemyToSpawn
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550007597259441865, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: waveDatas.Array.data[1].spawnerDatas.Array.data[0].enemyGroups.Array.data[0].timerBetweenSpawns
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550007597259441865, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: waveDatas.Array.data[1].spawnerDatas.Array.data[0].enemyGroups.Array.data[0].timerBeforeFirstSpawn
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550007597259441865, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: waveDatas.Array.data[0].spawnerDatas.Array.data[0].enemyGroups.Array.data[0].typeOfEnemyToSpawn
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4825020791085314921, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

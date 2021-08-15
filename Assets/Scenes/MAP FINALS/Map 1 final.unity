@@ -18707,51 +18707,129 @@ MonoBehaviour:
         timerBetweenSpawns: 1
         timerBeforeFirstSpawn: 10
   - spawnerDatas:
-    - spawnerTr: {fileID: 0}
+    - spawnerTr: {fileID: 1021265949}
       enemyGroups:
-      - typeOfEnemyToSpawn: 3
-        enemyNumberToSpawn: 5
-        timerBetweenSpawns: 1
+      - typeOfEnemyToSpawn: 1
+        enemyNumberToSpawn: 2
+        timerBetweenSpawns: 8
+        timerBeforeFirstSpawn: 7
+    - spawnerTr: {fileID: 1008824454}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 4
+        enemyNumberToSpawn: 4
+        timerBetweenSpawns: 5
+        timerBeforeFirstSpawn: 14
+      - typeOfEnemyToSpawn: 0
+        enemyNumberToSpawn: 8
+        timerBetweenSpawns: 5
         timerBeforeFirstSpawn: 1
-    - spawnerTr: {fileID: 0}
+    - spawnerTr: {fileID: 900212607}
       enemyGroups:
-      - typeOfEnemyToSpawn: 3
-        enemyNumberToSpawn: 5
-        timerBetweenSpawns: 1
+      - typeOfEnemyToSpawn: 0
+        enemyNumberToSpawn: 8
+        timerBetweenSpawns: 4
         timerBeforeFirstSpawn: 1
-    - spawnerTr: {fileID: 0}
+    - spawnerTr: {fileID: 1424521609}
       enemyGroups:
       - typeOfEnemyToSpawn: 3
         enemyNumberToSpawn: 5
-        timerBetweenSpawns: 1
+        timerBetweenSpawns: 3
+        timerBeforeFirstSpawn: 6
+  - spawnerDatas:
+    - spawnerTr: {fileID: 1021265949}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 4
+        enemyNumberToSpawn: 8
+        timerBetweenSpawns: 4
         timerBeforeFirstSpawn: 1
-    - spawnerTr: {fileID: 0}
+    - spawnerTr: {fileID: 1008824454}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 5
+        enemyNumberToSpawn: 6
+        timerBetweenSpawns: 4
+        timerBeforeFirstSpawn: 3
+      - typeOfEnemyToSpawn: 0
+        enemyNumberToSpawn: 6
+        timerBetweenSpawns: 2
+        timerBeforeFirstSpawn: 5
+    - spawnerTr: {fileID: 900212607}
       enemyGroups:
       - typeOfEnemyToSpawn: 3
-        enemyNumberToSpawn: 5
-        timerBetweenSpawns: 1
+        enemyNumberToSpawn: 8
+        timerBetweenSpawns: 3
+        timerBeforeFirstSpawn: 2
+    - spawnerTr: {fileID: 1424521609}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 5
+        enemyNumberToSpawn: 9
+        timerBetweenSpawns: 2
         timerBeforeFirstSpawn: 1
   - spawnerDatas:
-    - spawnerTr: {fileID: 0}
+    - spawnerTr: {fileID: 1021265949}
       enemyGroups:
       - typeOfEnemyToSpawn: 3
-        enemyNumberToSpawn: 5
-        timerBetweenSpawns: 1
+        enemyNumberToSpawn: 10
+        timerBetweenSpawns: 4
         timerBeforeFirstSpawn: 1
+    - spawnerTr: {fileID: 1008824454}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 1
+        enemyNumberToSpawn: 5
+        timerBetweenSpawns: 5
+        timerBeforeFirstSpawn: 2
+    - spawnerTr: {fileID: 900212607}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 0
+        enemyNumberToSpawn: 10
+        timerBetweenSpawns: 2
+        timerBeforeFirstSpawn: 20
+      - typeOfEnemyToSpawn: 0
+        enemyNumberToSpawn: 10
+        timerBetweenSpawns: 2
+        timerBeforeFirstSpawn: 20
+      - typeOfEnemyToSpawn: 1
+        enemyNumberToSpawn: 4
+        timerBetweenSpawns: 5
+        timerBeforeFirstSpawn: 20
+    - spawnerTr: {fileID: 1424521609}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 2
+        enemyNumberToSpawn: 2
+        timerBetweenSpawns: 2
+        timerBeforeFirstSpawn: 25
   - spawnerDatas:
-    - spawnerTr: {fileID: 0}
+    - spawnerTr: {fileID: 1021265949}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 1
+        enemyNumberToSpawn: 8
+        timerBetweenSpawns: 8
+        timerBeforeFirstSpawn: 1
+      - typeOfEnemyToSpawn: 4
+        enemyNumberToSpawn: 8
+        timerBetweenSpawns: 6
+        timerBeforeFirstSpawn: 3
+    - spawnerTr: {fileID: 1008824454}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 0
+        enemyNumberToSpawn: 20
+        timerBetweenSpawns: 2
+        timerBeforeFirstSpawn: 1
+    - spawnerTr: {fileID: 900212607}
       enemyGroups:
       - typeOfEnemyToSpawn: 3
-        enemyNumberToSpawn: 5
-        timerBetweenSpawns: 1
+        enemyNumberToSpawn: 10
+        timerBetweenSpawns: 5
         timerBeforeFirstSpawn: 1
-  - spawnerDatas:
-    - spawnerTr: {fileID: 0}
+      - typeOfEnemyToSpawn: 5
+        enemyNumberToSpawn: 10
+        timerBetweenSpawns: 5
+        timerBeforeFirstSpawn: 1
+    - spawnerTr: {fileID: 1424521609}
       enemyGroups:
-      - typeOfEnemyToSpawn: 3
-        enemyNumberToSpawn: 5
-        timerBetweenSpawns: 1
-        timerBeforeFirstSpawn: 1
+      - typeOfEnemyToSpawn: 2
+        enemyNumberToSpawn: 6
+        timerBetweenSpawns: 5
+        timerBeforeFirstSpawn: 10
   waveCount_Text: {fileID: 2550007597026941219}
 --- !u!114 &2550007598532560064
 MonoBehaviour:
