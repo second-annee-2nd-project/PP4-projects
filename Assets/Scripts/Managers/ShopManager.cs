@@ -97,10 +97,6 @@ public class ShopManager : MonoBehaviour
         {
             cor = StartCoroutine(ShopSequence());
         }
-        // else
-        // {
-        //    UIRestart();
-        // }
     }
 
     public void UIRestart()
@@ -170,11 +166,6 @@ public class ShopManager : MonoBehaviour
        
         if (wp)
         {
-            //même arme feedback
-            if (wp.WeaponStats.WeaponType == playerBehaviour.P_Weapon.WeaponStats.WeaponType)
-            {
-                return;
-            }
             if (coins >= wp.WeaponStats.Price)
             {
                 

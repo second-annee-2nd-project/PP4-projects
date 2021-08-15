@@ -3019,7 +3019,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.24922916, y: 0.6517778}
   m_AnchorMax: {x: 0.75424993, y: 0.87122226}
-  m_AnchoredPosition: {x: -4.5, y: 0.39996338}
+  m_AnchoredPosition: {x: -4.5, y: 0.39990234}
   m_SizeDelta: {x: -7, y: 0.13220215}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2550007596739645253
@@ -3098,7 +3098,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 97, y: -59.6}
+  m_AnchoredPosition: {x: 97, y: -59.600098}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2550007596752080615
@@ -3436,7 +3436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 264.8401, y: -58.799927}
+  m_AnchoredPosition: {x: 264.84033, y: -58.80005}
   m_SizeDelta: {x: 169.59204, y: 58.055115}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2550007597169079481
@@ -3611,20 +3611,15 @@ MonoBehaviour:
     - spawnerTr: {fileID: 0}
       enemyGroups:
       - typeOfEnemyToSpawn: 3
-        enemyNumberToSpawn: 1
-        timerBetweenSpawns: 0.1
+        enemyNumberToSpawn: 5
+        timerBetweenSpawns: 1
         timerBeforeFirstSpawn: 1
-      - typeOfEnemyToSpawn: 2
-        enemyNumberToSpawn: 1
-        timerBetweenSpawns: 0.1
-        timerBeforeFirstSpawn: 1
-      - typeOfEnemyToSpawn: 4
-        enemyNumberToSpawn: 1
-        timerBetweenSpawns: 0.1
-        timerBeforeFirstSpawn: 1
-      - typeOfEnemyToSpawn: 1
-        enemyNumberToSpawn: 1
-        timerBetweenSpawns: 0.1
+  - spawnerDatas:
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 3
+        enemyNumberToSpawn: 5
+        timerBetweenSpawns: 1
         timerBeforeFirstSpawn: 1
   waveCount_Text: {fileID: 2550007598281895657}
 --- !u!1 &2550007597404705256
@@ -4090,7 +4085,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healPrice: 4
-  bCoins: 20000
+  bCoins: 2000
   UI_ShopSequence: {fileID: 2550007597192316015}
   coins_Text: {fileID: 2550007597169079480}
   headerShopSequence_Text: {fileID: 2550007596739645252}
@@ -6528,10 +6523,10 @@ MonoBehaviour:
       - m_Target: {fileID: 3944930427685459459}
         m_TargetAssemblyTypeName: WeaponUI, Assembly-CSharp
         m_MethodName: SetInteractableButton
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 4537419920486163671}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6930,10 +6925,10 @@ MonoBehaviour:
       - m_Target: {fileID: 2611679225102858420}
         m_TargetAssemblyTypeName: WeaponUI, Assembly-CSharp
         m_MethodName: SetInteractableButton
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 5423061997565235397}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6998,7 +6993,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -961.16003, y: 12.589966}
+  m_AnchoredPosition: {x: -961.16016, y: 12.590088}
   m_SizeDelta: {x: 1920, y: -248.5592}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5884496990685234541
@@ -8292,7 +8287,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.3651167}
   m_AnchorMax: {x: 1, y: 0.3651167}
-  m_AnchoredPosition: {x: -151.83998, y: -13.4}
+  m_AnchoredPosition: {x: -151.83997, y: -13.400024}
   m_SizeDelta: {x: 285.0536, y: 71.917114}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8827738905963318885
@@ -8916,7 +8911,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 93.6}
+  m_AnchoredPosition: {x: 0, y: 93.6001}
   m_SizeDelta: {x: 0, y: 187.25595}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &587828497832494480
@@ -10187,7 +10182,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.25100002}
   m_AnchorMax: {x: 1, y: 0.25100002}
-  m_AnchoredPosition: {x: -153, y: -8.9999695}
+  m_AnchoredPosition: {x: -153, y: -8.999878}
   m_SizeDelta: {x: 160, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8412495412205117381
@@ -10438,10 +10433,10 @@ MonoBehaviour:
       - m_Target: {fileID: 8514105449127377831}
         m_TargetAssemblyTypeName: WeaponUI, Assembly-CSharp
         m_MethodName: SetInteractableButton
-        m_Mode: 1
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 9110570913698269555}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Button, UnityEngine.UI
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

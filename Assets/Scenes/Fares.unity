@@ -1163,74 +1163,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2550007596739645251, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.39990234
-      objectReference: {fileID: 0}
-    - target: {fileID: 2550007596752080613, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -59.600098
-      objectReference: {fileID: 0}
-    - target: {fileID: 2550007597169079479, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 264.84033
-      objectReference: {fileID: 0}
-    - target: {fileID: 2550007597169079479, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -58.80005
-      objectReference: {fileID: 0}
-    - target: {fileID: 2550007597259441865, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: waveDatas.Array.data[0].spawnerDatas.Array.data[0].enemyGroups.Array.size
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2550007597259441865, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: waveDatas.Array.data[0].spawnerDatas.Array.data[0].spawnerTr
       value: 
       objectReference: {fileID: 139614615}
     - target: {fileID: 2550007597259441865, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: waveDatas.Array.data[0].spawnerDatas.Array.data[0].enemyGroups.Array.data[0].timerBetweenSpawns
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2550007597259441865, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: waveDatas.Array.data[0].spawnerDatas.Array.data[0].enemyGroups.Array.data[0].timerBeforeFirstSpawn
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2550007597259441865, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: waveDatas.Array.data[0].spawnerDatas.Array.data[0].enemyGroups.Array.data[0].enemyNumberToSpawn
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2697874859371313370, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -17
-      objectReference: {fileID: 0}
-    - target: {fileID: 6788431304528568793, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -151.83997
-      objectReference: {fileID: 0}
-    - target: {fileID: 6788431304528568793, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -13.400024
-      objectReference: {fileID: 0}
-    - target: {fileID: 6948940990295168683, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 93.6001
-      objectReference: {fileID: 0}
+      propertyPath: waveDatas.Array.data[1].spawnerDatas.Array.data[0].spawnerTr
+      value: 
+      objectReference: {fileID: 139614615}
     - target: {fileID: 8306021435955253182, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: canvasContainerWorld
       value: 
       objectReference: {fileID: 2040855332}
-    - target: {fileID: 8412495412205117382, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -8.999878
-      objectReference: {fileID: 0}
-    - target: {fileID: 9044829660678121490, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -961.16016
-      objectReference: {fileID: 0}
-    - target: {fileID: 9044829660678121490, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 12.590088
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
 --- !u!20 &825232922355526595 stripped
