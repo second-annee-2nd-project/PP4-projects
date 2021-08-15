@@ -9247,7 +9247,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh85770
+  m_Name: pb_Mesh167274
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18768,7 +18768,7 @@ MonoBehaviour:
     - spawnerTr: {fileID: 1021265949}
       enemyGroups:
       - typeOfEnemyToSpawn: 3
-        enemyNumberToSpawn: 10
+        enemyNumberToSpawn: 9
         timerBetweenSpawns: 4
         timerBeforeFirstSpawn: 1
     - spawnerTr: {fileID: 1008824454}
