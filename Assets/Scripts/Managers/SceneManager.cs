@@ -28,11 +28,14 @@ public class SceneManager : MonoBehaviour
 
     public void LoadNextScene()
     {
-        Debug.Log("essaye de load la scene ID : "+nextLevelID);
+        StartCoroutine(LoadSceneAfterSomeTime());
+    }
+
+    private IEnumerator LoadSceneAfterSomeTime()
+    {
+        yield return new WaitForSeconds(3f);
         UnityEngine.SceneManagement.SceneManager.LoadScene(nextLevelID);
         nextLevelID++;
-        Debug.Log("new id : "+nextLevelID);
-        Debug.Log("nombre de scènes : "+UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings);
         if (nextLevelID > UnityEngine.SceneManagement.SceneManager.sceneCountInBuildSettings)
         {
             nextLevelID = 0;
