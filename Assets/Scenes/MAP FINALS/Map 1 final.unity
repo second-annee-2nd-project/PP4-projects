@@ -8551,6 +8551,22 @@ PrefabInstance:
       propertyPath: waveDatas.Array.data[0].spawnerDatas.Array.data[0].spawnerTr
       value: 
       objectReference: {fileID: 1021265949}
+    - target: {fileID: 2550007597259441865, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: waveDatas.Array.data[0].spawnerDatas.Array.data[0].enemyGroups.Array.data[0].enemyNumberToSpawn
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550007597259441865, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: waveDatas.Array.data[0].spawnerDatas.Array.data[0].enemyGroups.Array.data[1].enemyNumberToSpawn
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550007597259441865, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: waveDatas.Array.data[0].spawnerDatas.Array.data[0].enemyGroups.Array.data[2].enemyNumberToSpawn
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2550007597259441865, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: waveDatas.Array.data[0].spawnerDatas.Array.data[0].enemyGroups.Array.data[3].enemyNumberToSpawn
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8412495412205117382, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -9
