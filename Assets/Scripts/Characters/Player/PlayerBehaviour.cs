@@ -19,7 +19,7 @@ public class PlayerBehaviour : DestroyableUnit
   private Weapon weapon;
    public Weapon P_Weapon => weapon;
 
-   private GameObject weaponGO;
+   [SerializeField] private GameObject weaponGO;
    [SerializeField] private GameObject weaponPrefab;
    public GameObject WeaponGo => weaponGO;
    [SerializeField] private float gazeHoldTimer = 2f;
@@ -86,6 +86,11 @@ public class PlayerBehaviour : DestroyableUnit
       if (GameManager.Instance.EGameState != eGameState.Wave)
       {
          movement = Vector3.zero;
+         
+         playerAnim.SetBool("Avant",false);
+         playerAnim.SetBool("Gauche",false);
+         playerAnim.SetBool("Arriere",false);
+         playerAnim.SetBool("Droite",false);
          return;
       }
         
@@ -321,12 +326,14 @@ public class PlayerBehaviour : DestroyableUnit
       if (weapon != null) DropWeapon();
 
       weaponGO = go;
+      Vector3 pos = weaponGO.transform.position;
+      Quaternion rot = WeaponGo.transform.rotation;
       weapon = weaponGO.GetComponent<Weapon>();
       weapon.Team = team;
-      weaponPrefab = weaponGO;
+     
       go.transform.parent = weaponTr;
-      go.transform.localPosition = weaponPrefab.transform.position;
-      go.transform.localRotation = weaponPrefab.transform.rotation;
+      go.transform.localPosition = pos;
+      go.transform.localRotation = rot;
    }
 
    public void DropWeapon()
@@ -392,7 +399,7 @@ public class PlayerBehaviour : DestroyableUnit
    void CheckWeaponToAnim()
    {
       
-      if (weapon.WeaponStats.Name == "Shotgun")
+      if (weapon.WeaponStats.WeaponType == eWeaponType.Shotgun)
       {
          playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Top"),0);
          playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Weapon"),1);
@@ -402,7 +409,7 @@ public class PlayerBehaviour : DestroyableUnit
          else
             playerAnim.SetBool("IsShotgun",false);
       }
-      if (weapon.WeaponStats.Name == "Flame")
+      if (weapon.WeaponStats.WeaponType == eWeaponType.FlameThrower)
       {
          playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Top"),0);
          playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Weapon"),1);
@@ -412,7 +419,7 @@ public class PlayerBehaviour : DestroyableUnit
          else
             playerAnim.SetBool("IsFlame",false);
       } 
-      if (weapon.WeaponStats.Name == "Assaut")
+      if (weapon.WeaponStats.WeaponType == eWeaponType.Assault)
       {
          playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Top"),0);
          playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Weapon"),1);
@@ -421,6 +428,11 @@ public class PlayerBehaviour : DestroyableUnit
             playerAnim.SetBool("IsAssaut",true);
          else
             playerAnim.SetBool("IsAssaut",false);
+      }
+      if (weapon.WeaponStats.WeaponType == eWeaponType.Pistol)
+      {
+         playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Top"),1);
+         playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Weapon"),0);
       }
    }
 }

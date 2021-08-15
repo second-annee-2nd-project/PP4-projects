@@ -11,7 +11,8 @@ public enum eWeaponType
     Bfg,
     Assault,
     MachineGun,
-    FlameThrower
+    FlameThrower,
+    Mortar
 }
 
 

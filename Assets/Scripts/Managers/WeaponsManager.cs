@@ -10,6 +10,7 @@ public class WeaponsManager : MonoBehaviour
     private eWeaponType weaponType;
     
     [SerializeField] private WeaponDictionary weaponPrefabs;
+    public WeaponDictionary WeaponPrefabs => weaponPrefabs;
 
     private int lastWeaponChose;
     

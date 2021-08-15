@@ -140,6 +140,7 @@ public class GameManager : MonoBehaviour
         player.Restart();
         shopManager.Restart();
         waveManager.Restart();
+       shopManager.UIRestart();
         Time.timeScale = 1;
         StartGame();
     }

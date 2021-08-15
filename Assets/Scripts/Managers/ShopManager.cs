@@ -97,10 +97,10 @@ public class ShopManager : MonoBehaviour
         {
             cor = StartCoroutine(ShopSequence());
         }
-        else
-        {
-           UIRestart();
-        }
+        // else
+        // {
+        //    UIRestart();
+        // }
     }
 
     public void UIRestart()
@@ -110,7 +110,7 @@ public class ShopManager : MonoBehaviour
         GameManager.Instance.P_UpgradeWeapon.NonInteractable();
         GameManager.Instance.P_UpgradeWeapon.SoldText.gameObject.SetActive(false);
         GameManager.Instance.P_WeaponUI.SetSoldToFalse();
-        
+
     }
     public void SkipButtonPressed()
     {
