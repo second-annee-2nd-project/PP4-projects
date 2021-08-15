@@ -926,7 +926,7 @@ MonoBehaviour:
   backLifeBar_Img: {fileID: 6826805184351135046}
   animationBarSpeed: 0.2
   enemyStats: {fileID: 11400000, guid: 3ccb4b197f61af748abe6f1ec0def3bd, type: 2}
-  amountToLoot: 6
+  amountToLoot: 10
   loot: {fileID: 4948436641781267108, guid: a924d7c7346bafc4292c290c307c9f02, type: 3}
   spawnEffect: {fileID: 626501447009365048, guid: 9fd3080794c831e4a94545e9510e5885, type: 3}
   weapon: {fileID: 0}

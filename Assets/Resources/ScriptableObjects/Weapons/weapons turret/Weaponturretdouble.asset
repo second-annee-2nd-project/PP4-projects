@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Weaponturretdouble
   m_EditorClassIdentifier: 
   name: gun double
-  range: 6
+  weaponType: 0
+  range: 8
   damage: 4
-  fireRate: 0.5
+  fireRate: 0.3
   maxAmmo: 1000000
   numberOfBulletsPerShot: 1
   diffusionAngle: 0
