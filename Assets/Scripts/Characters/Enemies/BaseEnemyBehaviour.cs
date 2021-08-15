@@ -166,7 +166,8 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         }
         
         GameManager.Instance.P_EnemiesManager.RemoveItemFromList(gameObject);
-        GameObject newLoot = Instantiate(loot, transform.position, Quaternion.identity);
+        Vector3 positionGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
+        GameObject newLoot = Instantiate(loot, positionGrounded, Quaternion.identity);
         newLoot.GetComponent<Loot>().AmountToLoot = amountToLoot;
         GameManager.Instance.P_LootManager.AddItemToList(newLoot);
         GameManager.Instance.P_SoundManager.AudioSource.PlayOneShot(enemyStats.DeathSound);
@@ -206,8 +207,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
 
             if ((nearestEnemyGrounded - myPositionGrounded).sqrMagnitude <= attackRange * attackRange && IsFirstColliderEnemy(nearestEnemyGrounded))
             {
-                
-                    TryToAttack();
+                TryToAttack();
             }
             else
             {
