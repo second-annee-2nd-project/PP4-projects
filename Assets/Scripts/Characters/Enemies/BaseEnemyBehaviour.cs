@@ -200,12 +200,8 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
 
             if ((nearestEnemyGrounded - myPositionGrounded).sqrMagnitude <= attackRange * attackRange)
             {
-                if (IsFirstColliderEnemy(nearestEnemyGrounded))
-                {
+                if(IsFirstColliderEnemy(nearestEnemyGrounded))
                     TryToAttack();
-                    CheckIfPathNeedsToChange();
-                }
-                    
             }
             else
             {
