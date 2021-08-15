@@ -51,6 +51,7 @@ public class PlayerBehaviour : DestroyableUnit
    {
       base.Init();
       transform.position = new Vector3(transform.position.x, GameManager.Instance.ActualGrid.CenterPosition.y - GameManager.Instance.ActualGrid.P_GridHeight *0.5f , transform.position.z);
+      GameManager.Instance.CC.Init();
       bHealthPoints = characterStats.HealthPoints;
       healthPoints = bHealthPoints;
       if (weaponPrefab != null)

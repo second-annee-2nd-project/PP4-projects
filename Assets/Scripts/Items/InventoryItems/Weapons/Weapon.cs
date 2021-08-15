@@ -51,6 +51,8 @@ public class Weapon : MonoBehaviour
        [SerializeField]  private GameObject bulletPrefab;
        private BulletsPool bulletsPool;
        protected eTeam team;
+
+       
    
        public eTeam Team
        {
@@ -84,6 +86,8 @@ public class Weapon : MonoBehaviour
    
        public virtual void Init()
        {
+           
+           
            //b Stats
            bAmmo = weaponStats.MaxAmmo;
            bReloadTimer = 0f;
