@@ -122,10 +122,6 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         Physics.Raycast(myPositionLeftGrounded, dirLeftToTarget, out hitsArray[1], attackRange, ~GameManager.Instance.ActualGrid.videMask);
         Physics.Raycast(myPositionRightGrounded, dirRightToTarget, out hitsArray[2], attackRange , ~GameManager.Instance.ActualGrid.videMask);
 
-        Debug.DrawRay(myPositionCenteredGrounded, dirCenteredToTarget, Color.black);
-        Debug.DrawRay(myPositionLeftGrounded, dirLeftToTarget, Color.black);
-        Debug.DrawRay(myPositionRightGrounded, dirRightToTarget, Color.black);
-        
         bool firstCollidedIsEnemy = false;
         int numberOfHits = 0;
         for (int i = 0; i < hitsArray.Length; i++)
@@ -204,10 +200,10 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
 
             Vector3 sightDir = nearestEnemyGrounded - myPositionGrounded;
 
-            if ((nearestEnemyGrounded - myPositionGrounded).sqrMagnitude <= attackRange * attackRange &&
-                IsFirstColliderEnemy(nearestEnemyGrounded))
+            if ((nearestEnemyGrounded - myPositionGrounded).sqrMagnitude <= attackRange * attackRange)
             {
-                TryToAttack();
+                if(IsFirstColliderEnemy(nearestEnemyGrounded))
+                    TryToAttack();
             }
             else
             {
