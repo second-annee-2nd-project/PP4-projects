@@ -1,0 +1,208 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &351734583477558617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7879998363863867575}
+  - component: {fileID: 346656114450270387}
+  m_Layer: 0
+  m_Name: vague Map 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7879998363863867575
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351734583477558617}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18.616434, y: 3.1567512, z: -13.098722}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &346656114450270387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351734583477558617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a491ef172c27fe4a9088a8f2f5b9c7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveDatas:
+  - spawnerDatas:
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 0
+        enemyNumberToSpawn: 5
+        timerBetweenSpawns: 3
+        timerBeforeFirstSpawn: 2
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 0
+        enemyNumberToSpawn: 8
+        timerBetweenSpawns: 4
+        timerBeforeFirstSpawn: 6
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 5
+        enemyNumberToSpawn: 5
+        timerBetweenSpawns: 5
+        timerBeforeFirstSpawn: 3
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 4
+        enemyNumberToSpawn: 3
+        timerBetweenSpawns: 8
+        timerBeforeFirstSpawn: 6
+  - spawnerDatas:
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 2
+        enemyNumberToSpawn: 2
+        timerBetweenSpawns: 10
+        timerBeforeFirstSpawn: 10
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 3
+        enemyNumberToSpawn: 6
+        timerBetweenSpawns: 4
+        timerBeforeFirstSpawn: 1
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 0
+        enemyNumberToSpawn: 7
+        timerBetweenSpawns: 4
+        timerBeforeFirstSpawn: 1
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 1
+        enemyNumberToSpawn: 3
+        timerBetweenSpawns: 5
+        timerBeforeFirstSpawn: 4
+  - spawnerDatas:
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 0
+        enemyNumberToSpawn: 9
+        timerBetweenSpawns: 1
+        timerBeforeFirstSpawn: 6
+      - typeOfEnemyToSpawn: 5
+        enemyNumberToSpawn: 9
+        timerBetweenSpawns: 1
+        timerBeforeFirstSpawn: 6
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 3
+        enemyNumberToSpawn: 5
+        timerBetweenSpawns: 5
+        timerBeforeFirstSpawn: 1
+      - typeOfEnemyToSpawn: 2
+        enemyNumberToSpawn: 2
+        timerBetweenSpawns: 6
+        timerBeforeFirstSpawn: 1
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 1
+        enemyNumberToSpawn: 3
+        timerBetweenSpawns: 8
+        timerBeforeFirstSpawn: 4
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 4
+        enemyNumberToSpawn: 5
+        timerBetweenSpawns: 5
+        timerBeforeFirstSpawn: 1
+  - spawnerDatas:
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 4
+        enemyNumberToSpawn: 15
+        timerBetweenSpawns: 2
+        timerBeforeFirstSpawn: 1
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 3
+        enemyNumberToSpawn: 7
+        timerBetweenSpawns: 3
+        timerBeforeFirstSpawn: 2
+      - typeOfEnemyToSpawn: 2
+        enemyNumberToSpawn: 5
+        timerBetweenSpawns: 5
+        timerBeforeFirstSpawn: 3
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 1
+        enemyNumberToSpawn: 6
+        timerBetweenSpawns: 6
+        timerBeforeFirstSpawn: 1
+      - typeOfEnemyToSpawn: 4
+        enemyNumberToSpawn: 6
+        timerBetweenSpawns: 8
+        timerBeforeFirstSpawn: 1
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 3
+        enemyNumberToSpawn: 8
+        timerBetweenSpawns: 4
+        timerBeforeFirstSpawn: 1
+      - typeOfEnemyToSpawn: 5
+        enemyNumberToSpawn: 8
+        timerBetweenSpawns: 3
+        timerBeforeFirstSpawn: 1
+  - spawnerDatas:
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 2
+        enemyNumberToSpawn: 6
+        timerBetweenSpawns: 6
+        timerBeforeFirstSpawn: 10
+      - typeOfEnemyToSpawn: 4
+        enemyNumberToSpawn: 20
+        timerBetweenSpawns: 3
+        timerBeforeFirstSpawn: 5
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 4
+        enemyNumberToSpawn: 10
+        timerBetweenSpawns: 6
+        timerBeforeFirstSpawn: 1
+      - typeOfEnemyToSpawn: 1
+        enemyNumberToSpawn: 6
+        timerBetweenSpawns: 8
+        timerBeforeFirstSpawn: 1
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 2
+        enemyNumberToSpawn: 5
+        timerBetweenSpawns: 10
+        timerBeforeFirstSpawn: 1
+      - typeOfEnemyToSpawn: 1
+        enemyNumberToSpawn: 7
+        timerBetweenSpawns: 3
+        timerBeforeFirstSpawn: 1
+    - spawnerTr: {fileID: 0}
+      enemyGroups:
+      - typeOfEnemyToSpawn: 2
+        enemyNumberToSpawn: 10
+        timerBetweenSpawns: 3
+        timerBeforeFirstSpawn: 2
+      - typeOfEnemyToSpawn: 5
+        enemyNumberToSpawn: 10
+        timerBetweenSpawns: 3
+        timerBeforeFirstSpawn: 2
+  waveCount_Text: {fileID: 0}
