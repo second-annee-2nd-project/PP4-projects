@@ -35,7 +35,6 @@ public class CameraController : MonoBehaviour
     void Awake()
     {
         playerTr = GameObject.FindGameObjectWithTag("Player").transform;
-        Debug.Log(playerCamera.transform.position.y);
        // playerCameraPos = new Vector3((playerTr.position + playerCamera.transform.position).x, playerCamera.transform.position.y,
       //      (playerTr.position + playerCamera.transform.position).z);
         playerCameraPos = playerCamera.transform.position;

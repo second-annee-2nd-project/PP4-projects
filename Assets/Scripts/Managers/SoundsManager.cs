@@ -26,15 +26,15 @@ public class SoundsManager : MonoBehaviour
     public void SetVolumeMaster(float volume)
     {
         master.SetFloat("masterVolume", volume);
-        PlayerPrefs.SetFloat("masterVolume",volume);
-        PlayerPrefs.Save();
+        // PlayerPrefs.SetFloat("masterVolume",volume);
+        // PlayerPrefs.Save();
     }
     
     public void SetVolumeSfx(float volume)
     {
         sfx.SetFloat("sfxVolume", volume);
-        PlayerPrefs.SetFloat("sfxVolume", volume);
-        PlayerPrefs.Save();
+        // PlayerPrefs.SetFloat("sfxVolume", volume);
+        // PlayerPrefs.Save();
     }
     
     private void OnDisable()

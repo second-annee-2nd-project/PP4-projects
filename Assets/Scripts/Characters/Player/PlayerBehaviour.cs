@@ -51,6 +51,7 @@ public class PlayerBehaviour : DestroyableUnit
    {
       base.Init();
       transform.position = new Vector3(transform.position.x, GameManager.Instance.ActualGrid.CenterPosition.y - GameManager.Instance.ActualGrid.P_GridHeight *0.5f , transform.position.z);
+      
       bHealthPoints = characterStats.HealthPoints;
       healthPoints = bHealthPoints;
       if (weaponPrefab != null)
@@ -67,6 +68,7 @@ public class PlayerBehaviour : DestroyableUnit
       
       GameManager.Instance.P_UiManager.Life_Img.fillAmount = healthPoints / bHealthPoints;
       GameManager.Instance.P_TeamManager.AddToTeam(team, gameObject);
+      playerAnim.SetBool("IsDead",false);
    }
    
    public override void Restart()
