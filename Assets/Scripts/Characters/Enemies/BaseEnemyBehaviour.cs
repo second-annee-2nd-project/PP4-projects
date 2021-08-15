@@ -192,7 +192,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         while (healthPoints > 0)
         {
             
-            
+            CheckIfPathNeedsToChange();
             
             Vector3 nearestEnemyGrounded =
                 new Vector3(nearestEnemy.position.x, groundY, nearestEnemy.position.z);
@@ -243,7 +243,6 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
                         transform.LookAt(targetPosition);
                         if (startPosition == targetPosition)
                         {
-                            CheckIfPathNeedsToChange();
                             path.RemoveAt(0);
                             //grid.Nodes[coord.x, coord.z].occupiedBy = null;
                         }
