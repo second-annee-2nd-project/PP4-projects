@@ -548,7 +548,7 @@ MonoBehaviour:
   animationBarSpeed: 0.2
   enemyStats: {fileID: 11400000, guid: 86533b5981736dd4d9f697495525ffb1, type: 2}
   amountToLoot: 6
-  loot: {fileID: 4948436641781267108, guid: a924d7c7346bafc4292c290c307c9f02, type: 3}
+  loot: {fileID: 3049520276215088851, guid: ce223389ca3a89143bd756b798508500, type: 3}
   spawnEffect: {fileID: 626501447009365048, guid: 9fd3080794c831e4a94545e9510e5885, type: 3}
   weapon: {fileID: 5322655546330163369}
 --- !u!54 &5322655546330163371

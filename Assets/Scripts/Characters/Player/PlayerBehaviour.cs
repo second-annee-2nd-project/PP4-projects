@@ -35,6 +35,7 @@ public class PlayerBehaviour : DestroyableUnit
 
    private float lastBulletShot;
    private Animator playerAnim;
+   
    void Awake()
    {
       rb = GetComponent<Rigidbody>();
@@ -75,6 +76,12 @@ public class PlayerBehaviour : DestroyableUnit
 
    void Update()
    {
+      if (healthPoints <= 0)
+      {
+         movement =Vector3.zero;
+         return;
+      }
+        
       CheckWeaponToAnim();
       healthPoints = Mathf.Clamp(healthPoints, 0, bHealthPoints);
       if (invincibilityTimer > 0)
@@ -91,6 +98,8 @@ public class PlayerBehaviour : DestroyableUnit
          playerAnim.SetBool("Gauche",false);
          playerAnim.SetBool("Arriere",false);
          playerAnim.SetBool("Droite",false);
+         playerAnim.SetBool("IsShooting",false);
+         playerAnim.SetBool("IsSafe",false);
          return;
       }
         
@@ -328,6 +337,7 @@ public class PlayerBehaviour : DestroyableUnit
       go.transform.parent = weaponTr;
       go.transform.localPosition = pos;
       go.transform.localRotation = rot;
+     
    }
 
    public void DropWeapon()
@@ -378,6 +388,7 @@ public class PlayerBehaviour : DestroyableUnit
          playerAnim.SetBool("IsShooting",true);
       else
          playerAnim.SetBool("IsShooting",false);
+      
       
       if ((movement.x > 0 || movement.x < 0 || movement.z < 0 || movement.z > 0) && !shootJoystick._IsTouching)
       {

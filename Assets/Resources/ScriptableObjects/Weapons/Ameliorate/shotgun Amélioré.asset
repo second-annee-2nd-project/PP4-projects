@@ -23,3 +23,4 @@ MonoBehaviour:
   price: 120
   weaponSound: {fileID: 8300000, guid: 218f778b94f678d45bb0a496eced9cf8, type: 3}
   muzzleFlash: {fileID: 441624651237726128, guid: 713eb188cb301bf46a97e2b8845aadf4, type: 3}
+  upgradedTexture: {fileID: 2100000, guid: 7fc526245409c0d4388020014c5b48b9, type: 2}

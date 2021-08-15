@@ -176,7 +176,7 @@ public class Weapon : MonoBehaviour
 
                 newBulletScript.Shoot(newDir);
                 ammo--;
-              GameManager.Instance.P_SoundManager.AudioSource.PlayOneShot(weaponStats.WeaponSound);
+              GameManager.Instance.P_SoundsManager.AudioSource.PlayOneShot(weaponStats.WeaponSound);
              Destroy(Instantiate(weaponStats.MuzzleFlash,fireTransform.position, fireTransform.rotation),0.1f);
    
            }

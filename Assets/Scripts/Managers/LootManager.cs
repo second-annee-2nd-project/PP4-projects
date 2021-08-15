@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LootManager : ItemManager
 {
+  [SerializeField] private float rotatingSpeed = 3f;
+  public float RotatingSpeed => rotatingSpeed;
   [SerializeField] private float speed;
   public float Speed => speed;
   public void StartAutoLootSequence()

@@ -47,8 +47,8 @@ public class GameManager : MonoBehaviour
         private WaveManager waveManager;
         public WaveManager P_WaveManager => waveManager;
 
-        private SoundManager soundManager;
-        public SoundManager P_SoundManager => soundManager;
+        private SoundsManager soundsManager;
+        public SoundsManager P_SoundsManager => soundsManager;
 
         private UI_Manager uiManager;
         public UI_Manager P_UiManager => uiManager;
@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
         turretManager = FindObjectOfType<TurretManager>();
         waveManager = FindObjectOfType<WaveManager>();
         pathRequestManager = FindObjectOfType<PathRequestManager>();
-        soundManager = FindObjectOfType<SoundManager>();
+        soundsManager = FindObjectOfType<SoundsManager>();
         player = FindObjectOfType<PlayerBehaviour>();
         UI_Manager = FindObjectOfType<UI_Manager>();
         weaponsManager = FindObjectOfType<WeaponsManager>();
@@ -130,6 +130,7 @@ public class GameManager : MonoBehaviour
     public void Restart()
     {
         GameManager.Instance.P_UI_Manager.RenderRetryButton(false);
+        ChangePhase(eGameState.Shop);
         
         teamManager.Restart();
         enemiesManager.Restart();
