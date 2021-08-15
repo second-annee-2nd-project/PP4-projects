@@ -159,6 +159,12 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
 
     protected override void Die()
     {
+        Node actualNode = grid.GetNodeWithPosition(transform.position);
+        if (actualNode.occupiedBy == this)
+        {
+            actualNode.occupiedBy = null;
+        }
+        
         GameManager.Instance.P_EnemiesManager.RemoveItemFromList(gameObject);
         GameObject newLoot = Instantiate(loot, transform.position, Quaternion.identity);
         newLoot.GetComponent<Loot>().AmountToLoot = amountToLoot;
@@ -307,10 +313,12 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         {
             Debug.Log(path.Count);
             Debug.Log(this.name);
-            
-            if (!Object.ReferenceEquals(path[i].occupiedBy, null) && path[i].occupiedBy != this)
+            if (path[i] != null)
             {
-                return true;
+                if (path[i].occupiedBy != this)
+                {
+                    return true;
+                }
             }
         }
 
