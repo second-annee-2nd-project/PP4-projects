@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SO_Turret_SlowFire
   m_EditorClassIdentifier: 
   name: snipe
-  healthPoints: 15
+  healthPoints: 20
   attackSpeed: 3
   range: 20
   price: 20

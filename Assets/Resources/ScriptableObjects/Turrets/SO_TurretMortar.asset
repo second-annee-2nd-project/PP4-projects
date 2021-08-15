@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SO_TurretMortar
   m_EditorClassIdentifier: 
   name: Mortar
-  healthPoints: 50
-  attackSpeed: 0.5
-  range: 100
-  price: 50
+  healthPoints: 40
+  attackSpeed: 3
+  range: 20
+  price: 80
   turnSpeed: 5

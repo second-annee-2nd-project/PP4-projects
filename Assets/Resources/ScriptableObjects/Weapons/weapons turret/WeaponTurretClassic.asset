@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: WeaponTurretClassic
   m_EditorClassIdentifier: 
   name: sniperTurret
-  range: 8
+  weaponType: 0
+  range: 15
   damage: 40
   fireRate: 2.5
   maxAmmo: 1000000

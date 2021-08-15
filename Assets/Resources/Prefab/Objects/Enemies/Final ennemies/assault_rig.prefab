@@ -527,6 +527,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponStats: {fileID: 11400000, guid: bd088a5a620af494da5e49b3a2a2ef0d, type: 2}
+  upgradeWeaponStats: {fileID: 0}
   fireTransform: {fileID: 1081441144853689720}
   bulletPrefab: {fileID: 2852258047591489820, guid: 3081e5623b21c2d4391cb48b2a49b6e5, type: 3}
 --- !u!114 &5322655546330163368
@@ -546,7 +547,7 @@ MonoBehaviour:
   backLifeBar_Img: {fileID: 1081441145175655565}
   animationBarSpeed: 0.2
   enemyStats: {fileID: 11400000, guid: 86533b5981736dd4d9f697495525ffb1, type: 2}
-  amountToLoot: 4
+  amountToLoot: 6
   loot: {fileID: 4948436641781267108, guid: a924d7c7346bafc4292c290c307c9f02, type: 3}
   spawnEffect: {fileID: 626501447009365048, guid: 9fd3080794c831e4a94545e9510e5885, type: 3}
   weapon: {fileID: 5322655546330163369}
