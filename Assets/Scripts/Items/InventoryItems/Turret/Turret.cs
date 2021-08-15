@@ -28,9 +28,10 @@ public class Turret : DestroyableUnit
 
    private Vector3Int innerPos;
    public Vector3Int InnerPos => innerPos;
-
+   private float groundY;
    void Awake()
    {
+      
        turretAnim = FindObjectOfType<Animator>();
    }
    protected override void Start()
@@ -40,8 +41,8 @@ public class Turret : DestroyableUnit
        turretManager = FindObjectOfType<TurretManager>();
        bHealthPoints = soTurret.HealthPoints;
        healthPoints = bHealthPoints;
-    
-     
+       groundY = GameManager.Instance.ActualGrid.CenterPosition.y;
+
    }
    void Update()
     {
@@ -49,8 +50,8 @@ public class Turret : DestroyableUnit
         UpdateLifeBar();
         if (nearestTarget == null)
             return;
-
-        Vector3 dir = nearestTarget.position - transform.position;
+        Vector3 nearestTargetGrounded = new Vector3(nearestTarget.position.x, groundY, nearestTarget.position.z);
+        Vector3 dir = nearestTargetGrounded - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * soTurret.TurnSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);

@@ -200,22 +200,18 @@ public class PlayerBehaviour : DestroyableUnit
                s += finalDirections[i];
             }
    
-            Debug.Log(s);
-   
             // introduire un if == alors ça prend l'arrière
             if (Mathf.Abs(shotDir.x) > Mathf.Abs(shotDir.z))
             {
                if (shotDir.x <= 0)
                {
                   SetAnimDirection(finalDirections[3], true);
-                  Debug.Log(finalDirections[3]);
                   a += 16;
                }
    
                else if (shotDir.x > 0)
                {
                   SetAnimDirection(finalDirections[1], true);
-                  Debug.Log("zizi" + finalDirections[1]);
                   a += 32;
                }
             }
@@ -224,13 +220,11 @@ public class PlayerBehaviour : DestroyableUnit
                if (shotDir.z <= 0)
                {
                   SetAnimDirection(finalDirections[2], true);
-                  Debug.Log(finalDirections[2]);
                   a += 64;
                }
                else if (shotDir.z > 0)
                {
                   SetAnimDirection(finalDirections[0], true);
-                  Debug.Log(finalDirections[0]);
                   a += 128;
                }
             }
