@@ -881,11 +881,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1296094224}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!82 &1576228390 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 8723635361532588517, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-  m_PrefabInstance: {fileID: 8723635362298914755}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1712667722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1489,7 +1484,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2550007596678739750, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2550007596678739750, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1539,9 +1534,9 @@ PrefabInstance:
       propertyPath: canvasContainerWorld
       value: 
       objectReference: {fileID: 2040855332}
-    - target: {fileID: 8723635361532588519, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
-      propertyPath: sfxAudioSource
-      value: 
-      objectReference: {fileID: 1576228390}
+    - target: {fileID: 9033091876322042442, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.37
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}

@@ -6,6 +6,9 @@ public class CameraController : MonoBehaviour
 {
     [SerializeField] private Camera playerCamera;
     [SerializeField] private Camera shopCamera;
+
+    private Vector3 playerCameraPos;
+    private Vector3 shopCameraPos;
     
 
     private Vector3 baseOffset;
@@ -29,18 +32,43 @@ public class CameraController : MonoBehaviour
 
     private Transform playerTr;
 
+    void Awake()
+    {
+        playerTr = GameObject.FindGameObjectWithTag("Player").transform;
+        Debug.Log(playerCamera.transform.position.y);
+       // playerCameraPos = new Vector3((playerTr.position + playerCamera.transform.position).x, playerCamera.transform.position.y,
+      //      (playerTr.position + playerCamera.transform.position).z);
+        playerCameraPos = playerCamera.transform.position;
+        shopCameraPos = shopCamera.transform.localPosition;
+    }
+    void Start()
+    {
+        
+    }
+
+    void SetCameraLocalPos()
+    {
+        playerCamera.transform.localPosition = playerCameraPos;
+        shopCamera.transform.localPosition = shopCameraPos;
+    }
+
     public void Init()
     {
         GetWallsData();
+        
+        playerCamera.transform.localPosition = playerCameraPos;
+        
+        playerTr = GameObject.FindGameObjectWithTag("Player").transform;
+        cameraSpeed = playerTr.GetComponent<PlayerBehaviour>().Speed;
+        baseOffset =  playerCamera.transform.position - playerTr.position;
+
         if (GameManager.Instance.EGameState == eGameState.Shop)
         {
             playerCamera.enabled = false;
             currentCamera = shopCamera;
         }
 
-        playerTr = GameObject.FindGameObjectWithTag("Player").transform;
-        cameraSpeed = playerTr.GetComponent<PlayerBehaviour>().Speed;
-        baseOffset =  playerCamera.transform.position - playerTr.position;
+        
     }
 
     private void GetWallsData()

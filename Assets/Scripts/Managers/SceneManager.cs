@@ -10,6 +10,7 @@ public class SceneManager : MonoBehaviour
     public static SceneManager Instance => instance;
 
     private int nextLevelID;
+    public int NextLevelID => nextLevelID;
 
     private void Awake()
     {
@@ -21,8 +22,6 @@ public class SceneManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-
-            nextLevelID = 1;
         }
     }
 
@@ -31,7 +30,7 @@ public class SceneManager : MonoBehaviour
         StartCoroutine(LoadSceneAfterSomeTime(timer));
     }
 
-    private IEnumerator LoadSceneAfterSomeTime(float timer)
+    public IEnumerator LoadSceneAfterSomeTime(float timer)
     {
         yield return new WaitForSeconds(timer);
         UnityEngine.SceneManagement.SceneManager.LoadScene(nextLevelID);
@@ -43,6 +42,7 @@ public class SceneManager : MonoBehaviour
     }
     public void LoadFirstPlayScene()
     {
+        nextLevelID = 1;
         LoadNextScene(0);
     }
 

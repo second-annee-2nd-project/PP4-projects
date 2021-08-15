@@ -11,10 +11,15 @@ public class ThrowerWeapon : Weapon
     private bool lastIsShooting = false;
     [SerializeField] private float timeForFireToStop = 2f;
     private float remainingTimeForFireToStop = 0f;
+    
+    private float timerForSoundToRefresh;
+    private float baseTimerForSoundToRefresh;
 
     public override void Init()
     {
         base.Init();
+        baseTimerForSoundToRefresh = 1f;
+        timerForSoundToRefresh = 1f;
         foreach (ParticleSystem particleSystem in particleSystems)
         {
             ParticleSystem.ShapeModule sm = particleSystem.shape;
@@ -29,6 +34,11 @@ public class ThrowerWeapon : Weapon
     {
         isShooting = true;
         remainingTimeForFireToStop = timeForFireToStop;
+        if (timerForSoundToRefresh <= 0)
+        {
+            GameManager.Instance.P_SoundsManager.AudioSource.PlayOneShot(weaponStats.WeaponSound);
+            timerForSoundToRefresh = baseTimerForSoundToRefresh;
+        }
         List<GameObject> allEnemies = GameManager.Instance.P_TeamManager.GetStrictEnemies(Team);
 
         for (int i = 0; i < allEnemies.Count; i++)
@@ -84,6 +94,13 @@ public class ThrowerWeapon : Weapon
            
             isShooting = false;
         }
+
+        if (timerForSoundToRefresh > 0)
+        {
+            timerForSoundToRefresh -= Time.deltaTime;
+        }
+        
+        
         
         
         if (isShooting != lastIsShooting)
