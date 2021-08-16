@@ -26,7 +26,6 @@ public class MortarTurret : Turret
                 {
                   
                     soundPlayed = false;
-                    turretAudio.Stop();
 
                 }
             }
