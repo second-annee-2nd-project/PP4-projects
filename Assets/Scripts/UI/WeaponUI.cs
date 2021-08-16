@@ -23,15 +23,19 @@ public class WeaponUI : MonoBehaviour
    public Text SoldText => soldText;
    private bool isBough;
    
-   void Awake()
-   {
-      // weaponUIList = new List<WeaponUI>(FindObjectsOfType<WeaponUI>());
-   }
-   public void PossibleToBuyWeapon()
+   void Update()
    {
       foreach (var btn in buttonList )
       {
-         btn.GetComponent<WeaponUI>().WeaponBuyableOrNot();
+         if(btn.GetComponent<WeaponUI>().weaponPriceButton <= ShopManager.Instance.Coins && btn.GetComponent<WeaponUI>().isBough == false )
+         {
+            btn.GetComponent<WeaponUI>().buyWeaponBtn.interactable = true;
+         }
+         else
+         {
+            btn.GetComponent<WeaponUI>().buyWeaponBtn.interactable = false;
+           
+         }
       }
    }
 

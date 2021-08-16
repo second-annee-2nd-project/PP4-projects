@@ -20,6 +20,8 @@ public class SoundsManager : MonoBehaviour
     }
     void Start()
     {
+        if (sfxAudioSource == null)
+            return;
         sfxSlider.value = PlayerPrefs.GetFloat("sfxVolume", 10);
         masterSlider.value = PlayerPrefs.GetFloat("masterVolume", 10);
     }

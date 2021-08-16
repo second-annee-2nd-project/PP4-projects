@@ -20,19 +20,22 @@ public class UpgradeWeapon : MonoBehaviour
      }
     void Start()
     {
-
-        SetUpgradedWeaponInfo();
+        costText.text =  "Price : 40";
+        nameText.text = "Upgrade\nGun";
     }
 
     void Update()
     {
-        if (wp != null && wp.UpgradeWeaponStats != null)
+        if (isBough)
         {
-            if(ShopManager.Instance.Coins >= wp.UpgradeWeaponStats.Price && !isBough)
-                upgradeBtn.interactable = true;
-            else  if(ShopManager.Instance.Coins < wp.UpgradeWeaponStats.Price || isBough)
-                upgradeBtn.interactable = false;
+            upgradeBtn.interactable = false;
         }
+        else
+        {
+            upgradeBtn.interactable = true;
+        }
+
+        NonInteractable();
     }
     public void SetUpgradedWeaponInfo()
     {
@@ -40,8 +43,8 @@ public class UpgradeWeapon : MonoBehaviour
         if (wp != null)
         {
             if(wp.UpgradeWeaponStats != null)
-                costText.text =  "Prix : " + wp.UpgradeWeaponStats.Price;
-            nameText.text = "Upgrade : " + wp.WeaponStats.Name;
+                costText.text =  "Price : " + wp.UpgradeWeaponStats.Price;
+            nameText.text = "Upgrade\n" + wp.WeaponStats.Name;
         }
         soldText.gameObject.SetActive(false);
     }
@@ -50,7 +53,7 @@ public class UpgradeWeapon : MonoBehaviour
         //même arme feedback
         wp = GameManager.Instance.Player.P_Weapon;
        
-        if (ShopManager.Instance.Coins >= wp.UpgradeWeaponStats.Price)
+        if (ShopManager.Instance.Coins >= wp.UpgradeWeaponStats.Price && !isBough)
         {
             GameManager.Instance.Player.WeaponGo.GetComponent<Weapon>().WeaponStats = wp.UpgradeWeaponStats;
             ShopManager.Instance.UpdateCoins(-wp.UpgradeWeaponStats.Price);
@@ -65,14 +68,17 @@ public class UpgradeWeapon : MonoBehaviour
         
     }
 
-    // public void NonInteractable()
-    // {
-    //     if (wp != null && wp.UpgradeWeaponStats != null)
-    //     {
-    //         if(ShopManager.Instance.Coins >= wp.UpgradeWeaponStats.Price && !isBough)
-    //             upgradeBtn.interactable = true;
-    //         else  if(ShopManager.Instance.Coins < wp.UpgradeWeaponStats.Price || isBough)
-    //             upgradeBtn.interactable = false;
-    //     }
-    // }
+    public void NonInteractable()
+    {
+        wp = GameManager.Instance.Player.P_Weapon;
+        if (wp != null)
+        {
+            if(ShopManager.Instance.Coins >= wp.UpgradeWeaponStats.Price )
+                upgradeBtn.interactable = true;
+            else if(ShopManager.Instance.Coins < wp.UpgradeWeaponStats.Price)
+                upgradeBtn.interactable = false;
+        }
+      
+        
+    }
 }
