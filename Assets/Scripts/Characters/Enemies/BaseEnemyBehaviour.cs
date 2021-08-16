@@ -36,9 +36,6 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     protected Grid grid;
     protected EnemiesManager enemiesManager;
     protected List<Node> path;
-
-    protected DestroyableUnit nearestEnemyDU;
-    
     [SerializeField] private GameObject spawnEffect;
     
     public List<Node> Path
@@ -119,26 +116,9 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         Vector3 dirLeftToTarget = target - myPositionLeftGrounded;
         Vector3 dirRightToTarget = target - myPositionRightGrounded;
         
-        // tests imbriqués dans des if
         Physics.Raycast(myPositionCenteredGrounded, dirCenteredToTarget, out hitsArray[0], attackRange, ~GameManager.Instance.ActualGrid.videMask);
-        if (hitsArray[0].collider != null)
-        {
-            Physics.Raycast(myPositionLeftGrounded, dirLeftToTarget, out hitsArray[1], attackRange,
-                ~GameManager.Instance.ActualGrid.videMask);
-            if (hitsArray[1].collider != null)
-            {
-                Physics.Raycast(myPositionRightGrounded, dirRightToTarget, out hitsArray[2], attackRange,
-                    ~GameManager.Instance.ActualGrid.videMask);
-                if (hitsArray[2].collider != null)
-                {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-
-/*
+        Physics.Raycast(myPositionLeftGrounded, dirLeftToTarget, out hitsArray[1], attackRange, ~GameManager.Instance.ActualGrid.videMask);
+        Physics.Raycast(myPositionRightGrounded, dirRightToTarget, out hitsArray[2], attackRange , ~GameManager.Instance.ActualGrid.videMask);
 
         bool firstCollidedIsEnemy = false;
         int numberOfHits = 0;
@@ -146,7 +126,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         {
            
             /*if (hitsArray[i].Length > 0)
-            {//
+            {*/
             if (hitsArray[i].collider != null)
             {
                 TeamUnit tu = hitsArray[i].collider.GetComponent<TeamUnit>();
@@ -167,7 +147,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
             return true;
         }
         
-        return false;*/
+        return false;
     }
 
     public void StartMoving()
@@ -183,26 +163,29 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
             actualNode.occupiedBy = null;
         }
         
-        
+        GameManager.Instance.P_EnemiesManager.RemoveItemFromList(gameObject);
         Vector3 positionGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
-      /*  GameObject newLoot = Instantiate(loot, positionGrounded, Quaternion.identity);
+        GameObject newLoot = Instantiate(loot, positionGrounded, Quaternion.identity);
         newLoot.GetComponent<Loot>().AmountToLoot = amountToLoot;
+<<<<<<< HEAD
         GameManager.Instance.P_LootManager.AddItemToList(newLoot);*/
       GameManager.Instance.P_SoundsManager.AudioSource.PlayOneShot(enemyStats.DeathSound);
+=======
+        GameManager.Instance.P_LootManager.AddItemToList(newLoot);
+        GameManager.Instance.P_SoundsManager.AudioSource.PlayOneShot(enemyStats.DeathSound);
+>>>>>>> parent of 5be0223 (Qlq tests d'améliorations de performances en modifiant les Scripts)
         Destroy(Instantiate(enemyStats.DeathEffectt, transform.position, Quaternion.identity), 2);
-        GameManager.Instance.P_EnemiesManager.ReleaseEnemyInstance(gameObject, enemyStats.EnemyType);
     }
 
     protected void GetNearestEnemy()
     {
         nearestEnemy = enemiesManager.GetNearestTarget(transform.position);
-        nearestEnemyDU = GetComponent<DestroyableUnit>();
     }
 
     protected virtual void Attack()
     {
         transform.LookAt(nearestEnemy);
-        nearestEnemyDU.GetDamaged(attackDamage);
+        nearestEnemy.gameObject.GetComponent<DestroyableUnit>().GetDamaged(attackDamage);
     }
 
     protected virtual void TryToAttack()
@@ -235,7 +218,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
             }
             else if ((nearestEnemyGrounded - myPositionGrounded).sqrMagnitude <= attackRange * attackRange && IsFirstColliderEnemy(nearestEnemyGrounded))
             {
-                    TryToAttack();
+                TryToAttack();
             }
             else
             {
@@ -333,7 +316,6 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
 
     protected bool IsPathOccupied()
     {
-        int occupants = 0;
         for (int i = 0; i < path.Count; i++)
         {
             if (path[i] != null)

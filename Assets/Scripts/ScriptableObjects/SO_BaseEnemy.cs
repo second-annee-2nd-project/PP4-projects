@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 public abstract class SO_BaseEnemy : SO_Character
 {
-    [SerializeField] private eEnemyType enemyType;
-    public eEnemyType EnemyType => enemyType;
-    
     // Start is called before the first frame update
     [SerializeField] private float attackDamage;
     public float AttackDamage => attackDamage;

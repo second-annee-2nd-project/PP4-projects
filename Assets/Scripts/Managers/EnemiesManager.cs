@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
-using System;
 
 [System.Serializable]
 public enum eEnemyType
@@ -19,11 +18,11 @@ public enum eEnemyType
 public class EnemiesManager : UnitManager
 {
     [SerializeField] private EnemyDictionary enemyPrefabs;
-    [SerializeField] private int sizeToPool = 50;
 
     public EnemyDictionary EnemyPrefabs => enemyPrefabs;
     // Properties utilisé dans chaque Spawner
     private Coroutine cor;
+<<<<<<< HEAD
     private Dictionary<eEnemyType, List<GameObject>> enemiesPoolDictionary;
 
     private void Init()
@@ -78,13 +77,20 @@ public class EnemiesManager : UnitManager
 
     }
 
+=======
+    
+    
+>>>>>>> parent of 5be0223 (Qlq tests d'améliorations de performances en modifiant les Scripts)
 
     protected override void Start()
     {
         base.Start();
         team = eTeam.enemy;
+<<<<<<< HEAD
         enemiesPoolDictionary = new Dictionary<eEnemyType, List<GameObject>>();
         Init();
+=======
+>>>>>>> parent of 5be0223 (Qlq tests d'améliorations de performances en modifiant les Scripts)
     }
 
     public bool isWaveFinished()

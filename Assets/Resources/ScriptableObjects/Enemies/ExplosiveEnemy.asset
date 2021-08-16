@@ -15,7 +15,6 @@ MonoBehaviour:
   name: ExplosiveEnemy
   healthPoints: 20
   speed: 2
-  enemyType: 5
   attackDamage: 20
   attackRange: 2
   detectionRange: 7

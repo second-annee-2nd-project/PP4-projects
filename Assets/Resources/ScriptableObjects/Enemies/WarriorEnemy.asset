@@ -15,7 +15,6 @@ MonoBehaviour:
   name: WarriorEnemy
   healthPoints: 40
   speed: 2
-  enemyType: 4
   attackDamage: 5
   attackRange: 1.5
   detectionRange: 7
