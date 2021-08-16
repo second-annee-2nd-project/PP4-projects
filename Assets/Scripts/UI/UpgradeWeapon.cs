@@ -70,10 +70,15 @@ public class UpgradeWeapon : MonoBehaviour
 
     public void NonInteractable()
     {
-        if(ShopManager.Instance.Coins >= wp.UpgradeWeaponStats.Price )
+        wp = GameManager.Instance.Player.P_Weapon;
+        if (wp != null)
+        {
+            if(ShopManager.Instance.Coins >= wp.UpgradeWeaponStats.Price )
                 upgradeBtn.interactable = true;
-        else  if(ShopManager.Instance.Coins < wp.UpgradeWeaponStats.Price)
+            else if(ShopManager.Instance.Coins < wp.UpgradeWeaponStats.Price)
                 upgradeBtn.interactable = false;
+        }
+      
         
     }
 }
