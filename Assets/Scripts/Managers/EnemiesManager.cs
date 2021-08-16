@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 
 [System.Serializable]
 public enum eEnemyType
@@ -18,17 +19,76 @@ public enum eEnemyType
 public class EnemiesManager : UnitManager
 {
     [SerializeField] private EnemyDictionary enemyPrefabs;
+    [SerializeField] private int sizeToPool = 50;
 
     public EnemyDictionary EnemyPrefabs => enemyPrefabs;
     // Properties utilisé dans chaque Spawner
     private Coroutine cor;
-    
-    
+
+    private EnemiesPooler enemiesPooler;
+
+    private Dictionary<eEnemyType, List<GameObject>> enemiesPoolDictionary;
+
+    private void Init()
+    {
+        foreach (eEnemyType enemyType in (eEnemyType[]) Enum.GetValues(typeof(eEnemyType)))
+        {
+            GameObject prefab = GetPrefab(enemyType);
+            List<GameObject> newInstantiatedList = new List<GameObject>();
+            
+            for (int i = 0; i < sizeToPool; i++)
+            {
+                GameObject newEnemy = Instantiate(prefab, Vector3.zero, Quaternion.identity);
+                newEnemy.transform.parent = transform;
+                newEnemy.SetActive(false);
+                newInstantiatedList.Add(newEnemy);
+            }
+
+            enemiesPoolDictionary.Add(enemyType, newInstantiatedList);
+
+        }
+    }
+
+    public override void Restart()
+    {
+        for (int i = 0; i < instantiatedItems.Count; i++)
+        {
+            instantiatedItems[i].SetActive(false);
+        }
+        instantiatedItems.Clear();
+    }
+
+    public GameObject GetEnemyInstance(eEnemyType enemyType)
+    {
+        foreach (GameObject enemyGO in enemiesPoolDictionary[enemyType])
+        {
+            if (enemyGO.activeSelf)
+            {
+                continue;
+            }
+
+            AddItemToList(enemyGO);
+            return enemyGO;
+        }
+
+        return null;
+    }
+
+    public void ReleaseEnemyInstance(GameObject goInstance, eEnemyType enemyType)
+    {
+        goInstance.SetActive(false);
+        instantiatedItems.Remove(goInstance);
+
+    }
+
 
     protected override void Start()
     {
         base.Start();
         team = eTeam.enemy;
+        enemiesPooler = FindObjectOfType<EnemiesPooler>();
+        enemiesPoolDictionary = new Dictionary<eEnemyType, List<GameObject>>();
+        Init();
     }
 
     public bool isWaveFinished()
