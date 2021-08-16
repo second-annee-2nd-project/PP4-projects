@@ -223,6 +223,7 @@ public class ShopManager : MonoBehaviour
                         GameManager.Instance.P_TurretManager.AddItemToList(equipedPrefabInstance);
                         UpdateCoins(turretScript.SoTurret.Price * -1);
                         newTurretScript.Deploy(n.position, n.internalPosition, Quaternion.identity);
+                        GameManager.Instance.P_SoundsManager.AudioSource.PlayOneShot(newTurretScript.DeploySound);
                         GameManager.Instance.P_UiManager.FloatingTextInstantiate(new Vector3(newTurretScript.transform.position.x,newTurretScript.transform.position.y+1f,newTurretScript.transform.position.z),
                             GameManager.Instance.P_UiManager.CanvasContainerWorld,
                             GameManager.Instance.P_UiManager.FloatingTextPrefabWorld, 2f,turretScript.SoTurret.Price);

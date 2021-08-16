@@ -12,7 +12,23 @@ public class MortarTurret : Turret
         {
             if (weapon.CanShoot() && (nearestTarget.position - transform.position).sqrMagnitude <= weapon.P_BRange * weapon.P_BRange)
             {
-                    Shoot(dir,nearestTarget,weapon);
+                if (!soundPlayed)
+                {
+                    turretAudio.PlayOneShot(weapon.WeaponStats.WeaponSound);
+                    soundPlayed = true;
+                }
+                Shoot(dir,nearestTarget,weapon);
+            }
+            else
+            {
+                turretAnim.SetBool("Shoot",false);
+                if (soundPlayed)
+                {
+                  
+                    soundPlayed = false;
+                    turretAudio.Stop();
+
+                }
             }
         }
     }

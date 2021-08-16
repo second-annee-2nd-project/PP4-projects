@@ -16,4 +16,5 @@ public class SO_Turret : SO_Destroyable
 
  [SerializeField] private float turnSpeed = 5f;
  public float TurnSpeed => turnSpeed;
+ 
 }

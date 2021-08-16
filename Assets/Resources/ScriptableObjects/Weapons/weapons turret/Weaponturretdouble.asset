@@ -21,5 +21,6 @@ MonoBehaviour:
   numberOfBulletsPerShot: 1
   diffusionAngle: 0
   price: 0
-  weaponSound: {fileID: 0}
-  muzzleFlash: {fileID: 0}
+  weaponSound: {fileID: 8300000, guid: e00a6e25574984c46b6864a9c62ed9bd, type: 3}
+  muzzleFlash: {fileID: 441624651237726128, guid: 713eb188cb301bf46a97e2b8845aadf4, type: 3}
+  upgradedTexture: {fileID: 0}

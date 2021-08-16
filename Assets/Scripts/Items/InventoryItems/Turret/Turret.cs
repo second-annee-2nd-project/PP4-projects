@@ -17,6 +17,7 @@ public class Turret : DestroyableUnit
     [SerializeField] protected Weapon[] weapons;
     protected float health;
 
+     protected AudioSource turretAudio;
     //[SerializeField] private GameObject turretPrefab;
    //[SerializeField] private GameObject bulletPrefab;
   
@@ -29,9 +30,11 @@ public class Turret : DestroyableUnit
    private Vector3Int innerPos;
    public Vector3Int InnerPos => innerPos;
    private float groundY;
+   protected bool soundPlayed;
+   [SerializeField] private AudioClip deploySound;
+   public AudioClip DeploySound => deploySound;
    void Awake()
    {
-      
        turretAnim = FindObjectOfType<Animator>();
    }
    protected override void Start()
@@ -42,6 +45,7 @@ public class Turret : DestroyableUnit
        bHealthPoints = soTurret.HealthPoints;
        healthPoints = bHealthPoints;
        groundY = GameManager.Instance.ActualGrid.CenterPosition.y;
+       turretAudio = GetComponent<AudioSource>();
 
    }
    void Update()
@@ -71,12 +75,26 @@ public class Turret : DestroyableUnit
 
                 if (IsFirstColliderEnemy(dir,weapon.P_BRange))
                 {
+                    
+                    if (!soundPlayed)
+                    {
+                        turretAudio.PlayOneShot(weapon.WeaponStats.WeaponSound);
+                        soundPlayed = true;
+                        Debug.Log("marche");
+                    }
                     Shoot(dir,nearestTarget,weapon);
+
                 }
             }
             else
             {
                 turretAnim.SetBool("Shoot",false);
+                if (soundPlayed)
+                {
+                    Debug.Log("marchePas");
+                    soundPlayed = false;
+
+                }
             }
         }
     }
@@ -112,6 +130,7 @@ public class Turret : DestroyableUnit
 
         this.innerPos = innerPos;
         turretAnim.SetBool("canDeploy",true);
+       
     }
     public void Shoot(Vector3 direction, Transform _target,Weapon weapon)
     {
@@ -119,12 +138,15 @@ public class Turret : DestroyableUnit
         turretAnim.SetBool("canDeploy",false);
         turretAnim.SetBool("Shoot",true);
         weapon.Shoot(direction, _target);
+      
     }
 
     public void Shoot(Vector3 direction, Weapon weapon)
     {
         weapon.Team = team;
         weapon.Shoot(direction);
+       
+        
     }
 
     protected override void Die()

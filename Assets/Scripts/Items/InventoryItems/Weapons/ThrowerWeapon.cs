@@ -106,8 +106,8 @@ public class ThrowerWeapon : Weapon
             }
             lastIsShooting = isShooting;
         }
-
-        AnimLoop();
+        if(!isWeapon)
+            AnimLoop();
     }
 
     public override bool CanShoot()

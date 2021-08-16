@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 3195867937966922751}
   - component: {fileID: 3195867937966922736}
   - component: {fileID: 3195867937966922737}
+  - component: {fileID: 2016410636583190664}
   m_Layer: 0
   m_Name: MortarTurret
   m_TagString: Untagged
@@ -284,7 +285,104 @@ MonoBehaviour:
   partToRotate: {fileID: 3195867939457001105}
   weapons:
   - {fileID: 3195867939457001118}
+  turretAudio: {fileID: 0}
   soTurret: {fileID: 11400000, guid: 93897d11082b1dc4c8517229d97d0aaa, type: 2}
+--- !u!82 &2016410636583190664
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3195867937966922738}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 8aace33f747b7b64eb3ef9f955b37d15, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 6
+  MaxDistance: 10
+  Pan2D: 0
+  rolloffMode: 1
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &3195867939457001106
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,10 +426,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996b4528f2967aa4484dba1cb173cdaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponStats: {fileID: 11400000, guid: a506e134317c9fb4caed73c6cd71517f, type: 2}
+  weaponStats: {fileID: 0}
   upgradeWeaponStats: {fileID: 0}
   fireTransform: {fileID: 3195867937966922748}
   bulletPrefab: {fileID: 341573856503240656, guid: ae77f4a7dbca48a49b65736d63736f48, type: 3}
+  isWeapon: 0
 --- !u!1 &3595419134599390950
 GameObject:
   m_ObjectHideFlags: 0
