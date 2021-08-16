@@ -19427,3 +19427,4 @@ MonoBehaviour:
   - {fileID: 5028386945730454648}
   - {fileID: 5028386946025625358}
   timeForFireToStop: 0.3
+  flameClip: {fileID: 8300000, guid: 84cb3f66c778ca84fbe3ada7f7ed0b94, type: 3}

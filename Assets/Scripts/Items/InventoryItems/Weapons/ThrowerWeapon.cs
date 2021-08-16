@@ -11,15 +11,11 @@ public class ThrowerWeapon : Weapon
     private bool lastIsShooting = false;
     [SerializeField] private float timeForFireToStop = 2f;
     private float remainingTimeForFireToStop = 0f;
-    
-    private float timerForSoundToRefresh;
-    private float baseTimerForSoundToRefresh;
-
+    private bool soundPlayed = false;
+    private bool stopSound = false;
     public override void Init()
     {
         base.Init();
-        baseTimerForSoundToRefresh = 1f;
-        timerForSoundToRefresh = 1f;
         foreach (ParticleSystem particleSystem in particleSystems)
         {
             ParticleSystem.ShapeModule sm = particleSystem.shape;
@@ -34,11 +30,7 @@ public class ThrowerWeapon : Weapon
     {
         isShooting = true;
         remainingTimeForFireToStop = timeForFireToStop;
-        if (timerForSoundToRefresh <= 0)
-        {
-            GameManager.Instance.P_SoundsManager.AudioSource.PlayOneShot(weaponStats.WeaponSound);
-            timerForSoundToRefresh = baseTimerForSoundToRefresh;
-        }
+        
         List<GameObject> allEnemies = GameManager.Instance.P_TeamManager.GetStrictEnemies(Team);
 
         for (int i = 0; i < allEnemies.Count; i++)
@@ -94,13 +86,6 @@ public class ThrowerWeapon : Weapon
            
             isShooting = false;
         }
-
-        if (timerForSoundToRefresh > 0)
-        {
-            timerForSoundToRefresh -= Time.deltaTime;
-        }
-        
-        
         
         
         if (isShooting != lastIsShooting)
@@ -122,7 +107,7 @@ public class ThrowerWeapon : Weapon
             lastIsShooting = isShooting;
         }
 
-        
+        AnimLoop();
     }
 
     public override bool CanShoot()
@@ -134,5 +119,34 @@ public class ThrowerWeapon : Weapon
             return true;
 
         return false;
+    }
+
+    void AnimLoop()
+    {
+        StopCoroutine(nameof(LoopAnim));
+        StartCoroutine(nameof(LoopAnim));
+
+    }
+    
+    IEnumerator LoopAnim()
+    {
+        if (isShooting && !soundPlayed)
+        {
+        
+            GameManager.Instance.P_SoundsManager.AudioSource.PlayOneShot(weaponStats.WeaponSound);
+            soundPlayed = true;
+            yield return new WaitForSeconds(0.1f);
+            GameManager.Instance.P_SoundsManager.AudioSource.loop = true;
+
+
+        }
+        else if (soundPlayed && !isShooting)
+        {
+            isShooting = false;
+            soundPlayed = false;
+            GameManager.Instance.P_SoundsManager.AudioSource.loop = false;
+            GameManager.Instance.P_SoundsManager.AudioSource.Stop();
+          
+        }
     }
 }

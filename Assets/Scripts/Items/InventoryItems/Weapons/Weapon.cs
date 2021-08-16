@@ -166,6 +166,7 @@ public class Weapon : MonoBehaviour
               newBullet.SetActive(true);
               Bullet newBulletScript = newBullet.GetComponent<Bullet>();
               newBullet.transform.position = fireTransform.position;
+              newBullet.transform.rotation = fireTransform.rotation;
               newBulletScript.Team = Team;
               newBulletScript.MaxRange = bRange;
               newBulletScript.Damage = bDamage;
@@ -201,6 +202,7 @@ public class Weapon : MonoBehaviour
                newBullet.SetActive(true);
                Bullet newBulletScript = newBullet.GetComponent<Bullet>();
                newBullet.transform.position = fireTransform.position;
+               newBullet.transform.rotation = fireTransform.rotation;
                newBulletScript.Team = Team;
                newBulletScript.MaxRange = bRange;
                newBulletScript.Damage = bDamage;

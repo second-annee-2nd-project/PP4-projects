@@ -21,7 +21,8 @@ public class UpgradeWeapon : MonoBehaviour
     void Start()
     {
 
-        SetUpgradedWeaponInfo();
+        costText.text =  "Price : 40";
+        nameText.text = "Upgrade\nGun";
     }
 
     void Update()
@@ -40,8 +41,8 @@ public class UpgradeWeapon : MonoBehaviour
         if (wp != null)
         {
             if(wp.UpgradeWeaponStats != null)
-                costText.text =  "Prix : " + wp.UpgradeWeaponStats.Price;
-            nameText.text = "Upgrade : " + wp.WeaponStats.Name;
+                costText.text =  "Price : " + wp.UpgradeWeaponStats.Price;
+            nameText.text = "Upgrade\n" + wp.WeaponStats.Name;
         }
         soldText.gameObject.SetActive(false);
     }

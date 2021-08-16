@@ -362,7 +362,12 @@ public class PlayerBehaviour : DestroyableUnit
    {
       if (canDie)
       {
+         playerAnim.SetBool("IsShooting",false);
+         playerAnim.SetBool("IsSafe",false);
          playerAnim.SetBool("IsDead",true);
+         playerAnim.SetBool("IsFlame",false);
+         playerAnim.SetBool("IsAssaut",false);
+         playerAnim.SetBool("IsShooting",false);
          GameManager.Instance.P_UI_Manager.RenderRetryButton(true);
       }
    }
