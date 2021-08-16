@@ -880,6 +880,7 @@ MonoBehaviour:
   upgradeWeaponStats: {fileID: 0}
   fireTransform: {fileID: 3225988747310340674}
   bulletPrefab: {fileID: 7497547957538424816, guid: 4d8d5547bfb105843b7600b15e9b8501, type: 3}
+  isWeapon: 0
 --- !u!54 &3255505865629322035
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2232,6 +2233,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6516471008174827549}
     m_Modifications:
+    - target: {fileID: 1717565941091460596, guid: 037f0693d606d91458a744edf701f2c1, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2725922994653571159, guid: 037f0693d606d91458a744edf701f2c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
