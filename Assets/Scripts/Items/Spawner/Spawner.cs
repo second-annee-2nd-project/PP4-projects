@@ -50,8 +50,8 @@ public class Spawner : MonoBehaviour
             {
                 if (timerBeforeNextSpawn <= 0f)
                 {
-                    GameObject prefab = GameManager.Instance.P_EnemiesManager.GetPrefab(eg.TypeOfEnemyToSpawn);
-                    Spawn(prefab);
+                    GameObject newEnemyGO = GameManager.Instance.P_EnemiesManager.GetEnemyInstance(eg.TypeOfEnemyToSpawn);
+                    Spawn(newEnemyGO);
 
                     --enemiesLeftToSpawn;
                     timerBeforeNextSpawn = eg.TimerBetweenSpawns;
@@ -68,7 +68,7 @@ public class Spawner : MonoBehaviour
     }
 
 
-    private void Spawn(GameObject prefab)
+    private void SpawnPrefab(GameObject prefab)
     {
     
         EnemiesManager enemiesManager = GameManager.Instance.P_EnemiesManager;
@@ -85,6 +85,24 @@ public class Spawner : MonoBehaviour
         
         
         enemiesManager.AddItemToList(enemy);
+        enemiesManager.ItemsLeftToSpawn--;
+    }
+
+    private void Spawn(GameObject goInstance)
+    {
+        EnemiesManager enemiesManager = GameManager.Instance.P_EnemiesManager;
+        int x = (int) objectSize.x;
+        int y = (int) objectSize.y;
+        int z = (int) objectSize.z;
+
+        float rx = transform.position.x - x/2f + Random.Range(0f, x);
+        float ry = GameManager.Instance.ActualGrid.CenterPosition.y - GameManager.Instance.ActualGrid.P_GridHeight * 0.5f;
+        float rz = transform.position.z - z/2f + Random.Range(0f, z);
+
+        goInstance.SetActive(true);
+        goInstance.transform.position = new Vector3(rx, ry, rz);
+        goInstance.transform.rotation = Quaternion.identity;
+        
         enemiesManager.ItemsLeftToSpawn--;
     }
 }
