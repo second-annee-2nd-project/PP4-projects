@@ -201,14 +201,17 @@ public class Weapon : MonoBehaviour
                GameObject newBullet = bulletsPool.GetNextBulletInstance(bulletPrefabScript.BulletType);
                newBullet.SetActive(true);
                Bullet newBulletScript = newBullet.GetComponent<Bullet>();
+               ParableBullet pb = newBullet.GetComponent<ParableBullet>();
+               
                newBullet.transform.position = fireTransform.position;
+               if(!pb)
                newBullet.transform.rotation = fireTransform.rotation;
                newBulletScript.Team = Team;
                newBulletScript.MaxRange = bRange;
                newBulletScript.Damage = bDamage;
                newBulletScript.Target = target;
                
-               ParableBullet pb = newBullet.GetComponent<ParableBullet>();
+              
                if (pb)
                {
                    SO_AoEWeapon aoew = (SO_AoEWeapon) weaponStats;

@@ -85,7 +85,6 @@ public class ShopManager : MonoBehaviour
     {
         coins += amount;
         coins_Text.text = " : " + coins;
-        GameManager.Instance.P_WeaponUI.PossibleToBuyWeapon();
         GameManager.Instance.P_TurretBtnUI.PossibleToBuyTurret();
         // GameManager.Instance.P_UpgradeWeapon.NonInteractable();
     }
@@ -101,7 +100,6 @@ public class ShopManager : MonoBehaviour
 
     public void UIRestart()
     {
-        GameManager.Instance.P_WeaponUI.PossibleToBuyWeapon();
         GameManager.Instance.P_TurretBtnUI.PossibleToBuyTurret();
         GameManager.Instance.P_WeaponUI.SetSoldToFalse();
         // GameManager.Instance.P_UpgradeWeapon.NonInteractable();
@@ -119,7 +117,6 @@ public class ShopManager : MonoBehaviour
     private IEnumerator ShopSequence()
     {
         UI_ShopSequence.SetActive(true);
-        GameManager.Instance.P_WeaponUI.PossibleToBuyWeapon();
         GameManager.Instance.P_TurretBtnUI.PossibleToBuyTurret();
         joystickController.SetActive(false);
         isSkipShopButtonPressed = false;
