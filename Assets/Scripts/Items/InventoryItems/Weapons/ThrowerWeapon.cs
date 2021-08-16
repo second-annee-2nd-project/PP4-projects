@@ -13,6 +13,7 @@ public class ThrowerWeapon : Weapon
     private float remainingTimeForFireToStop = 0f;
     private bool soundPlayed = false;
     private bool stopSound = false;
+   
     public override void Init()
     {
         base.Init();
@@ -106,7 +107,7 @@ public class ThrowerWeapon : Weapon
             }
             lastIsShooting = isShooting;
         }
-
+if(!isWeapon)
         AnimLoop();
     }
 

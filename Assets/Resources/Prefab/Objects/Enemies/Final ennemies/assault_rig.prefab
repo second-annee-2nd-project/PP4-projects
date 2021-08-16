@@ -530,6 +530,7 @@ MonoBehaviour:
   upgradeWeaponStats: {fileID: 0}
   fireTransform: {fileID: 1081441144853689720}
   bulletPrefab: {fileID: 2852258047591489820, guid: 3081e5623b21c2d4391cb48b2a49b6e5, type: 3}
+  isWeapon: 0
 --- !u!114 &5322655546330163368
 MonoBehaviour:
   m_ObjectHideFlags: 0

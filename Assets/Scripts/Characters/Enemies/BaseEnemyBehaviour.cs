@@ -16,7 +16,6 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     protected float attackRange;
     protected float nextAttack;
     protected float rotationSpeed;
-
     protected float timerBeforeLookingAtPath = 2.5f;
     protected float remainingTimerBeforeLookingAtPath;
     
@@ -100,7 +99,6 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         attackDamage = enemyStats.AttackDamage;
         detectionRange = enemyStats.DetectionRange;
         attackRange = enemyStats.AttackRange;
-        
         StartMoving();
     }
     
@@ -190,7 +188,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
       /*  GameObject newLoot = Instantiate(loot, positionGrounded, Quaternion.identity);
         newLoot.GetComponent<Loot>().AmountToLoot = amountToLoot;
         GameManager.Instance.P_LootManager.AddItemToList(newLoot);*/
-        GameManager.Instance.P_SoundsManager.AudioSource.PlayOneShot(enemyStats.DeathSound);
+      GameManager.Instance.P_SoundsManager.AudioSource.PlayOneShot(enemyStats.DeathSound);
         Destroy(Instantiate(enemyStats.DeathEffectt, transform.position, Quaternion.identity), 2);
         GameManager.Instance.P_EnemiesManager.ReleaseEnemyInstance(gameObject, enemyStats.EnemyType);
     }

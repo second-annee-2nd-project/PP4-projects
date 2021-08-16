@@ -10,9 +10,28 @@ public class FlameThrowerTurret : Turret
         {
             if (weapon.CanShoot() && (nearestTarget.position - weapon.P_FireTransform.position).sqrMagnitude <= weapon.WeaponStats.Range * weapon.WeaponStats.Range)
             {
+                if (!soundPlayed)
+                {
+                    turretAudio.PlayOneShot(weapon.WeaponStats.WeaponSound);
+                    soundPlayed = true;
+                    Debug.Log("marche");
+                }
                 Shoot(dir, weapon);
                 turretAnim.SetBool("canDeploy",false);
                 turretAnim.SetBool("Shoot",true);
+                
+                
+                
+            }
+            else
+            {
+                turretAnim.SetBool("Shoot",false);
+                if (soundPlayed)
+                {
+                    Debug.Log("marchePas");
+                    soundPlayed = false;
+
+                }
             }
         }
     }

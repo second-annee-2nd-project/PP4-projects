@@ -24,9 +24,6 @@ public class EnemiesManager : UnitManager
     public EnemyDictionary EnemyPrefabs => enemyPrefabs;
     // Properties utilisé dans chaque Spawner
     private Coroutine cor;
-
-    private EnemiesPooler enemiesPooler;
-
     private Dictionary<eEnemyType, List<GameObject>> enemiesPoolDictionary;
 
     private void Init()
@@ -86,7 +83,6 @@ public class EnemiesManager : UnitManager
     {
         base.Start();
         team = eTeam.enemy;
-        enemiesPooler = FindObjectOfType<EnemiesPooler>();
         enemiesPoolDictionary = new Dictionary<eEnemyType, List<GameObject>>();
         Init();
     }

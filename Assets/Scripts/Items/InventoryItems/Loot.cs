@@ -11,6 +11,7 @@ public class Loot : MonoBehaviour
     private Transform player;
     private LootManager lootManager;
     private float a;
+    [SerializeField] private AudioClip takeCoinsSound;
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -39,6 +40,7 @@ public class Loot : MonoBehaviour
     public void Looted(PlayerBehaviour playerBehaviour)
     {
         playerBehaviour.Loot(amountToLoot);
+        GameManager.Instance.P_SoundsManager.AudioSource.PlayOneShot(takeCoinsSound);
         lootManager.RemoveItemFromList(gameObject);
         Destroy(gameObject);
     }

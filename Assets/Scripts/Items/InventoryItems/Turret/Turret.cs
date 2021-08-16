@@ -17,6 +17,7 @@ public class Turret : DestroyableUnit
     [SerializeField] protected Weapon[] weapons;
     protected float health;
 
+    [SerializeField] protected AudioSource turretAudio;
     //[SerializeField] private GameObject turretPrefab;
    //[SerializeField] private GameObject bulletPrefab;
   
@@ -29,9 +30,9 @@ public class Turret : DestroyableUnit
    private Vector3Int innerPos;
    public Vector3Int InnerPos => innerPos;
    private float groundY;
+   protected bool soundPlayed;
    void Awake()
    {
-      
        turretAnim = FindObjectOfType<Animator>();
    }
    protected override void Start()
@@ -71,12 +72,26 @@ public class Turret : DestroyableUnit
 
                 if (IsFirstColliderEnemy(dir,weapon.P_BRange))
                 {
+                    
+                    if (!soundPlayed)
+                    {
+                        turretAudio.PlayOneShot(weapon.WeaponStats.WeaponSound);
+                        soundPlayed = true;
+                        Debug.Log("marche");
+                    }
                     Shoot(dir,nearestTarget,weapon);
+
                 }
             }
             else
             {
                 turretAnim.SetBool("Shoot",false);
+                if (soundPlayed)
+                {
+                    Debug.Log("marchePas");
+                    soundPlayed = false;
+
+                }
             }
         }
     }
@@ -119,12 +134,15 @@ public class Turret : DestroyableUnit
         turretAnim.SetBool("canDeploy",false);
         turretAnim.SetBool("Shoot",true);
         weapon.Shoot(direction, _target);
+      
     }
 
     public void Shoot(Vector3 direction, Weapon weapon)
     {
         weapon.Team = team;
         weapon.Shoot(direction);
+       
+        
     }
 
     protected override void Die()
@@ -134,6 +152,5 @@ public class Turret : DestroyableUnit
         turretManager.RemoveItemFromList(gameObject);
         Destroy(gameObject);
     }
-        
     
 }

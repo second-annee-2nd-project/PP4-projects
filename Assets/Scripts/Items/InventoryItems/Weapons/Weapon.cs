@@ -51,7 +51,7 @@ public class Weapon : MonoBehaviour
        [SerializeField]  private GameObject bulletPrefab;
        private BulletsPool bulletsPool;
        protected eTeam team;
-
+ [SerializeField] protected bool isWeapon;
        
    
        public eTeam Team
@@ -181,6 +181,7 @@ public class Weapon : MonoBehaviour
 
                 newBulletScript.Shoot(newDir);
                 ammo--;
+                if(!isWeapon)
               GameManager.Instance.P_SoundsManager.AudioSource.PlayOneShot(weaponStats.WeaponSound);
              Destroy(Instantiate(weaponStats.MuzzleFlash,fireTransform.position, fireTransform.rotation),0.1f);
    
