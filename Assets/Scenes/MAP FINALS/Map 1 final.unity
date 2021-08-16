@@ -19920,6 +19920,10 @@ PrefabInstance:
       propertyPath: m_Value
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4086444643246029499, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: m_Text
+      value: 'Prix : 60'
+      objectReference: {fileID: 0}
     - target: {fileID: 4086444644800119023, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: m_Text
       value: 'Prix : 80'
@@ -19944,6 +19948,10 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4283450658633956010, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 26
+      objectReference: {fileID: 0}
     - target: {fileID: 4596587650345532062, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -19951,6 +19959,18 @@ PrefabInstance:
     - target: {fileID: 4596587650345532062, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SetInteractableButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5107771643894433242, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -33.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213094339570312350, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 21.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5213094339570312351, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 6013025436107397173, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: m_FontData.m_FontSize
