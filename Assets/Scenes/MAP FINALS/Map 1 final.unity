@@ -19852,6 +19852,14 @@ PrefabInstance:
       propertyPath: weaponPriceButton
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 3471059604289808384, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3471059604289808385, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3509990106573334133, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: m_SizeDelta.x
       value: 250
@@ -19899,6 +19907,10 @@ PrefabInstance:
     - target: {fileID: 3581454403865661509, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: m_SizeDelta.y
       value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 3826463077778451499, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -8.999893
       objectReference: {fileID: 0}
     - target: {fileID: 3828053916443929021, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: m_MinValue
@@ -20135,6 +20147,18 @@ PrefabInstance:
       value: 'Weapons
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000649050867275224, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8000649050867275224, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 8175361703517839158, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
+      propertyPath: m_Alpha
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9177566950508517178, guid: 0f974119878b64c4d9c765ca34ec2fe7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target

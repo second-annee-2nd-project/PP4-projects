@@ -16,7 +16,7 @@ MonoBehaviour:
   healthPoints: 20
   speed: 2
   attackDamage: 5
-  attackRange: 2
+  attackRange: 1.5
   detectionRange: 7
   rotationSpeed: 1
   deathSound: {fileID: 8300000, guid: 5ebf2d117b9a8c84c8c25e9bfb71f0d5, type: 3}

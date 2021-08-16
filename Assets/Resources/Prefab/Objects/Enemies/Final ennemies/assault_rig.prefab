@@ -530,6 +530,7 @@ MonoBehaviour:
   upgradeWeaponStats: {fileID: 0}
   fireTransform: {fileID: 1081441144853689720}
   bulletPrefab: {fileID: 2852258047591489820, guid: 3081e5623b21c2d4391cb48b2a49b6e5, type: 3}
+  isWeapon: 0
 --- !u!114 &5322655546330163368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -578,8 +579,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.03240895, y: 0.042494535, z: 0.033298455}
-  m_Center: {x: -0.0002504588, y: 0.027019639, z: 0.0021947578}
+  m_Size: {x: 0.023198009, y: 0.042494535, z: 0.025535017}
+  m_Center: {x: 0.0010793364, y: 0.027019639, z: 0.0011769896}
 --- !u!1 &1580334218432155021
 GameObject:
   m_ObjectHideFlags: 0
