@@ -14,7 +14,8 @@ public class EnemyBehaviour : BaseEnemyBehaviour
     private SO_Enemy enemyRealStats;
 
     private Animator enemyAnim;
-    
+
+ 
     // Start is called before the first frame update
     protected override void Awake()
     {
@@ -88,13 +89,12 @@ public class EnemyBehaviour : BaseEnemyBehaviour
             //     enemyAnim.SetBool("Attacking",false);
             // }
         }
+      
         else
         {
-            if (nextAttack <= 0)
-            {
-                Attack();
-                enemyAnim.SetBool("Attacking",true);
-            }
+            Attack();
+            enemyAnim.SetBool("Attacking", true);
+            
         }
     }
     

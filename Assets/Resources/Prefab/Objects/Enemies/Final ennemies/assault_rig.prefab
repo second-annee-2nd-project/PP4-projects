@@ -375,7 +375,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081441144853689723}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.00956, y: 0.03022, z: 0.02324}
+  m_LocalPosition: {x: 0.0081, y: 0.0366, z: 0.0363}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1843933603529933449}
@@ -484,8 +484,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1359286073271687219}
-  m_LocalRotation: {x: -0, y: -0.9895132, z: 0, w: -0.14444251}
-  m_LocalPosition: {x: 9.517986, y: -0.5, z: -4.272951}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 27, y: 27, z: 27}
   m_Children:
   - {fileID: 416246412062932466}
@@ -494,7 +494,7 @@ Transform:
   - {fileID: 1081441144853689720}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -196.61, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2169695615715616096
 Animator:
   serializedVersion: 3
@@ -551,6 +551,7 @@ MonoBehaviour:
   amountToLoot: 6
   loot: {fileID: 3049520276215088851, guid: ce223389ca3a89143bd756b798508500, type: 3}
   spawnEffect: {fileID: 626501447009365048, guid: 9fd3080794c831e4a94545e9510e5885, type: 3}
+  isShooter: 1
   weapon: {fileID: 5322655546330163369}
 --- !u!54 &5322655546330163371
 Rigidbody:
@@ -579,8 +580,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.023198009, y: 0.042494535, z: 0.025535017}
-  m_Center: {x: 0.0010793364, y: 0.027019639, z: 0.0011769896}
+  m_Size: {x: 0.023198009, y: 0.04852856, z: 0.025535017}
+  m_Center: {x: 0.0010793364, y: 0.024002625, z: 0.0011769896}
 --- !u!1 &1580334218432155021
 GameObject:
   m_ObjectHideFlags: 0

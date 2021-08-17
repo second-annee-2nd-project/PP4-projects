@@ -16,19 +16,19 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     protected float attackRange;
     protected float nextAttack;
     protected float rotationSpeed;
-
+    bool isWall =false;
     protected float timerBeforeLookingAtPath = 2.5f;
     protected float remainingTimerBeforeLookingAtPath;
-    
+
     [SerializeField] protected SO_BaseEnemy enemyStats;
 
     public SO_BaseEnemy EnemyStats => enemyStats;
-    
+
     [Header("Object prefab dropped at death")] [SerializeField]
     protected int amountToLoot;
-    [SerializeField]
-    protected GameObject loot;
-    
+
+    [SerializeField] protected GameObject loot;
+
     protected Transform nearestEnemy;
 
     protected Node lastNearestEnemyNode;
@@ -38,7 +38,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     protected EnemiesManager enemiesManager;
     protected List<Node> path;
     [SerializeField] private GameObject spawnEffect;
-    
+
     public List<Node> Path
     {
         get => path;
@@ -46,6 +46,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     }
 
     protected Node startingNode;
+
     public Node StartingNode
     {
         get => startingNode;
@@ -61,30 +62,30 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     protected float groundY;
 
     protected Vector3 removedPos;
-  
-    
+
+    [SerializeField] protected bool isShooter;
     // Start is called before the first frame update
     protected virtual void Awake()
     {
         ID = id;
         id++;
-        name += " "+ID;
+        name += " " + ID;
         path = new List<Node>();
 
         enemiesManager = GameManager.Instance.P_EnemiesManager;
         pathRequestManager = GameManager.Instance.P_PathRequestManager;
         grid = GameManager.Instance.ActualGrid;
-        
+
         groundY = grid.CenterPosition.y;
-        GameObject effect = Instantiate(spawnEffect,transform.position, transform.rotation);
+        GameObject effect = Instantiate(spawnEffect, transform.position, transform.rotation);
         effect.transform.parent = transform;
-        Destroy(effect,1f);
+        Destroy(effect, 1f);
     }
 
     protected override void Start()
     {
         base.Start();
-       
+
     }
 
     public override void Init()
@@ -92,63 +93,85 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         base.Init();
         bHealthPoints = enemyStats.HealthPoints;
         healthPoints = bHealthPoints;
-        transform.position = new Vector3(transform.position.x, GameManager.Instance.ActualGrid.CenterPosition.y - GameManager.Instance.ActualGrid.P_GridHeight * 0.5f, transform.position.z);
+        transform.position = new Vector3(transform.position.x,
+            GameManager.Instance.ActualGrid.CenterPosition.y - GameManager.Instance.ActualGrid.P_GridHeight * 0.5f,
+            transform.position.z);
         speed = enemyStats.Speed;
         attackDamage = enemyStats.AttackDamage;
         detectionRange = enemyStats.DetectionRange;
         attackRange = enemyStats.AttackRange;
-        
-        StartMoving();
+
+        // StartMoving();
     }
-    
+
     // Beaucoup de RaycastAll
     protected bool IsFirstColliderEnemy(Vector3 target)
     {
-        RaycastHit[] hitsArray;
-        hitsArray = new RaycastHit[3];
-
         float radius = transform.GetComponent<Collider>().bounds.size.x * 0.5f - 0.1f;
         target = new Vector3(target.x, groundY, target.z);
         
         Vector3 myPositionCenteredGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
-        Vector3 myPositionLeftGrounded = new Vector3(transform.position.x - radius, groundY, transform.position.z);
-        Vector3 myPositionRightGrounded = new Vector3(transform.position.x + radius, groundY, transform.position.z);
-
         Vector3 dirCenteredToTarget = target - myPositionCenteredGrounded;
-        Vector3 dirLeftToTarget = target - myPositionLeftGrounded;
-        Vector3 dirRightToTarget = target - myPositionRightGrounded;
         
-        Physics.Raycast(myPositionCenteredGrounded, dirCenteredToTarget, out hitsArray[0], attackRange, ~GameManager.Instance.ActualGrid.videMask);
-        Physics.Raycast(myPositionLeftGrounded, dirLeftToTarget, out hitsArray[1], attackRange, ~GameManager.Instance.ActualGrid.videMask);
-        Physics.Raycast(myPositionRightGrounded, dirRightToTarget, out hitsArray[2], attackRange , ~GameManager.Instance.ActualGrid.videMask);
-
-        bool firstCollidedIsEnemy = false;
-        int numberOfHits = 0;
-        for (int i = 0; i < hitsArray.Length; i++)
+      
+        
+        RaycastHit hit;
+        RaycastHit hit2;
+        var rayMiddle =  Physics.Raycast(myPositionCenteredGrounded, dirCenteredToTarget, out hit, attackRange, ~GameManager.Instance.ActualGrid.videMask);
+     
+      
+        
+        if (isShooter)
         {
+            Weapon wp = GetComponent<Weapon>();
+
+            Vector3 firePointRay = wp.P_FireTransform.transform.position;
+            Vector3 firePointToTarget = target - wp.P_FireTransform.transform.position;
+            var ray =  Physics.Raycast(firePointRay, firePointToTarget, out hit2, attackRange, ~GameManager.Instance.ActualGrid.videMask);
+          
            
-            /*if (hitsArray[i].Length > 0)
-            {*/
-            if (hitsArray[i].collider != null)
-            {
-                TeamUnit tu = hitsArray[i].collider.GetComponent<TeamUnit>();
-                if(tu)
+                Debug.DrawRay(firePointRay, firePointToTarget);
+                if (hit2.transform.tag == "Obstacle")
                 {
-                    if (tu.Team.IsEnemy(this.team))
+                    Debug.Log("eeeeeeeeeeeeeeeee");
+                    isWall = true;
+                    return false;
+                }
+                else 
+                {
+                    isWall = false;
+                    TeamUnit tu = hit.collider.GetComponent<TeamUnit>();
+                    if (tu )
                     {
-                        numberOfHits++;
+                        if (tu.Team == eTeam.player)
+                        {
+                            Debug.Log("reeeeezefeffe");
+                            return true;
+                        }
+                    }
+                }
+              
+            
+        }
+        else
+        {
+            if (rayMiddle)  
+            {
+                TeamUnit tu = hit.collider.GetComponent<TeamUnit>();
+                if (tu)
+                {
+                    if (tu.Team == eTeam.player)
+                    {
+                        Debug.Log("qccv");
+                        Debug.DrawRay(myPositionCenteredGrounded, dirCenteredToTarget, Color.blue);
+                        return true;
                     }
                 }
             }
-                
-            //}
         }
-
-        if (numberOfHits == hitsArray.Length)
-        {
-            return true;
-        }
-        
+      
+       
+       
         return false;
     }
 
@@ -203,17 +226,8 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
             Vector3 nearestEnemyGrounded =
                 new Vector3(nearestEnemy.position.x, groundY, nearestEnemy.position.z);
             Vector3 myPositionGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
-
-            Vector3 sightDir = nearestEnemyGrounded - myPositionGrounded;
-
-            float rSquared = (GameManager.Instance.ActualGrid.P_GridSizeWidth * 0.5f) * 
-                      (GameManager.Instance.ActualGrid.P_GridSizeLength * 0.5f);
-
-            if ((nearestEnemyGrounded - myPositionGrounded).sqrMagnitude <= rSquared)
-            {
-                TryToAttack();
-            }
-            else if ((nearestEnemyGrounded - myPositionGrounded).sqrMagnitude <= attackRange * attackRange && IsFirstColliderEnemy(nearestEnemyGrounded))
+            
+            if ((nearestEnemyGrounded - myPositionGrounded).sqrMagnitude <= attackRange * attackRange && IsFirstColliderEnemy(nearestEnemyGrounded))
             {
                 TryToAttack();
             }
@@ -261,8 +275,6 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
                         }
                     }
                     
-
-                    //ChoseAction(startPosition, targetPosition);
 
                     
 
@@ -325,30 +337,6 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         }
 
         return false;
-    }
-
-    protected void ChoseAction(Vector3 startPosition, Vector3 targetPosition)
-    {
-        Vector3 nearestEnemyGrounded =
-            new Vector3(nearestEnemy.position.x, groundY, nearestEnemy.position.z);
-        Vector3 myPositionGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
-
-        Vector3 sightDir = nearestEnemyGrounded - myPositionGrounded;
-
-        Debug.DrawRay(transform.position, sightDir, Color.blue); 
-
-        if (Vector3.Distance(transform.position, nearestEnemyGrounded) > attackRange ||
-            !IsFirstColliderEnemy(sightDir))
-        {
-            Debug.Log("?");
-            transform.position = Vector3.MoveTowards(startPosition, targetPosition, speed * Time.deltaTime);
-            transform.LookAt(targetPosition);
-        }
-        else
-        {
-            Debug.Log("!");
-            TryToAttack();
-        }
     }
 
     protected virtual void AskForPath()

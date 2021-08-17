@@ -80,7 +80,7 @@ public class Turret : DestroyableUnit
                     {
                         turretAudio.PlayOneShot(weapon.WeaponStats.WeaponSound);
                         soundPlayed = true;
-                        Debug.Log("marche");
+                      
                     }
                     Shoot(dir,nearestTarget,weapon);
 
@@ -91,7 +91,7 @@ public class Turret : DestroyableUnit
                 turretAnim.SetBool("Shoot",false);
                 if (soundPlayed)
                 {
-                    Debug.Log("marchePas");
+                   
                     soundPlayed = false;
 
                 }
