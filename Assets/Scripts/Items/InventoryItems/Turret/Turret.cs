@@ -5,6 +5,7 @@ using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 using TeamExtensionMethods;
+using Vector2 = System.Numerics.Vector2;
 
 public enum eTurretType
 {
@@ -33,7 +34,8 @@ public class Turret : DestroyableUnit
    protected bool soundPlayed;
    [SerializeField] private AudioClip deploySound;
    public AudioClip DeploySound => deploySound;
-   private bool isWall;
+   [SerializeField] private bool isWall;
+   [SerializeField] private bool isWall2;
    void Awake()
    {
        turretAnim = FindObjectOfType<Animator>();
@@ -51,6 +53,7 @@ public class Turret : DestroyableUnit
    }
    void Update()
     {
+        Debug.Log(healthPoints);
         UpdateTarget();
         UpdateLifeBar();
         if (Object.ReferenceEquals(nearestTarget, null))
@@ -102,53 +105,87 @@ public class Turret : DestroyableUnit
     protected bool IsFirstColliderEnemy(Vector3 dir,float attackRange)
     {
        
-        RaycastHit[] hitsArray = new RaycastHit[3];
-        float radius = transform.GetComponent<Collider>().bounds.size.x * 0.5f - 0.3f;
+        RaycastHit[] hitsArray = new RaycastHit[2];
+        float radius = GetComponent<Collider>().bounds.size.x * 0.3f;
 
-        Vector3 myPositionCenteredGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
-        Vector3 myPositionLeftGrounded = new Vector3(transform.position.x - radius, groundY, transform.position.z);
-        Vector3 myPositionRightGrounded = new Vector3(transform.position.x + radius, groundY, transform.position.z);
-
-        Vector3 dirCenteredToTarget = dir- myPositionCenteredGrounded;
-        Vector3 dirLeftToTarget = dir- myPositionLeftGrounded;
-        Vector3 dirRightToTarget = dir - myPositionRightGrounded;
-
-        Physics.Raycast(myPositionCenteredGrounded, dir, out hitsArray[0], attackRange, ~GameManager.Instance.ActualGrid.videMask);
-        Physics.Raycast(myPositionLeftGrounded, dir, out hitsArray[1], attackRange, ~GameManager.Instance.ActualGrid.videMask);
-        Physics.Raycast(myPositionRightGrounded, dir, out hitsArray[2], attackRange , ~GameManager.Instance.ActualGrid.videMask);
-
-       
-        int numberOfHits = 0;
-        for (int i = 0; i < hitsArray.Length; i++)
-        {
-           
-                if (hitsArray[i].transform.collider.tag == "Obstacle")
-                {
-                    return false;
-                }
-                else if(hitsArray[i].collider.tag =="Enemy")
-                {
-                    TeamUnit tu = hitsArray[i].collider.GetComponent<TeamUnit>();
-                    if(tu)
-                    {
-                        if (tu.Team == eTeam.player)
-                        {
-                            Debug.Log("fck");
-                            numberOfHits++;
-                           
-                        }
-                    }
-                }
-              
-            
-        }
-
-        if (numberOfHits == hitsArray.Length)
-        {
-            Debug.Log("yay");
-            return true;
-        }
+        // Vector3 myPositionCenteredGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
+        Vector3 myPositionLeftGrounded = new Vector3(transform.position.x + radius, groundY, transform.position.z);
+        Vector3 myPositionRightGrounded = new Vector3(transform.position.x - radius, groundY,transform.position.z);
         
+Vector3 target =new Vector3( nearestTarget.transform.position.x,groundY,nearestTarget.transform.position.z);
+        // Vector3 dirCenteredToTarget = dir- myPositionCenteredGrounded;
+        Vector3 dirLeftToTarget = target- myPositionLeftGrounded;
+        Vector3 dirRightToTarget = target - myPositionRightGrounded;
+
+        // Physics.Raycast(myPositionCenteredGrounded, dir, out hitsArray[0], attackRange, ~GameManager.Instance.ActualGrid.videMask);
+        bool ray2 = Physics.Raycast(myPositionLeftGrounded, dirLeftToTarget, out hitsArray[0], attackRange, ~GameManager.Instance.ActualGrid.videMask);
+        bool ray3 =Physics.Raycast(myPositionRightGrounded, dirRightToTarget, out hitsArray[1], attackRange , ~GameManager.Instance.ActualGrid.videMask);
+
+        if (ray2)
+        {
+            if (hitsArray[0].transform.GetComponent<Collider>().tag == "Obstacle")
+            {
+                Debug.DrawRay(myPositionLeftGrounded, dir,Color.green);
+                Debug.DrawRay(myPositionRightGrounded, dir,Color.green);
+               
+                isWall = true;
+                return false;
+               
+            }
+            else
+            {
+                isWall = false;
+            }
+        }
+        else if (ray3)
+        {
+            if (hitsArray[1].transform.GetComponent<Collider>().tag == "Obstacle")
+            {
+                Debug.DrawRay(myPositionLeftGrounded, dir,Color.green);
+                Debug.DrawRay(myPositionRightGrounded, dir,Color.green);
+              
+                isWall2 = true;
+                return false;
+               
+            }
+            else
+            {
+                isWall2 = false;
+            }
+        }
+        if (isWall || isWall2)
+        {
+            return false;
+        }
+        if (ray2 && !isWall && !isWall2)
+        {   
+           
+            TeamUnit tu = hitsArray[0].collider.GetComponent<TeamUnit>();
+            if(tu)
+            {
+                if (tu.Team.IsEnemy(this.team))
+                {
+                    Debug.DrawRay(myPositionLeftGrounded, dir,Color.green);
+                    Debug.DrawRay(myPositionRightGrounded, dir,Color.green);
+                    return true;
+                }
+            }
+        } 
+        if (ray3&& !isWall && !isWall2)
+        {  
+         
+            TeamUnit tu = hitsArray[1].collider.GetComponent<TeamUnit>();
+            if(tu)
+            {
+                if (tu.Team.IsEnemy(this.team))
+                {
+                    Debug.DrawRay(myPositionLeftGrounded, dir,Color.green);
+                    Debug.DrawRay(myPositionRightGrounded, dir,Color.green);
+                    return true;
+                }
+            }
+        }
+       
         return false;
     }
     public void Deploy(Vector3 position, Vector3Int innerPos, Quaternion rotation)

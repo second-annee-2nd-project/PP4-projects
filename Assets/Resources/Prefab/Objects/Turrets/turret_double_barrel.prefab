@@ -695,6 +695,8 @@ MonoBehaviour:
   - {fileID: 1922626329820582611}
   soTurret: {fileID: 11400000, guid: f3f2df20da9ec6d4a8b03e8f9e03a759, type: 2}
   deploySound: {fileID: 8300000, guid: 4566d4e592d50df4481ba7b57a97e7c7, type: 3}
+  isWall: 0
+  isWall2: 0
 --- !u!65 &6155110195584325518
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -706,8 +708,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.043626525, y: 0.04559831, z: 0.03427795}
-  m_Center: {x: 0.004987101, y: 0.018418837, z: 0.0015832803}
+  m_Size: {x: 0.025030272, y: 0.04559831, z: 0.03505506}
+  m_Center: {x: 0.0010027856, y: 0.018418837, z: 0.0005848368}
 --- !u!54 &8947557479463328680
 Rigidbody:
   m_ObjectHideFlags: 0

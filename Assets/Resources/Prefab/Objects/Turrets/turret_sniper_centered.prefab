@@ -1502,8 +1502,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7849371516448525937}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.13, y: 0, z: 0}
-  m_LocalScale: {x: 25, y: 26, z: 25}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 20, y: 25, z: 20}
   m_Children:
   - {fileID: 6540418103367272470}
   - {fileID: 4694176768718560900}
@@ -1523,8 +1523,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.057786215, y: 0.051281225, z: 0.06923941}
-  m_Center: {x: 0.0018590784, y: 0.021260299, z: -0.00030813811}
+  m_Size: {x: 0.050425086, y: 0.04879821, z: 0.059740935}
+  m_Center: {x: 0.0006756783, y: 0.022344688, z: 0.002500556}
 --- !u!54 &6354235875729080603
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1562,6 +1562,8 @@ MonoBehaviour:
   - {fileID: 6241172823015563916}
   soTurret: {fileID: 11400000, guid: 366cdf396b490184985c0695b3f81bce, type: 2}
   deploySound: {fileID: 8300000, guid: ffe179f878d87204689dd81834d919d8, type: 3}
+  isWall: 0
+  isWall2: 0
 --- !u!114 &6241172823015563916
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,9 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using TeamExtensionMethods;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public abstract class BaseEnemyBehaviour : DestroyableUnit
 {
@@ -107,10 +109,10 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     // Beaucoup de RaycastAll
     protected bool IsFirstColliderEnemy(Vector3 target)
     {
-        float radius = transform.GetComponent<Collider>().bounds.size.x * 0.5f - 0.1f;
+        float radius = transform.GetComponent<Collider>().bounds.size.x * 0.5f;
         target = new Vector3(target.x, groundY, target.z);
         
-        Vector3 myPositionCenteredGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
+        Vector3 myPositionCenteredGrounded = new Vector3(transform.position.x + radius, groundY, transform.position.z);
         Vector3 dirCenteredToTarget = target - myPositionCenteredGrounded;
         
       
@@ -118,7 +120,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         RaycastHit hit;
         RaycastHit hit2;
         var rayMiddle =  Physics.Raycast(myPositionCenteredGrounded, dirCenteredToTarget, out hit, attackRange, ~GameManager.Instance.ActualGrid.videMask);
-     
+     Debug.DrawRay(myPositionCenteredGrounded,dirCenteredToTarget,Color.blue);
       
         
         if (isShooter)
@@ -161,10 +163,13 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
                 {
                     if (tu.Team == eTeam.player)
                     {
-                        Debug.DrawRay(myPositionCenteredGrounded, dirCenteredToTarget, Color.blue);
                         return true;
                     }
                 }
+            }
+            else
+            {
+                return false;
             }
         }
       
@@ -204,15 +209,15 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     {
         transform.LookAt(nearestEnemy);
         nearestEnemy.gameObject.GetComponent<DestroyableUnit>().GetDamaged(attackDamage);
+      
     }
 
     protected virtual void TryToAttack()
     {
         Attack();
     }
-
-
     
+
     public IEnumerator Move()
     {
         int a = 0;
@@ -274,7 +279,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
                         }
                     }
                     
-
+                   
                     
 
                     yield return null;
