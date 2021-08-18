@@ -374,9 +374,12 @@ public class PlayerBehaviour : DestroyableUnit
 
    public void GainHealth()
    {
-      if (ShopManager.Instance.Coins >= ShopManager.Instance.HealPrice && GameManager.Instance.P_UiManager.Life_Img.fillAmount < 1 )
+      if (ShopManager.Instance.Coins >= ShopManager.Instance.HealPrice && healthPoints < bHealthPoints)
       {
          healthPoints += bHealthPoints / 10;
+         if (healthPoints >= bHealthPoints)
+            healthPoints = bHealthPoints;
+            
          ShopManager.Instance.UpdateCoins(-ShopManager.Instance.HealPrice);
 
       }

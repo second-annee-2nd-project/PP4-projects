@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 6309967}
   m_Layer: 8
   m_Name: Cube (28)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 10357945}
   m_Layer: 8
   m_Name: Cube (21)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -887,7 +887,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357116
+  m_Name: pb_Mesh279280
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1060,7 +1060,7 @@ GameObject:
   - component: {fileID: 25560349}
   m_Layer: 8
   m_Name: Cube (10)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1884,7 +1884,7 @@ GameObject:
   - component: {fileID: 93864533}
   m_Layer: 8
   m_Name: Cube (14)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2187,7 +2187,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357432
+  m_Name: pb_Mesh279604
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2924,7 +2924,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357182
+  m_Name: pb_Mesh279346
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -3613,7 +3613,7 @@ GameObject:
   - component: {fileID: 290283665}
   m_Layer: 8
   m_Name: Cube (8)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3987,7 +3987,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357712
+  m_Name: pb_Mesh279884
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4156,7 +4156,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357556
+  m_Name: pb_Mesh279728
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4447,7 +4447,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357598
+  m_Name: pb_Mesh279770
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5593,7 +5593,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357482
+  m_Name: pb_Mesh279654
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5771,7 +5771,7 @@ GameObject:
   - component: {fileID: 549751551}
   m_Layer: 8
   m_Name: Cube (16)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6088,7 +6088,7 @@ GameObject:
   - component: {fileID: 574893515}
   m_Layer: 8
   m_Name: Cube (25)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6457,7 +6457,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357650
+  m_Name: pb_Mesh279822
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6785,7 +6785,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357364
+  m_Name: pb_Mesh279536
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7179,7 +7179,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357376
+  m_Name: pb_Mesh279548
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7496,7 +7496,7 @@ GameObject:
   - component: {fileID: 722579053}
   m_Layer: 8
   m_Name: Cube (22)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7881,7 +7881,7 @@ GameObject:
   - component: {fileID: 738050742}
   m_Layer: 8
   m_Name: Cube (29)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8376,7 +8376,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh356974
+  m_Name: pb_Mesh279138
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8985,7 +8985,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357168
+  m_Name: pb_Mesh279332
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9149,7 +9149,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357416
+  m_Name: pb_Mesh279588
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9839,7 +9839,7 @@ GameObject:
   - component: {fileID: 955912603}
   m_Layer: 8
   m_Name: Cube (20)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10142,7 +10142,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh356918
+  m_Name: pb_Mesh279082
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10315,7 +10315,7 @@ GameObject:
   - component: {fileID: 977502683}
   m_Layer: 8
   m_Name: Cube (17)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10756,7 +10756,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357338
+  m_Name: pb_Mesh279510
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11015,7 +11015,7 @@ GameObject:
   - component: {fileID: 1044548521}
   m_Layer: 8
   m_Name: Cube (12)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11318,7 +11318,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357700
+  m_Name: pb_Mesh279872
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -11708,7 +11708,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh356906
+  m_Name: pb_Mesh279070
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12010,7 +12010,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357670
+  m_Name: pb_Mesh279842
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12254,7 +12254,7 @@ GameObject:
   - component: {fileID: 1147042764}
   m_Layer: 8
   m_Name: Cube (30)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12718,7 +12718,7 @@ GameObject:
   - component: {fileID: 1199736757}
   m_Layer: 8
   m_Name: Cube (6)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13030,7 +13030,7 @@ GameObject:
   - component: {fileID: 1215655360}
   m_Layer: 8
   m_Name: Cube (7)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13850,7 +13850,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357256
+  m_Name: pb_Mesh279428
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -14023,7 +14023,7 @@ GameObject:
   - component: {fileID: 1369522408}
   m_Layer: 8
   m_Name: Cube (9)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14401,7 +14401,7 @@ GameObject:
   - component: {fileID: 1412453653}
   m_Layer: 8
   m_Name: Cube (11)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15216,7 +15216,7 @@ GameObject:
   - component: {fileID: 1567118402}
   m_Layer: 8
   m_Name: Cube (23)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15589,7 +15589,7 @@ GameObject:
   - component: {fileID: 1608401398}
   m_Layer: 8
   m_Name: Cube (18)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16447,7 +16447,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357468
+  m_Name: pb_Mesh279640
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16697,7 +16697,7 @@ GameObject:
   - component: {fileID: 1776639789}
   m_Layer: 8
   m_Name: Cube (27)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17158,6 +17158,54 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &1795241277
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1795241279}
+  - component: {fileID: 1795241278}
+  m_Layer: 0
+  m_Name: DisableCanvasGroup
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1795241278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795241277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9379745799e89f240a6cd74193ae65c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseCanvasGroup:
+  - {fileID: 8175361705207150265}
+  - {fileID: 3097085202740439543}
+  - {fileID: 3445071220753521092}
+  - {fileID: 8175361704613818802}
+--- !u!4 &1795241279
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795241277}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1447.7129, y: 760.3998, z: 308.5609}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1801421077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17234,7 +17282,7 @@ GameObject:
   - component: {fileID: 1801450509}
   m_Layer: 8
   m_Name: Cube (24)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17537,7 +17585,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357270
+  m_Name: pb_Mesh279442
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -17787,7 +17835,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357540
+  m_Name: pb_Mesh279712
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -18352,7 +18400,7 @@ GameObject:
   - component: {fileID: 1866354185}
   m_Layer: 8
   m_Name: Cube (26)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18819,7 +18867,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357130
+  m_Name: pb_Mesh279294
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19120,7 +19168,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh356936
+  m_Name: pb_Mesh279100
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -19879,7 +19927,7 @@ GameObject:
   - component: {fileID: 2042264681}
   m_Layer: 8
   m_Name: Cube (5)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20272,7 +20320,7 @@ GameObject:
   - component: {fileID: 2052668176}
   m_Layer: 8
   m_Name: Cube (19) baril
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20575,7 +20623,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357044
+  m_Name: pb_Mesh279208
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20739,7 +20787,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh357298
+  m_Name: pb_Mesh279470
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -21116,7 +21164,7 @@ GameObject:
   - component: {fileID: 2135397061}
   m_Layer: 8
   m_Name: Cube (15)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21428,7 +21476,7 @@ GameObject:
   - component: {fileID: 2142922456}
   m_Layer: 8
   m_Name: Cube (13)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21970,7 +22018,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1, y: 0}
-  m_SizeDelta: {x: 125, y: 125}
+  m_SizeDelta: {x: 175, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &719945140665167440
 MonoBehaviour:
@@ -22165,7 +22213,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 229.8}
+  m_AnchoredPosition: {x: 0, y: 179}
   m_SizeDelta: {x: 238.14465, y: 157.07788}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1815869579627178071
@@ -22282,6 +22330,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2550007597787285282}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: PauseGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1795241278}
+        m_TargetAssemblyTypeName: DisableCanvasUI, Assembly-CSharp
+        m_MethodName: DisableCG
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -22471,8 +22531,8 @@ RectTransform:
   m_Father: {fileID: 2494750750124547005}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.85714287, y: 0}
+  m_AnchorMax: {x: 0.85714287, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -22694,7 +22754,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.85714287, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -24679,6 +24739,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3097085202740439545}
+  - component: {fileID: 3097085202740439543}
   m_Layer: 0
   m_Name: OptionMenu
   m_TagString: Untagged
@@ -24686,6 +24747,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!225 &3097085202740439543
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3097085202740439542}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!4 &3097085202740439545
 Transform:
   m_ObjectHideFlags: 0
@@ -24694,7 +24767,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3097085202740439542}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3097085203142609382}
@@ -25122,6 +25195,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1795241278}
+        m_TargetAssemblyTypeName: DisableCanvasUI, Assembly-CSharp
+        m_MethodName: DisableCG
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!222 &3097085203523848649
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -25384,7 +25469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 582018844661509054, guid: 1b4943c6a4537bf40af2f38724546a36, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -8.999893
+      value: -8.999939
       objectReference: {fileID: 0}
     - target: {fileID: 2057961310553692689, guid: 1b4943c6a4537bf40af2f38724546a36, type: 3}
       propertyPath: m_IsActive
@@ -25632,8 +25717,8 @@ RectTransform:
   m_Father: {fileID: 3289768998848819711}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.85714287, y: 0}
+  m_AnchorMax: {x: 0.85714287, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -25793,7 +25878,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0.85714287, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -25868,6 +25953,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3445071220753521091}
+  - component: {fileID: 3445071220753521092}
   m_Layer: 0
   m_Name: QuitMenu
   m_TagString: Untagged
@@ -25883,7 +25969,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3445071220753521090}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.8, y: -2.4, z: 0}
+  m_LocalPosition: {x: -3.8, y: 36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2858508158491691028}
@@ -25892,6 +25978,18 @@ Transform:
   m_Father: {fileID: 8723635362051243744}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!225 &3445071220753521092
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3445071220753521090}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &3445071221002604800
 GameObject:
   m_ObjectHideFlags: 0
@@ -25998,6 +26096,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1795241278}
+        m_TargetAssemblyTypeName: DisableCanvasUI, Assembly-CSharp
+        m_MethodName: DisableCG
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -26116,7 +26226,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -175, y: 174}
-  m_SizeDelta: {x: 250, y: 250}
+  m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3509990106391020442
 CanvasRenderer:
@@ -26902,7 +27012,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 175, y: 174}
-  m_SizeDelta: {x: 250, y: 250}
+  m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6948940990065452367
 GameObject:
@@ -27427,6 +27537,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1795241278}
+        m_TargetAssemblyTypeName: DisableCanvasUI, Assembly-CSharp
+        m_MethodName: DisableCG
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!224 &8175361703557338723
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27621,6 +27743,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1795241278}
+        m_TargetAssemblyTypeName: DisableCanvasUI, Assembly-CSharp
+        m_MethodName: DisableCG
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!222 &8175361703810342431
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27707,6 +27841,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1795241278}
+        m_TargetAssemblyTypeName: DisableCanvasUI, Assembly-CSharp
+        m_MethodName: DisableCG
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -27860,7 +28006,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8175361704613818801}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8175361704606783915}
@@ -27878,6 +28024,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8175361704613818800}
+  - component: {fileID: 8175361704613818802}
   m_Layer: 0
   m_Name: RestartMenu
   m_TagString: Untagged
@@ -27885,6 +28032,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!225 &8175361704613818802
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8175361704613818801}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &8175361704730870710
 GameObject:
   m_ObjectHideFlags: 0
@@ -28064,6 +28223,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1795241278}
+        m_TargetAssemblyTypeName: DisableCanvasUI, Assembly-CSharp
+        m_MethodName: DisableCG
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!222 &8175361705059118007
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28081,6 +28252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8175361705207150267}
+  - component: {fileID: 8175361705207150265}
   m_Layer: 0
   m_Name: ButtonMenu
   m_TagString: Untagged
@@ -28088,6 +28260,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!225 &8175361705207150265
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8175361705207150264}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!4 &8175361705207150267
 Transform:
   m_ObjectHideFlags: 0
@@ -28096,7 +28280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8175361705207150264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -51, z: 0}
+  m_LocalPosition: {x: 0, y: -119, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8175361705509625383}
@@ -28184,6 +28368,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1795241278}
+        m_TargetAssemblyTypeName: DisableCanvasUI, Assembly-CSharp
+        m_MethodName: DisableCG
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -28791,6 +28987,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1795241278}
+        m_TargetAssemblyTypeName: DisableCanvasUI, Assembly-CSharp
+        m_MethodName: DisableCG
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!222 &8723635361319280297
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29343,7 +29551,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1, y: 0}
-  m_SizeDelta: {x: 125, y: 125}
+  m_SizeDelta: {x: 175, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8723635362005339531
 CanvasRenderer:

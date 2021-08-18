@@ -106,7 +106,7 @@ public class Turret : DestroyableUnit
     {
        
         RaycastHit[] hitsArray = new RaycastHit[2];
-        float radius = GetComponent<Collider>().bounds.size.x * 0.3f;
+        float radius = GetComponent<Collider>().bounds.size.x * 0.2f -0.1f;
 
         // Vector3 myPositionCenteredGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
         Vector3 myPositionLeftGrounded = new Vector3(transform.position.x + radius, groundY, transform.position.z);

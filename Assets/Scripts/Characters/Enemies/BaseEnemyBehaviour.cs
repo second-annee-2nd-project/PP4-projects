@@ -109,7 +109,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     // Beaucoup de RaycastAll
     protected bool IsFirstColliderEnemy(Vector3 target)
     {
-        float radius = transform.GetComponent<Collider>().bounds.size.x * 0.5f;
+        float radius = transform.GetComponent<Collider>().bounds.size.x * 0.3f - 0.1f;
         target = new Vector3(target.x, groundY, target.z);
         
         Vector3 myPositionCenteredGrounded = new Vector3(transform.position.x + radius, groundY, transform.position.z);
