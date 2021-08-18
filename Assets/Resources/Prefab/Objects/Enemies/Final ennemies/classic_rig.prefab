@@ -647,8 +647,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.026238652, y: 0.042662732, z: 0.0288097}
-  m_Center: {x: 0.00075721956, y: 0.02693554, z: -0.00004963296}
+  m_Size: {x: 0.026238652, y: 0.04935365, z: 0.0288097}
+  m_Center: {x: 0.00075721956, y: 0.023590079, z: -0.00004963296}
 --- !u!114 &6310020693636362855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -669,6 +669,7 @@ MonoBehaviour:
   amountToLoot: 4
   loot: {fileID: 3049520276215088851, guid: ce223389ca3a89143bd756b798508500, type: 3}
   spawnEffect: {fileID: 626501447009365048, guid: 9fd3080794c831e4a94545e9510e5885, type: 3}
+  isShooter: 0
   weapon: {fileID: 0}
 --- !u!54 &6008861092787891112
 Rigidbody:

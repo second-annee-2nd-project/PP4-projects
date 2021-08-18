@@ -16,7 +16,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     protected float attackRange;
     protected float nextAttack;
     protected float rotationSpeed;
-    bool isWall =false;
+ 
     protected float timerBeforeLookingAtPath = 2.5f;
     protected float remainingTimerBeforeLookingAtPath;
 
@@ -126,31 +126,30 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
             Weapon wp = GetComponent<Weapon>();
 
             Vector3 firePointRay = wp.P_FireTransform.transform.position;
-            Vector3 firePointToTarget = target - wp.P_FireTransform.transform.position;
-            var ray =  Physics.Raycast(firePointRay, firePointToTarget, out hit2, attackRange, ~GameManager.Instance.ActualGrid.videMask);
+            Vector3 firePointToTarget = target - firePointRay;
+            bool ray =Physics.Raycast(firePointRay, firePointToTarget, out hit2, attackRange, ~GameManager.Instance.ActualGrid.videMask);
           
            
                 Debug.DrawRay(firePointRay, firePointToTarget);
-                if (hit2.transform.tag == "Obstacle")
+                if (ray)
                 {
-                    Debug.Log("eeeeeeeeeeeeeeeee");
-                    isWall = true;
-                    return false;
-                }
-                else 
-                {
-                    isWall = false;
-                    TeamUnit tu = hit.collider.GetComponent<TeamUnit>();
-                    if (tu )
+                    if (hit2.transform.tag == "Obstacle")
                     {
-                        if (tu.Team == eTeam.player)
+                        return false;
+                    }
+                    else 
+                    {
+                        if ((hit.transform.tag == "Player" || hit.transform.tag == "Turret"))
                         {
-                            Debug.Log("reeeeezefeffe");
                             return true;
                         }
                     }
+
                 }
-              
+                else
+                {
+                    return false;
+                }
             
         }
         else
@@ -162,7 +161,6 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
                 {
                     if (tu.Team == eTeam.player)
                     {
-                        Debug.Log("qccv");
                         Debug.DrawRay(myPositionCenteredGrounded, dirCenteredToTarget, Color.blue);
                         return true;
                     }
@@ -231,6 +229,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
             {
                 TryToAttack();
             }
+            
             else
             {
                 if (path != null && path.Count > 0 && path[0] != null)

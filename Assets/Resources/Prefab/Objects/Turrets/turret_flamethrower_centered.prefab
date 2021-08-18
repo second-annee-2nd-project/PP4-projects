@@ -961,7 +961,7 @@ GameObject:
   - component: {fileID: -7012978839152443582}
   m_Layer: 0
   m_Name: turret_flamethrower_centered
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

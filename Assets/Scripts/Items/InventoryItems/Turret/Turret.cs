@@ -33,6 +33,7 @@ public class Turret : DestroyableUnit
    protected bool soundPlayed;
    [SerializeField] private AudioClip deploySound;
    public AudioClip DeploySound => deploySound;
+   private bool isWall;
    void Awake()
    {
        turretAnim = FindObjectOfType<Animator>();
@@ -100,24 +101,54 @@ public class Turret : DestroyableUnit
     }
     protected bool IsFirstColliderEnemy(Vector3 dir,float attackRange)
     {
-        RaycastHit[] hits;
-        Vector3 myPositionGrounded = new Vector3(transform.position.x, GameManager.Instance.ActualGrid.CenterPosition.y, transform.position.z);
-        //hits = Physics.RaycastAll(myPositionGrounded, dir, attackRange);
-        //RaycastHit[] hits = Physics.RaycastAll(weapon.P_FirePosition.position, dir, attackRange);
+       
+        RaycastHit[] hitsArray = new RaycastHit[3];
+        float radius = transform.GetComponent<Collider>().bounds.size.x * 0.5f - 0.3f;
 
-        RaycastHit hit;
-        if (Physics.Raycast(myPositionGrounded, dir, out hit, attackRange))
+        Vector3 myPositionCenteredGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
+        Vector3 myPositionLeftGrounded = new Vector3(transform.position.x - radius, groundY, transform.position.z);
+        Vector3 myPositionRightGrounded = new Vector3(transform.position.x + radius, groundY, transform.position.z);
+
+        Vector3 dirCenteredToTarget = dir- myPositionCenteredGrounded;
+        Vector3 dirLeftToTarget = dir- myPositionLeftGrounded;
+        Vector3 dirRightToTarget = dir - myPositionRightGrounded;
+
+        Physics.Raycast(myPositionCenteredGrounded, dir, out hitsArray[0], attackRange, ~GameManager.Instance.ActualGrid.videMask);
+        Physics.Raycast(myPositionLeftGrounded, dir, out hitsArray[1], attackRange, ~GameManager.Instance.ActualGrid.videMask);
+        Physics.Raycast(myPositionRightGrounded, dir, out hitsArray[2], attackRange , ~GameManager.Instance.ActualGrid.videMask);
+
+       
+        int numberOfHits = 0;
+        for (int i = 0; i < hitsArray.Length; i++)
         {
-            TeamUnit tu = hit.collider.GetComponent<TeamUnit>();
-            if(tu)
-            {
-                if (tu.Team.IsEnemy(this.team))
+           
+                if (hitsArray[i].transform.collider.tag == "Obstacle")
                 {
-                    return true;
+                    return false;
                 }
-            }
+                else if(hitsArray[i].collider.tag =="Enemy")
+                {
+                    TeamUnit tu = hitsArray[i].collider.GetComponent<TeamUnit>();
+                    if(tu)
+                    {
+                        if (tu.Team == eTeam.player)
+                        {
+                            Debug.Log("fck");
+                            numberOfHits++;
+                           
+                        }
+                    }
+                }
+              
+            
         }
 
+        if (numberOfHits == hitsArray.Length)
+        {
+            Debug.Log("yay");
+            return true;
+        }
+        
         return false;
     }
     public void Deploy(Vector3 position, Vector3Int innerPos, Quaternion rotation)

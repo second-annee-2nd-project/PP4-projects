@@ -839,7 +839,7 @@ GameObject:
   - component: {fileID: 5107849811376124475}
   m_Layer: 0
   m_Name: armored_centered
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -907,8 +907,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.03240895, y: 0.04614635, z: 0.033298455}
-  m_Center: {x: -0.00025045875, y: 0.025193729, z: 0.0021947578}
+  m_Size: {x: 0.03240895, y: 0.04867335, z: 0.033298463}
+  m_Center: {x: -0.00025045872, y: 0.02393023, z: 0.0021947578}
 --- !u!114 &5107849811376124475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -929,6 +929,7 @@ MonoBehaviour:
   amountToLoot: 10
   loot: {fileID: 3049520276215088851, guid: ce223389ca3a89143bd756b798508500, type: 3}
   spawnEffect: {fileID: 626501447009365048, guid: 9fd3080794c831e4a94545e9510e5885, type: 3}
+  isShooter: 0
   weapon: {fileID: 0}
 --- !u!1 &2996515748780140994
 GameObject:
