@@ -21886,7 +21886,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8175361704730870713}
+      - m_Target: {fileID: 4281076234137488657, guid: 988c139db58c1da4f812c107f05a41b1, type: 3}
         m_TargetAssemblyTypeName: SceneManager, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -24125,7 +24125,6 @@ Transform:
   - {fileID: 6948940990084812868}
   - {fileID: 2550007597656466742}
   - {fileID: 2550007597787285309}
-  - {fileID: 8175361704730870712}
   - {fileID: 6948940990148260915}
   - {fileID: 8175361703431748133}
   m_Father: {fileID: 2550007598131173266}
@@ -27151,7 +27150,7 @@ Transform:
   m_Children:
   - {fileID: 3011483462567306710}
   m_Father: {fileID: 2550007598503819411}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6948940990205315572
 MonoBehaviour:
@@ -27449,7 +27448,7 @@ Transform:
   m_Children:
   - {fileID: 8723635362051243744}
   m_Father: {fileID: 2550007598503819411}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8175361703557338720
 GameObject:
@@ -28044,49 +28043,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!1 &8175361704730870710
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8175361704730870712}
-  - component: {fileID: 8175361704730870713}
-  m_Layer: 0
-  m_Name: SceneManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8175361704730870712
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8175361704730870710}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2550007598503819411}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8175361704730870713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8175361704730870710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77601ace20786064faaf44792879e7f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &8175361705059118002
 RectTransform:
   m_ObjectHideFlags: 0
