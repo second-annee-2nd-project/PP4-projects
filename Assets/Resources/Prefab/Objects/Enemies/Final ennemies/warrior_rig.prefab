@@ -589,13 +589,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252121259597001218}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.68418175, y: 0.23884158, z: 0.2459346, w: 0.6437128}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1252121259107258879}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -93.33, y: 29.996994, z: 10.113998}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 72.1}
@@ -664,13 +664,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1252121260332732462}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0.68418175, y: 0.23884158, z: 0.2459346, w: 0.6437128}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1252121259107258879}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -93.33, y: 29.996994, z: 10.113998}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 72.1}
@@ -1552,6 +1552,7 @@ MonoBehaviour:
   amountToLoot: 6
   loot: {fileID: 3049520276215088851, guid: ce223389ca3a89143bd756b798508500, type: 3}
   spawnEffect: {fileID: 626501447009365048, guid: 9fd3080794c831e4a94545e9510e5885, type: 3}
+  isShooter: 0
   weapon: {fileID: 0}
 --- !u!54 &5427534651313808659
 Rigidbody:
