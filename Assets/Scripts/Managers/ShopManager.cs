@@ -130,6 +130,7 @@ public class ShopManager : MonoBehaviour
         }
         
         UI_ShopSequence.SetActive(false);
+      
         joystickController.SetActive(true);
         if (placingCor != null)
         {
@@ -204,6 +205,8 @@ public class ShopManager : MonoBehaviour
          newTurretScript = equipedPrefabInstance.GetComponent<Turret>();
         newTurretScript.enabled = false;
         UI_ShopSequence.SetActive(false);
+        GameManager.Instance.P_UiManager.Life_Img.gameObject.SetActive(false);
+        GameManager.Instance.P_UiManager.Life_Img_Damage_Heal.gameObject.SetActive(false);
         while (!isTurretPlaced)
         {
             Vector3 mousePos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -1f);
@@ -228,6 +231,8 @@ public class ShopManager : MonoBehaviour
                             GameManager.Instance.P_UiManager.CanvasContainerWorld,
                             GameManager.Instance.P_UiManager.FloatingTextPrefabWorld, 2f,turretScript.SoTurret.Price);
                         equipedPrefabInstance = null;
+                        GameManager.Instance.P_UiManager.Life_Img.gameObject.SetActive(true);
+                        GameManager.Instance.P_UiManager.Life_Img_Damage_Heal.gameObject.SetActive(true);
                         isTurretPlaced = true;
                         break;
                     }

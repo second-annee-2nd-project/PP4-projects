@@ -53,7 +53,6 @@ public class Turret : DestroyableUnit
    }
    void Update()
     {
-        Debug.Log(healthPoints);
         UpdateTarget();
         UpdateLifeBar();
         if (Object.ReferenceEquals(nearestTarget, null))

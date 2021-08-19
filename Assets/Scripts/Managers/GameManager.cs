@@ -143,7 +143,13 @@ public class GameManager : MonoBehaviour
         waveManager.Restart();
        shopManager.UIRestart();
         Time.timeScale = 1;
+        if (enemiesManager.ItemsLeftToSpawn > 0)
+        {
+            enemiesManager.ItemsLeftToSpawn = 0;
+        
+        }
         StartGame();
+        waveManager.ActualWaveNumber = 0;
     }
 
     private void StartGame()

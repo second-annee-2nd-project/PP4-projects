@@ -26,7 +26,12 @@ public class WaveManager : MonoBehaviour
    public List<WaveData> WaveDatas => waveDatas;
    
    private int actualWaveNumber;
-   public int ActualWaveNumber => actualWaveNumber;
+   public int ActualWaveNumber
+   {
+      get => actualWaveNumber;
+      set => actualWaveNumber = value;
+   }
+
    [Header("UI")]
    [SerializeField] private Text waveCount_Text;
    private Coroutine cor;

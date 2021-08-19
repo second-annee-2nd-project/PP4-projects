@@ -139,14 +139,11 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
                     {
                         return false;
                     }
-                    else 
+                    else  if ((hit.transform.tag == "Player" || hit.transform.tag == "Turret"))
                     {
-                        if ((hit.transform.tag == "Player" || hit.transform.tag == "Turret"))
-                        {
-                            return true;
-                        }
+                        return true;
                     }
-
+                    
                 }
                 else
                 {
