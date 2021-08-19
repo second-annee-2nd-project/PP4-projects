@@ -24,7 +24,13 @@ public class WaveManager : MonoBehaviour
    
    [SerializeField] private List<WaveData> waveDatas;
    public List<WaveData> WaveDatas => waveDatas;
-   
+   private bool isRestart;
+   public bool IsRestart
+   {
+      get => isRestart;
+      set => isRestart = value;
+   }
+
    private int actualWaveNumber;
    public int ActualWaveNumber
    {
@@ -48,7 +54,8 @@ public class WaveManager : MonoBehaviour
    }
 
    public void Restart()
-      {
+   {
+      isRestart = true;
          cor = null;
          Spawner[] spawners = FindObjectsOfType<Spawner>();
          for (int i = 0; i < spawners.Length; i++)
@@ -90,6 +97,7 @@ public class WaveManager : MonoBehaviour
          {
             yield return null;
          }
+         if(!isRestart)
          actualWaveNumber++;
          if (actualWaveNumber > numberOfWaves)
          {
