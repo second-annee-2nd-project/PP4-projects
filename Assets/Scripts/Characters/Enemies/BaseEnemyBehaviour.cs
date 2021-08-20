@@ -194,7 +194,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         GameObject newLoot = Instantiate(loot, positionGrounded, Quaternion.identity);
         newLoot.GetComponent<Loot>().AmountToLoot = amountToLoot;
         GameManager.Instance.P_LootManager.AddItemToList(newLoot);
-        GameManager.Instance.P_SoundsManager.AudioSource.PlayOneShot(enemyStats.DeathSound);
+        GameManager.Instance.P_SoundsManager.AudioSource.PlayOneShot(enemyStats.DeathSound,0.2f);
         Destroy(Instantiate(enemyStats.DeathEffectt, transform.position, Quaternion.identity), 2);
     }
 
@@ -344,6 +344,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     protected virtual void AskForPath()
     {
         pathRequestManager.AddPath(new PathRequest(this, nearestEnemy), this);
+        GetNearestEnemy();
     }
     
     void OnDrawGizmosSelected()

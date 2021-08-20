@@ -381,7 +381,7 @@ public class PlayerBehaviour : DestroyableUnit
             healthPoints = bHealthPoints;
             
          ShopManager.Instance.UpdateCoins(-ShopManager.Instance.HealPrice);
-
+         GameManager.Instance.P_SoundsManager.AudioSource.PlayOneShot(GameManager.Instance.P_UI_Manager.TransactionSound,0.6f);
       }
       
    }

@@ -36,6 +36,8 @@ public class UI_Manager : MonoBehaviour
        public Transform CanvasContainerWorld => canvasContainerWorld;
 
        private float speedFloatText;
+       [SerializeField] private AudioClip transactionSound;
+       public AudioClip TransactionSound => transactionSound;
        public void RenderRetryButton(bool state)
        {
            if (state)
@@ -86,7 +88,7 @@ public class UI_Manager : MonoBehaviour
            StopCoroutine(nameof(FadeOutFloatingText));
            StartCoroutine(nameof(FadeOutFloatingText));
            Destroy(floatTextInstance,timeToFade +0.1f);
-       
+       GameManager.Instance.P_SoundsManager.AudioSource.PlayOneShot(transactionSound,0.6f);
        }
        public IEnumerator FadeOutFloatingText()
        {
