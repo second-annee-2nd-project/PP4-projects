@@ -6,13 +6,13 @@ using UnityEngine;
 public class PathRequestManager : MonoBehaviour
 {
     private Dictionary<BaseEnemyBehaviour, PathRequest> pathRequests;
-    
+
     private Node current;
     private Node startingNode;
     private Node targetNode;
-    
+
     private Node[,] nodes;
-    
+
     private int j;
     private Coroutine cor;
 
@@ -34,9 +34,9 @@ public class PathRequestManager : MonoBehaviour
         {
             pathRequests.Remove(enemy);
         }
-        
+
         pathRequests.Add(enemy, newPathRequest);
-        
+
         PathFinder();
         /*
         if(cor != null) return;
@@ -48,8 +48,9 @@ public class PathRequestManager : MonoBehaviour
         while (pathRequests.Count > 0)
         {
             PathFinder();
-            
+
         }
+
         yield return null;
         cor = null;
     }
@@ -58,33 +59,34 @@ public class PathRequestManager : MonoBehaviour
     {
         
     }*/
-    
+
     int GetDistance(Vector3 pos, Vector3 targetPos)
     {
         int distance = (int) (Mathf.Abs(pos.x - targetPos.x) + Mathf.Abs(pos.z - targetPos.z));
         return distance;
     }
-    
+
     public void PathFinder()
     {
-        
+
         List<Node> visited = new List<Node>();
         List<Node> taken = new List<Node>();
         List<Node> neighbours = new List<Node>();
-        
+
         List<PriorityQueue> boundaries = new List<PriorityQueue>();
         Dictionary<Node, int> costs = new Dictionary<Node, int>();
         Dictionary<Node, Node> cameFrom = new Dictionary<Node, Node>();
         List<Node> path = new List<Node>();
-        
+
         targetNode = pathRequests.First().Value.requestedFrom.TargetingNode;
+        
         startingNode = pathRequests.First().Value.requestedFrom.StartingNode;
         BaseEnemyBehaviour eb = pathRequests.First().Value.requestedFrom;
-        
+        targetNode = GetNearestAvailableNode(targetNode, eb);
         boundaries.Add(new PriorityQueue(startingNode, 0));
         current = boundaries[0].node;
         Node first = current;
-        
+
         costs.Add(current, 0);
         cameFrom[current] = null;
         visited.Add(current);
@@ -94,11 +96,11 @@ public class PathRequestManager : MonoBehaviour
             current = GetFirst(boundaries);
             if (current == null) break;
 
-            if(current == targetNode)
+            if (current == targetNode)
             {
                 break;
             }
-            
+
             neighbours = GetNeighbours(current);
 
             for (int i = 0; i < neighbours.Count; i++)
@@ -106,30 +108,35 @@ public class PathRequestManager : MonoBehaviour
                 int distance = GetDistance(targetNode.internalPosition, neighbours[i].internalPosition);
                 int newCost = costs[current] + 1;
 
-                if(!costs.ContainsKey(neighbours[i]) || newCost < costs[neighbours[i]])
+                if (!costs.ContainsKey(neighbours[i]) || newCost < costs[neighbours[i]])
                 {
-                    if(neighbours[i].isWalkable && (neighbours[i].occupiedBy == pathRequests.First().Key || neighbours[i].occupiedBy == null) && IsDiagonalPossible(neighbours, i))
+                    if (neighbours[i].isWalkable &&
+                        (neighbours[i].occupiedBy == pathRequests.First().Key || neighbours[i].occupiedBy == null) &&
+                        IsDiagonalPossible(neighbours, i))
                     {
                         if (!costs.ContainsKey(neighbours[i]))
                         {
-                                costs.Add(neighbours[i], newCost);
-                                cameFrom[neighbours[i]] = current;
+                            costs.Add(neighbours[i], newCost);
+                            cameFrom[neighbours[i]] = current;
                         }
                         else
                         {
-                                if (costs[neighbours[i]] > newCost)
-                                {
-                                    costs[neighbours[i]] = newCost;
-                                    cameFrom[neighbours[i]] = current;
-                                }
+                            if (costs[neighbours[i]] > newCost)
+                            {
+                                costs[neighbours[i]] = newCost;
+                                cameFrom[neighbours[i]] = current;
+                            }
                         }
+
                         int prio = newCost + distance;
                         boundaries.Add(new PriorityQueue(neighbours[i], prio));
                     }
                 }
             }
+
             boundaries.RemoveAt(0);
         }
+
         pathRequests.First().Value.path = RetracePath(cameFrom, first);
         pathRequests.First().Value.ReturnPath();
         pathRequests.Remove(pathRequests.First().Key);
@@ -155,8 +162,9 @@ public class PathRequestManager : MonoBehaviour
                             return false;
                         }
                     }
+
                     break;
-                
+
                 case 2:
                     //Calculer en fonction de 1 et 4
                     if (neighbours.Count > 1 && neighbours.Count > 4)
@@ -167,8 +175,9 @@ public class PathRequestManager : MonoBehaviour
                             return false;
                         }
                     }
+
                     break;
-                
+
                 case 5:
                     //Calculer en fonction de 3 et 6
                     if (neighbours.Count > 3 && neighbours.Count > 6)
@@ -179,6 +188,7 @@ public class PathRequestManager : MonoBehaviour
                             return false;
                         }
                     }
+
                     break;
                 case 7:
                     //Calculer en fonction de 4 et 6
@@ -190,11 +200,14 @@ public class PathRequestManager : MonoBehaviour
                             return false;
                         }
                     }
+
                     break;
             }
         }
+
         return true;
     }
+
     public List<Node> RetracePath(Dictionary<Node, Node> cf, Node f)
     {
         List<Node> newPath = new List<Node>();
@@ -202,6 +215,7 @@ public class PathRequestManager : MonoBehaviour
         {
             newPath.Add(cf.First().Key);
         }
+
         if (cf.ContainsKey(targetNode))
         {
             newPath.Add(targetNode);
@@ -210,9 +224,10 @@ public class PathRequestManager : MonoBehaviour
             while (nodeToTake != f)
             {
                 if (nodeToTake == null)
-                { 
+                {
                     break;
                 }
+
                 nodeToTake = cf[nodeToTake];
 
                 newPath.Add(nodeToTake);
@@ -229,7 +244,7 @@ public class PathRequestManager : MonoBehaviour
         while (sorted != true)
         {
             int count = 0;
-            for (int i = 0; i < priorityQueuesList.Count-1; i++)
+            for (int i = 0; i < priorityQueuesList.Count - 1; i++)
             {
                 if (priorityQueuesList[i].priority > priorityQueuesList[i + 1].priority)
                 {
@@ -246,13 +261,13 @@ public class PathRequestManager : MonoBehaviour
 
         return priorityQueuesList?[0]?.node;
     }
-    
+
     List<Node> GetNeighbours(Node node)
     {
 //        Debug.Log("NodeX : "+node.position.x);
         List<Node> n = new List<Node>();
 
-        int xOffset = -1; 
+        int xOffset = -1;
         int zOffset = -1;
         for (int z = 0; z < 3; z++)
         {
@@ -264,19 +279,56 @@ public class PathRequestManager : MonoBehaviour
                 }
                 //Debug.Log("Nombre de neighbours : "+(xOffset + x + node.internalPosition.x));
 
-                if ((int) ( xOffset + x + node.internalPosition.x) >= 0 &&
-                    (int) ( xOffset + x + node.internalPosition.x) < nodes.GetLength(0))
+                if ((int) (xOffset + x + node.internalPosition.x) >= 0 &&
+                    (int) (xOffset + x + node.internalPosition.x) < nodes.GetLength(0))
                 {
-                    if ((int) ( zOffset + z + node.internalPosition.z) >= 0 &&
-                        (int) ( zOffset + z + node.internalPosition.z) < nodes.GetLength(1))
+                    if ((int) (zOffset + z + node.internalPosition.z) >= 0 &&
+                        (int) (zOffset + z + node.internalPosition.z) < nodes.GetLength(1))
                     {
-                        n.Add(nodes[(int) (xOffset + x + node.internalPosition.x), (int) (z + zOffset + node.internalPosition.z)]);
+                        n.Add(nodes[(int) (xOffset + x + node.internalPosition.x),
+                            (int) (z + zOffset + node.internalPosition.z)]);
                     }
                 }
             }
         }
-        
+
         return n;
-        
+
     }
+
+    private Node GetNearestAvailableNode(Node target, BaseEnemyBehaviour eb)
+    {
+        if(target.occupiedBy == eb || Object.Equals(target.occupiedBy, null))
+        {
+            return target;
+        }
+
+        bool found = false;
+        bool cantFind = false;
+        List<Node> newNodeList = new List<Node>();
+        Node nodeToCompare = target;
+        Node nodeToReturn = null;
+        while(!found && !cantFind)
+        {
+            newNodeList = GetNeighbours(nodeToCompare);
+            if(Object.Equals(newNodeList, null) || newNodeList.Count == 0)
+            cantFind = true;
+            for(int i = 0; i < newNodeList.Count; i++)
+            {
+                if(newNodeList[i].occupiedBy == eb || Object.Equals(newNodeList[i].occupiedBy, null))
+                {
+                    nodeToReturn = newNodeList[i];
+                    found = true;
+                }
+            }
+        }
+
+        if(cantFind)
+            return null;
+        if(found)
+            return nodeToReturn;
+        return null;
+    }
+
+
 }
