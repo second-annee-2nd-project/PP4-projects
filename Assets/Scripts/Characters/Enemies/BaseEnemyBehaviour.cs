@@ -127,7 +127,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         {
             Weapon wp = GetComponent<Weapon>();
 
-            Vector3 firePointRay = wp.P_FireTransform.transform.position;
+            Vector3 firePointRay = new Vector3(wp.P_FireTransform.transform.position.x-0.03f,wp.P_FireTransform.transform.position.y-0.03f,wp.P_FireTransform.transform.position.z);
             Vector3 firePointToTarget = target - firePointRay;
             bool ray =Physics.Raycast(firePointRay, firePointToTarget, out hit2, attackRange, ~GameManager.Instance.ActualGrid.videMask);
           
@@ -139,8 +139,9 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
                     {
                         return false;
                     }
-                    else  if ((hit.transform.tag == "Player" || hit.transform.tag == "Turret"))
+                    else if(rayMiddle)
                     {
+                        if (hit.transform.tag == "Player" || hit.transform.tag == "Turret")
                         return true;
                     }
                     
@@ -347,12 +348,6 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     
     void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, detectionRange);
-
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(removedPos, 0.5f);
         if (path == null || path.Count < 1) return;
