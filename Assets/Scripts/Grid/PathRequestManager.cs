@@ -204,7 +204,7 @@ public class PathRequestManager : MonoBehaviour
         }
         if (cf.ContainsKey(targetNode))
         {
-            //newPath.Add(targetNode);
+            newPath.Add(targetNode);
             Node nodeToTake = cf[targetNode];
             newPath.Add(nodeToTake);
             while (nodeToTake != f)
