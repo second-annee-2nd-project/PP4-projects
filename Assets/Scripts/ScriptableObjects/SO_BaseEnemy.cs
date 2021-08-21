@@ -21,4 +21,6 @@ public abstract class SO_BaseEnemy : SO_Character
     
     [SerializeField] private GameObject deathEffectt;
     public GameObject DeathEffectt =>  deathEffectt;
+    [SerializeField] private eEnemyType enemyType;
+    public eEnemyType EnemyType => enemyType;
 }

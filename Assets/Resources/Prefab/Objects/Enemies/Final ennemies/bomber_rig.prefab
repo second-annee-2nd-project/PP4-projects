@@ -541,7 +541,7 @@ GameObject:
   - component: {fileID: 676130801826815857}
   m_Layer: 0
   m_Name: bomber_rig
-  m_TagString: Enemy
+  m_TagString: EnemyExplose
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

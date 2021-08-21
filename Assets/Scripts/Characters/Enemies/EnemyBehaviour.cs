@@ -15,7 +15,7 @@ public class EnemyBehaviour : BaseEnemyBehaviour
 
     private Animator enemyAnim;
 
- 
+  
     // Start is called before the first frame update
     protected override void Awake()
     {
@@ -33,7 +33,7 @@ public class EnemyBehaviour : BaseEnemyBehaviour
         base.CallAnim();
         enemyAnim.SetBool("Attacking",false);
     }
-
+  
     public override void Init()
     {
         base.Init();
@@ -45,15 +45,10 @@ public class EnemyBehaviour : BaseEnemyBehaviour
         attackRange = enemyRealStats.AttackRange;
         attackSpeed = enemyRealStats.AttackSpeed; 
         rotationSpeed = enemyRealStats.RotationSpeed;
-        
-        StartMoving();
-    }
-    
-    public void StartMoving()
-    {
-        StartCoroutine(Move());
-    }
+     
 
+    }
+   
     // Update is called once per frame
     protected void Update()
     {
@@ -64,9 +59,9 @@ public class EnemyBehaviour : BaseEnemyBehaviour
             nextAttack -= Time.deltaTime;
             if (nextAttack <= 0f) nextAttack = -1f;
         }
-       
+        
     }
-
+    
     protected override void Attack()
     {
         nearestEnemy.gameObject.GetComponent<DestroyableUnit>().GetDamaged(attackDamage);

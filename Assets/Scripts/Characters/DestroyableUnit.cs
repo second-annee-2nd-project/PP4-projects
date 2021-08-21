@@ -5,12 +5,25 @@ using TeamExtensionMethods;
 using UnityEngine.UI;
 
 public class DestroyableUnit : TeamUnit
-{ protected float bHealthPoints;
-    
+{
+    protected float bHealthPoints;
+    public float BHealthPoints
+    {
+        get => bHealthPoints;
+        set => bHealthPoints = value;
+    }
+
     protected float healthPoints;
+    public float HealthPoints 
+    {
+       get => healthPoints;
+       set => healthPoints = value;
+    }
 
     [SerializeField] private Image lifeBar_Img;
+    public Image LifeBar_Img => lifeBar_Img;
     [SerializeField] private Image backLifeBar_Img;
+    public Image BackLifeBar_Img => backLifeBar_Img;
     [SerializeField] private float animationBarSpeed;
     
     protected virtual void Start()
@@ -34,8 +47,10 @@ public class DestroyableUnit : TeamUnit
         lifeBar_Img.gameObject.SetActive(true);
         backLifeBar_Img.gameObject.SetActive(true);
         healthPoints -= damage; 
-        if (healthPoints <= 0)
+      
+        if (healthPoints <= 0 && gameObject.activeSelf)
         {
+            
             Die();
         }
     }

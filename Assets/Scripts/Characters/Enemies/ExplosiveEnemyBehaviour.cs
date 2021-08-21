@@ -30,6 +30,10 @@ public class ExplosiveEnemyBehaviour : BaseEnemyBehaviour
 
         StartMoving();
     }
+    public void StartMoving()
+    {
+        StartCoroutine(Move());
+    }
     /*
     protected override void ChoseAction(Vector3 startPosition, Vector3 targetPosition)
     {
