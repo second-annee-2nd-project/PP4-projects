@@ -59,7 +59,7 @@ public class EnemyBehaviour : BaseEnemyBehaviour
             nextAttack -= Time.deltaTime;
             if (nextAttack <= 0f) nextAttack = -1f;
         }
-       
+        
     }
     
     protected override void Attack()
