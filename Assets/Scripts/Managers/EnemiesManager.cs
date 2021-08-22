@@ -71,6 +71,8 @@ public class EnemiesManager : UnitManager
             if (eb.gameObject.activeInHierarchy && eb.IsDead)
             {
                eb.Respawn();
+               eb.AskForPath();
+               
             }
         }
         foreach (var exb in explosiveEnemyList)
@@ -78,6 +80,7 @@ public class EnemiesManager : UnitManager
             if (exb.gameObject.activeInHierarchy && exb.IsDead)
             {
                 exb.Respawn();
+                exb.AskForPath();
             }
         }
     }
@@ -88,6 +91,15 @@ public class EnemiesManager : UnitManager
             instantiatedItems[i].SetActive(false);
         }
         instantiatedItems.Clear();
+       
+         foreach (var eb in ebList)
+         {
+             eb.IsDead = true;
+         }
+        foreach (var exb in explosiveEnemyList)
+        {
+            exb.IsDead = true;
+        }
     }
     public bool isWaveFinished()
     {
