@@ -41,7 +41,11 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     protected List<Node> path;
     [SerializeField] private GameObject spawnEffect;
     protected bool isDead;
-    public bool IsDead => isDead;
+    public bool IsDead
+    {
+        get => isDead;
+        set => isDead = value;
+    }
     public List<Node> Path
     {
         get => path;
@@ -226,7 +230,8 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
     {
         if (isDead)
         {
-            
+
+
             GameObject effect = Instantiate(spawnEffect, transform.position, transform.rotation);
             effect.transform.parent = transform;
             Destroy(effect, 1f);
@@ -235,12 +240,14 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
             BHealthPoints = EnemyStats.HealthPoints;
             HealthPoints = BHealthPoints;
             RemovedPos = Vector3.zero;
+            // RemovedPos = Vector3.zero;
             StartMoving();
             isDead = false;
-         
+
+
         }
-      
     }
+
     public IEnumerator Move()
     {
         int a = 0;
@@ -250,7 +257,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         {
            
             CheckIfPathNeedsToChange();
-            Debug.Log("hhpppp");
+           
             Vector3 nearestEnemyGrounded =
                 new Vector3(nearestEnemy.position.x, groundY, nearestEnemy.position.z);
             Vector3 myPositionGrounded = new Vector3(transform.position.x, groundY, transform.position.z);
@@ -264,7 +271,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
             {
                 if (path != null && path.Count > 0 && path[0] != null)
                 {
-                    Debug.Log("hhpppzzzzzzzzp");
+                   
                     if (remainingTimerBeforeLookingAtPath > 0f)
                     {
                         remainingTimerBeforeLookingAtPath -= Time.deltaTime;
@@ -273,7 +280,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
                     else
                     {
                         CallAnim(); 
-                        Debug.Log("ppppppp");
+                      
                         Vector3 startPosition = transform.position;
                         Vector3 targetPosition = new Vector3(path[0].position.x, this.transform.position.y, path[0].position.z);
                       
@@ -287,7 +294,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
                         {
                             //lastNode.isWalkable = true;
                             lastNode.occupiedBy = null;
-                            Debug.Log("ppmmmmpp");
+                           
                             //actualNode.isWalkable = false;
                             actualNode.occupiedBy = this;
 
@@ -298,7 +305,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
                         transform.LookAt(targetPosition);
                         if (startPosition == targetPosition)
                         {
-                            Debug.Log("p,cnnnppp");
+                           
                             path.RemoveAt(0);
                             //grid.Nodes[coord.x, coord.z].occupiedBy = null;
                             
@@ -369,7 +376,7 @@ public abstract class BaseEnemyBehaviour : DestroyableUnit
         return false;
     }
 
-    protected virtual void AskForPath()
+    public virtual void AskForPath()
     {
         pathRequestManager.AddPath(new PathRequest(this, nearestEnemy), this);
         GetNearestEnemy();
